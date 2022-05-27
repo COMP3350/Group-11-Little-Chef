@@ -1,0 +1,50 @@
+GROUP 11 LOG
+---
+---
+>>>MEETING NOTES
+
+(Date
+- In Attendence: our names
+- What we did: )
+
+May 25, 2020
+- In Attendence: Brad, Denys, Dylan, Kajal, Wen
+- What we did: planned out and assigned developer tasks for iteraiton 1
+
+---
+---
+>>>DEV TASKS 
+(Title, Assigned To, User Story Points, Due Date, Iteration #) // if we number these then we can easily refer to them in our individual logs
+- (0. A task, a person, 5h, May 23, 0)
+
+---
+---
+>>>BRAD'S ACTIVTY LOG
+- (Activtiy Name, Amount spent on task, comments)
+- (Devtask 0, 2h, blah blah)
+
+---
+---
+>>>DENYS' ACTIVTY LOG
+- (Activtiy Name, Amount spent on task, comments)
+- (Devtask 0, 2h, blah blah)
+- (Downloaded, configured and learned how to use Android studio; 2 hrs)
+- (Went over sample project and sucessfully ran it on Android studio, 2 hrs, Emulators are so slow :( )
+
+---
+---
+>>>DYLAN'S ACTIVTY LOG
+- (Activtiy Name, Amount spent on task, comments)
+- (Devtask 0, 2h, blah blah)
+
+---
+---
+>>>KAJAL'S ACTIVTY LOG
+- (Activtiy Name, Amount spent on task, comments)
+- (Devtask 0, 2h, blah blah)
+
+---
+---
+WEN'S ACTIVTY LOG
+- (Activtiy Name, Amount spent on task, comments)
+- (Devtask 0, 2h, blah blah)
