@@ -30,7 +30,8 @@ May 25, 2020
 
 - (Downloaded, configured and learned how to use Android studio; 2 hrs)
 - (Went over sample project and sucessfully ran it on Android studio, 2 hrs, Emulators are so slow :( )
-- (created a template fro the project, copied the architecture from the sample project and uploaded everything to gitHub, 30 min)
+- (created a template for the project, copied the architecture from the sample project and uploaded everything to gitHub, 30 min)
+- (Created recipe class with all the getters, setters,instance variables, also created logic for rating 1hr)
 
 ---
 ---
