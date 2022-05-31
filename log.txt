@@ -23,7 +23,7 @@ May 25, 2020
 - (Activtiy Name, Amount spent on task, comments)
 
 - (Downloaded installed Android studio; 2 hours)
-- (Played around with the sample project user interface to customize it; 1 hour )
+- (Played around with the sample project user interface to customize it; 1.5 hour )
 - (Drew a few very basic GUI designs for opening app; 30 mins)
 
 ---
