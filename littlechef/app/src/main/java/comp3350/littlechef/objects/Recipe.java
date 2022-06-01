@@ -1,4 +1,5 @@
-package comp3350.littlechef.objects;
+//package comp3350.littlechef.objects; unsure whether this should be changed, I added as the source root path
+package main.java.comp3350.littlechef.objects;
 
 import java.util.ArrayList;
 
