@@ -5,6 +5,20 @@ import java.util.*;
 import main.java.comp3350.littlechef.objects.*;
 
 public interface PersistenceAccess {
+
+    /*** Initial DB access ***/
     public void open(String dbPath);
+
+    /*** close DB access ***/
+    public void close();
+
+    /*** add a recipe ***/
+    public String addRecipe(Recipe recipe);
+
+    /*** get recipe by name ***/
+    public String getRecipe(String name);
+
+    /*** get a list of recipe ***/
+    public ArrayList<Recipe> getListOfRecipe();
 
 }
