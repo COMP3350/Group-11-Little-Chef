@@ -24,7 +24,7 @@ public class PersistenceAccessDB implements PersistenceAccess {
     public void open(String dbPath) {
         try {
             dbType = "HSQL";
-            Class.forName("org.hsqldb.jdbcDriver");
+            Class.forName("org.hsqldb.jdbcDriver").newInstance();
 
             System.out.println("Connecting to selected database...");
             connection = DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath, "User", "");
@@ -87,18 +87,87 @@ public class PersistenceAccessDB implements PersistenceAccess {
     }//end addRecipe
 
     @Override
+    public Recipe updateRecipe(Recipe currRecipe) {
+        //I think it should return Recipe, because we are update and get a recipe with new information
+        String name = currRecipe.getName();
+        try {
+            cmd = "UPDATE RECIPE SET";//stuck here
+            resultSet = connection.createStatement().executeQuery(cmd);
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return currRecipe;
+    }//end updateRecipe
+
+    @Override
     public Recipe getRecipe(String name) {
-        return null;
-    }
+        Recipe recipe = null;
+        try {
+            cmd = "SELECT * FROM RECIPE WHERE NAME='" + name + "'";
+            resultSet = connection.createStatement().executeQuery(cmd);
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try{
+            while(resultSet.next()){
+                recipe = new Recipe(resultSet.getString("name"),resultSet.getFloat("timeToMake"));
+            }
+        }catch (SQLException se){
+            se.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return recipe;
+    }//end getRecipe
 
     @Override
-    public ArrayList<Recipe> getListOfRecipe() {
-        return null;
-    }
+    public ArrayList<Recipe> getListOfSameRecipe(Recipe recipe) {
+        ArrayList<Recipe> recipes = new ArrayList<>();
+        String name = recipe.getName();
+
+        try{
+            cmd = "SELECT * FROM RECIPE WHERE NAME='"+name+"'";
+            resultSet = connection.createStatement().executeQuery(cmd);
+        }catch (SQLException se) {
+            se.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try{
+            while(resultSet.next()){
+                recipe = new Recipe(resultSet.getString("name"),resultSet.getFloat("timeToMake"));
+                recipes.add(recipe);
+            }
+        }catch (SQLException se){
+            se.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return recipes;
+    }//end getListOfSameRecipe
 
     @Override
-    public boolean delRecipe(String name) {
-        return false;
-    }
+    public boolean delRecipe(Recipe recipe) {
+        String name = recipe.getName();
+        boolean deleted = false;
+        try{
+            cmd = "DELETE FROM RECIPE WHERE NAME='"+name+"'";
+            connection.createStatement().executeUpdate(cmd);
+            System.out.println("Deleted successfully.");
+            deleted = true;
+        }catch (SQLException se){
+            se.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return deleted;
+    }//end delRecipe
 
 }

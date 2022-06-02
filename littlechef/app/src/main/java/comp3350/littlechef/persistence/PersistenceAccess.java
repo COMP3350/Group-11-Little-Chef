@@ -15,13 +15,16 @@ public interface PersistenceAccess {
     /*** add a recipe ***/
     public String addRecipe(Recipe recipe);
 
+    /*** update Recipe ***/
+    public Recipe updateRecipe(Recipe currRecipe);
+
     /*** get recipe by name ***/
     public Recipe getRecipe(String name);
 
     /*** get a list of recipe ***/
-    public ArrayList<Recipe> getListOfRecipe();
+    public ArrayList<Recipe> getListOfSameRecipe(Recipe recipe);
 
     /*** delete a recipe ***/
-    public boolean delRecipe(String name);
+    public boolean delRecipe(Recipe currRecipe);
 
 }
