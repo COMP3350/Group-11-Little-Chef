@@ -44,6 +44,9 @@ May 25, 2020
 >>>DYLAN'S ACTIVTY LOG
 - (Activtiy Name, Amount spent on task, comments)
 - (Devtask 0, 2h, blah blah)
+- (Setup Android Studio and played around with the sample project, 1 hr)
+- (Setup Github Desktop and repository, 15 min)
+- (Created Ingredient Class, 30 min)
 
 ---
 ---

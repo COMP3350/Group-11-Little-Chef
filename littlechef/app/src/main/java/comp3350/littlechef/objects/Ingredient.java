@@ -18,7 +18,7 @@ public class Ingredient
         this.measurement = measurement;
         this.amount = amount;
     }
-
+//getters and setters
     public String getName() { return Name; }
     public void setName(String name) {this.Name = name;}
 
