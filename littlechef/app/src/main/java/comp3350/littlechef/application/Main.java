@@ -2,7 +2,7 @@ package comp3350.littlechef.application;
 
 public class Main
 {
-    public static final String dbName="SC";
+    public static final String dbName="RC";
 
     public static void main(String[] args)
     {
