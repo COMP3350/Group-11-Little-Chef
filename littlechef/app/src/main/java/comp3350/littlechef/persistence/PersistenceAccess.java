@@ -16,7 +16,7 @@ public interface PersistenceAccess {
     public String addRecipe(Recipe recipe);
 
     /*** get recipe by name ***/
-    public String getRecipe(Recipe recipe);
+    public Recipe getRecipe(String name);
 
     /*** get a list of recipe ***/
     public ArrayList<Recipe> getListOfRecipe();

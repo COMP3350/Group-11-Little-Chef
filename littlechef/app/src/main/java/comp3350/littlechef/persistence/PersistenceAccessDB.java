@@ -8,6 +8,7 @@ import java.sql.*;
 import java.util.*;
 
 public class PersistenceAccessDB implements PersistenceAccess {
+    
     private String databasePath;
     private Connection connection;
     private String cmd;
@@ -70,11 +71,11 @@ public class PersistenceAccessDB implements PersistenceAccess {
         String steps = recipe.getSteps().toString();
         String timeToMake = String.valueOf(recipe.getTimeToMake());
         String difficulty = recipe.getDifficulty() + "";//since last time we discussed we want to make it as user-defined string, use +""
-        String quality = recipe.getQuality() + "";
+        String quality = recipe.getQuality() + "";//same as difficulty
         String rate = String.valueOf(recipe.getRating());
 
-        String instruction = name + ingredients;
-        
+        String instruction = "'" + name + "','" + ingredients + "','" + steps + "'," + timeToMake + ",'" + difficulty + "','" + quality + "'," + rate;
+
         try {
             cmd = "INSERT INTO RECIPES VALUES (" + instruction + ")";
             resultSet = connection.createStatement().executeQuery(cmd);
@@ -84,10 +85,10 @@ public class PersistenceAccessDB implements PersistenceAccess {
             e.printStackTrace();
         }
         return name;
-    }
+    }//end addRecipe
 
     @Override
-    public String getRecipe(Recipe recipe) {
+    public Recipe getRecipe(String name) {
         return null;
     }
 
@@ -100,4 +101,5 @@ public class PersistenceAccessDB implements PersistenceAccess {
     public boolean delRecipe(String name) {
         return false;
     }
+
 }
