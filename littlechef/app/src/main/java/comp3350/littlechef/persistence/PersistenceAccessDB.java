@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.*;
 
 public class PersistenceAccessDB implements PersistenceAccess {
-    
+
     private String databasePath;
     private Connection connection;
     private String cmd;
@@ -23,12 +23,11 @@ public class PersistenceAccessDB implements PersistenceAccess {
     @Override
     public void open(String dbPath) {
         try {
-            /*** Unsure which db we are going to use ***/
             dbType = "HSQL";
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Class.forName("org.hsqldb.jdbcDriver");
 
             System.out.println("Connecting to selected database...");
-            connection = DriverManager.getConnection("jdbc:hsqldb.jdbcDriver", "User", "");
+            connection = DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath, "User", "");
             statement = connection.createStatement();
             System.out.println("Connection built successfully.");
 
