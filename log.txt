@@ -7,20 +7,48 @@ GROUP 11 LOG
 - In Attendence: our names
 - What we did: )
 
-May 25, 2020
-- In Attendence: Brad, Denys, Dylan, Kajal, Wen
-- What we did: planned out and assigned developer tasks for iteraiton 1
+May 16, 2020
+- In attendence: Brad, Denys, Dylan, Kajal, Wen
+- What we did: first introductions, brainstormed ideas for our app
+
+May 19, 2022
+- In attendence: Brad, Denys, Dylan, Kajal, Wen
+- What we did: creates notes for the vision statement, create big and detailed user stories, planned out tasks for iteration 0.
+
+May 25, 2022
+- In attendence: Brad, Denys, Dylan, Kajal, Wen
+- What we did: planned out and assigned developer tasks for iteraiton 1.
 
 ---
 ---
 >>>DEV TASKS 
-(Title, Assigned To, User Story Points, Due Date, Iteration #) // if we number these then we can easily refer to them in our individual logs
-- (0. A task, a person, 5h, May 23, 0)
+(Title; Assigned To; [User Story Points]; [Due Date]; Iteration #) // if we number these then we can easily refer to them in our individual logs
+- (0; A task; a person; 5h; May 23; 0)
+
+- (pick a topic; everyone; iteration 0)
+- (write vision statement; brad; iteration 0)
+- (create 12 big user stories; everyone; iteration 0)
+- (create 5-10 iteration 1 stories; everyone; iteratoin 0)
+- (review iteration 1 stories; everyone; iteration 0)
+- (edit, format and compile everything into a submission; Kajal; iteration 0)
+- Review iteration 0 submission; everyone; iteration 0)
+- (make a log file; Kajal; iteration 1)
+- (create deadlines for iteration 1 dev tasks; everyone; iteration 1)
+- (Create a prototype for iteratio 1; Kajal, Denys, Brad; iteration 1)
+- (Create the stub database; Wen, Denys; iteration 1)
+- (write (at least 3) tests for the database; Wen; iteration 1)
+- (make the recipe class (business object); Dylan, Denys, Kajal, Wen; iteration 1)
+- (create the ingredient class; Denys, Dylan; iteration 1)
+- (write (at least 3) tests for the recipe class; Dylan, iteratio 1)
+- (create the UI to show a list of recipes; Brad, Denys, iteration 1)
+- (write (at least 3) tests for the UI; Brad; iteration 1)
+- (review iteration 1 submission; everyone; iteration 1)
+
 
 ---
 ---
 >>>BRAD'S ACTIVTY LOG
-- (Activtiy Name, Amount spent on task, comments)
+- (activtiy Name; [comment]; amount spent on task)
 
 - (Downloaded installed Android studio; 2 hours)
 - (Played around with the sample project user interface to customize it; 1.5 hour )
@@ -29,7 +57,7 @@ May 25, 2020
 ---
 ---
 >>>DENYS' ACTIVTY LOG
-- (Activtiy Name, Amount spent on task, comments)
+- (activtiy Name; [comment]; amount spent on task)
 
 - (Downloaded, configured and learned how to use Android studio; 2 hrs)
 - (Went over sample project and sucessfully ran it on Android studio, 2 hrs, Emulators are so slow :( )
@@ -42,8 +70,8 @@ May 25, 2020
 ---
 ---
 >>>DYLAN'S ACTIVTY LOG
-- (Activtiy Name, Amount spent on task, comments)
-- (Devtask 0, 2h, blah blah)
+- (activtiy Name; [comment]; amount spent on task)
+
 - (Setup Android Studio and played around with the sample project, 1 hr)
 - (Setup Github Desktop and repository, 15 min)
 - (Created Ingredient Class, 30 min)
@@ -51,14 +79,22 @@ May 25, 2020
 ---
 ---
 >>>KAJAL'S ACTIVTY LOG
-- (Activtiy Name, Amount spent on task, comments)
-- (Devtask 0, 2h, blah blah)
+- (activtiy Name, Amount spent on task, comments)
+
+- (set up gitHub repository and gitHub projects; 30m)
+- (edited the vision statement document; 1h)
+- (formatted iteration 0 story cards; 30m)
+- (compiled vision story and iteration 0 user stories; edited, formatted, and handed in iteration 0 submission; 2h)
+- (created log file and formatted it; 30m)
+- (downloaded and configured Android studio; 1h)
+- (created the prototype for iteration 1; 30m)
+- (added all the devtasks and meeting notes to the log, 30m)
 
 ---
 ---
 WEN'S ACTIVTY LOG
-- (Activtiy Name, Amount spent on task, comments)
-- (Devtask 0, 2h, blah blah)
+- (activtiy Name; [comment]; time spent on task)
+
 - (Setup Android Studio, configuration, tried the sample code with tests, 2 hours)
 - (Setup Github desktop, tried pull, push and other functions, 1 hour)
 - (Create stub database and real datebase, learned how to setup hsqldb and jdbc, debug, 8 hours)
