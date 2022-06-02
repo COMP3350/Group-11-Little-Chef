@@ -21,4 +21,7 @@ public interface PersistenceAccess {
     /*** get a list of recipe ***/
     public ArrayList<Recipe> getListOfRecipe();
 
+    /*** delete a recipe ***/
+    public boolean delRecipe(String name);
+
 }
