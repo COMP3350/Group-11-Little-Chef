@@ -78,6 +78,7 @@ May 25, 2022
 - (Setup Android Studio and played around with the sample project, 1 hr)
 - (Setup Github Desktop and repository, 15 min)
 - (Created Ingredient Class, 30 min)
+- (Updated Recipe class to use Ingredient object and played around with the sample project test code, 30 min)
 
 ---
 ---
