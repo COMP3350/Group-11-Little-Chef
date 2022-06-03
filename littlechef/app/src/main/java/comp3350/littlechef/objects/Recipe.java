@@ -25,7 +25,7 @@ public class Recipe
     //instance vars
     private String name;
     //TODO should maybe make a timer instance variable for the time
-    private ArrayList<String> ingredients;
+    private ArrayList<Ingredient> ingredients;
     private ArrayList<String> steps; //steps(instructions) to make the recipe
 
     //rating criteria
@@ -40,7 +40,7 @@ public class Recipe
     {
         this.name = name;
         this.timeToMake = timeToMake;
-        ingredients = new ArrayList<String>();
+        ingredients = new ArrayList<Ingredient>();
         steps = new ArrayList<String>();
 
         difficulty = Difficulty.NOT_RATED;
@@ -59,12 +59,12 @@ public class Recipe
         this.name = name;
     }
 
-    public ArrayList<String> getIngredients()
+    public ArrayList<Ingredient> getIngredients()
     {
         return ingredients;
     }
 
-    public void addIngredient(String ingr)
+    public void addIngredient(Ingredient ingr)
     {
         ingredients.add(ingr);
     }
