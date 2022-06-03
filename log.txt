@@ -68,6 +68,8 @@ May 25, 2022
 - (Created a activity_home.xml, HomeActivity.java, style.xml, dimens.xml, menu_home.xml and checked if everything works, 1 hr)
 - (Created a stub DB, 1 hr)
 - (played around with Android Studio GUI editor and learned some basics, 3 hrs)
+- (set color palette for the app with suggested by Kajal colours, 5 min)
+
 
 
 ---
