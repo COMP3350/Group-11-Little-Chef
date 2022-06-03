@@ -69,6 +69,7 @@ May 25, 2022
 - (Created a stub DB, 1 hr)
 - (played around with Android Studio GUI editor and learned some basics, 3 hrs)
 - (set color palette for the app with suggested by Kajal colours, 5 min)
+- (Recreated GUI by Kajal's design {created bottom navigation menu and top menu/header}, 3 hrs)
 
 
 

@@ -10,7 +10,8 @@
 
 
     <color name="header_footer_background">#abd2bc</color>
-    <color name="font_color_header">#548378</color>
+    <color name="header_alt">#40635B</color>
+    <color name="font_header">#548378</color>
     <color name="recipe_card_background">#e5e9f2</color>
     <color name="recipe_name_text">#636e7e</color>
     <color name="recipe_info_text">#a3afc0</color>

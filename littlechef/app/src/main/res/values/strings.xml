@@ -3,6 +3,4 @@
     <string name="recipes_button">Recipes</string>
     <string name="meal_plan_button">Meal Plans</string>
     <string name="add_recipe_button">Add Recipe</string>
-
-    <string name="view">View</string>
 </resources>
