@@ -59,6 +59,7 @@ May 25, 2022
 >>>DENYS' ACTIVTY LOG
 - (activtiy Name; [comment]; amount spent on task)
 
+- (edited the vision statement document; 30 mins)
 - (Downloaded, configured and learned how to use Android studio; 2 hrs)
 - (Went over sample project and sucessfully ran it on Android studio, 2 hrs, Emulators are so slow :( )
 - (created a template for the project, copied the architecture from the sample project and uploaded everything to gitHub, 30 min)
@@ -66,6 +67,8 @@ May 25, 2022
 - (more android studio fixing; 1 hr)
 - (Created a activity_home.xml, HomeActivity.java, style.xml, dimens.xml, menu_home.xml and checked if everything works, 1 hr)
 - (Created a stub DB, 1 hr)
+- (played around with Android Studio GUI editor and learned some basics, 3 hrs)
+
 
 ---
 ---
