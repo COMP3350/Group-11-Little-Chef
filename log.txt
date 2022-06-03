@@ -71,6 +71,7 @@ May 25, 2022
 - (set color palette for the app with suggested by Kajal colours, 5 min)
 - (Recreated GUI by Kajal's design {created bottom navigation menu and top menu/header} + created view recipes, add recipes and meal plans fragments, and made the navbar 
 functional by making it change the fragment on click (plus nice effects for on click), 5 hrs)
+- Played a bit more with GUI, especially top/tool/action bar, 1 hr)
 
 
 
