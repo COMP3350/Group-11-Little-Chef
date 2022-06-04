@@ -53,6 +53,8 @@ May 25, 2022
 - (Downloaded installed Android studio; 2 hours)
 - (Played around with the sample project user interface to customize it; 1.5 hour )
 - (Drew a few very basic GUI designs for opening app; 30 mins)
+- (more android studio bugs, not loading correctly; 1.5 hour)
+- (made some basic designs for the add recipe page; 30 mins)
 
 ---
 ---
