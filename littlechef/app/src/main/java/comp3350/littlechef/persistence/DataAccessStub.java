@@ -1,10 +1,10 @@
-package comp3350.littlechef.persistence;
+package main.java.comp3350.littlechef.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import comp3350.littlechef.application.Main;
-import comp3350.littlechef.objects.Recipe;
+import main.java.comp3350.littlechef.application.Main;
+import main.java.comp3350.littlechef.objects.Recipe;
 //TODO NEED TO CREATE A RATING CLASS THAT WILL HOLD ALL THE RATINGS + DATE FOR THE RATING IN THE RECIPE
 
 public class DataAccessStub

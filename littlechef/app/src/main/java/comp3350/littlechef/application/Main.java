@@ -1,4 +1,4 @@
-package comp3350.littlechef.application;
+package main.java.comp3350.littlechef.application;
 
 public class Main
 {

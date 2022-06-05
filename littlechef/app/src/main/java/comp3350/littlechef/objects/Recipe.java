@@ -1,4 +1,4 @@
-package comp3350.littlechef.objects;
+package main.java.comp3350.littlechef.objects;
 
 import java.util.ArrayList;
 
