@@ -55,7 +55,7 @@ May 25, 2022
 - (Drew a few very basic GUI designs for opening app; 30 mins)
 - (more android studio bugs, not loading correctly; 1.5 hour)
 - (made some basic designs for the add recipe page; 30 mins)
-
+- (attempted to get the list view working for the recipes did not; 5 hours)
 ---
 ---
 >>>DENYS' ACTIVTY LOG
