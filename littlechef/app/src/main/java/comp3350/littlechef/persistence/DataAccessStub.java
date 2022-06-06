@@ -40,6 +40,11 @@ public class DataAccessStub
 
 
         System.out.println("Opened " +dbType +" database " +dbName);
+
+
+
+
+
     }
 
     public void close()

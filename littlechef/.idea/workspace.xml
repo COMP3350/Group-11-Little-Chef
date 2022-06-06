@@ -12,17 +12,29 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cec11bb1-d5fe-4b26-85ff-50353578aa16" name="Changes" comment="just made the basic home screen GUI">
+    <list default="true" id="cec11bb1-d5fe-4b26-85ff-50353578aa16" name="Changes" comment="Test listview">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_2_0_4_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/presentation/CustomBaseAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/presentation/CustomListView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_custom_list_view2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_2_0_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_solver_2_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_solver_2_0_4.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-05-31_8_23_p_m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-05-31_8_23_p_m___Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/presentation/HomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/presentation/HomeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/persistence/DataAccessStub.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/persistence/DataAccessStub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/presentation/ViewFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/presentation/ViewFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\VestH\.android\avd\Nexus_7_API_23.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Brad_\.android\avd\Nexus_7_API_23.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -32,9 +44,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="valueResourceFile" />
-        <option value="Class" />
-        <option value="layoutResourceFile" />
         <option value="resourceFile" />
+        <option value="layoutResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -50,7 +62,9 @@
     </file-type-list>
   </component>
   <component name="ProjectId" id="29lUB1ARcSFNqG3tOXK5TtiB2b0" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -67,6 +81,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\VestH\Desktop\COMP3350\3350GroupPrj\iteration_1\littlechef\app\src\main\res\drawable" />
       <recent name="C:\Users\VestH\Desktop\COMP3350\3350GroupPrj\iteration_1\littlechef\app\src\main\res\values" />
+    </key>
+    <key name="android.template.1285876844">
+      <recent name="comp3350.littlechef" />
     </key>
   </component>
   <component name="RunManager">
@@ -175,6 +192,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="just made the basic home screen GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="just made the basic home screen GUI" />
+    <MESSAGE value="Test listview" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test listview" />
   </component>
 </project>

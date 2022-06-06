@@ -7,8 +7,13 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.content.Context;
 
 import comp3350.littlechef.R;
+
+import comp3350.littlechef.presentation.CustomBaseAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,13 +53,20 @@ public class ViewFragment extends Fragment {
         return fragment;
     }
 
+    String fruitList[] = {"Apple", "Banana", "Apricot"};
+    //import images list
+    ListView listView;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
+        setContentView(R.layout.activity_custom_list_view2); //MAYBE OTHER ACTIVITY!!!!
+        /*if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        }*/
+
     }
 
     @Override
