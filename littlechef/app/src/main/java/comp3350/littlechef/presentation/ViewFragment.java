@@ -7,60 +7,103 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import androidx.fragment.app.FragmentManager;
+
+import java.util.ArrayList;
 
 import comp3350.littlechef.R;
+import comp3350.littlechef.business.AccessRecipes;
+import comp3350.littlechef.objects.Recipe;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ViewFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class ViewFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class ViewFragment extends Fragment
+{
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private AccessRecipes accessRecipes;
+    private ArrayList<Recipe> recipeList;
+    private ArrayAdapter<Recipe> recipeArrayAdapter;
+    private int selectedRecipePosition = -1;
 
-    public ViewFragment() {
+    public ViewFragment()
+    {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ViewFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ViewFragment newInstance(String param1, String param2) {
-        ViewFragment fragment = new ViewFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_view, container, false);
+        View view = inflater.inflate(R.layout.fragment_view, container, false);
+
+        //accessRecipes = new AccessRecipes();
+
+        recipeList = new ArrayList<Recipe>();
+//        String result = accessRecipes.getRecipes(recipeList);
+        String result = null;
+
+        Recipe recipe;
+
+        recipe = new Recipe("Pizza", 0.5f);
+        recipeList.add(recipe);
+        recipe = new Recipe("Mushroom Ravioli", 2.5f);
+        recipeList.add(recipe);
+        recipe = new Recipe("Guacamole", 1.0f);
+        recipeList.add(recipe);
+        recipe = new Recipe("Pierogies", 1.5f);
+        recipeList.add(recipe);
+
+        if(result != null)
+        {
+            //TODO create messages class and add an error message here
+        }
+
+        else
+        {
+            final ListView listView = (ListView) view.findViewById(R.id.recipe_list_view);
+
+            recipeArrayAdapter = new ArrayAdapter<Recipe>(getActivity(), android.R.layout.simple_list_item_1, recipeList)
+            {
+                @Override
+                public View getView(int position, View convertView, ViewGroup parent)
+                {
+                    Recipe recipe = getItem(position);
+                    if(convertView == null)
+                    {
+                        convertView = LayoutInflater.from(getContext()).inflate(R.layout.recipe_card,parent, false);
+                    }
+                    TextView name = (TextView) convertView.findViewById(R.id.recipeName);
+                    TextView estimatedTime = (TextView) convertView.findViewById(R.id.estimatedTime);
+                    TextView difficulty = (TextView) convertView.findViewById(R.id.difficulty);
+                    TextView taste = (TextView) convertView.findViewById(R.id.taste);
+                    TextView rating = (TextView) convertView.findViewById(R.id.rating);
+
+                    //TODO set up the text views
+                    name.setText(recipeList.get(position).getName());
+//                    estimatedTime.setText(Float.toString(recipeList.get(position).getTimeToMake()));
+//                    difficulty.setText();
+//                    name.setText();
+//                    name.setText();
+
+                    return convertView;
+                }
+            };
+
+            listView.setAdapter(recipeArrayAdapter);
+        }
+
+        return view;
     }
+
+
 }
