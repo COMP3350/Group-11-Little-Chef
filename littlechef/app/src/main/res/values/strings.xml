@@ -3,4 +3,9 @@
     <string name="recipes_button">Recipes</string>
     <string name="meal_plan_button">Meal Plans</string>
     <string name="add_recipe_button">Add Recipe</string>
+    <string name="recipe_card_name_placeholder"><b><u>Recipe Name</u></b></string>
+    <string name="time">Estimated Time:</string>
+    <string name="difficulty">Difficulty:</string>
+    <string name="taste">Taste</string>
+    <string name="rating">5/5</string>
 </resources>

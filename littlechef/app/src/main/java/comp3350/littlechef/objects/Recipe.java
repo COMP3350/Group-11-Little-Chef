@@ -22,9 +22,12 @@ enum Quality
 
 public class Recipe
 {
+    private static int nextID = 0;
+
     //instance vars
     private String name;
     //TODO should maybe make a timer instance variable for the time
+    private int recipeID;
     private ArrayList<Ingredient> ingredients;
     private ArrayList<String> steps; //steps(instructions) to make the recipe
 
@@ -35,10 +38,25 @@ public class Recipe
     private ArrayList<Float> rating; //calculate the average similar to gpa calculation, from 0 to 5(can make "animated 5 stars that fill up the color later")
     //or could make it overall rating based on the rating the user gives and/or calculated from enum values
 
-    //constructor
+    //constructors
+    public Recipe(int recipeID) //is used for accessRandom in the AccessRecipes.java
+    {
+        this.recipeID = recipeID;
+
+        this.name = null;
+        this.timeToMake = 0.0f;
+        ingredients = null;
+        steps = null;
+
+        difficulty = null;
+        quality = null;
+        rating = null;
+    }
+
     public Recipe(String name, float timeToMake)
     {
         this.name = name;
+        this.recipeID = nextID++;
         this.timeToMake = timeToMake;
         ingredients = new ArrayList<Ingredient>();
         steps = new ArrayList<String>();
