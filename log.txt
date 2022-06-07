@@ -25,22 +25,22 @@ May 25, 2022
 (Title; Assigned To; [User Story Points]; [Due Date]; Iteration #) // if we number these then we can easily refer to them in our individual logs
 - (0; A task; a person; 5h; May 23; 0)
 
-- (pick a topic; everyone; iteration 0)
-- (write vision statement; brad; iteration 0)
-- (create 12 big user stories; everyone; iteration 0)
-- (create 5-10 iteration 1 stories; everyone; iteratoin 0)
-- (review iteration 1 stories; everyone; iteration 0)
-- (edit, format and compile everything into a submission; Kajal; iteration 0)
-- Review iteration 0 submission; everyone; iteration 0)
-- (make a log file; Kajal; iteration 1)
+- (pick a topic; everyone; iteration 0) ✓
+- (write vision statement; brad; iteration 0) ✓
+- (create 12 big user stories; everyone; iteration 0) ✓
+- (create 5-10 iteration 1 stories; everyone; iteratoin 0)✓
+- (review iteration 1 stories; everyone; iteration 0)✓
+- (edit, format and compile everything into a submission; Kajal; iteration 0)✓
+- Review iteration 0 submission; everyone; iteration 0)✓
+- (make a log file; Kajal; iteration 1)✓
 - (create deadlines for iteration 1 dev tasks; everyone; iteration 1)
-- (Create a prototype for iteratio 1; Kajal, Denys, Brad; iteration 1)
-- (Create the stub database; Wen, Denys; iteration 1)
+- (Create a prototype for iteration 1; Kajal, Denys, Brad; iteration 1)✓
+- (Create the stub database; Wen, Denys; iteration 1)✓
 - (write (at least 3) tests for the database; Wen; iteration 1)
-- (make the recipe class (business object); Dylan, Denys, Kajal, Wen; iteration 1)
-- (create the ingredient class; Denys, Dylan; iteration 1)
+- (make the recipe class (business object); Dylan, Denys, Kajal, Wen; iteration 1)✓
+- (create the ingredient class; Denys, Dylan; iteration 1)✓
 - (write (at least 3) tests for the recipe class; Dylan, iteratio 1)
-- (create the UI to show a list of recipes; Brad, Denys, iteration 1)
+- (create the UI to show a list of recipes; Brad, Denys, iteration 1) ~✓
 - (write (at least 3) tests for the UI; Brad; iteration 1)
 - (review iteration 1 submission; everyone; iteration 1)
 
@@ -63,22 +63,22 @@ May 25, 2022
 
 - (edited the vision statement document; 30 mins)
 - (Downloaded, configured and learned how to use Android studio; 2 hrs)
-- (Went over sample project and sucessfully ran it on Android studio, 2 hrs, Emulators are so slow :( )
-- (created a template for the project, copied the architecture from the sample project and uploaded everything to gitHub, 30 min)
-- (Created recipe class with all the getters, setters,instance variables, also created logic for rating 1hr)
+- (Went over sample project and sucessfully ran it on Android studio; Emulators are so slow :( ; 2 hrs )
+- (created a template for the project, copied the architecture from the sample project and uploaded everything to gitHub; 30 min)
+- (Created recipe class with all the getters, setters,instance variables, also created logic for rating; 1hr)
 - (more android studio fixing; 1 hr)
-- (Created a activity_home.xml, HomeActivity.java, style.xml, dimens.xml, menu_home.xml and checked if everything works, 1 hr)
-- (Created a stub DB, 1 hr)
-- (played around with Android Studio GUI editor and learned some basics, 3 hrs)
-- (set color palette for the app with suggested by Kajal colours, 5 min)
+- (Created a activity_home.xml, HomeActivity.java, style.xml, dimens.xml, menu_home.xml and checked if everything works; 1 hr)
+- (Created a stub DB; 1 hr)
+- (played around with Android Studio GUI editor and learned some basics; 3 hrs)
+- (set color palette for the app with suggested by Kajal colours; 5 min)
 - (Recreated GUI by Kajal's design {created bottom navigation menu and top menu/header} + created view recipes, add recipes and meal plans fragments, and made the navbar 
-functional by making it change the fragment on click (plus nice effects for on click), 5 hrs)
-- (Played a bit more with GUI, especially top/tool/action bar, 1 hr)
-- (Helped a team member to figure out how our GUI works in terms of code and what tools to use in Android Studio to make GUI, 30 mins)
+functional by making it change the fragment on click (plus nice effects for on click); 5 hrs)
+- (Played a bit more with GUI, especially top/tool/action bar; 1 hr)
+- (Helped a team member to figure out how our GUI works in terms of code and what tools to use in Android Studio to make GUI; 30 mins)
 - (Created Services.java, 30 mins)
-- (Created AccessRecipes.java and added recipeID instance variable to a Recipe class, 1 hr)
-- (Created recipe_card.xml, 1 hr)
-- (Finished version one of a ViewFragment, now it shows up all the recipes present in the stubDB in a nice list using recipe_card.xml, 4 hrs)
+- (Created AccessRecipes.java and added recipeID instance variable to a Recipe class; 1 hr)
+- (Created recipe_card.xml; 1 hr)
+- (Finished version one of a ViewFragment, now it shows up all the recipes present in the stubDB in a nice list using recipe_card.xml; 4 hrs)
 
 
 
