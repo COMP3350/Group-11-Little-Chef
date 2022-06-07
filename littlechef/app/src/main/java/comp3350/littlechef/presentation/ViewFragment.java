@@ -1,9 +1,13 @@
 package comp3350.littlechef.presentation;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import android.app.Fragment;
 
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,8 +80,12 @@ public class ViewFragment extends Fragment
                     TextView taste = (TextView) convertView.findViewById(R.id.taste);
                     TextView rating = (TextView) convertView.findViewById(R.id.rating);
 
+                    SpannableString recipeNameFormatted = new SpannableString(recipeList.get(position).getName());
+                    recipeNameFormatted.setSpan(new UnderlineSpan(), 0, recipeNameFormatted.length(), 0);
+                    recipeNameFormatted.setSpan(new StyleSpan(Typeface.BOLD), 0, recipeNameFormatted.length(), 0);
+
                     //TODO set up the text views
-                    name.setText(recipeList.get(position).getName());
+                    name.setText(recipeNameFormatted);
 //                    estimatedTime.setText(Float.toString(recipeList.get(position).getTimeToMake()));
 //                    difficulty.setText();
 //                    name.setText();
