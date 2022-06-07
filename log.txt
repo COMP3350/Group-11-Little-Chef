@@ -78,6 +78,7 @@ functional by making it change the fragment on click (plus nice effects for on c
 - (Created Services.java, 30 mins)
 - (Created AccessRecipes.java and added recipeID instance variable to a Recipe class, 1 hr)
 - (Created recipe_card.xml, 1 hr)
+- (Finished version one of a ViewFragment, now it shows up all the recipes present in the stubDB in a nice list using recipe_card.xml, 4 hrs)
 
 
 
