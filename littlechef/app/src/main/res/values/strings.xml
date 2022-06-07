@@ -6,7 +6,7 @@
     <string name="recipe_card_name_placeholder"><b><u>Recipe Name</u></b></string>
     <string name="time">Estimated Time:</string>
     <string name="difficulty">Difficulty:</string>
-    <string name="taste">Taste</string>
+    <string name="taste">Taste:</string>
     <string name="rating">5/5</string>
     <string name="warning">Warning</string>
     <string name="fatalError">Fatal error</string>

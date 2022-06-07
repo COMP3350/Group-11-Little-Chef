@@ -84,12 +84,11 @@ public class ViewFragment extends Fragment
                     recipeNameFormatted.setSpan(new UnderlineSpan(), 0, recipeNameFormatted.length(), 0);
                     recipeNameFormatted.setSpan(new StyleSpan(Typeface.BOLD), 0, recipeNameFormatted.length(), 0);
 
-                    //TODO set up the text views
                     name.setText(recipeNameFormatted);
-//                    estimatedTime.setText(Float.toString(recipeList.get(position).getTimeToMake()));
-//                    difficulty.setText();
-//                    name.setText();
-//                    name.setText();
+                    estimatedTime.setText(recipeList.get(position).getTimeToMakeString());
+                    difficulty.setText(recipeList.get(position).getDifficultyString());
+                    taste.setText(recipeList.get(position).getQualityString());
+                    rating.setText(recipeList.get(position).getRatingString());
 
                     return convertView;
                 }
