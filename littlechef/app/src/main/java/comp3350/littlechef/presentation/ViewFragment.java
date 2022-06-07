@@ -46,22 +46,10 @@ public class ViewFragment extends Fragment
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_view, container, false);
 
-        //accessRecipes = new AccessRecipes();
+        accessRecipes = new AccessRecipes();
 
         recipeList = new ArrayList<Recipe>();
-//        String result = accessRecipes.getRecipes(recipeList);
-        String result = null;
-
-        Recipe recipe;
-
-        recipe = new Recipe("Pizza", 0.5f);
-        recipeList.add(recipe);
-        recipe = new Recipe("Mushroom Ravioli", 2.5f);
-        recipeList.add(recipe);
-        recipe = new Recipe("Guacamole", 1.0f);
-        recipeList.add(recipe);
-        recipe = new Recipe("Pierogies", 1.5f);
-        recipeList.add(recipe);
+        String result = accessRecipes.getRecipes(recipeList);
 
         if(result != null)
         {

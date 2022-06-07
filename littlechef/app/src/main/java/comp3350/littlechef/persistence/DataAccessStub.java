@@ -37,6 +37,14 @@ public class DataAccessStub
         recipes.add(recipe);
         recipe = new Recipe("Pierogies", 1.5f);
         recipes.add(recipe);
+        recipe = new Recipe("Vermicelli", 1.5f);
+        recipes.add(recipe);
+        recipe = new Recipe("Lasagna", 1.5f);
+        recipes.add(recipe);
+        recipe = new Recipe("Mom's spaghetti", 1.5f);
+        recipes.add(recipe);
+        recipe = new Recipe("Nervous Broccoli", 1.5f);
+        recipes.add(recipe);
 
 
         System.out.println("Opened " +dbType +" database " +dbName);

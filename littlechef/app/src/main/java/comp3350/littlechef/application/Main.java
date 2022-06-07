@@ -14,11 +14,11 @@ public class Main
 
     public static void startUp()
     {
-        //Services.createDataAccess(dbName);
+        Services.createDataAccess(dbName);
     }
 
     public static void shutDown()
     {
-        //Services.closeDataAccess();
+        Services.closeDataAccess();
     }
 }
