@@ -57,7 +57,7 @@ public class ViewFragment extends Fragment
 
         if(result != null)
         {
-            //TODO create messages class and add an error message here
+            Messages.fatalError(getActivity(), result);
         }
 
         else
