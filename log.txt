@@ -81,6 +81,7 @@ functional by making it change the fragment on click (plus nice effects for on c
 - (Finished version one of a ViewFragment, now it shows up all the recipes present in the stubDB in a nice list using recipe_card.xml; 4 hrs)
 - (Created Messages.java; 10 mins)
 - (Updated Recipe.java with new methods and made ViewFragment.java to show all the info about a recipe in the recipe_card.xml; 1hr)
+- (Created DetailedRecipeActivity.java and detailed_activity_xml and made listView items in ViewFragment be clickable and open detailed_activity_xml on click ; 3.5 hrs)
 
 
 ---
