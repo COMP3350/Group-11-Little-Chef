@@ -248,4 +248,9 @@ public class Recipe
     {
         rating.add(userRating);
     }
+
+    public int getId()
+    {
+        return this.recipeID;
+    }
 }
