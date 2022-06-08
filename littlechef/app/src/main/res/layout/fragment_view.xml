@@ -1,16 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.ViewFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="26dp"
-        android:text="@string/recipes_button" />
+        android:id="@+id/recipe_list_view"/>
 
 </FrameLayout>
+
+<!--TODO make a gap between each item-->
+<!--TODO make items round rather than square-->

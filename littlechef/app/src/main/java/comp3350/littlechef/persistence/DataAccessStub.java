@@ -5,8 +5,8 @@ import java.util.List;
 
 import comp3350.littlechef.application.Main;
 import comp3350.littlechef.objects.Recipe;
-//TODO NEED TO CREATE A RATING CLASS THAT WILL HOLD ALL THE RATINGS + DATE FOR THE RATING IN THE RECIPE
 
+//TODO NEED TO CREATE A RATING CLASS THAT WILL HOLD ALL THE RATINGS + DATE FOR THE RATING IN THE RECIPE
 public class DataAccessStub
 {
     private String dbName;
@@ -29,13 +29,21 @@ public class DataAccessStub
 
         recipes = new ArrayList<Recipe>();
 
-        recipe = new Recipe("Pizza", 0.5f);
+        recipe = new Recipe("Pizza", 0, 30);
         recipes.add(recipe);
-        recipe = new Recipe("Mushroom Ravioli", 2.5f);
+        recipe = new Recipe("Mushroom Ravioli", 2, 30);
         recipes.add(recipe);
-        recipe = new Recipe("Guacamole", 1.0f);
+        recipe = new Recipe("Guacamole", 1,0);
         recipes.add(recipe);
-        recipe = new Recipe("Pierogies", 1.5f);
+        recipe = new Recipe("Pierogies", 1,30);
+        recipes.add(recipe);
+        recipe = new Recipe("Vermicelli", 1,30);
+        recipes.add(recipe);
+        recipe = new Recipe("Lasagna", 1,30);
+        recipes.add(recipe);
+        recipe = new Recipe("Mom's spaghetti", 1,30);
+        recipes.add(recipe);
+        recipe = new Recipe("Nervous Broccoli", 1,30);
         recipes.add(recipe);
 
 
