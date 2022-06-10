@@ -84,7 +84,7 @@ public class ViewFragment extends Fragment
                     TextView rating = (TextView) convertView.findViewById(R.id.rating);
 
                     SpannableString recipeNameFormatted = new SpannableString(recipeList.get(position).getName());
-                    recipeNameFormatted.setSpan(new UnderlineSpan(), 0, recipeNameFormatted.length(), 0);
+                    //recipeNameFormatted.setSpan(new UnderlineSpan(), 0, recipeNameFormatted.length(), 0);
                     recipeNameFormatted.setSpan(new StyleSpan(Typeface.BOLD), 0, recipeNameFormatted.length(), 0);
 
                     name.setText(recipeNameFormatted);
