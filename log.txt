@@ -93,6 +93,7 @@ functional by making it change the fragment on click (plus nice effects for on c
 - (Setup Github Desktop and repository, 15 min)
 - (Created Ingredient Class, 30 min)
 - (Updated Recipe class to use Ingredient object and played around with the sample project test code, 30 min)
+- (Created Unit-Conversion Class, created methods to switch between fractions and decimal numbers, fixed bugs, 3 hours)
 
 ---
 ---
