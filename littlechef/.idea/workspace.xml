@@ -13,9 +13,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec11bb1-d5fe-4b26-85ff-50353578aa16" name="Changes" comment="just made the basic home screen GUI">
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/Objects/IngredientTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/Objects/RecipeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/Objects/IngredientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/Objects/IngredientTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/Objects/RecipeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/Objects/RecipeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +81,7 @@
       <recent name="C:\Users\VestH\Desktop\COMP3350\3350GroupPrj\iteration_1\littlechef\app\src\main\res\values" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.IngredientTest">
+  <component name="RunManager" selected="Gradle.RecipeTest.testIngredientSetName">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Little_Chef.app" />
       <option name="DEPLOY" value="true" />
@@ -160,12 +160,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="IngredientTest.testIngredientGetMeasurement" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="IngredientTest.testIngredientCreation" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.Objects.IngredientTest.testIngredientGetMeasurement&quot;" />
+        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.Objects.IngredientTest.testIngredientCreation&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -181,12 +181,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="IngredientTest.testIngredientGetName" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="RecipeTest.testIngredientSetName" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.Objects.IngredientTest.testIngredientGetName&quot;" />
+        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.Objects.RecipeTest.testIngredientSetName&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -202,12 +202,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="IngredientTest.testIngredientSetMeasurement" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="RecipeTest.testRecipeCreation" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.Objects.IngredientTest.testIngredientSetMeasurement&quot;" />
+        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.Objects.RecipeTest.testRecipeCreation&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -223,12 +223,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="IngredientTest.testIngredientSetName" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="RecipeTest.testRecipeCreation2" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.Objects.IngredientTest.testIngredientSetName&quot;" />
+        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.Objects.RecipeTest.testRecipeCreation2&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -246,11 +246,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.RecipeTest.testIngredientSetName" />
+        <item itemvalue="Gradle.IngredientTest.testIngredientCreation" />
+        <item itemvalue="Gradle.RecipeTest.testRecipeCreation2" />
+        <item itemvalue="Gradle.RecipeTest.testRecipeCreation" />
         <item itemvalue="Gradle.IngredientTest" />
-        <item itemvalue="Gradle.IngredientTest.testIngredientGetName" />
-        <item itemvalue="Gradle.IngredientTest.testIngredientSetName" />
-        <item itemvalue="Gradle.IngredientTest.testIngredientGetMeasurement" />
-        <item itemvalue="Gradle.IngredientTest.testIngredientSetMeasurement" />
       </list>
     </recent_temporary>
   </component>

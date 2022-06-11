@@ -21,9 +21,22 @@ public class IngredientTest extends TestCase {
 
     }
 
-
     @Test
     public void testIngredientCreation() {
+        Ingredient in1 = new Ingredient("a1");
+        assertNotNull(in1);
+
+        Ingredient in2 = new Ingredient("b1");
+
+        ArrayList<Ingredient>inList = new ArrayList<>();
+        inList.add(in1);
+        inList.add(in2);
+
+        assertEquals(inList.size(), 2);
+    }
+
+    @Test
+    public void testIngredientCreation2() {
         Ingredient in1 = new Ingredient("a1", "bb", 123);
         assertNotNull(in1);
 
