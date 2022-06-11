@@ -2,25 +2,27 @@ package comp3350.littlechef.objects;
 
 public class Ingredient
 {
-    private String Name;
+    private String name;
 
     private String measurement; //how the ingredient is measured, e.g: ml, teaspoons, cups
     private double amount; //number of ingredient needed
 
-    public Ingredient(String Name)
+    public Ingredient(String name, double amount)
     {
-        this.Name = Name;
+        this.name = name;
+        this.measurement = null;
+        this.amount = amount;
     }
 
-    public Ingredient(String Name, String measurement, double amount)
+    public Ingredient(String name, String measurement, double amount)
     {
-        this.Name = Name;
+        this.name = name;
         this.measurement = measurement;
         this.amount = amount;
     }
 //getters and setters
-    public String getName() { return Name; }
-    public void setName(String name) {this.Name = name;}
+    public String getName() { return name; }
+    public void setName(String name) {this.name = name;}
 
     public String getMeasurement() {return measurement;}
     public void setMeasurement(String measurement) {this.measurement = measurement;}
