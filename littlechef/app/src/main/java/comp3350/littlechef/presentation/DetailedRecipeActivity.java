@@ -27,11 +27,12 @@ public class DetailedRecipeActivity extends AppCompatActivity
         setValues();
     }
 
-
+    
     private void setValues()
     {
         //TODO make it fill values
         TextView recipeName = (TextView) findViewById(R.id.detailed_recipe_name);
+
 
         recipeName.setText(selectedRecipe.getName());
     }
