@@ -27,13 +27,26 @@ public class DetailedRecipeActivity extends AppCompatActivity
         setValues();
     }
 
-    
+
+    //to set values in the detailed_recipe_view
     private void setValues()
     {
-        //TODO make it fill values
+        //Fills values for header
         TextView recipeName = (TextView) findViewById(R.id.recipeName);
-
+        //TextView estimatedTime = (TextView) findViewById(R.id.estimatedTime); //****FIGURE OUT TIME STUFF, error?
+        TextView difficulty = (TextView) findViewById(R.id.difficulty);
+        TextView taste = (TextView) findViewById(R.id.taste);
+        TextView rating = (TextView) findViewById(R.id.rating);
 
         recipeName.setText(selectedRecipe.getName());
+        //estimatedTime.setText(selectedRecipe.getTimeToMakeMins());
+        difficulty.setText(selectedRecipe.getDifficultyString());
+        taste.setText(selectedRecipe.getQualityString());
+        rating.setText("Rating: "+selectedRecipe.getRatingString()); //might not need Rating here?
+
+
+        //fills ingredients list
+        String[] menuItems = {"apple", "banana", "orange"};
+
     }
 }
