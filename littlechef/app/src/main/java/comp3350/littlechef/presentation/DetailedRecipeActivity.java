@@ -31,7 +31,7 @@ public class DetailedRecipeActivity extends AppCompatActivity
     private void setValues()
     {
         //TODO make it fill values
-        TextView recipeName = (TextView) findViewById(R.id.detailed_recipe_name);
+        TextView recipeName = (TextView) findViewById(R.id.recipeName);
 
         recipeName.setText(selectedRecipe.getName());
     }
