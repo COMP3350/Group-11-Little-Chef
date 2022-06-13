@@ -17,10 +17,10 @@ import com.google.android.material.navigation.NavigationBarView;
 public class HomeActivity extends AppCompatActivity
 {
     //initialize the fragments
-    BottomNavigationView bottomNavigationView;
-    ViewFragment viewFragment = new ViewFragment();
-    AddFragment addFragment = new AddFragment();
-    MealsFragment mealsFragment = new MealsFragment();
+    private BottomNavigationView bottomNavigationView;
+    private static ViewFragment viewFragment;
+    private static AddFragment addFragment;
+    private static MealsFragment mealsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,12 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        replaceFragment(new ViewFragment()); //set view fragment on start
+
+        //create all the fragments
+        viewFragment = new ViewFragment();
+        addFragment = new AddFragment();
+        mealsFragment = new MealsFragment();
+        replaceFragment(viewFragment); //set view fragment on start
 
         //set up bottom navigation listener
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener()
@@ -42,15 +47,18 @@ public class HomeActivity extends AppCompatActivity
                 switch (item.getItemId())
                 {
                     case R.id.recipes:
-                        replaceFragment(new ViewFragment());
+                        viewFragment = new ViewFragment();
+                        replaceFragment(viewFragment);
                         return true;
 
                     case R.id.add:
-                        replaceFragment(new AddFragment());
+                        addFragment = new AddFragment();
+                        replaceFragment(addFragment);
                         return true;
 
                     case R.id.meals:
-                        replaceFragment(new MealsFragment());
+                        mealsFragment = new MealsFragment();
+                        replaceFragment(mealsFragment);
                         return true;
                 }
                 return false;
@@ -67,6 +75,21 @@ public class HomeActivity extends AppCompatActivity
         Main.shutDown();
     }
 
+    public static ViewFragment getViewFragment()
+    {
+        return viewFragment;
+    }
+
+    public static AddFragment getAddFragment()
+    {
+        return addFragment;
+    }
+
+    public static MealsFragment getMealsFragment()
+    {
+        return mealsFragment;
+    }
+
 
     private void replaceFragment(Fragment fragment)
     {
@@ -75,4 +98,5 @@ public class HomeActivity extends AppCompatActivity
         fragmentTransaction.replace(R.id.frame_layout,fragment);
         fragmentTransaction.commit();
     }
+
 }

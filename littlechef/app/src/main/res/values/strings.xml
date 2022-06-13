@@ -10,4 +10,9 @@
     <string name="rating">5/5</string>
     <string name="warning">Warning</string>
     <string name="fatalError">Fatal error</string>
+    <string name="detailed_view">View Recipe</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="ingredient">Ingredient</string>
+    <string name="measurement">Measurement</string>
+    <string name="serving">1 serving</string>
 </resources>

@@ -1,5 +1,6 @@
 package comp3350.littlechef.presentation;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 
@@ -11,7 +12,9 @@ import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -80,25 +83,41 @@ public class ViewFragment extends Fragment
                     TextView taste = (TextView) convertView.findViewById(R.id.taste);
                     TextView rating = (TextView) convertView.findViewById(R.id.rating);
 
-                    SpannableString recipeNameFormatted = new SpannableString(recipeList.get(position).getName());
+                    SpannableString recipeNameFormatted = new SpannableString(recipe.getName());
                     recipeNameFormatted.setSpan(new UnderlineSpan(), 0, recipeNameFormatted.length(), 0);
                     recipeNameFormatted.setSpan(new StyleSpan(Typeface.BOLD), 0, recipeNameFormatted.length(), 0);
 
                     name.setText(recipeNameFormatted);
-                    estimatedTime.setText(recipeList.get(position).getTimeToMakeString());
-                    difficulty.setText(recipeList.get(position).getDifficultyString());
-                    taste.setText(recipeList.get(position).getQualityString());
-                    rating.setText(recipeList.get(position).getRatingString());
+                    estimatedTime.setText(recipe.getTimeToMakeString());
+                    difficulty.setText(recipe.getDifficultyString());
+                    taste.setText(recipe.getQualityString());
+                    rating.setText(recipe.getRatingString());
 
                     return convertView;
                 }
             };
 
             listView.setAdapter(recipeArrayAdapter);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+            {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+                {
+                    Recipe selectedRecipe = (Recipe) listView.getItemAtPosition(position);
+
+                    Intent detailedRecipe = new Intent(getActivity(), DetailedRecipeActivity.class);
+                    detailedRecipe.putExtra("id", Integer.toString(selectedRecipe.getId()));
+                    startActivity(detailedRecipe);
+                }
+            });
         }
 
         return view;
     }
 
-
+    public ArrayList<Recipe> getRecipeList()
+    {
+        return recipeList;
+    }
 }

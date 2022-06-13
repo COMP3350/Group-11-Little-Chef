@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import comp3350.littlechef.application.Main;
+import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
 
 //TODO NEED TO CREATE A RATING CLASS THAT WILL HOLD ALL THE RATINGS + DATE FOR THE RATING IN THE RECIPE
@@ -30,6 +31,18 @@ public class DataAccessStub
         recipes = new ArrayList<Recipe>();
 
         recipe = new Recipe("Pizza", 0, 30);
+        recipe.addIngredient(new Ingredient("Kosher salt", "teaspoon", 0.25));
+        recipe.addIngredient(new Ingredient("Fresh Lime or Lemon Juice", "Tablespoon", 1));
+        recipe.addIngredient(new Ingredient("Minced Red Onion", "Tablespoons", 2));
+        recipe.addIngredient(new Ingredient("Jalapeno chillis", "items", 2));
+        recipe.addIngredient(new Ingredient("Cilantro", "Tablespoons", 2));
+        recipe.addIngredient(new Ingredient("Black Pepper", "pinch", 1));
+        recipe.addIngredient(new Ingredient("Ripe Tomato", "item", 0.5));
+        recipe.addIngredient(new Ingredient("Ingredient", "item", 1));
+        recipe.addIngredient(new Ingredient("Other Ingredient", "item", 1));
+        recipe.addIngredient(new Ingredient("Another Ingredient", "item", 1));
+        recipe.addIngredient(new Ingredient("Wow Ingredient", "item", 1));
+
         recipes.add(recipe);
         recipe = new Recipe("Mushroom Ravioli", 2, 30);
         recipes.add(recipe);
