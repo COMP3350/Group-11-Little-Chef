@@ -83,15 +83,15 @@ public class ViewFragment extends Fragment
                     TextView taste = (TextView) convertView.findViewById(R.id.taste);
                     TextView rating = (TextView) convertView.findViewById(R.id.rating);
 
-                    SpannableString recipeNameFormatted = new SpannableString(recipeList.get(position).getName());
-                    //recipeNameFormatted.setSpan(new UnderlineSpan(), 0, recipeNameFormatted.length(), 0);
+                    SpannableString recipeNameFormatted = new SpannableString(recipe.getName());
+                    recipeNameFormatted.setSpan(new UnderlineSpan(), 0, recipeNameFormatted.length(), 0);
                     recipeNameFormatted.setSpan(new StyleSpan(Typeface.BOLD), 0, recipeNameFormatted.length(), 0);
 
                     name.setText(recipeNameFormatted);
-                    estimatedTime.setText(recipeList.get(position).getTimeToMakeString());
-                    difficulty.setText(recipeList.get(position).getDifficultyString());
-                    taste.setText(recipeList.get(position).getQualityString());
-                    rating.setText(recipeList.get(position).getRatingString());
+                    estimatedTime.setText(recipe.getTimeToMakeString());
+                    difficulty.setText(recipe.getDifficultyString());
+                    taste.setText(recipe.getQualityString());
+                    rating.setText(recipe.getRatingString());
 
                     return convertView;
                 }
