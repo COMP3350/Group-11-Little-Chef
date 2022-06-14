@@ -85,6 +85,7 @@ functional by making it change the fragment on click (plus nice effects for on c
 - (Updated Recipe.java with new methods and made ViewFragment.java to show all the info about a recipe in the recipe_card.xml; 1hr)
 - (Created DetailedRecipeActivity.java and detailed_activity_xml and made listView items in ViewFragment be clickable and open detailed_activity_xml on click ; 3.5 hrs)
 - (added a few visual tweaks to detailed recipe activity and xml, created ingredient_card.xml, got rid of some dead code in ViewFragment.java and also minor tweaks in all xml files related to using sp instead of dp for textViews and other stuff ; 2 hrs)
+- (Made objects serializable to pass them down through activities, fixed necessity of having static fragments in HomeActivity ; 1 hr)
 
 ---
 ---

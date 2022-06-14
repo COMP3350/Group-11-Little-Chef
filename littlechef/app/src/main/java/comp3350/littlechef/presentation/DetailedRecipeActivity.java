@@ -5,7 +5,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
-import android.text.style.UnderlineSpan;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,17 +12,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.app.Fragment;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-
 import comp3350.littlechef.R;
-import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
 
@@ -43,12 +34,11 @@ public class DetailedRecipeActivity extends AppCompatActivity
         final ListView listView = (ListView) findViewById(R.id.ingredients_list);
 
 
-        //get the selected shape
+        //get the selected recipe that was clicked from previous activity
         Intent previousIntent = getIntent();
-        String recipeId = previousIntent.getStringExtra("id");
-        selectedRecipe = HomeActivity.getViewFragment().getRecipeList().get(Integer.parseInt((recipeId)));
+        selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id"); // will never return null, since some recipe was clicked in prev activity
 
-        final ArrayAdapter<Ingredient> ingredientsArrayAdapter = new ArrayAdapter<Ingredient>(this,android.R.layout.simple_list_item_1, selectedRecipe.getIngredients())
+        ingredientsArrayAdapter = new ArrayAdapter<Ingredient>(this,android.R.layout.simple_list_item_1, selectedRecipe.getIngredients())
         {
             @Override
             public View getView(int position, View convertView, ViewGroup parent)
@@ -71,14 +61,15 @@ public class DetailedRecipeActivity extends AppCompatActivity
 
 
         listView.setAdapter(ingredientsArrayAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
 
             }
-        });
 
+        });
         setValues();
     }
 

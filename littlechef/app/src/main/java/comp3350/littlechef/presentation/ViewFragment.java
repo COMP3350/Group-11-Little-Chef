@@ -14,11 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import androidx.fragment.app.FragmentManager;
 
 import java.util.ArrayList;
 
@@ -33,7 +30,6 @@ public class ViewFragment extends Fragment
     private AccessRecipes accessRecipes;
     private ArrayList<Recipe> recipeList;
     private ArrayAdapter<Recipe> recipeArrayAdapter;
-    private int selectedRecipePosition = -1;
 
     public ViewFragment()
     {
@@ -107,7 +103,7 @@ public class ViewFragment extends Fragment
                     Recipe selectedRecipe = (Recipe) listView.getItemAtPosition(position);
 
                     Intent detailedRecipe = new Intent(getActivity(), DetailedRecipeActivity.class);
-                    detailedRecipe.putExtra("id", Integer.toString(selectedRecipe.getId()));
+                    detailedRecipe.putExtra("id", selectedRecipe); //pass the object reference to another activity
                     startActivity(detailedRecipe);
                 }
             });
