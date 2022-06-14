@@ -47,12 +47,12 @@ public class Recipe
         this.name = null;
         this.timeToMakeHrs = 0;
         this.timeToMakeMins = 0;
-        ingredients = null;
-        steps = null;
+        ingredients = new ArrayList<>();
+        steps = new ArrayList<>();
 
-        difficulty = null;
-        quality = null;
-        rating = null;
+        difficulty = Difficulty.NOT_RATED;
+        quality = Quality.NOT_RATED;
+        rating = new ArrayList<>();
     }
 
     public Recipe(String name, int timeToMakeHrs, int timeToMakeMins)

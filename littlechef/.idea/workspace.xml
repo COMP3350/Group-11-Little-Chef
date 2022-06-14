@@ -13,8 +13,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec11bb1-d5fe-4b26-85ff-50353578aa16" name="Changes" comment="just made the basic home screen GUI">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/Objects/IngredientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/Objects/IngredientTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/objects/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/objects/Recipe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/Objects/RecipeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/Objects/RecipeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +71,8 @@
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/samplePrj/SRSYS iteration 1/SRSYS" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="memory.settings.postsync.last.time.stamp" value="1655161038203" />
     <property name="project.structure.last.edited" value="Variables" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -81,7 +83,7 @@
       <recent name="C:\Users\VestH\Desktop\COMP3350\3350GroupPrj\iteration_1\littlechef\app\src\main\res\values" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.RecipeTest.testIngredientSetName">
+  <component name="RunManager" selected="Gradle.RecipeTest.testRecipeGetDifficultyString">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Little_Chef.app" />
       <option name="DEPLOY" value="true" />
@@ -139,12 +141,12 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IngredientTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="RecipeTest.testAddRecipeRate" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.Objects.IngredientTest&quot;" />
+        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.Objects.RecipeTest.testAddRecipeRate&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -160,12 +162,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="IngredientTest.testIngredientCreation" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="RecipeTest.testRecipeGetDifficulty" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.Objects.IngredientTest.testIngredientCreation&quot;" />
+        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.Objects.RecipeTest.testRecipeGetDifficulty&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -181,12 +183,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="RecipeTest.testIngredientSetName" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="RecipeTest.testRecipeGetDifficultyString" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.Objects.RecipeTest.testIngredientSetName&quot;" />
+        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.Objects.RecipeTest.testRecipeGetDifficultyString&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -202,12 +204,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="RecipeTest.testRecipeCreation" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="RecipeTest.testRecipeGetRating" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.Objects.RecipeTest.testRecipeCreation&quot;" />
+        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.Objects.RecipeTest.testRecipeGetRating&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -223,12 +225,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="RecipeTest.testRecipeCreation2" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="RecipeTest.testRecipeSetDifficulty" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.Objects.RecipeTest.testRecipeCreation2&quot;" />
+        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.Objects.RecipeTest.testRecipeSetDifficulty&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -246,11 +248,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.RecipeTest.testIngredientSetName" />
-        <item itemvalue="Gradle.IngredientTest.testIngredientCreation" />
-        <item itemvalue="Gradle.RecipeTest.testRecipeCreation2" />
-        <item itemvalue="Gradle.RecipeTest.testRecipeCreation" />
-        <item itemvalue="Gradle.IngredientTest" />
+        <item itemvalue="Gradle.RecipeTest.testRecipeGetDifficultyString" />
+        <item itemvalue="Gradle.RecipeTest.testRecipeGetDifficulty" />
+        <item itemvalue="Gradle.RecipeTest.testRecipeSetDifficulty" />
+        <item itemvalue="Gradle.RecipeTest.testAddRecipeRate" />
+        <item itemvalue="Gradle.RecipeTest.testRecipeGetRating" />
       </list>
     </recent_temporary>
   </component>
