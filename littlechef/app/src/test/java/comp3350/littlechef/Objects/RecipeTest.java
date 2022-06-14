@@ -6,10 +6,11 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-//import comp3350.littlechef.objects.Difficulty;
-//import comp3350.littlechef.objects.Difficulty;
+import comp3350.littlechef.objects.Difficulty;
 import comp3350.littlechef.objects.Ingredient;
+import comp3350.littlechef.objects.Quality;
 import comp3350.littlechef.objects.Recipe;
+
 
 public class RecipeTest extends TestCase {
     public RecipeTest(String arg0) {
@@ -170,22 +171,59 @@ public class RecipeTest extends TestCase {
     @Test
     public void testRecipeGetDifficulty(){
         Recipe diff1 = new Recipe("abcde", 1,2);
+        assertEquals(Difficulty.NOT_RATED , diff1.getDifficulty());
 
-        assertEquals("NOT_RATED" , diff1.getDifficulty()+"");
+        diff1.setDifficulty(Difficulty.AMATEUR);
+        assertEquals(Difficulty.AMATEUR, diff1.getDifficulty());
     }
 
     @Test
     public void testRecipeGetDifficultyString(){
         Recipe diff1 = new Recipe("abcde", 1,2);
-        assertEquals("Difficulty: Not rated",diff1.getDifficultyString());
+
+        assertEquals("Difficulty: Not rated" , diff1.getDifficultyString());
+
+        diff1.setDifficulty(Difficulty.MASTER_CHEF);
+        assertEquals("Difficulty: Master Chef", diff1.getDifficultyString());
     }
+
 
     @Test
     public void testRecipeSetDifficulty(){
         Recipe diff1 = new Recipe("abcde", 1,2);
+        assertEquals(Difficulty.NOT_RATED, diff1.getDifficulty());
 
-        //diff1.setDifficulty(Difficulty.AMATEUR);
-        assertEquals("NOT_RATED" , diff1.getDifficulty()+"");
+        diff1.setDifficulty(Difficulty.AMATEUR);
+        assertEquals("Difficulty: Amateur", diff1.getDifficultyString());
+    }
+
+    @Test
+    public void testRecipeGetQuality(){
+        Recipe qua1 = new Recipe("abcde", 1,2);
+        assertEquals(Quality.NOT_RATED, qua1.getQuality());
+
+        qua1.setQuality(Quality.TASTY);
+        assertEquals(Quality.TASTY, qua1.getQuality());
+    }
+
+    @Test
+    public void testRecipeGetQualityString(){
+        Recipe qua1 = new Recipe("abcde", 1,2);
+
+        assertEquals("Taste: Not rated" , qua1.getQualityString());
+
+        qua1.setQuality(Quality.TASTY);
+        assertEquals("Taste: Tasty", qua1.getQualityString());
+    }
+
+
+    @Test
+    public void testRecipeSetQuality(){
+        Recipe qua1 = new Recipe("abcde", 1,2);
+        assertEquals(Quality.NOT_RATED, qua1.getQuality());
+
+        qua1.setQuality(Quality.TASTY);
+        assertEquals("Taste: Tasty", qua1.getQualityString());
     }
 
     @Test

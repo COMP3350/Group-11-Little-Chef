@@ -2,23 +2,23 @@ package comp3350.littlechef.objects;
 
 import java.util.ArrayList;
 
-enum Difficulty
-{
-    NOT_RATED,
-    BEGINNER,
-    AMATEUR,
-    EXPERIENCED,
-    MASTER_CHEF
-}
+//enum Difficulty
+//{
+//    NOT_RATED,
+//    BEGINNER,
+//    AMATEUR,
+//    EXPERIENCED,
+//    MASTER_CHEF
+//}
 
-enum Quality
-{
-    NOT_RATED,
-    HORRIBLE,
-    TASTY,
-    DELICIOUS,
-    HEAVENLY
-}
+//enum Quality
+//{
+//    NOT_RATED,
+//    HORRIBLE,
+//    TASTY,
+//    DELICIOUS,
+//    HEAVENLY
+//}
 
 public class Recipe
 {
