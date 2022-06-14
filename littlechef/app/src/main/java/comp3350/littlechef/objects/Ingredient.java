@@ -1,6 +1,8 @@
 package comp3350.littlechef.objects;
 
-public class Ingredient
+import java.io.Serializable;
+
+public class Ingredient implements Serializable
 {
     private String Name;
 
