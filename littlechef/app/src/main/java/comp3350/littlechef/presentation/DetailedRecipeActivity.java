@@ -36,7 +36,7 @@ public class DetailedRecipeActivity extends AppCompatActivity
 
         //get the selected recipe that was clicked from previous activity
         Intent previousIntent = getIntent();
-        selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id");
+        selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id"); // will never return null, since some recipe was clicked in prev activity
 
         ingredientsArrayAdapter = new ArrayAdapter<Ingredient>(this,android.R.layout.simple_list_item_1, selectedRecipe.getIngredients())
         {
