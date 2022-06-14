@@ -31,17 +31,17 @@ public class DataAccessStub
         recipes = new ArrayList<Recipe>();
 
         recipe = new Recipe("Pizza", 0, 30);
-        recipe.addIngredient(new Ingredient("Kosher salt", "teaspoon", 0.25));
-        recipe.addIngredient(new Ingredient("Fresh Lime or Lemon Juice", "Tablespoon", 1));
-        recipe.addIngredient(new Ingredient("Minced Red Onion", "Tablespoons", 2));
-        recipe.addIngredient(new Ingredient("Jalapeno chillis", "items", 2));
-        recipe.addIngredient(new Ingredient("Cilantro", "Tablespoons", 2));
-        recipe.addIngredient(new Ingredient("Black Pepper", "pinch", 1));
-        recipe.addIngredient(new Ingredient("Ripe Tomato", "item", 0.5));
-        recipe.addIngredient(new Ingredient("Ingredient", "item", 1));
-        recipe.addIngredient(new Ingredient("Other Ingredient", "item", 1));
-        recipe.addIngredient(new Ingredient("Another Ingredient", "item", 1));
-        recipe.addIngredient(new Ingredient("Wow Ingredient", "item", 1));
+        recipe.addIngredient(new Ingredient("Kosher salt", "tsp", 0.125));
+        recipe.addIngredient(new Ingredient("Fresh Lime or Lemon Juice", "tsp", 3.125));
+        recipe.addIngredient(new Ingredient("Minced Red Onion", "tbsp", 4));
+        recipe.addIngredient(new Ingredient("Jalapeno chillis", "quantity", 2));
+        recipe.addIngredient(new Ingredient("Cilantro", "ml", 125));
+        recipe.addIngredient(new Ingredient("Black Pepper", "ml", 124));
+        recipe.addIngredient(new Ingredient("Ripe Tomato", "g", 0.5));
+        recipe.addIngredient(new Ingredient("Ingredient", "quantity", 1));
+        recipe.addIngredient(new Ingredient("Other Ingredient", "l", 1));
+        recipe.addIngredient(new Ingredient("Another Ingredient", "quantity", 1));
+        recipe.addIngredient(new Ingredient("Wow Ingredient", "MM", 20));
 
         recipes.add(recipe);
         recipe = new Recipe("Mushroom Ravioli", 2, 30);

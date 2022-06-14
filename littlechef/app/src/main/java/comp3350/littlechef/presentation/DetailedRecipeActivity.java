@@ -2,10 +2,10 @@ package comp3350.littlechef.presentation;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.icu.number.Scale;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
-import android.text.style.UnderlineSpan;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,19 +13,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.app.Fragment;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-
 import comp3350.littlechef.R;
-import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
+import comp3350.littlechef.business.ScaleRecipe;
 
 public class DetailedRecipeActivity extends AppCompatActivity
 {
@@ -35,6 +30,8 @@ public class DetailedRecipeActivity extends AppCompatActivity
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+        // KAJAL:
+        ScaleRecipe s = new ScaleRecipe();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailed_recipe_activity);
 
@@ -46,9 +43,13 @@ public class DetailedRecipeActivity extends AppCompatActivity
         //get the selected shape
         Intent previousIntent = getIntent();
         String recipeId = previousIntent.getStringExtra("id");
+
         selectedRecipe = HomeActivity.getViewFragment().getRecipeList().get(Integer.parseInt((recipeId)));
 
-        final ArrayAdapter<Ingredient> ingredientsArrayAdapter = new ArrayAdapter<Ingredient>(this,android.R.layout.simple_list_item_1, selectedRecipe.getIngredients())
+        // KAJAL: added method to so ingredients are scaled
+        // old: selectedRecipe.getIngredients()
+        final ArrayAdapter<Ingredient> ingredientsArrayAdapter = new ArrayAdapter<Ingredient>(this,android.R.layout.simple_list_item_1, s.scaleIngredients(selectedRecipe, 2))
+
         {
             @Override
             public View getView(int position, View convertView, ViewGroup parent)
