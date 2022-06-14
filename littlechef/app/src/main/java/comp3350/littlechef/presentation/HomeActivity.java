@@ -2,7 +2,6 @@ package comp3350.littlechef.presentation;
 
 import comp3350.littlechef.R;
 import comp3350.littlechef.application.Main;
-import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -18,9 +17,9 @@ public class HomeActivity extends AppCompatActivity
 {
     //initialize the fragments
     private BottomNavigationView bottomNavigationView;
-    private static ViewFragment viewFragment;
-    private static AddFragment addFragment;
-    private static MealsFragment mealsFragment;
+    private ViewFragment viewFragment;
+    private AddFragment addFragment;
+    private MealsFragment mealsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,22 +73,6 @@ public class HomeActivity extends AppCompatActivity
 
         Main.shutDown();
     }
-
-    public static ViewFragment getViewFragment()
-    {
-        return viewFragment;
-    }
-
-    public static AddFragment getAddFragment()
-    {
-        return addFragment;
-    }
-
-    public static MealsFragment getMealsFragment()
-    {
-        return mealsFragment;
-    }
-
 
     private void replaceFragment(Fragment fragment)
     {
