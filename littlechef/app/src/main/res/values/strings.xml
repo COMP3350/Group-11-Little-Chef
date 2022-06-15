@@ -14,5 +14,14 @@
     <string name="ingredients">Ingredients</string>
     <string name="ingredient">Ingredient</string>
     <string name="measurement">Measurement</string>
-    <string name="serving">1 serving</string>
+    <string name="serving">serving</string>
+    <string-array name="serving_sizes">
+        <item>1 serving</item>
+        <item>2 servings</item>
+        <item>3 servings</item>
+        <item>4 servings</item>
+        <item>5 servings</item>
+        <item>6 servings</item>
+        <item>7 servings</item>
+    </string-array>
 </resources>

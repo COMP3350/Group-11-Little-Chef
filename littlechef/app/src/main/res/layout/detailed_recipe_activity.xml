@@ -35,8 +35,8 @@
             android:id="@+id/difficulty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="130dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="130dp"
             android:text="@string/difficulty"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -45,8 +45,8 @@
             android:id="@+id/taste"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="160dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="160dp"
             android:text="@string/taste"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -55,8 +55,8 @@
             android:id="@+id/rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="190dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="190dp"
             android:text="@string/rating"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -82,25 +82,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="280dp"
-        android:divider="@null" />
+        android:divider="@null">
 
+    </ListView>
 
-    <Button
-        android:id="@+id/startCooking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="236dp"
-        android:layout_marginEnd="53dp"
+    <Spinner
+        android:id="@+id/servingNum"
+        android:layout_width="130dp"
+        android:layout_height="35dp"
         android:layout_alignEnd="@+id/text_ingredients"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="242dp"
+        android:layout_marginEnd="40dp"
 
-        android:text="@string/serving"
-        android:textAllCaps="false"
-        android:textColor="@color/recipe_name_text"
-        android:textSize="18sp" />
-
+        android:background="@color/header_footer_background"
+        android:gravity="center"
+        android:theme="@style/spinnerTheme"
+        />
 
 
 </RelativeLayout>

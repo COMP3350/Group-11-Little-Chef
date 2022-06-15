@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,8 @@ public class DetailedRecipeActivity extends AppCompatActivity
 {
     private Recipe selectedRecipe;
     private ArrayAdapter<Ingredient> ingredientsArrayAdapter;
+    private ArrayAdapter<String> servingSizeAdapter;
+    private Spinner servingNum;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -29,9 +32,15 @@ public class DetailedRecipeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailed_recipe_activity);
 
-        Toast.makeText(DetailedRecipeActivity.this, "Click on any ingredient to read the recipe!",Toast.LENGTH_SHORT).show(); //pop-up hint message for the user
 
+        Toast.makeText(DetailedRecipeActivity.this, "Click on any ingredient to read the recipe!",Toast.LENGTH_SHORT).show(); //pop-up hint message for the user
         final ListView listView = (ListView) findViewById(R.id.ingredients_list);
+
+        //setting up drop down menu for choosing serving
+        servingSizeAdapter = new ArrayAdapter<String>(this,R.layout.spinner_item, getResources().getStringArray(R.array.serving_sizes));
+        servingNum = (Spinner) findViewById(R.id.servingNum);
+        servingSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        servingNum.setAdapter(servingSizeAdapter);
 
 
         //get the selected recipe that was clicked from previous activity
