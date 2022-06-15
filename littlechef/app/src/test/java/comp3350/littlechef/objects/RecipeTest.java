@@ -3,19 +3,22 @@ import junit.framework.TestCase;
 import org.junit.Test;
 import java.util.ArrayList;
 
-public class RecipeTest extends TestCase {
+public class RecipeTest extends TestCase
+{
     public RecipeTest(String arg0) {
         super(arg0);
-    }
+    }//end RecipeTest
 
     @Test
-    public void testSimple() {
+    public void testSimple()
+    {
         //test the file could run or not
         assertEquals(1, 1);
-    }
+    }//end testSimple
 
     @Test
-    public void testRecipeCreation() {
+    public void testRecipeCreation()
+    {
         //constructor1
         Recipe recipe1 = new Recipe(00);
         assertNotNull(recipe1);
@@ -27,13 +30,14 @@ public class RecipeTest extends TestCase {
         inList.add(recipe2);
 
         assertEquals(2, inList.size());
-    }
+    }//end testRecipeCreation
 
     @Test
     public void testRecipeCreation2() {
         //constructor2
         Recipe recipe1 = new Recipe("a1", 111, 123);
         assertNotNull(recipe1);
+        assertEquals(0, recipe1.getId());
 
         Recipe recipe2 = new Recipe("b1", 666, 777);
 
@@ -41,13 +45,24 @@ public class RecipeTest extends TestCase {
         inList.add(recipe1);
         inList.add(recipe2);
 
+        assertEquals(1, recipe2.getId());
+
         assertEquals(2, inList.size());
 
         //retest - constructor 1 & 2 combination
 
         Recipe recipe3 = new Recipe(123);
         inList.add(recipe3);
+        assertEquals(123, recipe3.getId() );
         assertEquals(3, inList.size());
+
+        Recipe recipe4 = new Recipe(3);
+        assertEquals(3, recipe4.getId());
+
+        Recipe recipe5 = new Recipe(3);
+        assertEquals(3, recipe5.getId());
+        System.out.println(recipe5.getId());
+        System.out.println(recipe4.getId());
     }
 
     @Test
@@ -112,7 +127,7 @@ public class RecipeTest extends TestCase {
         assertEquals(1, step1.getSteps().size());
 
         step1.addStep("FD");
-        assertEquals(1, step1.getSteps().size());
+        assertEquals(2, step1.getSteps().size());
     }
 
     @Test

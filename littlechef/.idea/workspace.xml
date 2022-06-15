@@ -95,7 +95,7 @@
       <recent name="comp3350.littlechef.presentation" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.IngredientTest">
+  <component name="RunManager" selected="Gradle.IngredientTest.testIngredientGetDisplayMeasurement">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Little_Chef.app" />
       <option name="DEPLOY" value="true" />
@@ -153,12 +153,12 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IngredientTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="IngredientTest.testIngredientGetAmount" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.objects.IngredientTest&quot;" />
+        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.objects.IngredientTest.testIngredientGetAmount&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -237,12 +237,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="IngredientTest.testsetUnitInformation" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="IngredientTest.testIngredientSetMeasurement" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.objects.IngredientTest.testsetUnitInformation&quot;" />
+        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.objects.IngredientTest.testIngredientSetMeasurement&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -260,11 +260,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.IngredientTest" />
-        <item itemvalue="Gradle.IngredientTest.testsetUnitInformation" />
-        <item itemvalue="Gradle.IngredientTest.testIngredientGetUnitType" />
         <item itemvalue="Gradle.IngredientTest.testIngredientGetDisplayMeasurement" />
+        <item itemvalue="Gradle.IngredientTest.testIngredientGetUnitType" />
         <item itemvalue="Gradle.IngredientTest.testIngredientSetAmount" />
+        <item itemvalue="Gradle.IngredientTest.testIngredientGetAmount" />
+        <item itemvalue="Gradle.IngredientTest.testIngredientSetMeasurement" />
       </list>
     </recent_temporary>
   </component>
