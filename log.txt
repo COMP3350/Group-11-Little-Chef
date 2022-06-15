@@ -61,6 +61,7 @@ June 9, 2022
 - (more android studio bugs, not loading correctly; 1.5 hour)
 - (made some basic designs for the add recipe page; 30 mins)
 - (attempted to get the list view working for the recipes did not; 5 hours)
+- (went over code for programming standards; 2hrs)
 ---
 ---
 >>>DENYS' ACTIVTY LOG
