@@ -1,5 +1,6 @@
 package comp3350.littlechef.objects;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 enum Difficulty
@@ -20,7 +21,7 @@ enum Quality
     HEAVENLY
 }
 
-public class Recipe
+public class Recipe implements Serializable
 {
     private static int nextID = 0;
 

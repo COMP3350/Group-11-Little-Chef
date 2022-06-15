@@ -1,7 +1,9 @@
 package comp3350.littlechef.objects;
 
 import java.util.Locale;
+import java.io.Serializable;
 
+  
 enum UnitType
 {
     VOLUME,
@@ -27,7 +29,8 @@ enum Unit
     QUANTITY // just a default
 }
 
-public class Ingredient {
+public class Ingredient implements Serializable
+{
     private String name;
    // private Unit measurement; //how the ingredient is measured, e.g: ml, teaspoons, cups
     private double amount; //number of ingredient needed

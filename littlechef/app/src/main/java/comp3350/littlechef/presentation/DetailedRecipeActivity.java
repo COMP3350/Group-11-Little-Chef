@@ -10,13 +10,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import comp3350.littlechef.R;
 import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
@@ -26,6 +25,8 @@ public class DetailedRecipeActivity extends AppCompatActivity
 {
     private Recipe selectedRecipe;
     private ArrayAdapter<Ingredient> ingredientsArrayAdapter;
+    private ArrayAdapter<String> servingSizeAdapter;
+    private Spinner servingNum;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -35,21 +36,22 @@ public class DetailedRecipeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailed_recipe_activity);
 
-        Toast.makeText(DetailedRecipeActivity.this, "Click on any ingredient to read the recipe!",Toast.LENGTH_SHORT).show(); //pop-up hint message for the user
 
+        Toast.makeText(DetailedRecipeActivity.this, "Click on any ingredient to read the recipe!",Toast.LENGTH_SHORT).show(); //pop-up hint message for the user
         final ListView listView = (ListView) findViewById(R.id.ingredients_list);
 
+        //setting up drop down menu for choosing serving
+        servingSizeAdapter = new ArrayAdapter<String>(this,R.layout.spinner_item, getResources().getStringArray(R.array.serving_sizes));
+        servingNum = (Spinner) findViewById(R.id.servingNum);
+        servingSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        servingNum.setAdapter(servingSizeAdapter);
 
-        //get the selected shape
+
+        //get the selected recipe that was clicked from previous activity
         Intent previousIntent = getIntent();
-        String recipeId = previousIntent.getStringExtra("id");
-
-        selectedRecipe = HomeActivity.getViewFragment().getRecipeList().get(Integer.parseInt((recipeId)));
-
-        // KAJAL: added method to so ingredients are scaled
-        // old: selectedRecipe.getIngredients()
-        final ArrayAdapter<Ingredient> ingredientsArrayAdapter = new ArrayAdapter<Ingredient>(this,android.R.layout.simple_list_item_1, s.scaleIngredients(selectedRecipe, 2))
-
+        selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id"); // will never return null, since some recipe was clicked in prev activity
+        
+        ingredientsArrayAdapter = new ArrayAdapter<Ingredient>(this,android.R.layout.simple_list_item_1, s.scaleIngredients(selectedRecipe, 2))
         {
             @Override
             public View getView(int position, View convertView, ViewGroup parent)
@@ -72,14 +74,15 @@ public class DetailedRecipeActivity extends AppCompatActivity
 
 
         listView.setAdapter(ingredientsArrayAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
 
             }
-        });
 
+        });
         setValues();
     }
 

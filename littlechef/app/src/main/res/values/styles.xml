@@ -17,5 +17,9 @@
         <item name="colorOnSecondary">@color/black</item>
     </style>
 
+    <style name="spinnerTheme">
+        <item name="android:textColor">@color/font_header</item>
+    </style>
+
 
 </resources>
