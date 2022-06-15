@@ -22,7 +22,7 @@ public class IngredientTest extends TestCase
     {
         ArrayList<Ingredient>inList = new ArrayList<>();
         Ingredient in1 = new Ingredient("a1", "aa1", 0.1d);
-        assertNotNull(in1);
+        assertTrue(in1!=null);
         inList.add(in1);
 
         Ingredient in2 = new Ingredient("b1", "bb1", 0.2d);
@@ -55,7 +55,7 @@ public class IngredientTest extends TestCase
     public void testIngredientGetName()
     {
         Ingredient in1 = new Ingredient("a1", "bb", 0.1d);
-        assertNotNull(in1);
+        assertTrue(in1!=null);
 
         assertEquals("a1", in1.getName());
 
@@ -85,16 +85,16 @@ public class IngredientTest extends TestCase
     public void testIngredientGetMeasurement()
     {
         Ingredient mea1 = new Ingredient("a1", "MM", 123);
-        assertNotNull(mea1);
+        assertTrue(mea1!=null);
 
         assertEquals("mm", mea1.getMeasurement());
-        assertNotSame("MM", mea1.getMeasurement());
+        assertTrue("MM"!= mea1.getMeasurement());
 
         Ingredient mea2 = new Ingredient(null, "MM", 123);
-        assertNotNull(mea2);
+        assertTrue(mea2!=null);
 
         Ingredient mea3 = new Ingredient(null, "null", 123);
-        assertNotNull(mea3);
+        assertTrue(mea3!=null);
 
     }//end testIngredientGetMeasurement
 
@@ -109,20 +109,17 @@ public class IngredientTest extends TestCase
         assertEquals("pinch", mea2.getMeasurement());
 
         mea2.setMeasurement("abcde");
-        assertNotSame("abcde", mea2.getMeasurement());
+        assertTrue("abcde"!= mea2.getMeasurement());
 
         mea2.setMeasurement("");
-        assertNotSame("",mea2.getMeasurement());
-
-        //mea2.setMeasurement(null);
-        //assertNull(mea2.getMeasurement());
+        assertTrue(""!=mea2.getMeasurement());
     }//end testIngredientSetMeasurement
 
     @Test
     public void testIngredientGetAmount()
     {
         Ingredient amo1 = new Ingredient("a1", "b1", 0.1);
-        assertNotNull(amo1);
+        assertTrue(amo1!=null);
 
         assertEquals(0.1, amo1.getAmount());
 
@@ -130,8 +127,7 @@ public class IngredientTest extends TestCase
         assertEquals(Double.MAX_VALUE,amo1.getAmount());
 
         amo1.setAmount(-0.1d);
-        assertNotSame(-0.1d,amo1.getAmount());
-        //System.out.println(amo1.getAmount());// no operation in setAmount
+        assertTrue(-0.1d != amo1.getAmount());
     }//end testIngredientGetAmount
 
     @Test
@@ -145,10 +141,10 @@ public class IngredientTest extends TestCase
         assertEquals(111.0, amo2.getAmount());
 
         amo2.setAmount(222);
-        assertNotSame(333.0, amo2.getAmount());
+        assertTrue(333.0 != amo2.getAmount());
 
         amo2.setAmount(-0.1d);
-        assertNotSame(-0.1d,amo2.getAmount());
+        assertTrue(-0.1d != amo2.getAmount());
 
         amo2.setAmount(0.0);
         assertEquals(222.0,amo2.getAmount());
@@ -168,19 +164,19 @@ public class IngredientTest extends TestCase
         assertEquals("WEIGHT", unittype1.getUnitType());
 
         unittype1.setMeasurement("MG");
-        assertNotSame("SIZE", unittype1.getUnitType());
+        assertTrue("SIZE"!= unittype1.getUnitType());
 
         unittype1.setMeasurement("MM");
-        assertNotSame("VOLUME", unittype1.getUnitType());
+        assertTrue("VOLUME"!= unittype1.getUnitType());
 
         unittype1.setMeasurement("PINCH");
-        assertNotSame("SIZE", unittype1.getUnitType());
+        assertTrue("SIZE"!= unittype1.getUnitType());
 
         unittype1.setMeasurement("");
-        assertNotSame("",unittype1.getUnitType());
+        assertTrue(""!=unittype1.getUnitType());
 
         unittype1.setMeasurement(" ");
-        assertNotSame(" ",unittype1.getUnitType());
+        assertTrue(" "!=unittype1.getUnitType());
     }//end testIngredientGetUnitType
 
     @Test
@@ -205,11 +201,11 @@ public class IngredientTest extends TestCase
         assertEquals("0.22 mm", disp1.getDisplayMeasurement());
 
         disp1.setAmount(0.0);
-        assertNotSame("0.00 mm",disp1.getDisplayMeasurement());
+        assertTrue("0.00 mm"!=disp1.getDisplayMeasurement());
 
         disp1.setAmount(-0.1d);
-        assertNotSame("-0.1d mm",disp1.getDisplayMeasurement());
-        /*** ***/
+        assertTrue("-0.1d mm"!=disp1.getDisplayMeasurement());
+
     }//end testIngredientGetDisplayMeasurement
 
     @Test
@@ -225,24 +221,24 @@ public class IngredientTest extends TestCase
         assertEquals("WEIGHT", unitinfo1.getUnitType());
 
         unitinfo1.setMeasurement("MG");
-        assertNotSame("SIZE", unitinfo1.getUnitType());
+        assertTrue("SIZE"!= unitinfo1.getUnitType());
 
         unitinfo1.setMeasurement("MM");
-        assertNotSame("VOLUME", unitinfo1.getUnitType());
+        assertTrue("VOLUME" != unitinfo1.getUnitType());
 
         unitinfo1.setMeasurement("PINCH");
-        assertNotSame("SIZE", unitinfo1.getUnitType());
+        assertTrue("SIZE"!= unitinfo1.getUnitType());
 
         Ingredient unitinfo2 = new Ingredient(null, "ff", 0.1);
-        assertNotSame("SIZE", unitinfo2.getUnitType());
+        assertTrue("SIZE"!= unitinfo2.getUnitType());
 
         Ingredient unitinfo3 = new Ingredient(null, "", 0.1);
-        assertNotSame("SIZE", unitinfo3.getUnitType());
+        assertTrue("SIZE"!= unitinfo3.getUnitType());
 
         Ingredient unitinfo4 = new Ingredient("", "null", 0.1);
-        assertNotSame("SIZE", unitinfo4.getUnitType());
+        assertTrue("SIZE"!= unitinfo4.getUnitType());
 
         Ingredient unitinfo5 = new Ingredient(null, "", 0.0);
-        assertNotSame("SIZE", unitinfo5.getUnitType());
+        assertTrue("SIZE"!= unitinfo5.getUnitType());
     }//end testsetUnitInformation
 }
