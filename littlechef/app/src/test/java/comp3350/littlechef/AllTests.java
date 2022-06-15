@@ -22,8 +22,6 @@ public class AllTests {
         assertEquals("1/2", convertDecimalToFraction(0.51));
         assertEquals("1/3", convertDecimalToFraction(0.34));
 
-        assertThrows()
-
     }
 
 }

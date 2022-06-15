@@ -10,10 +10,11 @@ public class RecipeUnitConversion
     {
         //in the format of "a/b" where 'a' = numerator and 'b' = denominator and '/' seperates the two
         String[] splitFraction = fraction.split("/");
-        int numerator = Integer.parseInt(splitFraction[0]);
-        int denominator = Integer.parseInt(splitFraction[1]);
-        double decimalAmount = (double) (numerator / denominator);
-        decimalAmount = Math.round(decimalAmount);
+        double numerator = Double.parseDouble(splitFraction[0]);
+        double denominator = Double.parseDouble(splitFraction[1]);
+        double decimalAmount =  (numerator / denominator);
+        System.out.println("decimal:" + decimalAmount + '\n');
+        decimalAmount = Math.round(decimalAmount * 1000.00)/1000.00;
         return decimalAmount;
     }
 
