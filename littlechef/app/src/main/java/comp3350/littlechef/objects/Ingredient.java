@@ -11,20 +11,6 @@ public class Ingredient implements Serializable
     private UnitType unitType;
     private Unit unit;
 
-    public Ingredient(String name, double amount) {
-        this.name = name;
-      //  this.measurement = null;
-        if(amount > 0) {
-            this.amount = amount;
-        }
-        else{
-            this.amount = 1;
-        }
-
-        this.unit = Unit.QUANTITY; // will just display as x quantity
-        this.unitType = UnitType.DEFAULT; // will just scale no unit conversion
-    }
-
     public Ingredient(String name, String measurement, double amount) {
         this.name = name;
         this.amount = amount;
