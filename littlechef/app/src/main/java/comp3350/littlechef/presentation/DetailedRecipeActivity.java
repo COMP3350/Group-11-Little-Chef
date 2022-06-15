@@ -2,6 +2,7 @@ package comp3350.littlechef.presentation;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.icu.number.Scale;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
@@ -18,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import comp3350.littlechef.R;
 import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
+import comp3350.littlechef.business.ScaleRecipe;
 
 public class DetailedRecipeActivity extends AppCompatActivity
 {
@@ -29,6 +31,8 @@ public class DetailedRecipeActivity extends AppCompatActivity
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+        // KAJAL:
+        ScaleRecipe s = new ScaleRecipe();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailed_recipe_activity);
 
@@ -46,8 +50,8 @@ public class DetailedRecipeActivity extends AppCompatActivity
         //get the selected recipe that was clicked from previous activity
         Intent previousIntent = getIntent();
         selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id"); // will never return null, since some recipe was clicked in prev activity
-
-        ingredientsArrayAdapter = new ArrayAdapter<Ingredient>(this,android.R.layout.simple_list_item_1, selectedRecipe.getIngredients())
+        
+        ingredientsArrayAdapter = new ArrayAdapter<Ingredient>(this,android.R.layout.simple_list_item_1, s.scaleIngredients(selectedRecipe, 2))
         {
             @Override
             public View getView(int position, View convertView, ViewGroup parent)
