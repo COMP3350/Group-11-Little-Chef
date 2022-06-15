@@ -1,5 +1,6 @@
 package comp3350.littlechef.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import comp3350.littlechef.application.Main;
@@ -17,8 +18,8 @@ public class AccessRecipes
     public AccessRecipes()
     {
         dataAccess = (DataAccessStub) Services.getDataAccess(Main.dbName);
-        recipes = null;
-        recipe = null;
+        recipes = new ArrayList<>();
+        recipe = new Recipe(0); //not sure should it be 0 at beginning
         currentRecipe = 0;
     }
 
