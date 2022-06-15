@@ -32,16 +32,16 @@ public class DataAccessStub
 
         recipe = new Recipe("Pizza", 0, 30);
         recipe.addIngredient(new Ingredient("Kosher salt", "tsp", 0.125));
-        recipe.addIngredient(new Ingredient("Fresh Lime or Lemon Juice", "tsp", 3.125));
+        recipe.addIngredient(new Ingredient("Fresh Lime or Lemon Juice", "tsp", 1.5625));
         recipe.addIngredient(new Ingredient("Minced Red Onion", "tbsp", 4));
         recipe.addIngredient(new Ingredient("Jalapeno chillis", "quantity", 2));
         recipe.addIngredient(new Ingredient("Cilantro", "ml", 125));
-        recipe.addIngredient(new Ingredient("Black Pepper", "ml", 124));
+        recipe.addIngredient(new Ingredient("Black Pepper", "ml", 125));
         recipe.addIngredient(new Ingredient("Ripe Tomato", "g", 0.5));
         recipe.addIngredient(new Ingredient("Ingredient", "quantity", 1));
         recipe.addIngredient(new Ingredient("Other Ingredient", "l", 1));
         recipe.addIngredient(new Ingredient("Another Ingredient", "quantity", 1));
-        recipe.addIngredient(new Ingredient("Wow Ingredient", "MM", 20));
+        recipe.addIngredient(new Ingredient("Wow Ingredient", "mm", 20));
 
         recipes.add(recipe);
         recipe = new Recipe("Mushroom Ravioli", 2, 30);
