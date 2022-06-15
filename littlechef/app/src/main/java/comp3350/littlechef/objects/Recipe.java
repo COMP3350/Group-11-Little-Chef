@@ -3,24 +3,6 @@ package comp3350.littlechef.objects;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-enum Difficulty
-{
-    NOT_RATED,
-    BEGINNER,
-    AMATEUR,
-    EXPERIENCED,
-    MASTER_CHEF
-}
-
-enum Quality
-{
-    NOT_RATED,
-    HORRIBLE,
-    TASTY,
-    DELICIOUS,
-    HEAVENLY
-}
-
 public class Recipe implements Serializable
 {
     private static int nextID = 0;
@@ -45,15 +27,15 @@ public class Recipe implements Serializable
     {
         this.recipeID = recipeID;
 
-        this.name = null;
+        this.name = "null";
         this.timeToMakeHrs = 0;
         this.timeToMakeMins = 0;
-        ingredients = null;
-        steps = null;
+        ingredients = new ArrayList<Ingredient>();
+        steps = new ArrayList<String>();
 
-        difficulty = null;
-        quality = null;
-        rating = null;
+        difficulty = Difficulty.NOT_RATED;
+        quality = Quality.NOT_RATED;
+        rating = new ArrayList<Float>();
     }
 
     public Recipe(String name, int timeToMakeHrs, int timeToMakeMins)

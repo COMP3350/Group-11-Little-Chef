@@ -2,32 +2,6 @@ package comp3350.littlechef.objects;
 
 import java.io.Serializable;
 
-  
-enum UnitType
-{
-    VOLUME,
-    WEIGHT,
-    SIZE,
-    DEFAULT
-}
-
-enum Unit
-{
-    PINCH,
-    TSP,
-    TBSP,
-    CUP,
-    ML,
-    L,
-    MG,
-    G,
-    KG,
-    MM,
-    CM,
-    M,
-    QUANTITY // just a default
-}
-
 public class Ingredient implements Serializable
 {
     private String name;
