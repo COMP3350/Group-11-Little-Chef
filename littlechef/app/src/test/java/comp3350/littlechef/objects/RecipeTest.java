@@ -86,7 +86,7 @@ public class RecipeTest extends TestCase {
 
         Ingredient ing1 = new Ingredient("Noodle", "aaa", 0.1);
         Ingredient ing2 = new Ingredient("Rice", "bbb", 0.2);
-        Ingredient ing3 = new Ingredient("Cake");
+        Ingredient ing3 = new Ingredient("Cake", "ccc", 0.3);
 
         recipe1.addIngredient(ing1);
         recipe1.addIngredient(ing2);
