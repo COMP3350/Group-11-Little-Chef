@@ -41,17 +41,44 @@ public class RecipeUnitConversion
         decimalAmount = Math.round(decimalAmount);
     }
 
-    public static String convertDecimalToFraction(double demical)
+    public static String convertDecimalToFraction(double numberToConvert)
     {
-        double[] doubleValues = [0.25, 0.33333, 0.5, 0.66666, 0.75, 1.5];
-        double negligibleRatio = 0.01;
+        if(numberToConvert < 0 || numberToConvert > 1)
+        {
+            return "error";
+        }
+        else
+        {
+            double allowedRoundingError = 0.01;
 
-        for(int i=1;;i++){
-            double tem = doubleVal/(1D/i);
-            if(Math.abs(tem-Math.round(tem))<negligibleRatio){
-                System.out.println(Math.round(tem)+"/"+i);
-                break;
+            int lower_numerator = 0;
+            int lower_denominator = 1;
+            int upper_numerator = 1;
+            int upper_denominator = 1;
+            int mid_numerator = 0;
+            int mid_denominator = 0;
+
+            boolean equivalentFractionFound = false;
+            while(!equivalentFractionFound)
+            {
+                mid_numerator = lower_numerator + upper_numerator;
+                mid_denominator = lower_denominator + upper_denominator;
+                if(mid_denominator * (numberToConvert + allowedRoundingError) < mid_numerator)
+                {
+                    upper_numerator = mid_numerator;
+                    upper_denominator = mid_denominator;
+                }
+                else if(mid_denominator * (numberToConvert - allowedRoundingError) > mid_numerator)
+                {
+                    upper_numerator = mid_numerator;
+                    upper_denominator = mid_denominator;
+                }
+                else
+                {
+                    equivalentFractionFound = true;
+                }
             }
+            return(mid_numerator + "/" + mid_denominator);
         }
     }
 }
