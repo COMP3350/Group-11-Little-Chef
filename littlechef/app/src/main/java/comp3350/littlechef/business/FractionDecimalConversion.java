@@ -1,22 +1,7 @@
 package comp3350.littlechef.business;
 
-import java.util.List;
-
-import comp3350.littlechef.objects.Ingredient;
-
-public class RecipeUnitConversion
+public class FractionDecimalConversion
 {
-    public static Double convertFractionToDecimal(String fraction)
-    {
-        //in the format of "a/b" where 'a' = numerator and 'b' = denominator and '/' seperates the two
-        String[] splitFraction = fraction.split("/");
-        double numerator = Double.parseDouble(splitFraction[0]);
-        double denominator = Double.parseDouble(splitFraction[1]);
-        double decimalAmount =  (numerator / denominator);
-        System.out.println("decimal:" + decimalAmount + '\n');
-        decimalAmount = Math.round(decimalAmount * 1000.00)/1000.00;
-        return decimalAmount;
-    }
 
     public static String convertDecimalToFraction(double numberToConvert)
     {
