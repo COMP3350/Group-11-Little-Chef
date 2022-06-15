@@ -1,6 +1,5 @@
 package comp3350.littlechef.objects;
 
-import java.util.Locale;
 import java.io.Serializable;
 
   
@@ -99,6 +98,11 @@ public class Ingredient implements Serializable
 
     public String getUnitType() {
         return unitType.toString();
+    }
+
+    public String getDisplayMeasurement()
+    {
+        return String.format("%.2f", amount) + " " + getMeasurement();
     }
 
 

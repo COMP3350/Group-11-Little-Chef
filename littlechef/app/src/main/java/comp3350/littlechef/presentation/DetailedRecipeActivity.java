@@ -2,7 +2,6 @@ package comp3350.littlechef.presentation;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.icu.number.Scale;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
@@ -16,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import java.util.ArrayList;
 import comp3350.littlechef.R;
 import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
@@ -25,14 +25,11 @@ public class DetailedRecipeActivity extends AppCompatActivity
 {
     private Recipe selectedRecipe;
     private ArrayAdapter<Ingredient> ingredientsArrayAdapter;
-    private ArrayAdapter<String> servingSizeAdapter;
     private Spinner servingNum;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
-        // KAJAL:
-        ScaleRecipe s = new ScaleRecipe();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailed_recipe_activity);
 
@@ -41,7 +38,7 @@ public class DetailedRecipeActivity extends AppCompatActivity
         final ListView listView = (ListView) findViewById(R.id.ingredients_list);
 
         //setting up drop down menu for choosing serving
-        servingSizeAdapter = new ArrayAdapter<String>(this,R.layout.spinner_item, getResources().getStringArray(R.array.serving_sizes));
+        ArrayAdapter<String> servingSizeAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, getResources().getStringArray(R.array.serving_sizes));
         servingNum = (Spinner) findViewById(R.id.servingNum);
         servingSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         servingNum.setAdapter(servingSizeAdapter);
@@ -51,7 +48,7 @@ public class DetailedRecipeActivity extends AppCompatActivity
         Intent previousIntent = getIntent();
         selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id"); // will never return null, since some recipe was clicked in prev activity
         
-        ingredientsArrayAdapter = new ArrayAdapter<Ingredient>(this,android.R.layout.simple_list_item_1, s.scaleIngredients(selectedRecipe, 2))
+        ingredientsArrayAdapter = new ArrayAdapter<Ingredient>(this,android.R.layout.simple_list_item_1, new ArrayList<Ingredient>())
         {
             @Override
             public View getView(int position, View convertView, ViewGroup parent)
@@ -66,7 +63,7 @@ public class DetailedRecipeActivity extends AppCompatActivity
 
 
                 ingredientName.setText(ingredient.getName());
-                measurement.setText(ingredient.getAmount() + " " + ingredient.getMeasurement());
+                measurement.setText(ingredient.getDisplayMeasurement());
 
                 return convertView;
             }
@@ -74,6 +71,29 @@ public class DetailedRecipeActivity extends AppCompatActivity
 
 
         listView.setAdapter(ingredientsArrayAdapter);
+
+        servingNum.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id)
+            {
+                String num = servingNum.getItemAtPosition(pos).toString().split(" ")[0];
+                int numServings = Integer.parseInt(num);
+
+                System.out.println(numServings);
+
+                ingredientsArrayAdapter.clear();
+                ingredientsArrayAdapter.addAll(ScaleRecipe.scaleIngredients(selectedRecipe, numServings));
+                ingredientsArrayAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
+            }
+        });
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -90,6 +110,8 @@ public class DetailedRecipeActivity extends AppCompatActivity
     //to set values in the detailed_recipe_view
     private void setValues()
     {
+        String ratingString = "Rating: " + selectedRecipe.getRatingString();
+
         //Fills values for header
         TextView recipeName = (TextView) findViewById(R.id.recipeName);
         TextView estimatedTime = (TextView) findViewById(R.id.estimatedTime);
@@ -110,7 +132,7 @@ public class DetailedRecipeActivity extends AppCompatActivity
         estimatedTime.setText(selectedRecipe.getTimeToMakeString());
         difficulty.setText(selectedRecipe.getDifficultyString());
         taste.setText(selectedRecipe.getQualityString());
-        rating.setText("Rating: " + selectedRecipe.getRatingString());
+        rating.setText(ratingString);
         textIngredient.setText(textIngredientsFormatted);
 
 
