@@ -88,7 +88,7 @@ public class IngredientTest extends TestCase
         assertTrue(mea1!=null);
 
         assertEquals("mm", mea1.getMeasurement());
-        assertTrue("MM"!= mea1.getMeasurement());
+        assertTrue("mm" == mea1.getMeasurement());
 
         Ingredient mea2 = new Ingredient(null, "MM", 123);
         assertTrue(mea2!=null);
@@ -109,10 +109,10 @@ public class IngredientTest extends TestCase
         assertEquals("pinch", mea2.getMeasurement());
 
         mea2.setMeasurement("abcde");
-        assertTrue("abcde"!= mea2.getMeasurement());
+        assertEquals("pinch", mea2.getMeasurement());
 
         mea2.setMeasurement("");
-        assertTrue(""!=mea2.getMeasurement());
+        assertEquals("pinch", mea2.getMeasurement());
     }//end testIngredientSetMeasurement
 
     @Test
@@ -127,7 +127,19 @@ public class IngredientTest extends TestCase
         assertEquals(Double.MAX_VALUE,amo1.getAmount());
 
         amo1.setAmount(-0.1d);
-        assertTrue(-0.1d != amo1.getAmount());
+        assertTrue(Double.MAX_VALUE == amo1.getAmount());
+
+        amo1.setAmount(0.0);
+        assertTrue(Double.MAX_VALUE == amo1.getAmount());
+
+        amo1.setAmount(1);
+        assertTrue(1.0 == amo1.getAmount());
+
+        amo1.setAmount(Integer.MAX_VALUE+1);
+        assertTrue(1.0 == amo1.getAmount());
+
+        amo1.setAmount(Integer.MIN_VALUE-1);
+        assertTrue((Integer.MIN_VALUE-1) == amo1.getAmount());
     }//end testIngredientGetAmount
 
     @Test
@@ -141,13 +153,22 @@ public class IngredientTest extends TestCase
         assertEquals(111.0, amo2.getAmount());
 
         amo2.setAmount(222);
-        assertTrue(333.0 != amo2.getAmount());
+        assertTrue(222.0 == amo2.getAmount());
 
         amo2.setAmount(-0.1d);
-        assertTrue(-0.1d != amo2.getAmount());
+        assertTrue(222.0 == amo2.getAmount());
 
         amo2.setAmount(0.0);
         assertEquals(222.0,amo2.getAmount());
+
+        amo2.setAmount(Integer.MAX_VALUE+1);
+        assertTrue(222.0 == amo2.getAmount());
+
+        amo2.setAmount(Integer.MAX_VALUE);
+        assertTrue(Integer.MAX_VALUE == amo2.getAmount());
+
+        amo2.setAmount(Integer.MIN_VALUE-1);
+        assertTrue((Integer.MIN_VALUE-1) == amo2.getAmount());
     }//end testIngredientSetMeasurement
 
 
@@ -164,19 +185,19 @@ public class IngredientTest extends TestCase
         assertEquals("WEIGHT", unittype1.getUnitType());
 
         unittype1.setMeasurement("MG");
-        assertTrue("SIZE"!= unittype1.getUnitType());
+        assertTrue("WEIGHT" == unittype1.getUnitType());
 
         unittype1.setMeasurement("MM");
-        assertTrue("VOLUME"!= unittype1.getUnitType());
+        assertTrue("SIZE"== unittype1.getUnitType());
 
         unittype1.setMeasurement("PINCH");
-        assertTrue("SIZE"!= unittype1.getUnitType());
+        assertTrue("VOLUME"== unittype1.getUnitType());
 
         unittype1.setMeasurement("");
-        assertTrue(""!=unittype1.getUnitType());
+        assertTrue("VOLUME"==unittype1.getUnitType());
 
         unittype1.setMeasurement(" ");
-        assertTrue(" "!=unittype1.getUnitType());
+        assertTrue("VOLUME" ==unittype1.getUnitType());
     }//end testIngredientGetUnitType
 
     @Test
@@ -201,11 +222,19 @@ public class IngredientTest extends TestCase
         assertEquals("0.22 mm", disp1.getDisplayMeasurement());
 
         disp1.setAmount(0.0);
-        assertTrue("0.00 mm"!=disp1.getDisplayMeasurement());
+        assertEquals("0.22 mm" , disp1.getDisplayMeasurement());
 
         disp1.setAmount(-0.1d);
-        assertTrue("-0.1d mm"!=disp1.getDisplayMeasurement());
+        assertEquals("0.22 mm" , disp1.getDisplayMeasurement());
 
+        disp1.setAmount(Integer.MAX_VALUE+1);
+        assertEquals("0.22 mm" , disp1.getDisplayMeasurement());
+
+        disp1.setAmount(Integer.MAX_VALUE);
+        assertEquals( Integer.toString(Integer.MAX_VALUE) +".00 mm" , disp1.getDisplayMeasurement());
+
+        disp1.setAmount(Integer.MIN_VALUE-1);
+        assertEquals(Integer.toString(Integer.MIN_VALUE-1) + ".00 mm" , disp1.getDisplayMeasurement());
     }//end testIngredientGetDisplayMeasurement
 
     @Test
@@ -220,25 +249,19 @@ public class IngredientTest extends TestCase
         unitinfo1.setMeasurement("MG");
         assertEquals("WEIGHT", unitinfo1.getUnitType());
 
-        unitinfo1.setMeasurement("MG");
-        assertTrue("SIZE"!= unitinfo1.getUnitType());
-
         unitinfo1.setMeasurement("MM");
-        assertTrue("VOLUME" != unitinfo1.getUnitType());
-
-        unitinfo1.setMeasurement("PINCH");
-        assertTrue("SIZE"!= unitinfo1.getUnitType());
+        assertEquals("SIZE" , unitinfo1.getUnitType());
 
         Ingredient unitinfo2 = new Ingredient(null, "ff", 0.1);
-        assertTrue("SIZE"!= unitinfo2.getUnitType());
+        assertTrue(unitinfo2.getUnitType() == "DEFAULT");
 
         Ingredient unitinfo3 = new Ingredient(null, "", 0.1);
-        assertTrue("SIZE"!= unitinfo3.getUnitType());
+        assertTrue(unitinfo3.getUnitType() == "DEFAULT");
 
         Ingredient unitinfo4 = new Ingredient("", "null", 0.1);
-        assertTrue("SIZE"!= unitinfo4.getUnitType());
+        assertTrue(unitinfo4.getUnitType() == "DEFAULT");
 
         Ingredient unitinfo5 = new Ingredient(null, "", 0.0);
-        assertTrue("SIZE"!= unitinfo5.getUnitType());
+        assertTrue(unitinfo5.getUnitType() == "DEFAULT");
     }//end testsetUnitInformation
 }

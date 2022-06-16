@@ -19,6 +19,7 @@
     <list default="true" id="cec11bb1-d5fe-4b26-85ff-50353578aa16" name="Changes" comment="just made the basic home screen GUI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/objects/IngredientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/objects/IngredientTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/objects/RecipeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/objects/RecipeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +95,7 @@
       <recent name="comp3350.littlechef.presentation" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.IngredientTest">
+  <component name="RunManager" selected="Gradle.IngredientTest.testsetUnitInformation">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Little_Chef.app" />
       <option name="DEPLOY" value="true" />
@@ -152,33 +153,12 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IngredientTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="IngredientTest.testIngredientGetAmount" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.objects.IngredientTest&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":app:testDebugUnitTest" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="IngredientTest.testIngredientCreation" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.objects.IngredientTest.testIngredientCreation&quot;" />
+        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.objects.IngredientTest.testIngredientGetAmount&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -215,27 +195,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="IngredientTest.testIngredientGetMeasurement" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.objects.IngredientTest.testIngredientGetMeasurement&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":app:testDebugUnitTest" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="IngredientTest.testIngredientGetUnitType" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -257,13 +216,55 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="IngredientTest.testIngredientSetAmount" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.objects.IngredientTest.testIngredientSetAmount&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:testDebugUnitTest" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="IngredientTest.testsetUnitInformation" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;comp3350.littlechef.objects.IngredientTest.testsetUnitInformation&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:testDebugUnitTest" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.IngredientTest" />
-        <item itemvalue="Gradle.IngredientTest.testIngredientGetUnitType" />
-        <item itemvalue="Gradle.IngredientTest.testIngredientGetMeasurement" />
-        <item itemvalue="Gradle.IngredientTest.testIngredientCreation" />
+        <item itemvalue="Gradle.IngredientTest.testsetUnitInformation" />
         <item itemvalue="Gradle.IngredientTest.testIngredientGetDisplayMeasurement" />
+        <item itemvalue="Gradle.IngredientTest.testIngredientGetUnitType" />
+        <item itemvalue="Gradle.IngredientTest.testIngredientSetAmount" />
+        <item itemvalue="Gradle.IngredientTest.testIngredientGetAmount" />
       </list>
     </recent_temporary>
   </component>
