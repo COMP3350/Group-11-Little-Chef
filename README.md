@@ -62,12 +62,12 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 	- Hardware: Windows 10, GPU: Radeon RX5700XT, 32gb RAM, CPU: Intel Core i5-9600K
 
 
-2.  	- Android Systems: Android 6.0 Google APIs|x86 (Marshmallow)
-    	- Emulator: Nexus 7 API 23
-    	- Hardware:Windows 10, GPU: NVIDIA GeFrce GTX 690M, 16gb RAM, CPU: Intel(R) Core(TM) i7-6700HQ CPU
+2.	- Android Systems: Android 6.0 Google APIs|x86 (Marshmallow)
+	- Emulator: Nexus 7 API 23
+	- Hardware:Windows 10, GPU: NVIDIA GeFrce GTX 690M, 16gb RAM, CPU: Intel(R) Core(TM) i7-6700HQ CPU
 
 
-3.  	- Android Systems: Android 6.0 Google APIs|x86 (Marshmallow)
-    	- Emulator: Nexus 7 API 23
-    	- Hardware: Windows 10, GPU: NVIDIA GeForce RTX 3070, 16gb RAM, CPU: AMD Ryzen 7 3700X
+3.	- Android Systems: Android 6.0 Google APIs|x86 (Marshmallow)
+	- Emulator: Nexus 7 API 23
+	- Hardware: Windows 10, GPU: NVIDIA GeForce RTX 3070, 16gb RAM, CPU: AMD Ryzen 7 3700X
 
