@@ -86,6 +86,7 @@ May 15, 2022
 - (started on detail view implementation; ~3 hours)
 - (finished ingredients/detailed list view; ~3 hours)
 - (attempted to get the list view working for the recipes did not; 5 hours)
+- (went over code for programming standards; 2hrs)
 
 
 ---
