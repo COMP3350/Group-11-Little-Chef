@@ -1,9 +1,7 @@
 package comp3350.littlechef.business;
 
 import static comp3350.littlechef.business.FractionDecimalConversion.convertDecimalToFraction;
-
 import junit.framework.TestCase;
-
 import org.junit.Test;
 
 public class FractionDecimalConversionTest extends TestCase
