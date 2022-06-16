@@ -11,7 +11,7 @@ public class IngredientTest extends TestCase
     }
 
     @Test
-    public void testSimple()
+    public void testIngredientSimple()
     {
         //test the file could run or not
         assertEquals(1, 1);
@@ -22,7 +22,7 @@ public class IngredientTest extends TestCase
     {
         ArrayList<Ingredient>inList = new ArrayList<>();
         Ingredient in1 = new Ingredient("a1", "aa1", 0.1d);
-        assertNull(null);
+        assertEquals("a1" , in1.getName());
         inList.add(in1);
 
         Ingredient in2 = new Ingredient("b1", "bb1", 0.2d);
@@ -55,9 +55,7 @@ public class IngredientTest extends TestCase
     public void testIngredientGetName()
     {
         Ingredient in1 = new Ingredient("a1", "bb", 0.1d);
-        assertNull(null);
-
-        assertEquals("a1", in1.getName());
+        assertEquals("a1" , in1.getName());
 
         Ingredient in2= new Ingredient(null,"b2",0.2d);
         assertNull(in2.getName());
@@ -85,17 +83,11 @@ public class IngredientTest extends TestCase
     public void testIngredientGetMeasurement()
     {
         Ingredient mea1 = new Ingredient("a1", "MM", 123);
-        assertNull(null);
-        assertEquals(mea1.getMeasurement(), "mm");
-
         assertEquals("mm", mea1.getMeasurement());
 
         Ingredient mea2 = new Ingredient(null, "MM", 123);
-        assertNull(null);
-
-        Ingredient mea3 = new Ingredient(null, "null", 123);
-        assertNull(null);
-
+        assertNull(mea2.getName());
+        assertEquals("mm", mea2.getMeasurement());
     }//end testIngredientGetMeasurement
 
     @Test
@@ -119,8 +111,6 @@ public class IngredientTest extends TestCase
     public void testIngredientGetAmount()
     {
         Ingredient amo1 = new Ingredient("a1", "b1", 0.1);
-        assertNull(null);
-
         assertEquals(0.1, amo1.getAmount());
 
         amo1.setAmount(Double.MAX_VALUE);

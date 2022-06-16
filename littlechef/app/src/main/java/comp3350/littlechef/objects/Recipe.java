@@ -46,6 +46,8 @@ public class Recipe implements Serializable
         this.recipeID = nextID++;
         this.timeToMakeHrs = timeToMakeHrs;
         this.timeToMakeMins = timeToMakeMins;
+        setTimeToMakeHrs(timeToMakeHrs);
+        setTimeToMakeMins(timeToMakeMins);
         ingredients = new ArrayList<Ingredient>();
         steps = new ArrayList<String>();
 
@@ -97,8 +99,15 @@ public class Recipe implements Serializable
 
     public String getTimeToMakeString()
     {
-        int hours = getTimeToMakeHrs();
-        int mins  = getTimeToMakeMins();
+        //int hours = getTimeToMakeHrs();
+        int hours = timeToMakeHrs;
+        int mins = timeToMakeMins;
+        //setTimeToMakeHrs(hours);
+        //hours = getTimeToMakeHrs();
+        //int mins  = getTimeToMakeMins();
+        //setTimeToMakeMins(mins);
+        //mins = getTimeToMakeMins();
+
 
         String minsString = mins + "";
         if(minsString.length() == 1)
@@ -111,12 +120,20 @@ public class Recipe implements Serializable
 
     public void setTimeToMakeHrs(int hours)
     {
-        timeToMakeHrs = hours;
+      timeToMakeHrs = Math.abs(hours);
+
+        //setTimeToMakeHrs(timeToMakeHrs);
+        //setTimeToMakeMins(timeToMakeMins);
     }
 
     public void setTimeToMakeMins(int mins)
     {
-        timeToMakeMins = mins;
+        timeToMakeMins = Math.abs(mins);
+        if(timeToMakeMins % 60 != 0) {
+            timeToMakeHrs +=(int)Math.floor(timeToMakeMins/ 60);;
+        }
+        timeToMakeMins = Math.abs(timeToMakeMins)%60;
+        //timeToMakeMins = Math.abs(mins)%60;
     }
 
     public Difficulty getDifficulty()
@@ -193,6 +210,45 @@ public class Recipe implements Serializable
     public void setQuality(Quality quality)
     {
         this.quality = quality;
+    }
+
+    public float getRating()
+    {
+        int size = rating.size(); //number of ratings
+        float averageRating = 0.0f;
+
+        //if rating array is empty, means no rating was given yet -> defaults to 0.0
+        if(size != 0)
+        {
+            for(float num:rating)
+            {
+                averageRating += num;
+            }
+            averageRating = averageRating/size;
+        }
+        return averageRating;
+    }
+
+    public String getRatingString()
+    {
+        float rating = getRating();
+        String result;
+        if(rating == 0.0f)
+        {
+            result = "-";
+        }
+
+        else
+        {
+            result = Float.toString(rating);
+        }
+
+        return result + "/5";
+    }
+
+    public void rate(float userRating)
+    {
+        rating.add(userRating);
     }
 
     public int getId()

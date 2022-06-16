@@ -10,7 +10,7 @@ public class RecipeTest extends TestCase
     }//end RecipeTest
 
     @Test
-    public void testSimple()
+    public void testRecipeSimple()
     {
         //test the file could run or not
         assertEquals(1, 1);
@@ -20,10 +20,10 @@ public class RecipeTest extends TestCase
     public void testRecipeCreation()
     {
         //constructor1
-        Recipe recipe1 = new Recipe(00);
+        Recipe recipe1 = new Recipe(0);
         assertNotNull(recipe1);
 
-        Recipe recipe2 = new Recipe(00);
+        Recipe recipe2 = new Recipe(0);
 
         ArrayList<Recipe> inList = new ArrayList<>();
         inList.add(recipe1);
@@ -36,9 +36,8 @@ public class RecipeTest extends TestCase
     public void testRecipeCreation2()
     {
         //constructor2
-        Recipe recipe1 = new Recipe("a1", 111, 123);
-        assertNotNull(recipe1);
-        assertEquals(0, recipe1.getId());
+        Recipe recipe1 = new Recipe("a1", 1, 123);
+        assertEquals("a1",recipe1.getName());
 
         Recipe recipe2 = new Recipe("b1", 666, 777);
 
@@ -46,7 +45,7 @@ public class RecipeTest extends TestCase
         inList.add(recipe1);
         inList.add(recipe2);
 
-        assertEquals(1, recipe2.getId());
+        assertEquals("b1", recipe2.getName());
 
         assertEquals(2, inList.size());
 
@@ -54,22 +53,15 @@ public class RecipeTest extends TestCase
 
         Recipe recipe3 = new Recipe(123);
         inList.add(recipe3);
-        assertEquals(123, recipe3.getId() );
+
+        assertEquals("null",recipe3.getName());
         assertEquals(3, inList.size());
-
-        Recipe recipe4 = new Recipe(3);
-        assertEquals(3, recipe4.getId());
-
-//        Recipe recipe5 = new Recipe(3);
-//        assertEquals(3, recipe5.getId());
     }//end testRecipeCreation2
 
     @Test
     public void testRecipeGetName()
     {
         Recipe recipe1 = new Recipe("Paste", 60, 70);
-        assertTrue(recipe1 != null);
-
         assertEquals("Paste", recipe1.getName());
 
         recipe1.setName("");
@@ -79,7 +71,7 @@ public class RecipeTest extends TestCase
         assertEquals(" ", recipe1.getName());
 
         recipe1.setName(null);
-        assertTrue( recipe1.getName() == null);
+        assertNull(recipe1.getName());
 
         recipe1.setName("%paste1");
         assertEquals("%paste1", recipe1.getName());
@@ -99,7 +91,7 @@ public class RecipeTest extends TestCase
         assertEquals(" ", recipe1.getName());
 
         recipe1.setName(null);
-        assertTrue( recipe1.getName() == null);
+        assertNull( recipe1.getName());
 
         recipe1.setName("%paste1");
         assertEquals("%paste1", recipe1.getName());
@@ -124,19 +116,19 @@ public class RecipeTest extends TestCase
         assertEquals("" , ing1.getName());
 
         ing1.setName(null);
-        assertTrue(ing1.getName()==null);
+        assertNull(ing1.getName());
 
         ing1.setMeasurement("MM");
         assertEquals("mm" , ing1.getMeasurement());
 
         ing1.setMeasurement("MMM");
-        assertTrue("MMM" != ing1.getMeasurement());
+        assertEquals("mm" , ing1.getMeasurement());
 
         ing1.setAmount(0.0);
         assertEquals(0.1 , ing1.getAmount());
 
         ing1.setAmount(-0.1);
-        assertTrue(-0.1 != ing1.getAmount());
+        assertEquals(0.1 , ing1.getAmount());
     }//testRecipeGetIngredients
 
     @Test
@@ -158,23 +150,24 @@ public class RecipeTest extends TestCase
         assertEquals("" , ing1.getName());
 
         ing1.setName(null);
-        assertTrue(ing1.getName()==null);
+        assertNull(ing1.getName());
 
         ing1.setMeasurement("MM");
         assertEquals("mm" , ing1.getMeasurement());
 
         ing1.setMeasurement("MMM");
-        assertTrue("MMM" != ing1.getMeasurement());
+        assertEquals("mm" , ing1.getMeasurement());
 
         ing1.setAmount(0.0);
         assertEquals(0.1 , ing1.getAmount());
 
         ing1.setAmount(-0.2);
-        assertTrue(-0.2 != ing1.getAmount());
+        assertEquals(0.1 , ing1.getAmount());
     }//testRecipeAddIngredients
 
     @Test
-    public void testRecipeGetStep(){
+    public void testRecipeGetStep()
+    {
         Recipe step1 = new Recipe("abcde", 1,2);
 
         step1.addStep("ufo");
@@ -195,12 +188,9 @@ public class RecipeTest extends TestCase
         assertEquals(6, step1.getSteps().size());
     }//end testRecipeGetStep
 
-
-
-    /*******/
-
     @Test
-    public void testRecipeAddStep(){
+    public void testRecipeAddStep()
+    {
         Recipe step1 = new Recipe("abcde", 1,2);
 
         step1.addStep("ufo");
@@ -208,22 +198,69 @@ public class RecipeTest extends TestCase
 
         step1.addStep("FD");
         assertEquals(2, step1.getSteps().size());
-    }
+
+        step1.addStep("");
+        assertEquals(3, step1.getSteps().size());
+
+        step1.addStep(null);
+        assertEquals(4, step1.getSteps().size());
+
+        step1.addStep("123");
+        assertEquals(5, step1.getSteps().size());
+
+        step1.addStep("^&*@!#");
+        assertEquals(6, step1.getSteps().size());
+    }//end testRecipeAddStep
 
     @Test
-    public void testRecipeGetTimeToMakeHrs(){
+    public void testRecipeGetTimeToMakeHrs()
+    {
         Recipe time1 = new Recipe("abcde", 1,2);
         assertEquals(1, time1.getTimeToMakeHrs());
-    }
+
+        time1.setTimeToMakeHrs(0);
+        assertEquals(0 , time1.getTimeToMakeHrs());
+
+        time1.setTimeToMakeHrs(Integer.MAX_VALUE);
+        assertEquals(Integer.MAX_VALUE , time1.getTimeToMakeHrs());
+
+        time1.setTimeToMakeHrs(Integer.MIN_VALUE);
+        assertEquals(Integer.MIN_VALUE , time1.getTimeToMakeHrs());
+
+        time1.setTimeToMakeHrs(-1);
+        assertEquals(1 , time1.getTimeToMakeHrs());
+    }//end testRecipeGetTimeToMakeHrs
 
     @Test
-    public void testRecipeGetTimeToMakeMins(){
-        Recipe time1 = new Recipe("abcde", 1,2);
+    public void testRecipeGetTimeToMakeMins()
+    {
+        Recipe time1 = new Recipe("abcde", 0,2);
         assertEquals(2 , time1.getTimeToMakeMins());
-    }
+
+        time1.setTimeToMakeMins(0);
+        assertEquals(0 , time1.getTimeToMakeMins());
+
+        time1.setTimeToMakeMins(-1);
+        assertEquals(1 , time1.getTimeToMakeMins());
+
+        time1.setTimeToMakeMins(61);
+        assertEquals(1, time1.getTimeToMakeMins());
+        assertEquals(1, time1.getTimeToMakeHrs());
+
+        time1.setTimeToMakeMins(123);
+        assertEquals(3, time1.getTimeToMakeMins());
+        assertEquals(3, time1.getTimeToMakeHrs());
+
+        time1.setTimeToMakeMins(Integer.MAX_VALUE);
+        assertEquals( 7, time1.getTimeToMakeMins());
+
+        time1.setTimeToMakeMins(Integer.MIN_VALUE);
+        assertEquals( -8, time1.getTimeToMakeMins());
+    }//end testRecipeGetTimeToMakeMins
 
     @Test
-    public void testRecipeGetTimeToMakeString(){
+    public void testRecipeGetTimeToMakeString()
+    {
         Recipe time1 = new Recipe("abcde", 1,2);
         assertEquals("1h 02m" , time1.getTimeToMakeString());
 
@@ -236,31 +273,73 @@ public class RecipeTest extends TestCase
         Recipe time4 = new Recipe("abcde", 0,1);
         assertEquals("0h 01m" , time4.getTimeToMakeString());
 
-        //Recipe time5 = new Recipe("abcde", Integer.MAX_VALUE,Integer.MAX_VALUE);
-    }
+        Recipe time5 = new Recipe("abcde", 0,Integer.MAX_VALUE);
+        assertEquals("35791394"+ "h " +
+                "07"+ "m" , time5.getTimeToMakeString());
+
+        Recipe time6 = new Recipe("abcde", -1,-2);
+        assertEquals("1h 02m" , time6.getTimeToMakeString());
+    }//testRecipeGetTimeToMakeString
 
     @Test
-    public void testRecipeSetTimeToMakeHrs(){
+    public void testRecipeSetTimeToMakeHrs()
+    {
         Recipe time1 = new Recipe("abcde", 1,2);
         time1.setTimeToMakeHrs(99);
         assertEquals(99 , time1.getTimeToMakeHrs());
-    }
+
+        time1.setTimeToMakeMins(61);
+        assertEquals(1, time1.getTimeToMakeMins());
+        assertEquals(100, time1.getTimeToMakeHrs());
+
+        time1.setTimeToMakeHrs(-1);
+        assertEquals(1, time1.getTimeToMakeHrs());
+
+        time1.setTimeToMakeHrs(Integer.MAX_VALUE);
+        assertEquals(Integer.MAX_VALUE, time1.getTimeToMakeHrs());
+
+        time1.setTimeToMakeHrs(Integer.MIN_VALUE);
+        assertEquals(Integer.MIN_VALUE, time1.getTimeToMakeHrs());
+    }//end testRecipeSetTimeToMakeHrs
 
     @Test
-    public void testRecipeSetTimeToMakeMins(){
+    public void testRecipeSetTimeToMakeMins()
+    {
         Recipe time1 = new Recipe("abcde", 1,2);
 
         time1.setTimeToMakeMins(88);
-        assertEquals(88, time1.getTimeToMakeMins());
+        assertEquals(28, time1.getTimeToMakeMins());
+
+        time1.setTimeToMakeMins(61);
+        assertEquals(1, time1.getTimeToMakeMins());
+        assertEquals(3, time1.getTimeToMakeHrs());
+
+        time1.setTimeToMakeHrs(-1);
+        assertEquals(1, time1.getTimeToMakeHrs());
+
+        time1.setTimeToMakeHrs(0);
+        assertEquals(0, time1.getTimeToMakeHrs());
+
+        time1.setTimeToMakeHrs(Integer.MAX_VALUE);
+        assertEquals(Integer.MAX_VALUE, time1.getTimeToMakeHrs());
+
+        time1.setTimeToMakeHrs(Integer.MIN_VALUE);
+        assertEquals(Integer.MIN_VALUE, time1.getTimeToMakeHrs());
     }
 
     @Test
-    public void testRecipeGetDifficulty(){
+    public void testRecipeGetDifficulty()
+    {
         Recipe diff1 = new Recipe("abcde", 1,2);
         assertEquals(Difficulty.NOT_RATED , diff1.getDifficulty());
 
         diff1.setDifficulty(Difficulty.AMATEUR);
         assertEquals(Difficulty.AMATEUR, diff1.getDifficulty());
+
+        diff1.setDifficulty(null);
+        assertNull( diff1.getDifficulty());
+
+
     }
 
     @Test
@@ -271,36 +350,45 @@ public class RecipeTest extends TestCase
 
         diff1.setDifficulty(Difficulty.MASTER_CHEF);
         assertEquals("Difficulty: Master Chef", diff1.getDifficultyString());
-    }
+    }//end testRecipeGetDifficultyString
 
 
     @Test
-    public void testRecipeSetDifficulty(){
+    public void testRecipeSetDifficulty()
+    {
         Recipe diff1 = new Recipe("abcde", 1,2);
         assertEquals(Difficulty.NOT_RATED, diff1.getDifficulty());
 
         diff1.setDifficulty(Difficulty.AMATEUR);
         assertEquals("Difficulty: Amateur", diff1.getDifficultyString());
-    }
+
+        diff1.setDifficulty(null);
+        assertNull(diff1.getDifficulty());
+    }//end testRecipeSetDifficulty
 
     @Test
-    public void testRecipeGetQuality(){
+    public void testRecipeGetQuality()
+    {
         Recipe qua1 = new Recipe("abcde", 1,2);
         assertEquals(Quality.NOT_RATED, qua1.getQuality());
 
         qua1.setQuality(Quality.TASTY);
         assertEquals(Quality.TASTY, qua1.getQuality());
-    }
+
+        qua1.setQuality(null);
+        assertNull( qua1.getQuality());
+    }//end testRecipeGetQuality
 
     @Test
-    public void testRecipeGetQualityString(){
+    public void testRecipeGetQualityString()
+    {
         Recipe qua1 = new Recipe("abcde", 1,2);
 
         assertEquals("Taste: Not rated" , qua1.getQualityString());
 
         qua1.setQuality(Quality.TASTY);
         assertEquals("Taste: Tasty", qua1.getQualityString());
-    }
+    }//end testRecipeGetQualityString
 
 
     @Test
@@ -310,35 +398,43 @@ public class RecipeTest extends TestCase
 
         qua1.setQuality(Quality.TASTY);
         assertEquals("Taste: Tasty", qua1.getQualityString());
+
+        qua1.setQuality(null);
+        assertNull(qua1.getQuality());
+
     }
 
     @Test
-    public void testAddRecipeRate(){
+    public void testAddRecipeRate()
+    {
         Recipe rate1 = new Recipe(666);
-        rate1.rate(0.1f);
+        rate1.rate(0.0f);
+        assertEquals(0.0f, rate1.getRating());
 
+        rate1.rate(0.2f);
         assertEquals(0.1f, rate1.getRating());
-
-    }
+    }//end testAddRecipeRate
 
     @Test
-    public void testRecipeGetRating(){
+    public void testRecipeGetRating()
+    {
         Recipe rating1 = new Recipe("abcde", 1,2);
         rating1.rate(0.1f);
         assertEquals(0.1f, rating1.getRating());
 
-        rating1.rate((0.2f));
-        assertEquals(0.15f,rating1.getRating() );
-    }
+        rating1.rate(0.0f);
+        assertEquals(0.05f,rating1.getRating());
+
+        rating1.rate(0.5f);
+        assertEquals(0.2f,rating1.getRating());
+    }//testRecipeGetRating
 
     @Test
-    public void testRecipeGetRatingString(){
+    public void testRecipeGetRatingString()
+    {
         Recipe rating1 = new Recipe("abcde", 1,2);
         rating1.rate(0.0f);
         assertEquals("-/5", rating1.getRatingString());
-
-        rating1.rate((0.2f));
-        assertEquals(Float.toString(0.1f) + "/5",rating1.getRatingString() );
     }
 
 }
