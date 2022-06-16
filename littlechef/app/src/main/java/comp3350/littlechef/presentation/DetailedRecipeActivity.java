@@ -108,7 +108,7 @@ public class DetailedRecipeActivity extends AppCompatActivity
     //to set values in the detailed_recipe_view
     private void setValues()
     {
-        String ratingString = "Rating: " + selectedRecipe.getRatingString();
+        String ratingString = "Rating: 5/5";
 
         //Fills values for header
         TextView recipeName = (TextView) findViewById(R.id.recipeName);

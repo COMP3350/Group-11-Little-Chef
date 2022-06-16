@@ -195,45 +195,6 @@ public class Recipe implements Serializable
         this.quality = quality;
     }
 
-    public float getRating()
-    {
-        int size = rating.size(); //number of ratings
-        float averageRating = 0.0f;
-
-        //if rating array is empty, means no rating was given yet -> defaults to 0.0
-        if(size != 0)
-        {
-            for(float num:rating)
-            {
-                averageRating += num;
-            }
-            averageRating = averageRating/size;
-        }
-        return averageRating;
-    }
-
-    public String getRatingString()
-    {
-        float rating = getRating();
-        String result;
-        if(rating == 0.0f)
-        {
-            result = "-";
-        }
-
-        else
-        {
-            result = Float.toString(rating);
-        }
-
-        return result + "/5";
-    }
-
-    public void rate(float userRating)
-    {
-        rating.add(userRating);
-    }
-
     public int getId()
     {
         return this.recipeID;

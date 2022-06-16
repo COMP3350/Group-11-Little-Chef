@@ -21,45 +21,23 @@ public class AccessRecipesTest extends TestCase
     @BeforeClass
     private void start()
     {
-
-        //SWITCH BETWEEN REAL DB AND STUB
-
-        //STUB
-        //testAccess = new PersistenceAccess(dbName);
-
-        //REAL
         testAccess = new DataAccessStub(dbName);
     }
 
 
-
     @Test
-    public void testSimple()
-    {
-        //test the file could run or not
-        assertEquals(1,1);
-    }
-
-    @Test
-    public void testAccessRecipesCreation()
-    {
+    public void testAccessRecipesCreation() {
         start();
 
         // DataAccessStub.close;
-
-
         AccessRecipes accrep1 = new AccessRecipes();
         assertNotNull(accrep1);
-
-        AccessRecipes accrep2 = new AccessRecipes();
-
-        ArrayList<AccessRecipes>inList = new ArrayList<>();
-        inList.add(accrep1);
-
-        assertEquals(inList.size(), 1);
-
-
-
-
     }
+
+//    @Test
+//    public void testGettingRecipes() {
+//        start();
+//
+//
+//    }
 }
