@@ -659,14 +659,11 @@ public class AllTests extends TestCase
         disp1.setAmount(-0.1d);
         assertEquals("0.22 mm" , disp1.getDisplayMeasurement());
 
-        disp1.setAmount(Integer.MAX_VALUE+1);
-        assertEquals("0.22 mm" , disp1.getDisplayMeasurement());
-
         disp1.setAmount(Integer.MAX_VALUE);
-        assertEquals( Integer.toString(Integer.MAX_VALUE) +".00 mm" , disp1.getDisplayMeasurement());
+        assertEquals(Integer.MAX_VALUE + ".00 mm", disp1.getDisplayMeasurement());
 
-        disp1.setAmount(Integer.MIN_VALUE-1);
-        assertEquals(Integer.toString(Integer.MIN_VALUE-1) + ".00 mm" , disp1.getDisplayMeasurement());
+        disp1.setAmount(Integer.MIN_VALUE);
+        assertEquals((Integer.MAX_VALUE) + ".00 mm" , disp1.getDisplayMeasurement());
     }//end testIngredientGetDisplayMeasurement
 
     @Test
