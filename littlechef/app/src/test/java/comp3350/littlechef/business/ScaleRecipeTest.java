@@ -1,14 +1,9 @@
 package comp3350.littlechef.business;
 
-import static comp3350.littlechef.business.FractionDecimalConversion.convertDecimalToFraction;
 import static comp3350.littlechef.business.ScaleRecipe.scaleIngredients;
-
 import junit.framework.TestCase;
-
 import org.junit.Test;
-
 import java.util.ArrayList;
-
 import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
 
