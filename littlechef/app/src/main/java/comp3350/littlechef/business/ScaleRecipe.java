@@ -137,9 +137,9 @@ public class ScaleRecipe
             tempAmount /= MM_IN_CM;
         }
 
-        if(ingredient.getMeasurement().equalsIgnoreCase("G") && tempAmount >= CM_IN_M)
+        if(ingredient.getMeasurement().equalsIgnoreCase("CM") && tempAmount >= CM_IN_M)
         {
-            ingredient.setMeasurement("kg");
+            ingredient.setMeasurement("M");
             tempAmount /= CM_IN_M;
 
         }
