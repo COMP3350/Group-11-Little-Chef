@@ -57,8 +57,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 **Note**: the functional bottom navigation menu has three buttons: "Recipes", "Add Recipe", and "Meal Plans". You can use all three buttons to switch between activities. However, "Add Recipe" and "Meal Plans" will be blank pages because they have not been implemented yet. They are needed now to show the functionality of the navigation menu. The AddFragment.java, MealsFragment.java and their respective .xml files were created to support this. In the future, iterations "Add recipe" will allow creating and adding the recipes to a database and "Meal Plans" will allow scheduling of created recipes.
 
 ### This App was tested on the following devices:
-1. 
-	- Android Systems: Android 6.0 Google APIs|x86 (Marshmallow)
+1.      - Android Systems: Android 6.0 Google APIs|x86 (Marshmallow)
 	- Emulator: Nexus 7 API 23
 	- Hardware: Windows 10, GPU: Radeon RX5700XT, 32gb RAM, CPU: Intel Core i5-9600K
 
