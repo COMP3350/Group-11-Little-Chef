@@ -59,7 +59,7 @@ May 15, 2022
 - (make the recipe class (business object); Dylan, Denys, Kajal, Wen; iteration 1)✓
 - (create the ingredient class; Denys, Dylan; iteration 1)✓
 - (write (at least 3) tests for the recipe class; Dylan, iteratio 1)
-- (create the UI to show a list of recipes; Brad, Denys, iteration 1) ~✓
+- (create the UI to show a list of recipes; Brad, Denys, iteration 1) ✓
 - (create the bottom navigation menu and top menu/header; iteration 1)✓
 - (create the view recipes page; iteration 1)✓
 - (add recipes and meal plans fragments; iteration 1) ✓
@@ -118,6 +118,7 @@ functional by making it change the fragment on click (plus nice effects for on c
 - (with Kajal connected serving size button to the business layer; 30 mins)
 - (Reviewed the code in branches, resolved the conflicts and merged; 1 hr)
 - (Planned out final set of tasks for iteration 1 deadline; 30 mins)
+- (Created architecture picture and wrote readme.txt, 1 hr)
 
 ---
 ---
