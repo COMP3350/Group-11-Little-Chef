@@ -174,7 +174,7 @@ functional by making it change the fragment on click (plus nice effects for on c
 ---
 >>>DESIGN DECISIONS AND RATIONALE 
 
-- Decision: The list view of recipe should be scrollable. 
+- Decision: The overview of recipes should be scrollable. 
 - Rationale: Compared to page view, you can see more recipes in a shorter amount of time when scrolling. 
   This is because in page view you have to press the button a lot of times to get to the bottom of the list. 
 
