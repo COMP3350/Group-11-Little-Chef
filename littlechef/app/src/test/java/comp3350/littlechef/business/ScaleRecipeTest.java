@@ -16,7 +16,7 @@ public class ScaleRecipeTest extends TestCase
 {
 
     @Test
-    public void testSimple()
+    public void testScaleRecipeSimple()
     {
         Recipe recipe = new Recipe(1000);
         recipe.addIngredient(new Ingredient("ingr0", "g", 0.25));
@@ -52,7 +52,7 @@ public class ScaleRecipeTest extends TestCase
     }
 
     @Test
-    public void testZeroServingSize()
+    public void testScaleRecipeZeroServingSize()
     {
         Recipe recipe = new Recipe(1000);
         recipe.addIngredient(new Ingredient("ingr0", "pinch", 2));
@@ -68,7 +68,7 @@ public class ScaleRecipeTest extends TestCase
     }
 
     @Test
-    public void testNegativeServingSize()
+    public void testScaleRecipeNegativeServingSize()
     {
         Recipe recipe = new Recipe(1000);
         recipe.addIngredient(new Ingredient("ingr0", "pinch", 2));
@@ -90,7 +90,7 @@ public class ScaleRecipeTest extends TestCase
     }
 
     @Test
-    public void testDifferentServingSizes()
+    public void testScaleRecipeDifferentServingSizes()
     {
         Recipe recipe = new Recipe(1000);
         recipe.addIngredient(new Ingredient("ingr0", "pinch", 4));
@@ -141,7 +141,7 @@ public class ScaleRecipeTest extends TestCase
     }
 
     @Test
-    public void testConvertMeasurements()
+    public void testScaleRecipeConvertMeasurements()
     {
         Recipe recipe = new Recipe(1000);
         recipe.addIngredient(new Ingredient("ingr0", "pinch", 8));
@@ -175,7 +175,7 @@ public class ScaleRecipeTest extends TestCase
     }
 
     @Test
-    public void testOnlyConvertWithMultipleServings()
+    public void testScaleRecipeOnlyConvertWithMultipleServings()
     {
         Recipe recipe = new Recipe(1000);
         recipe.addIngredient(new Ingredient("ingr0", "pinch", 16));
@@ -203,7 +203,7 @@ public class ScaleRecipeTest extends TestCase
     }
 
     @Test
-    public void testSkippingMeasurements()
+    public void testScaleRecipeSkippingMeasurements()
     {
         Recipe recipe = new Recipe(1000);
         recipe.addIngredient(new Ingredient("ingr0", "pinch", 768));
@@ -220,7 +220,7 @@ public class ScaleRecipeTest extends TestCase
     }
 
     @Test
-    public void testManyDecimalRounding()
+    public void testScaleRecipeManyDecimalRounding()
     {
         Recipe recipe = new Recipe(1000);
         recipe.addIngredient(new Ingredient("ingr0", "pinch", 12.1234));
@@ -240,7 +240,7 @@ public class ScaleRecipeTest extends TestCase
     }
 
     @Test
-    public void testConversionSlightlyUnderThreshold()
+    public void testScaleRecipeConversionSlightlyUnderThreshold()
     {
         Recipe recipe = new Recipe(1000);
         recipe.addIngredient(new Ingredient("ingr0", "pinch", 7.99));
@@ -275,7 +275,7 @@ public class ScaleRecipeTest extends TestCase
     }
 
     @Test
-    public void testConversionSlightlyOverThreshold()
+    public void testScaleRecipeConversionSlightlyOverThreshold()
     {
         Recipe recipe = new Recipe(1000);
         recipe.addIngredient(new Ingredient("ingr0", "pinch", 8.01));
@@ -310,7 +310,7 @@ public class ScaleRecipeTest extends TestCase
     }
 
     @Test
-    public void testZeroAmountDefaultsToOne()
+    public void testScaleRecipeZeroAmountDefaultsToOne()
     {
         Recipe recipe = new Recipe(1000);
         recipe.addIngredient(new Ingredient("ingr0", "pinch", 0));
@@ -345,7 +345,7 @@ public class ScaleRecipeTest extends TestCase
     }
 
     @Test
-    public void testNullIngredients()
+    public void testScaleRecipeNullIngredients()
     {
         try
         {
@@ -358,7 +358,7 @@ public class ScaleRecipeTest extends TestCase
     }
 
     @Test
-    public void testNullRecipe()
+    public void testScaleRecipeNullRecipe()
     {
         try
         {
