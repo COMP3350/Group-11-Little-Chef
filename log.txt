@@ -136,4 +136,8 @@ WEN'S ACTIVTY LOG
 - (Setup Android Studio, configuration, tried the sample code with tests, 2 hours)
 - (Setup Github desktop, tried pull, push and other functions, 1 hour)
 - (Create stub database and real datebase, learned how to setup hsqldb and jdbc, debug, 8 hours)
-
+- (Wirte tests for Ingredient and Recipe, debug, fix code, 20 hours)
+- (Recording meeting notes, 10 mins)
+- (With Dylan working on tests and debug, 20 mins)
+- (Reviewed the code in branches, resolved the confilcts and merge, 1 hour)
+- (Add tests all together and debug, 20 mins)
