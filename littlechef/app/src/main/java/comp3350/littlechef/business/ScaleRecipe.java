@@ -52,9 +52,7 @@ public class ScaleRecipe
         String unitType;
         double adjustedAmount = ingredient.getAmount();
         unitType = ingredient.getUnitType();
-
-
-            System.out.println("<"+ingredient.getName()+"> "+unitType.toLowerCase());
+        
             switch(unitType.toLowerCase())
             {
                 case "volume":
