@@ -1,5 +1,5 @@
 GROUP 11 LOG
-Last updated May 15, 2022.
+Last updated June 16, 2022.
 ---
 ---
 >>>MEETING NOTES
@@ -69,8 +69,8 @@ June 16, 2022
 - (write logic to access recipes; iteration 1) ✓
 - (write logic to change ingredients amount based on serving size; iteration 1) ✓
 - (create the detailed recipe card; iteration 1) ✓
-- (write (at least 3) tests for the UI; Brad; iteration 1)
-- (review iteration 1 submission; everyone; iteration 1)
+- (write (at least 3) tests for the UI; Brad; iteration 1)✓
+- (review iteration 1 submission; everyone; iteration 1)✓
 
 
 ---
@@ -86,8 +86,9 @@ June 16, 2022
 - (started on detail view implementation; ~3 hours)
 - (finished ingredients/detailed list view; ~3 hours)
 - (attempted to get the list view working for the recipes did not; 5 hours)
+- (started on detail view implementation; ~3 hours)
+- (finished ingredients/detailed list view; ~3 hours)
 - (went over code for programming standards; 2hrs)
-
 
 ---
 ---
@@ -136,7 +137,6 @@ functional by making it change the fragment on click (plus nice effects for on c
 - (Fixed fractionToDecimal method, added unit tests, 70 min)
 - (Added Unit Tests, Fixed Bugs, 5.5 hr)
 
-
 ---
 ---
 >>>KAJAL'S ACTIVTY LOG
@@ -178,8 +178,6 @@ functional by making it change the fragment on click (plus nice effects for on c
 - (Review iteration requirement and modify code, 2 hours)
 - (Review code again, 2 hours)
 
----
----
 >>>DESIGN DECISIONS AND RATIONALE 
 
 - Decision: The overview of recipes should be scrollable. 
