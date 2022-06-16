@@ -31,14 +31,14 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 **Location** : The log.txt is saved in the private repository along with the project. All members of our team contributed to keeping the log up to date.
 
 **The log contains the following information (in order)**
-•	Meeting notes and who was in attendance for all the meetings
-•	All the dev tasks and related information
-•	Brad’s activity log
-•	Denys’s activity log
-•	Dylan’s activity log
-•	Kajal’s activity log
-•	Wen’s activity log
-•	Design Designs and Rationale
+-	Meeting notes and who was in attendance for all the meetings
+-	All the dev tasks and related information
+-	Brad’s activity log
+-	Denys’s activity log
+-	Dylan’s activity log
+-	Kajal’s activity log
+-	Wen’s activity log
+-	Design Designs and Rationale
 
 ### Overview of the features
 
