@@ -165,14 +165,18 @@ functional by making it change the fragment on click (plus nice effects for on c
 >>>WEN'S ACTIVTY LOG
 - (activtiy Name; [comment]; time spent on task)
 
+- (downloaded and configured Android studio; 1h)
 - (Setup Android Studio, configuration, tried the sample code with tests; 2 hours)
 - (Setup Github desktop, tried pull, push and other functions; 1 hour)
 - (Create stub database and real datebase, learned how to setup hsqldb and jdbc; debug, 8 hours)
 - (Write tests for Ingredient and Recipe, debug, fix code, 20 hours)
-- (Recording meeting notes, 10 mins)
-- (With Dylan working on tests and debug, 20 mins)
+- (Recording meeting notes, 30 mins)
+- (Rewrite tests and debug, 10 hours)
+- (With Dylan working on tests and debug, 5 hours)
 - (Reviewed the code in branches, resolved the confilcts and merge, 1 hour)
-- (Add tests all together and debug, 20 mins)
+- (Add tests all together and debug, 6 hours)
+- (Review iteration requirement and modify code, 2 hours)
+- (Review code again, 2 hours)
 
 ---
 ---
