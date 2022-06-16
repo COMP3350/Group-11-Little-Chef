@@ -6,8 +6,12 @@ import java.util.List;
 import comp3350.littlechef.application.Main;
 import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
-
-//TODO NEED TO CREATE A RATING CLASS THAT WILL HOLD ALL THE RATINGS + DATE FOR THE RATING IN THE RECIPE
+// CLASS: DataAccessStub.java
+//
+//
+// REMARKS: This is the access stub database that will hold the Recipes.
+//
+//-----------------------------------------
 public class DataAccessStub
 {
     private String dbName;

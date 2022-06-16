@@ -6,7 +6,12 @@ import comp3350.littlechef.application.Main;
 import comp3350.littlechef.application.Services;
 import comp3350.littlechef.objects.Recipe;
 import comp3350.littlechef.persistence.DataAccessStub;
-
+// CLASS: AccessRecipes.java
+//
+//
+// REMARKS: This class will access the database of recipes to be used for processing.
+//
+//-----------------------------------------
 public class AccessRecipes
 {
     private DataAccessStub dataAccess;
@@ -14,6 +19,7 @@ public class AccessRecipes
     private Recipe recipe;
     private int currentRecipe;
 
+    //constructor
     public AccessRecipes()
     {
         dataAccess = (DataAccessStub) Services.getDataAccess(Main.dbName);

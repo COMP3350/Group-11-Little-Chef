@@ -21,6 +21,13 @@ import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
 import comp3350.littlechef.business.ScaleRecipe;
 
+// CLASS: DetailedRecipeActivity.java
+//
+//
+// REMARKS: This class creates the view for the ingredients list for a recipe.
+//
+//-----------------------------------------
+
 public class DetailedRecipeActivity extends AppCompatActivity
 {
     private Recipe selectedRecipe;
@@ -94,15 +101,6 @@ public class DetailedRecipeActivity extends AppCompatActivity
             }
         });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
-
-            }
-
-        });
         setValues();
     }
 

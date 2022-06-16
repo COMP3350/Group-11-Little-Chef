@@ -17,15 +17,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec11bb1-d5fe-4b26-85ff-50353578aa16" name="Changes" comment="just made the basic home screen GUI">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/objects/IngredientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/objects/IngredientTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/objects/RecipeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/objects/RecipeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/business/AccessRecipes.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/business/AccessRecipes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/business/ScaleRecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/business/ScaleRecipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/objects/Difficulty.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/objects/Difficulty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/objects/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/objects/Ingredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/objects/Quality.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/objects/Quality.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/objects/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/objects/Recipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/objects/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/objects/Unit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/objects/UnitType.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/objects/UnitType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/persistence/DataAccessStub.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/persistence/DataAccessStub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/presentation/AddFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/presentation/AddFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/presentation/DetailedRecipeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/presentation/DetailedRecipeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/presentation/HomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/presentation/HomeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/presentation/MealsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/presentation/MealsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/presentation/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/presentation/Messages.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Brad_\.android\avd\Nexus_7_API_23.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -39,7 +53,12 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Little Chef" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -95,7 +114,7 @@
       <recent name="comp3350.littlechef.presentation" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.IngredientTest">
+  <component name="RunManager" selected="Android App.app">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Little_Chef.app" />
       <option name="DEPLOY" value="true" />
