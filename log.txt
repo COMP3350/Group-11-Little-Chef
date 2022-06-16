@@ -1,4 +1,5 @@
 GROUP 11 LOG
+Last updated May 15, 2022.
 ---
 ---
 >>>MEETING NOTES
@@ -19,15 +20,26 @@ May 25, 2022
 - In attendence: Brad, Denys, Dylan, Kajal, Wen
 - What we did: planned out and assigned developer tasks for iteraiton 1.
 
-
 June 9, 2022
 - In attendence: Denys, Dylan, Kajal
 - What we did: Reviewed GUI code, split up and discussed dev tasks to do in the near future.
 
+May 14, 2022
+- In attendence: Brad, Denys, Dylan, Kajal, Wen
+- What we did: Update the tasks finished so far, clarify unfinished tasks and split them to team members set deadline for new tasks schedule date and time for next meeting.
+
+May 15, 2022
+- In attendence: Brad, Dylan, Kajal, Wen
+- What we did: merged files and resolved conflicts. 
+
+May 15, 2022
+- In attendence: Brad, Dylan, Denys, Kajal, Wen
+- What we did: finalized the final submission. 
+
 ---
 ---
 >>>DEV TASKS 
-(Title; Assigned To; [User Story Points]; [Due Date]; Iteration #) // if we number these then we can easily refer to them in our individual logs
+(Title; [Assigned To]; [User Story Points]; [Due Date]; Iteration #)
 - (0; A task; a person; 5h; May 23; 0)
 
 - (pick a topic; everyone; iteration 0) ✓
@@ -36,16 +48,27 @@ June 9, 2022
 - (create 5-10 iteration 1 stories; everyone; iteratoin 0)✓
 - (review iteration 1 stories; everyone; iteration 0)✓
 - (edit, format and compile everything into a submission; Kajal; iteration 0)✓
-- Review iteration 0 submission; everyone; iteration 0)✓
+- (review iteration 0 submission; everyone; iteration 0)✓
 - (make a log file; Kajal; iteration 1)✓
 - (create deadlines for iteration 1 dev tasks; everyone; iteration 1)
-- (Create a prototype for iteration 1; Kajal, Denys, Brad; iteration 1)✓
-- (Create the stub database; Wen, Denys; iteration 1)✓
+- (create a prototype for iteration 1; Kajal, Denys, Brad; iteration 1)✓
+- (create the stub database; Wen, Denys; iteration 1)✓
+- (create a template for the project that reflects our architecture; Denys; Iteration 1)✓
+- (create the xmls; Iteration 1)✓
 - (write (at least 3) tests for the database; Wen; iteration 1)
 - (make the recipe class (business object); Dylan, Denys, Kajal, Wen; iteration 1)✓
 - (create the ingredient class; Denys, Dylan; iteration 1)✓
 - (write (at least 3) tests for the recipe class; Dylan, iteratio 1)
 - (create the UI to show a list of recipes; Brad, Denys, iteration 1) ~✓
+- (create the bottom navigation menu and top menu/header; iteration 1)✓
+- (create the view recipes page; iteration 1)✓
+- (add recipes and meal plans fragments; iteration 1) ✓
+- (make the navigation bar functional; iteration 1) ✓
+- (create drop down menu for the serving size picker; iteration 1) ✓
+- (make the ingredients change when user changes serving size; iteration 1) ✓
+- (write logic to access recipes; iteration 1) ✓
+- (write logic to change ingredients amount based on serving size; iteration 1) ✓
+- (create the detailed recipe card; iteration 1) ✓
 - (write (at least 3) tests for the UI; Brad; iteration 1)
 - (review iteration 1 submission; everyone; iteration 1)
 
@@ -61,6 +84,8 @@ June 9, 2022
 - (more android studio bugs, not loading correctly; 1.5 hour)
 - (made some basic designs for the add recipe page; 30 mins)
 - (attempted to get the list view working for the recipes did not; 5 hours)
+
+
 ---
 ---
 >>>DENYS' ACTIVTY LOG
@@ -68,7 +93,7 @@ June 9, 2022
 
 - (edited the vision statement document; 30 mins)
 - (Downloaded, configured and learned how to use Android studio; 2 hrs)
-- (Went over sample project and sucessfully ran it on Android studio; Emulators are so slow :( ; 2 hrs )
+- (Went over sample project and sucessfully ran it on Android studio; Emulators are so slow :( ; 2 hrs)
 - (created a template for the project, copied the architecture from the sample project and uploaded everything to gitHub; 30 min)
 - (Created recipe class with all the getters, setters,instance variables, also created logic for rating; 1hr)
 - (more android studio fixing; 1 hr)
@@ -80,31 +105,30 @@ June 9, 2022
 functional by making it change the fragment on click (plus nice effects for on click); 5 hrs)
 - (Played a bit more with GUI, especially top/tool/action bar; 1 hr)
 - (Helped a team member to figure out how our GUI works in terms of code and what tools to use in Android Studio to make GUI; 30 mins)
-- (Created Services.java, 30 mins)
+- (Created Services.java; 30 mins)
 - (Created AccessRecipes.java and added recipeID instance variable to a Recipe class; 1 hr)
 - (Created recipe_card.xml; 1 hr)
 - (Finished version one of a ViewFragment, now it shows up all the recipes present in the stubDB in a nice list using recipe_card.xml; 4 hrs)
 - (Created Messages.java; 10 mins)
 - (Updated Recipe.java with new methods and made ViewFragment.java to show all the info about a recipe in the recipe_card.xml; 1hr)
-- (Created DetailedRecipeActivity.java and detailed_activity_xml and made listView items in ViewFragment be clickable and open detailed_activity_xml on click ; 3.5 hrs)
+- (Created DetailedRecipeActivity.java and detailed_activity_xml and made listView items in ViewFragment be clickable and open detailed_activity_xml on click; 3.5 hrs)
 - (added a few visual tweaks to detailed recipe activity and xml, created ingredient_card.xml, got rid of some dead code in ViewFragment.java and also minor tweaks in all xml files related to using sp instead of dp for textViews and other stuff ; 2 hrs)
-- (Made objects serializable to pass them down through activities, fixed necessity of having static fragments in HomeActivity ; 1 hr)
-- (created a dropdown button for serving size and connected it to the business layer ; 1 hr)
-- (with Kajal connected serving size button to the business layer ; 30 mins)
-- (Reviewed the code in branches, resolved the conflicts and merged ; 1 hr)
-- (Planned out final set of tasks for iteration 1 deadline ; 30 mins)
-
-
+- (Made objects serializable to pass them down through activities, fixed necessity of having static fragments in HomeActivity; 1 hr)
+- (created a dropdown button for serving size and connected it to the business layer; 1 hr)
+- (with Kajal connected serving size button to the business layer; 30 mins)
+- (Reviewed the code in branches, resolved the conflicts and merged; 1 hr)
+- (Planned out final set of tasks for iteration 1 deadline; 30 mins)
 
 ---
 ---
 >>>DYLAN'S ACTIVTY LOG
 - (activtiy Name; [comment]; amount spent on task)
 
-- (Setup Android Studio and played around with the sample project, 1 hr)
-- (Setup Github Desktop and repository, 15 min)
-- (Created Ingredient Class, 30 min)
-- (Updated Recipe class to use Ingredient object and played around with the sample project test code, 30 min)
+- (Setup Android Studio and played around with the sample project; 1 hr)
+- (Setup Github Desktop and repository; 15 min)
+- (Created Ingredient Class; 30 min)
+- (Updated Recipe class to use Ingredient object and played around with the sample project test code; 30 min)
+
 
 ---
 ---
@@ -117,18 +141,45 @@ functional by making it change the fragment on click (plus nice effects for on c
 - (compiled vision story and iteration 0 user stories; edited, formatted, and handed in iteration 0 submission; 2h)
 - (created log file and formatted it; 30m)
 - (downloaded and configured Android studio; 1h)
-- (created the prototype for iteration 1; 30m)
+- (created the prototype for the view recipes page; 30m)
 - (added all the devtasks and meeting notes to the log, 30m)
+- (Denys walked Dylan and I through the front end code, 1h)
+- (Denys, Dylan and I split up some tasks, 30m)
+- (created the options for prototype for the detailed recipe view; 1h30m)
+- (implemented the serving size calculator; 7h)
 - (with Denys connected serving size button to the business layer ; 30 mins)
 - (Reviewed the code in branches, resolved the conflicts and merged ; 1 hr)
-- (Planned out final set of tasks for iteration 1 deadline ; 30 mins)
+- (Planned out final set of tasks for iteration 1 deadline; 30 mins)
+- (Added recipes and ingredients to the stub database; 1 h)
+
 
 ---
 ---
-WEN'S ACTIVTY LOG
+>>>WEN'S ACTIVTY LOG
 - (activtiy Name; [comment]; time spent on task)
 
-- (Setup Android Studio, configuration, tried the sample code with tests, 2 hours)
-- (Setup Github desktop, tried pull, push and other functions, 1 hour)
-- (Create stub database and real datebase, learned how to setup hsqldb and jdbc, debug, 8 hours)
+- (Setup Android Studio, configuration, tried the sample code with tests; 2 hours)
+- (Setup Github desktop, tried pull, push and other functions; 1 hour)
+- (Create stub database and real datebase, learned how to setup hsqldb and jdbc; debug, 8 hours)
 
+
+---
+---
+>>>DESIGN DECISIONS AND RATIONALE 
+
+- Decision: The list view of recipe should be scrollable. 
+- Rationale: Compared to page view, you can see more recipes in a shorter amount of time when scrolling. 
+  This is because in page view you have to press the button a lot of times to get to the bottom of the list. 
+
+- Decision: We should be able to adjust the serving size with a drop down menu and serving size should be limited 1-7.
+- Rationale: We wanted to make sure invalid data is not added to the serving size field. This could create errrors in the 
+  processing code. Since our app is a weakly planner for a student, we are assuming that they will not need to make a meal 
+  more than 7 times in a week. At the max serving size (7) they can eat the meal once a day for the whole week. 
+
+- Decision: abbreviate the measurement units when showing the ingredients
+- Rationale: we did this because some of the measurement units (like millimeter) took up a lot of space and it didn't look nice.
+  Also, most people are used to seeing the abbreviated version (tsp, tbsp, cm, m).
+
+---
+---
+>>> END OF LOG
