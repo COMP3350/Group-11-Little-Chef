@@ -24,15 +24,15 @@ June 9, 2022
 - In attendence: Denys, Dylan, Kajal
 - What we did: Reviewed GUI code, split up and discussed dev tasks to do in the near future.
 
-May 14, 2022
+June 14, 2022
 - In attendence: Brad, Denys, Dylan, Kajal, Wen
 - What we did: Update the tasks finished so far, clarify unfinished tasks and split them to team members set deadline for new tasks schedule date and time for next meeting.
 
-May 15, 2022
+June 15, 2022
 - In attendence: Brad, Dylan, Kajal, Wen
 - What we did: merged files and resolved conflicts. 
 
-May 15, 2022
+June 16, 2022
 - In attendence: Brad, Dylan, Denys, Kajal, Wen
 - What we did: finalized the final submission. 
 

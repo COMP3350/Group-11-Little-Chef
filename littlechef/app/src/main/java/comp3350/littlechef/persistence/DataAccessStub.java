@@ -171,49 +171,4 @@ public class DataAccessStub
         recipeResult.addAll(recipes);
         return null;
     }
-
-    public ArrayList<Recipe> getRecipeRandom(Recipe currentRecipe)
-    {
-        ArrayList<Recipe> newRecipes;
-        int index;
-
-        newRecipes = new ArrayList<Recipe>();
-        index = recipes.indexOf(currentRecipe);
-        if (index >= 0)
-        {
-            newRecipes.add(recipes.get(index));
-        }
-        return newRecipes;
-    }
-
-    public String insertRecipe(Recipe currentRecipe)
-    {
-        // don't bother checking for duplicates
-        recipes.add(currentRecipe);
-        return null;
-    }
-
-    public String updateRecipe(Recipe currentRecipe)
-    {
-        int index;
-
-        index = recipes.indexOf(currentRecipe);
-        if (index >= 0)
-        {
-            recipes.set(index, currentRecipe);
-        }
-        return null;
-    }
-
-    public String deleteRecipe(Recipe currentRecipe)
-    {
-        int index;
-
-        index = recipes.indexOf(currentRecipe);
-        if (index >= 0)
-        {
-            recipes.remove(index);
-        }
-        return null;
-    }
 }
