@@ -6,7 +6,7 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 
-public class FractionDecimalConversionTests extends TestCase
+public class FractionDecimalConversionTest extends TestCase
 {
 
     @Test
