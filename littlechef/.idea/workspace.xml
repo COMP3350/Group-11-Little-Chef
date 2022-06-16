@@ -18,8 +18,12 @@
   <component name="ChangeListManager">
     <list default="true" id="cec11bb1-d5fe-4b26-85ff-50353578aa16" name="Changes" comment="just made the basic home screen GUI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/objects/IngredientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/objects/IngredientTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/objects/RecipeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/comp3350/littlechef/objects/RecipeTest.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/persistence/DataAccessStub.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/persistence/DataAccessStub.java" afterDir="false" />
+>>>>>>> b1e8984719b8e28675c5ec1bc0bcf1948e6f646a
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +99,11 @@
       <recent name="comp3350.littlechef.presentation" />
     </key>
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="Gradle.IngredientTest.testsetUnitInformation">
+=======
+  <component name="RunManager" selected="Android App.app">
+>>>>>>> b1e8984719b8e28675c5ec1bc0bcf1948e6f646a
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Little_Chef.app" />
       <option name="DEPLOY" value="true" />
