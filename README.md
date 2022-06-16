@@ -38,7 +38,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 -	Dylan’s activity log
 -	Kajal’s activity log
 -	Wen’s activity log
--	Design Designs and Rationale
+-	Design Decisions and Rationale
 
 ### Overview of the features
 
