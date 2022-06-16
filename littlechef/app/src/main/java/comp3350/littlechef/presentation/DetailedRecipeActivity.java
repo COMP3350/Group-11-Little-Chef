@@ -41,7 +41,6 @@ public class DetailedRecipeActivity extends AppCompatActivity
         setContentView(R.layout.detailed_recipe_activity);
 
 
-        Toast.makeText(DetailedRecipeActivity.this, "Click on any ingredient to read the recipe!",Toast.LENGTH_SHORT).show(); //pop-up hint message for the user
         final ListView listView = (ListView) findViewById(R.id.ingredients_list);
 
         //setting up drop down menu for choosing serving

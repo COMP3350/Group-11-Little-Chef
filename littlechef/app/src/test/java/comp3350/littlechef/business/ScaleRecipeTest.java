@@ -353,7 +353,7 @@ public class ScaleRecipeTest extends TestCase
             recipe.addIngredient(new Ingredient(null, null, 0));
             ArrayList<Ingredient> ingredients = scaleIngredients(recipe, 2);
         }
-        
+
         catch (NullPointerException unused)
         {
 
