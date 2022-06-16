@@ -21,6 +21,13 @@ import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
 import comp3350.littlechef.business.ScaleRecipe;
 
+// CLASS: DetailedRecipeActivity.java
+//
+//
+// REMARKS: This class creates the view for the ingredients list for a recipe.
+//
+//-----------------------------------------
+
 public class DetailedRecipeActivity extends AppCompatActivity
 {
     private Recipe selectedRecipe;
@@ -34,7 +41,6 @@ public class DetailedRecipeActivity extends AppCompatActivity
         setContentView(R.layout.detailed_recipe_activity);
 
 
-        Toast.makeText(DetailedRecipeActivity.this, "Click on any ingredient to read the recipe!",Toast.LENGTH_SHORT).show(); //pop-up hint message for the user
         final ListView listView = (ListView) findViewById(R.id.ingredients_list);
 
         //setting up drop down menu for choosing serving
@@ -94,15 +100,6 @@ public class DetailedRecipeActivity extends AppCompatActivity
             }
         });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
-
-            }
-
-        });
         setValues();
     }
 
@@ -110,7 +107,7 @@ public class DetailedRecipeActivity extends AppCompatActivity
     //to set values in the detailed_recipe_view
     private void setValues()
     {
-        String ratingString = "Rating: " + selectedRecipe.getRatingString();
+        String ratingString = "Rating: 5/5";
 
         //Fills values for header
         TextView recipeName = (TextView) findViewById(R.id.recipeName);

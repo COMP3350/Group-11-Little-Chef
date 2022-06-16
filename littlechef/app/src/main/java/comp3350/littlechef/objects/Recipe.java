@@ -2,31 +2,33 @@ package comp3350.littlechef.objects;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
+// CLASS: Recipe.java
+//
+//
+// REMARKS: This class is to create a recipe with a list of ingredients and steps to make it.
+//
+//-----------------------------------------
 public class Recipe implements Serializable
 {
     private static int nextID = 0;
 
     //instance vars
     private String name;
-    //TODO should maybe make a timer instance variable for the time
     private int recipeID;
     private ArrayList<Ingredient> ingredients;
     private ArrayList<String> steps; //steps(instructions) to make the recipe
 
     //rating criteria
-    private int timeToMakeHrs; //could later make a timer to calculate the average time to make for the user(in hrs)
+    private int timeToMakeHrs;
     private int timeToMakeMins;
-    private Difficulty difficulty; //could make it a user-defined string?
-    private Quality quality; //same as for difficulty?
+    private Difficulty difficulty;
+    private Quality quality; //same as for difficulty
     private ArrayList<Float> rating; //calculate the average similar to gpa calculation, from 0 to 5(can make "animated 5 stars that fill up the color later")
-    //or could make it overall rating based on the rating the user gives and/or calculated from enum values
 
     //constructors
     public Recipe(int recipeID) //is used for accessRandom in the AccessRecipes.java
     {
         this.recipeID = recipeID;
-
         this.name = "null";
         this.timeToMakeHrs = 0;
         this.timeToMakeMins = 0;
@@ -44,6 +46,8 @@ public class Recipe implements Serializable
         this.recipeID = nextID++;
         this.timeToMakeHrs = timeToMakeHrs;
         this.timeToMakeMins = timeToMakeMins;
+        setTimeToMakeHrs(timeToMakeHrs);
+        setTimeToMakeMins(timeToMakeMins);
         ingredients = new ArrayList<Ingredient>();
         steps = new ArrayList<String>();
 
@@ -95,8 +99,15 @@ public class Recipe implements Serializable
 
     public String getTimeToMakeString()
     {
-        int hours = getTimeToMakeHrs();
-        int mins  = getTimeToMakeMins();
+        //int hours = getTimeToMakeHrs();
+        int hours = timeToMakeHrs;
+        int mins = timeToMakeMins;
+        //setTimeToMakeHrs(hours);
+        //hours = getTimeToMakeHrs();
+        //int mins  = getTimeToMakeMins();
+        //setTimeToMakeMins(mins);
+        //mins = getTimeToMakeMins();
+
 
         String minsString = mins + "";
         if(minsString.length() == 1)
@@ -109,12 +120,20 @@ public class Recipe implements Serializable
 
     public void setTimeToMakeHrs(int hours)
     {
-        timeToMakeHrs = hours;
+      timeToMakeHrs = Math.abs(hours);
+
+        //setTimeToMakeHrs(timeToMakeHrs);
+        //setTimeToMakeMins(timeToMakeMins);
     }
 
     public void setTimeToMakeMins(int mins)
     {
-        timeToMakeMins = mins;
+        timeToMakeMins = Math.abs(mins);
+        if(timeToMakeMins % 60 != 0) {
+            timeToMakeHrs +=(int)Math.floor(timeToMakeMins/ 60);;
+        }
+        timeToMakeMins = Math.abs(timeToMakeMins)%60;
+        //timeToMakeMins = Math.abs(mins)%60;
     }
 
     public Difficulty getDifficulty()

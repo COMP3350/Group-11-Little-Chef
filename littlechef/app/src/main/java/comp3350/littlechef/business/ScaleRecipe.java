@@ -1,14 +1,18 @@
 package comp3350.littlechef.business;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 import java.lang.Math;
-
 import comp3350.littlechef.objects.Recipe;
 import comp3350.littlechef.objects.Ingredient;
 
-public class ScaleRecipe {
+// CLASS: ScaleRecipe.java
+//
+//
+// REMARKS: This class will scale the recipes ingredients based on serving size input.
+//
+//-----------------------------------------
+public class ScaleRecipe
+{
     private static ArrayList<Ingredient> convertedIngredients;
 
     final static double PINCH_IN_TSP = 16;
@@ -19,8 +23,6 @@ public class ScaleRecipe {
     final static double MM_IN_CM = 10;
     final static double CM_IN_M = 100;
     final static double ML_IN_L = 1000;
-
-
 
     public static ArrayList<Ingredient> scaleIngredients(Recipe recipe, int servings)
     {
@@ -44,14 +46,17 @@ public class ScaleRecipe {
         return convertedIngredients;
     }
 
-    private static void adjustUnits(Ingredient ingredient){
+    //this function will adjust the units based on what serving metric is used, calling the appropriate function.
+    private static void adjustUnits(Ingredient ingredient)
+    {
         String unitType;
         double adjustedAmount = ingredient.getAmount();
         unitType = ingredient.getUnitType();
 
 
             System.out.println("<"+ingredient.getName()+"> "+unitType.toLowerCase());
-            switch(unitType.toLowerCase()){
+            switch(unitType.toLowerCase())
+            {
                 case "volume":
                     adjustedAmount =  adjustVolume(ingredient);
                     break;
@@ -71,7 +76,8 @@ public class ScaleRecipe {
     }
 
 
-    private static double adjustVolume(Ingredient ingredient){
+    private static double adjustVolume(Ingredient ingredient)
+    {
 
         double tempAmount = ingredient.getAmount();
 
@@ -102,7 +108,8 @@ public class ScaleRecipe {
         return tempAmount;
     }
 
-    private static double adjustWeight(Ingredient ingredient){
+    private static double adjustWeight(Ingredient ingredient)
+    {
         double tempAmount = ingredient.getAmount();
 
         if(ingredient.getMeasurement().equalsIgnoreCase("MG") && tempAmount >= WEIGHT_FACTOR)
@@ -120,7 +127,8 @@ public class ScaleRecipe {
         return tempAmount;
     }
 
-    private static double adjustSize(Ingredient ingredient){
+    private static double adjustSize(Ingredient ingredient)
+    {
         double tempAmount = ingredient.getAmount();
 
         if(ingredient.getMeasurement().equalsIgnoreCase("MM") && tempAmount >= MM_IN_CM)
@@ -129,9 +137,9 @@ public class ScaleRecipe {
             tempAmount /= MM_IN_CM;
         }
 
-        if(ingredient.getMeasurement().equalsIgnoreCase("G") && tempAmount >= CM_IN_M)
+        if(ingredient.getMeasurement().equalsIgnoreCase("CM") && tempAmount >= CM_IN_M)
         {
-            ingredient.setMeasurement("kg");
+            ingredient.setMeasurement("M");
             tempAmount /= CM_IN_M;
 
         }

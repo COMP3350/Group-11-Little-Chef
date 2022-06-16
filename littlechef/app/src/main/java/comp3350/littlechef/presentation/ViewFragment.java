@@ -26,7 +26,7 @@ import comp3350.littlechef.objects.Recipe;
 
 public class ViewFragment extends Fragment
 {
-
+    private final String FAKE_RATING = "5/5";
     private AccessRecipes accessRecipes;
     private ArrayList<Recipe> recipeList;
     private ArrayAdapter<Recipe> recipeArrayAdapter;
@@ -87,7 +87,7 @@ public class ViewFragment extends Fragment
                     estimatedTime.setText(recipe.getTimeToMakeString());
                     difficulty.setText(recipe.getDifficultyString());
                     taste.setText(recipe.getQualityString());
-                    rating.setText(recipe.getRatingString());
+                    rating.setText(FAKE_RATING);
 
                     return convertView;
                 }

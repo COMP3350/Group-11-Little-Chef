@@ -7,11 +7,15 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.app.Fragment;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+// CLASS: HomeActivity.java
+//
+//
+// REMARKS: This class creates the home screen.
+//
+//-----------------------------------------
 
 public class HomeActivity extends AppCompatActivity
 {
@@ -22,7 +26,8 @@ public class HomeActivity extends AppCompatActivity
     private MealsFragment mealsFragment;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
 
         Main.startUp();
@@ -68,7 +73,8 @@ public class HomeActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onDestroy()
+    {
         super.onDestroy();
 
         Main.shutDown();
