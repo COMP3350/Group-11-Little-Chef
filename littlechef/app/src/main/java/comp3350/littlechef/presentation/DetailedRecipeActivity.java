@@ -13,7 +13,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import comp3350.littlechef.R;
@@ -77,6 +76,16 @@ public class DetailedRecipeActivity extends AppCompatActivity
 
 
         listView.setAdapter(ingredientsArrayAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                Intent readInstuction= new Intent(DetailedRecipeActivity.this, RecipeInstructionActivity.class);
+                readInstuction.putExtra("id", selectedRecipe); //pass the object reference to another activity
+                startActivity(readInstuction);
+            }
+        });
 
         servingNum.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {

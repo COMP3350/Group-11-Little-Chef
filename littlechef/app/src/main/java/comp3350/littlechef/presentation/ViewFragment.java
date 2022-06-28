@@ -111,9 +111,4 @@ public class ViewFragment extends Fragment
 
         return view;
     }
-
-    public ArrayList<Recipe> getRecipeList()
-    {
-        return recipeList;
-    }
 }

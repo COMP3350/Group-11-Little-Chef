@@ -16,7 +16,7 @@ public class Recipe implements Serializable
     private String name;
     private int recipeID;
     private ArrayList<Ingredient> ingredients;
-    private ArrayList<String> steps; //steps(instructions) to make the recipe
+    private ArrayList<String[]> instructions; //steps(instructions) to make the recipe
 
     //rating criteria
     private int timeToMakeHrs;
@@ -26,14 +26,14 @@ public class Recipe implements Serializable
     private ArrayList<Float> rating; //calculate the average similar to gpa calculation, from 0 to 5(can make "animated 5 stars that fill up the color later")
 
     //constructors
-    public Recipe(int recipeID) //is used for accessRandom in the AccessRecipes.java
+    public Recipe(int recipeID)
     {
         this.recipeID = recipeID;
         this.name = "null";
         this.timeToMakeHrs = 0;
         this.timeToMakeMins = 0;
         ingredients = new ArrayList<Ingredient>();
-        steps = new ArrayList<String>();
+        instructions = new ArrayList<String[]>();
 
         difficulty = Difficulty.NOT_RATED;
         quality = Quality.NOT_RATED;
@@ -49,7 +49,7 @@ public class Recipe implements Serializable
         setTimeToMakeHrs(timeToMakeHrs);
         setTimeToMakeMins(timeToMakeMins);
         ingredients = new ArrayList<Ingredient>();
-        steps = new ArrayList<String>();
+        instructions = new ArrayList<String[]>();
 
         difficulty = Difficulty.NOT_RATED;
         quality = Quality.NOT_RATED;
@@ -77,14 +77,14 @@ public class Recipe implements Serializable
         ingredients.add(ingr);
     }
 
-    public ArrayList<String> getSteps()
+    public ArrayList<String[]> getInstructions()
     {
-        return steps;
+        return instructions;
     }
 
-    public void addStep(String step)
+    public void addInsturctions(String instruction, String subInstruction)
     {
-        steps.add(step);
+        instructions.add(new String[]{instruction, subInstruction});
     }
 
     public int getTimeToMakeHrs()
@@ -99,15 +99,8 @@ public class Recipe implements Serializable
 
     public String getTimeToMakeString()
     {
-        //int hours = getTimeToMakeHrs();
         int hours = timeToMakeHrs;
         int mins = timeToMakeMins;
-        //setTimeToMakeHrs(hours);
-        //hours = getTimeToMakeHrs();
-        //int mins  = getTimeToMakeMins();
-        //setTimeToMakeMins(mins);
-        //mins = getTimeToMakeMins();
-
 
         String minsString = mins + "";
         if(minsString.length() == 1)
@@ -121,9 +114,6 @@ public class Recipe implements Serializable
     public void setTimeToMakeHrs(int hours)
     {
       timeToMakeHrs = Math.abs(hours);
-
-        //setTimeToMakeHrs(timeToMakeHrs);
-        //setTimeToMakeMins(timeToMakeMins);
     }
 
     public void setTimeToMakeMins(int mins)
@@ -133,7 +123,6 @@ public class Recipe implements Serializable
             timeToMakeHrs +=(int)Math.floor(timeToMakeMins/ 60);;
         }
         timeToMakeMins = Math.abs(timeToMakeMins)%60;
-        //timeToMakeMins = Math.abs(mins)%60;
     }
 
     public Difficulty getDifficulty()
