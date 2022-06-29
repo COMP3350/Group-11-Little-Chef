@@ -11,7 +11,7 @@
     <string name="warning">Warning</string>
     <string name="fatalError">Fatal error</string>
     <string name="detailed_view">View Recipe</string>
-    <string name="ingredients">Ingredients</string>
+    <string name="ingredients"><b>Ingredients</b></string>
     <string name="ingredient">Ingredient</string>
     <string name="measurement">Measurement</string>
     <string name="serving">serving</string>

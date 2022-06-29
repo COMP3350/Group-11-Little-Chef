@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height = "match_parent"
     android:orientation="horizontal"
-    android:background="@color/recipe_card_background">
+    android:background="@color/white">
 
     <RelativeLayout
+        android:id="@+id/recipe_card_layout"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="170dp"
         android:background="@color/header_footer_background">
 
         <TextView
@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:text="@string/recipe_card_name_placeholder"
             android:textColor="@color/black"
             android:textSize="25sp" />
@@ -25,8 +25,8 @@
             android:id="@+id/estimatedTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/recipeName"
             android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
             android:text="@string/time"
             android:textColor="@color/black"
@@ -36,8 +36,8 @@
             android:id="@+id/difficulty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/estimatedTime"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="130dp"
             android:text="@string/difficulty"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -46,8 +46,8 @@
             android:id="@+id/taste"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/difficulty"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="160dp"
             android:text="@string/taste"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -56,8 +56,8 @@
             android:id="@+id/rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/taste"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="190dp"
             android:text="@string/rating"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -69,7 +69,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="245dp"
+        android:layout_below="@id/recipe_card_layout"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="70dp"
         android:gravity="start"
         android:includeFontPadding="false"
@@ -81,27 +82,37 @@
     <ListView
         android:id="@+id/ingredients_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="280dp"
-        android:divider="@null">
-
-    </ListView>
+        android:layout_height="520dp"
+        android:layout_below="@id/recipe_card_layout"
+        android:layout_marginTop="70dp"
+        android:background="@color/white"
+        android:divider="@null" />
 
     <Spinner
         android:id="@+id/servingNum"
         android:layout_width="130dp"
         android:layout_height="35dp"
+        android:layout_below="@id/recipe_card_layout"
         android:layout_alignEnd="@+id/text_ingredients"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="242dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="40dp"
 
         android:background="@color/header_footer_background"
         android:gravity="center"
-        android:theme="@style/spinnerTheme"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        android:theme="@style/spinnerTheme" />
+
+    <Button
+        android:id="@+id/start_cooking"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_below="@+id/ingredients_list"
+        android:layout_centerHorizontal="true"
+        android:text="@string/start_cooking"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+
 
 
 </RelativeLayout>
