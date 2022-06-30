@@ -15,4 +15,6 @@
     <color name="recipe_card_background">#e5e9f2</color>
     <color name="recipe_name_text">#636e7e</color>
     <color name="recipe_info_text">#a3afc0</color>
+    <color name="red">#FF0000</color>
+    <color name="dark_green">#005a00</color>
 </resources>
