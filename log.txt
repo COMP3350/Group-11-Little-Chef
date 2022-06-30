@@ -124,6 +124,11 @@ functional by making it change the fragment on click (plus nice effects for on c
 - (Planned out final set of tasks for iteration 1 deadline; 30 mins)
 - (Created architecture picture and wrote readme.txt, 1 hr)
 
+|Iteration 2|
+- (Created recipe instructions activity and started on creating the layout for it, 1 hr)
+- (Added reading instructions feature for recipe, when any of the ingredients is clicked, changed how instructions are stored in a recipe class, 2 hrs)
+- (GUI tweaks to detailed_recipe_activity.xml and recipe_instruction_activity, and also changed GUI layout of both xml files based on teams feedback, 2 hrs)
+
 ---
 ---
 >>>DYLAN'S ACTIVTY LOG

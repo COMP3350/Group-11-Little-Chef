@@ -8,12 +8,12 @@ import android.text.style.StyleSpan;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import comp3350.littlechef.R;
@@ -33,12 +33,13 @@ public class DetailedRecipeActivity extends AppCompatActivity
     private Recipe selectedRecipe;
     private ArrayAdapter<Ingredient> ingredientsArrayAdapter;
     private Spinner servingNum;
+    private Button startCookingButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detailed_recipe_activity);
+        setContentView(R.layout.activity_detailed_recipe);
 
 
         final ListView listView = (ListView) findViewById(R.id.ingredients_list);
@@ -77,6 +78,18 @@ public class DetailedRecipeActivity extends AppCompatActivity
 
 
         listView.setAdapter(ingredientsArrayAdapter);
+
+        startCookingButton = (Button) findViewById(R.id.start_cooking);
+        startCookingButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent readInstuction= new Intent(DetailedRecipeActivity.this, RecipeInstructionActivity.class);
+                readInstuction.putExtra("id", selectedRecipe); //pass the object reference to another activity
+                startActivity(readInstuction);
+            }
+        });
 
         servingNum.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {

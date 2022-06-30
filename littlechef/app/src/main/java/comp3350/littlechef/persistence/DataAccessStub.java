@@ -41,6 +41,8 @@ public class DataAccessStub
         Recipe recipe;
 
         recipes = new ArrayList<Recipe>();
+        String instruction;
+        String subInstruction;
 
         recipe = new Recipe("Guacamole", 0, 30);
         recipe.addIngredient(new Ingredient("Ripe avocados", quantity, 2));
@@ -51,6 +53,24 @@ public class DataAccessStub
         recipe.addIngredient(new Ingredient("Cilantro", tablespoon, 2));
         recipe.addIngredient(new Ingredient("Black Pepper", pinch, 1));
         recipe.addIngredient(new Ingredient("Ripe Tomato", quantity, 0.5));
+
+        //adding instructions
+        instruction = "Place eggs in a saucepan or pot and cover with cold water.";
+        subInstruction = "Eggs first, then water. Why? Because if you put the eggs in afterward, they might crack as they fall to the bottom of the pan. It's no fun to learn this the hard way.";
+        recipe.addInsturctions(instruction,subInstruction);
+
+        instruction = "Put pan over high heat and bring water to a rolling boil. Remove pan from heat and cover.";
+        subInstruction = "How long does it take to boil an egg? Well, actually, you want the water to come just to a boil but not stay there. " +
+                "Eggs exposed to high heat for a long time go through a chemical reaction that turns the yolks green. So the answer to \"How long do you boil hard boiled eggs?\" is: " +
+                "pretty much not at all. Because the eggs cook in water that's not actually boiling, some people use the term \"hard-cooked\" instead of \"hard-boiled\" eggs.";
+        recipe.addInsturctions(instruction, subInstruction);
+
+        instruction = "Drain eggs immediately and put in a bowl filled with water and ice cubes.";
+        subInstruction = "Why ice water? It cools the eggs down and prevents the green yolk problem. " +
+                "(Chilled water isn't cold enough - you want cold water with lots of ice cubes floating in it.) " +
+                "If you're planning to peel the eggs, crack them slightly before putting them in the ice water and let them sit for an hour for maximum ease of peeling.";
+        recipe.addInsturctions(instruction, subInstruction);
+
         recipes.add(recipe);
 
         recipe = new Recipe("Pancakes", 0, 30);

@@ -11,10 +11,15 @@
     <string name="warning">Warning</string>
     <string name="fatalError">Fatal error</string>
     <string name="detailed_view">View Recipe</string>
-    <string name="ingredients">Ingredients</string>
+    <string name="ingredients"><b>Ingredients</b></string>
     <string name="ingredient">Ingredient</string>
     <string name="measurement">Measurement</string>
     <string name="serving">serving</string>
+    <string name="instructions"><b>Instructions</b></string>
+    <string name="start_cooking">Start Cooking</string>
+    <string name="stop_cooking">Stop Cooking</string>
+    <string name="sub_instruction">Sub-Instruction</string>
+    <string name="number"><b>1.</b></string>
     <string-array name="serving_sizes">
         <item>1 serving</item>
         <item>2 servings</item>

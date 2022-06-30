@@ -21,5 +21,13 @@
         <item name="android:textColor">@color/font_header</item>
     </style>
 
+    <style name="buttonWhiteTheme" parent="Base.Widget.AppCompat.Button.Colored">
+        <item name="colorPrimary">@color/white</item>
+    </style>
+
+    <style name="buttonGreenTheme" parent="Base.Widget.AppCompat.Button.Colored">
+        <item name="colorPrimary">@color/header_footer_background</item>
+    </style>
+
 
 </resources>

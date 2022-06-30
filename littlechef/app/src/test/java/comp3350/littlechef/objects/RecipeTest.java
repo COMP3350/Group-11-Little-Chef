@@ -166,7 +166,7 @@ public class RecipeTest extends TestCase
     }//testRecipeAddIngredients
 
     @Test
-    public void testRecipeGetStep()
+    public void testRecipeGetStep() //TODO CHANGE -> RECIPE HAS String[] FOR INSTRUCTIONS
     {
         Recipe step1 = new Recipe("abcde", 1,2);
 
@@ -189,7 +189,7 @@ public class RecipeTest extends TestCase
     }//end testRecipeGetStep
 
     @Test
-    public void testRecipeAddStep()
+    public void testRecipeAddStep() //TODO CHANGE -> RECIPE HAS String[] FOR INSTRUCTIONS
     {
         Recipe step1 = new Recipe("abcde", 1,2);
 
