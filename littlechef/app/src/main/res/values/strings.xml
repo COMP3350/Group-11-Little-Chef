@@ -17,6 +17,7 @@
     <string name="serving">serving</string>
     <string name="instructions"><b>Instructions</b></string>
     <string name="start_cooking">Start Cooking</string>
+    <string name="stop_cooking">Stop Cooking</string>
     <string name="sub_instruction">Sub-Instruction</string>
     <string name="number"><b>1.</b></string>
     <string-array name="serving_sizes">

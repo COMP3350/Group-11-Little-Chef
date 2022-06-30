@@ -39,7 +39,7 @@ public class DetailedRecipeActivity extends AppCompatActivity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detailed_recipe_activity);
+        setContentView(R.layout.activity_detailed_recipe);
 
 
         final ListView listView = (ListView) findViewById(R.id.ingredients_list);

@@ -82,7 +82,7 @@
     <ListView
         android:id="@+id/ingredients_list"
         android:layout_width="match_parent"
-        android:layout_height="520dp"
+        android:layout_height="510dp"
         android:layout_below="@id/recipe_card_layout"
         android:layout_marginTop="70dp"
         android:background="@color/white"
@@ -105,11 +105,14 @@
 
     <Button
         android:id="@+id/start_cooking"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/ingredients_list"
         android:layout_centerHorizontal="true"
         android:text="@string/start_cooking"
+        android:background="@drawable/round_button"
+        android:theme="@style/buttonGreenTheme"
         android:textColor="@color/black"
         android:textSize="25sp" />
 

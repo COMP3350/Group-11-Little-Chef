@@ -17,15 +17,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a49a6fed-46ae-434e-bbd2-efc543ed15ac" name="Changes" comment="just made the basic home screen GUI">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/round_button.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/presentation/DetailedRecipeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/littlechef/presentation/DetailedRecipeActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_recipe_instruction.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_recipe_instruction.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/detailed_recipe_activity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/detailed_recipe_activity.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ingredient_card.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ingredient_card.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/instruction_card.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/instruction_card.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/detailed_recipe_activity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_detailed_recipe.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,9 +61,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="valueResourceFile" />
-        <option value="resourceFile" />
         <option value="Class" />
         <option value="layoutResourceFile" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
