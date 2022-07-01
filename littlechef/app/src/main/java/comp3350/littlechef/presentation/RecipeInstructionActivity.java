@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import comp3350.littlechef.R;
+import comp3350.littlechef.business.TimeRecipe;
 import comp3350.littlechef.objects.Recipe;
 
 import android.content.DialogInterface;
@@ -135,7 +136,7 @@ public class RecipeInstructionActivity extends AppCompatActivity
                     time = 0;
                     timerStarted = false;
                     finishButton.setEnabled(false); //user has pressed reset, cannot finish until started and stopped cooking
-                    timerText.setText(formatTime(0,0,0));
+                    timerText.setText(TimeRecipe.formatTime(0,0,0));
                     changeStartButton(R.string.start, R.color.dark_green);
                 }
             }
@@ -172,7 +173,7 @@ public class RecipeInstructionActivity extends AppCompatActivity
                     public void run()
                     {
                         time++;
-                        timerText.setText(getTimerText());
+                        timerText.setText(TimeRecipe.totSecondsIntoTimer(time));
                     }
                 });
             }
@@ -181,20 +182,6 @@ public class RecipeInstructionActivity extends AppCompatActivity
         timer.scheduleAtFixedRate(timerTask, 0 , 1000);
     }
 
-    private String getTimerText()
-    {
-        //getting the seconds, minutes and hours from total seconds
-        int seconds = ((time % 86400) % 3600) % 60;
-        int minutes = ((time % 86400) % 3600) / 60;
-        int hours = ((time % 86400) / 3600);
-
-        return formatTime(seconds, minutes, hours);
-    }
-
-    private String formatTime(int seconds, int minutes, int hours)
-    {
-        return String.format(Locale.CANADA,"%02d",hours) + ":" + String.format(Locale.CANADA,"%02d",minutes) + ":" + String.format(Locale.CANADA,"%02d",seconds);
-    }
 
     private void changeStartButton(int textOnButton, int color)
     {
