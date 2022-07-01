@@ -42,6 +42,8 @@ public class HomeActivity extends AppCompatActivity
         mealsFragment = new MealsFragment();
         replaceFragment(viewFragment); //set view fragment on start
 
+        bottomNavigationView.getMenu().findItem(R.id.meals).setEnabled(false); //set meal plans button in the menu to inactive until implementation
+
         //set up bottom navigation listener
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener()
         {
