@@ -19,8 +19,7 @@ public class Recipe implements Serializable
     private ArrayList<String[]> instructions; //steps(instructions) to make the recipe
 
     //rating criteria
-    private int timeToMakeHrs;
-    private int timeToMakeMins;
+    private ArrayList<Integer> cookingTimes; //for each time that this recipe was cooked, contains the total seconds of cooking time
     private Difficulty difficulty;
     private Quality quality; //same as for difficulty
     private ArrayList<Float> rating; //calculate the average similar to gpa calculation, from 0 to 5(can make "animated 5 stars that fill up the color later")
@@ -30,8 +29,7 @@ public class Recipe implements Serializable
     {
         this.recipeID = recipeID;
         this.name = "null";
-        this.timeToMakeHrs = 0;
-        this.timeToMakeMins = 0;
+        this.cookingTimes = new ArrayList<Integer>();
         ingredients = new ArrayList<Ingredient>();
         instructions = new ArrayList<String[]>();
 
@@ -44,10 +42,8 @@ public class Recipe implements Serializable
     {
         this.name = name;
         this.recipeID = nextID++;
-        this.timeToMakeHrs = timeToMakeHrs;
-        this.timeToMakeMins = timeToMakeMins;
-        setTimeToMakeHrs(timeToMakeHrs);
-        setTimeToMakeMins(timeToMakeMins);
+        this.cookingTimes = new ArrayList<Integer>();
+        this.cookingTimes = new ArrayList<Integer>();
         ingredients = new ArrayList<Ingredient>();
         instructions = new ArrayList<String[]>();
 
@@ -82,47 +78,35 @@ public class Recipe implements Serializable
         return instructions;
     }
 
-    public void addInsturctions(String instruction, String subInstruction)
+    public void addInstructions(String instruction, String subInstruction)
     {
         instructions.add(new String[]{instruction, subInstruction});
     }
 
-    public int getTimeToMakeHrs()
+    public ArrayList<Integer> getCookingTimes()
     {
-        return timeToMakeHrs;
+        return cookingTimes;
     }
 
-    public int getTimeToMakeMins()
+    public String getAverageCookingTime()
     {
-        return timeToMakeMins;
-    }
-
-    public String getTimeToMakeString()
-    {
-        int hours = timeToMakeHrs;
-        int mins = timeToMakeMins;
-
-        String minsString = mins + "";
-        if(minsString.length() == 1)
+        String result = "";
+        if(cookingTimes.size() == 0)
         {
-            minsString = "0"+minsString; //make minutes in the format (xx) in case it took a single digit number of mins
+            result = "Time: Not cooked";
         }
 
-        return hours + "h " + minsString + "m";
-    }
-
-    public void setTimeToMakeHrs(int hours)
-    {
-      timeToMakeHrs = Math.abs(hours);
-    }
-
-    public void setTimeToMakeMins(int mins)
-    {
-        timeToMakeMins = Math.abs(mins);
-        if(timeToMakeMins % 60 != 0) {
-            timeToMakeHrs +=(int)Math.floor(timeToMakeMins/ 60);;
+        else
+        {
+            //TODO use TimeRecipe
         }
-        timeToMakeMins = Math.abs(timeToMakeMins)%60;
+
+        return result;
+    }
+
+    public void addCookingTime(int totalSeconds)
+    {
+        cookingTimes.add(totalSeconds);
     }
 
     public Difficulty getDifficulty()

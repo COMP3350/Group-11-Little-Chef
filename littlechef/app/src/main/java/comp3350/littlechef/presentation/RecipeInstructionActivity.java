@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import comp3350.littlechef.R;
+import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.business.TimeRecipe;
 import comp3350.littlechef.objects.Recipe;
 
@@ -22,12 +23,15 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.Locale;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class RecipeInstructionActivity extends AppCompatActivity
 {
+    private AccessRecipes accessRecipes;
+    private ArrayList<Recipe> recipeList;
+
     private Recipe selectedRecipe;
     private TextView timerText;
     private Button stopStartButton;
@@ -43,6 +47,9 @@ public class RecipeInstructionActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_instruction);
+
+        accessRecipes = new AccessRecipes();
+        recipeList = new ArrayList<Recipe>();
 
         //getting timer variables up
         timerText  = (TextView) findViewById(R.id.timer_text);
@@ -156,8 +163,26 @@ public class RecipeInstructionActivity extends AppCompatActivity
 
     public void finishClicked(View view)
     {
-
+        String result;
+        selectedRecipe.addCookingTime(time);
+        result = accessRecipes.updateRecipe(selectedRecipe);
+        if (result == null)
+        {
+            accessRecipes.getRecipes(recipeList); //TODO FINISH USING TIME RECIPE
+            //courseArrayAdapter.notifyDataSetChanged();
+            int pos = recipeList.indexOf(selectedRecipe);
+            if (pos >= 0)
+            {
+                ListView listView = (ListView)findViewById(R.id.recipe_list_view);
+                listView.setSelection(pos);
+            }
+        }
+        else
+        {
+            Messages.fatalError(this, result);
+        }
     }
+
 
 
     private void startTimer()

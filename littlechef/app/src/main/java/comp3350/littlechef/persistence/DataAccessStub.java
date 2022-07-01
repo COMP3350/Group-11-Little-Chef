@@ -57,19 +57,19 @@ public class DataAccessStub
         //adding instructions
         instruction = "Place eggs in a saucepan or pot and cover with cold water.";
         subInstruction = "Eggs first, then water. Why? Because if you put the eggs in afterward, they might crack as they fall to the bottom of the pan. It's no fun to learn this the hard way.";
-        recipe.addInsturctions(instruction,subInstruction);
+        recipe.addInstructions(instruction,subInstruction);
 
         instruction = "Put pan over high heat and bring water to a rolling boil. Remove pan from heat and cover.";
         subInstruction = "How long does it take to boil an egg? Well, actually, you want the water to come just to a boil but not stay there. " +
                 "Eggs exposed to high heat for a long time go through a chemical reaction that turns the yolks green. So the answer to \"How long do you boil hard boiled eggs?\" is: " +
                 "pretty much not at all. Because the eggs cook in water that's not actually boiling, some people use the term \"hard-cooked\" instead of \"hard-boiled\" eggs.";
-        recipe.addInsturctions(instruction, subInstruction);
+        recipe.addInstructions(instruction, subInstruction);
 
         instruction = "Drain eggs immediately and put in a bowl filled with water and ice cubes.";
         subInstruction = "Why ice water? It cools the eggs down and prevents the green yolk problem. " +
                 "(Chilled water isn't cold enough - you want cold water with lots of ice cubes floating in it.) " +
                 "If you're planning to peel the eggs, crack them slightly before putting them in the ice water and let them sit for an hour for maximum ease of peeling.";
-        recipe.addInsturctions(instruction, subInstruction);
+        recipe.addInstructions(instruction, subInstruction);
 
         recipes.add(recipe);
 
@@ -189,6 +189,51 @@ public class DataAccessStub
     public String getRecipeSequential(List<Recipe> recipeResult)
     {
         recipeResult.addAll(recipes);
+        return null;
+    }
+
+    public ArrayList<Recipe> getRecipeRandom(Recipe currentRecipe)
+    {
+        ArrayList<Recipe> newRecipes;
+        int index;
+
+        newRecipes = new ArrayList<Recipe>();
+        index = recipes.indexOf(currentRecipe);
+        if (index >= 0)
+        {
+            newRecipes.add(recipes.get(index));
+        }
+        return newRecipes;
+    }
+
+    public String insertRecipe(Recipe currentRecipe)
+    {
+        // don't bother checking for duplicates
+        recipes.add(currentRecipe);
+        return null;
+    }
+
+    public String updateRecipe(Recipe currentRecipe)
+    {
+        int index;
+
+        index = recipes.indexOf(currentRecipe);
+        if (index >= 0)
+        {
+            recipes.set(index, currentRecipe);
+        }
+        return null;
+    }
+
+    public String deleteRecipe(Recipe currentRecipe)
+    {
+        int index;
+
+        index = recipes.indexOf(currentRecipe);
+        if (index >= 0)
+        {
+            recipes.remove(index);
+        }
         return null;
     }
 }

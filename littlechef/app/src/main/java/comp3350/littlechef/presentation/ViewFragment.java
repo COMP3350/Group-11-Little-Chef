@@ -84,7 +84,7 @@ public class ViewFragment extends Fragment
                     recipeNameFormatted.setSpan(new StyleSpan(Typeface.BOLD), 0, recipeNameFormatted.length(), 0);
 
                     name.setText(recipeNameFormatted);
-                    estimatedTime.setText(recipe.getTimeToMakeString());
+                    estimatedTime.setText(recipe.getAverageCookingTime());
                     difficulty.setText(recipe.getDifficultyString());
                     taste.setText(recipe.getQualityString());
                     rating.setText(FAKE_RATING);
