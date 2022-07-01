@@ -31,12 +31,11 @@ public class RecipeInstructionActivity extends AppCompatActivity
     private TextView timerText;
     private Button stopStartButton;
     private Button finishButton;
-    private Button resetButton;
     private boolean timerStarted;
 
     private Timer timer;
     private TimerTask timerTask;
-    double time; //total milliseconds of time passed once start button is pressed
+    int time; //total seconds of time passed once start button is pressed
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -48,11 +47,11 @@ public class RecipeInstructionActivity extends AppCompatActivity
         timerText  = (TextView) findViewById(R.id.timer_text);
         stopStartButton = (Button) findViewById(R.id.start_stop_timer);
         finishButton = (Button) findViewById(R.id.finish_cooking_button);
-        resetButton = (Button) findViewById(R.id.reset_timer);
 
         timerStarted = false;
-        time = 0.0;
+        time = 0;
         timer = new Timer();
+        finishButton.setEnabled(false); //don't allow user to finish until at least starting to cook
 
         //get the selected recipe that was clicked from previous activity
         Intent previousIntent = getIntent();
@@ -66,7 +65,7 @@ public class RecipeInstructionActivity extends AppCompatActivity
             public View getView(int position, View convertView, ViewGroup parent)
             {
                 String[] instruction = getItem(position);
-                String number = (position + 1) + "."; //get the order number of the instrucion
+                String number = (position + 1) + "."; //get the order number of the instruction
                 SpannableString numberBold;
                 SpannableString mainInstructionBold;
 
@@ -111,6 +110,7 @@ public class RecipeInstructionActivity extends AppCompatActivity
         {
             timerStarted = false;
             changeStartButton(R.string.start, R.color.dark_green);
+            finishButton.setEnabled(true); //user have stopped cooking, so user can press finish now and proceed to rating
 
             timerTask.cancel();
         }
@@ -132,8 +132,9 @@ public class RecipeInstructionActivity extends AppCompatActivity
                 if(timerTask != null)
                 {
                     timerTask.cancel();
-                    time = 0.0;
+                    time = 0;
                     timerStarted = false;
+                    finishButton.setEnabled(false); //user has pressed reset, cannot finish until started and stopped cooking
                     timerText.setText(formatTime(0,0,0));
                     changeStartButton(R.string.start, R.color.dark_green);
                 }
@@ -176,15 +177,16 @@ public class RecipeInstructionActivity extends AppCompatActivity
                 });
             }
         };
+        //fixed rate goes by 1000 milliseconds which is 1 second, so for each run execution - passes 1 second of time
         timer.scheduleAtFixedRate(timerTask, 0 , 1000);
     }
 
     private String getTimerText()
     {
-        int rounded = (int) Math.round(time);
-        int seconds = ((rounded % 86400) % 3600) % 60;
-        int minutes = ((rounded % 86400) % 3600) / 60;
-        int hours = ((rounded % 86400) / 3600);
+        //getting the seconds, minutes and hours from total seconds
+        int seconds = ((time % 86400) % 3600) % 60;
+        int minutes = ((time % 86400) % 3600) / 60;
+        int hours = ((time % 86400) / 3600);
 
         return formatTime(seconds, minutes, hours);
     }
@@ -201,5 +203,4 @@ public class RecipeInstructionActivity extends AppCompatActivity
     }
 }
 
-//TODO make finish button inactive if timer is not started
 //TODO make finish button go to rate activity and save time into recipe once clicked
