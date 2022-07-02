@@ -143,7 +143,7 @@ public class RecipeInstructionActivity extends AppCompatActivity
                     time = 0;
                     timerStarted = false;
                     finishButton.setEnabled(false); //user has pressed reset, cannot finish until started and stopped cooking
-                    timerText.setText(TimeRecipe.formatTime(0,0,0));
+                    timerText.setText(TimeRecipe.timerTimeFormat(0,0,0));
                     changeStartButton(R.string.start, R.color.dark_green);
                 }
             }
@@ -169,7 +169,7 @@ public class RecipeInstructionActivity extends AppCompatActivity
         if (result == null)
         {
             accessRecipes.getRecipes(recipeList); //TODO FINISH USING TIME RECIPE
-            //courseArrayAdapter.notifyDataSetChanged();
+            ViewFragment.getRecipeArrayAdapter
             int pos = recipeList.indexOf(selectedRecipe);
             if (pos >= 0)
             {
@@ -198,7 +198,7 @@ public class RecipeInstructionActivity extends AppCompatActivity
                     public void run()
                     {
                         time++;
-                        timerText.setText(TimeRecipe.totSecondsIntoTimer(time));
+                        timerText.setText(TimeRecipe.totalSecondsToString(time, false));
                     }
                 });
             }

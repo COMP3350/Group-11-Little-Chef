@@ -2,6 +2,9 @@ package comp3350.littlechef.objects;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import comp3350.littlechef.business.TimeRecipe;
+
 // CLASS: Recipe.java
 //
 //
@@ -90,15 +93,25 @@ public class Recipe implements Serializable
 
     public String getAverageCookingTime()
     {
-        String result = "";
+        String result = "Time: ";
+        int average;
+        int sum = 0;
+
         if(cookingTimes.size() == 0)
         {
-            result = "Time: Not cooked";
+            result += "Not cooked";
         }
 
         else
         {
-            //TODO use TimeRecipe
+            for(int i = 0; i < cookingTimes.size(); i++)
+            {
+                sum += cookingTimes.get(i);
+            }
+
+            average = sum/cookingTimes.size();
+            //returns average total of seconds it take to cook a recipe
+            result += TimeRecipe.totalSecondsToString(average,true);
         }
 
         return result;

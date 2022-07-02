@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import android.app.Fragment;
 
+import android.os.Parcelable;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
@@ -110,5 +111,10 @@ public class ViewFragment extends Fragment
         }
 
         return view;
+    }
+
+    public ArrayAdapter<Recipe> getRecipeArrayAdapter()
+    {
+        return recipeArrayAdapter;
     }
 }
