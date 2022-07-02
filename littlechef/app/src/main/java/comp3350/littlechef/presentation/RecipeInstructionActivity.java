@@ -30,7 +30,6 @@ import java.util.TimerTask;
 public class RecipeInstructionActivity extends AppCompatActivity
 {
     private AccessRecipes accessRecipes;
-    private ArrayList<Recipe> recipeList;
 
     private Recipe selectedRecipe;
     private TextView timerText;
@@ -49,7 +48,6 @@ public class RecipeInstructionActivity extends AppCompatActivity
         setContentView(R.layout.activity_recipe_instruction);
 
         accessRecipes = new AccessRecipes();
-        recipeList = new ArrayList<Recipe>();
 
         //getting timer variables up
         timerText  = (TextView) findViewById(R.id.timer_text);
@@ -168,14 +166,13 @@ public class RecipeInstructionActivity extends AppCompatActivity
         result = accessRecipes.updateRecipe(selectedRecipe);
         if (result == null)
         {
-            accessRecipes.getRecipes(recipeList); //TODO FINISH USING TIME RECIPE
-            ViewFragment.getRecipeArrayAdapter
-            int pos = recipeList.indexOf(selectedRecipe);
-            if (pos >= 0)
-            {
-                ListView listView = (ListView)findViewById(R.id.recipe_list_view);
-                listView.setSelection(pos);
-            }
+            finish();
+
+            // a way of coming back to the home activity -> recreates the home activity and therefore recipes are default
+//            Intent i=new Intent(this, HomeActivity.class);
+//            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            startActivity(i);
+
         }
         else
         {

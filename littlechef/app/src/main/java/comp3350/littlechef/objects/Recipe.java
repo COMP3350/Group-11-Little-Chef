@@ -41,11 +41,10 @@ public class Recipe implements Serializable
         rating = new ArrayList<Float>();
     }
 
-    public Recipe(String name, int timeToMakeHrs, int timeToMakeMins)
+    public Recipe(String name)
     {
         this.name = name;
         this.recipeID = nextID++;
-        this.cookingTimes = new ArrayList<Integer>();
         this.cookingTimes = new ArrayList<Integer>();
         ingredients = new ArrayList<Ingredient>();
         instructions = new ArrayList<String[]>();
@@ -240,5 +239,23 @@ public class Recipe implements Serializable
     public int getId()
     {
         return this.recipeID;
+    }
+
+    public boolean equals(Object object)
+    {
+        boolean result;
+        Recipe recipe;
+
+        result = false;
+
+        if (object instanceof Recipe)
+        {
+            recipe = (Recipe) object;
+            if (recipe.recipeID == this.recipeID)
+            {
+                result = true;
+            }
+        }
+        return result;
     }
 }

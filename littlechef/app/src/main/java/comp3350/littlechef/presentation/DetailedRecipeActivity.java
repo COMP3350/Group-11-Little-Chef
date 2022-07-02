@@ -99,8 +99,6 @@ public class DetailedRecipeActivity extends AppCompatActivity
                 String num = servingNum.getItemAtPosition(pos).toString().split(" ")[0];
                 int numServings = Integer.parseInt(num);
 
-                System.out.println(numServings);
-
                 ingredientsArrayAdapter.clear();
                 ingredientsArrayAdapter.addAll(ScaleRecipe.scaleIngredients(selectedRecipe, numServings));
                 ingredientsArrayAdapter.notifyDataSetChanged();
