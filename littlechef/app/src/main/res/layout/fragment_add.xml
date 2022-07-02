@@ -17,38 +17,21 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Input the following" />
+            android:text="Add a new Recipe" />
 
         <EditText
             android:id="@+id/name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Name(string)"
+            android:hint="Recipe Name"
             android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/secondField"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="secondField (int)"
-            android:inputType="number" />
-
-        <EditText
-            android:id="@+id/thirdField"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="thirdField (int)"
-            android:inputType="number" />
-
 
         <Button
             android:id="@+id/addButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Submit" />
+            android:text="Add Recipe!" />
 
     </LinearLayout>
 
