@@ -1,5 +1,6 @@
 package comp3350.littlechef.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import comp3350.littlechef.application.Main;
@@ -32,5 +33,55 @@ public class AccessRecipes
     {
         recipes.clear();
         return dataAccess.getRecipeSequential(recipes);
+    }
+
+    public Recipe getSequential()
+    {
+        String result = null;
+        if (recipes == null)
+        {
+            recipes = new ArrayList<Recipe>();
+            result = dataAccess.getRecipeSequential(recipes);
+            currentRecipe = 0;
+        }
+        if (currentRecipe < recipes.size())
+        {
+            recipe = (Recipe) recipes.get(currentRecipe);
+            currentRecipe++;
+        }
+        else
+        {
+            recipes = null;
+            recipe = null;
+            currentRecipe = 0;
+        }
+        return recipe;
+    }
+
+    public Recipe getRandom(int recipeID)
+    {
+        recipes = dataAccess.getRecipeRandom(new Recipe(recipeID));
+        if (recipes.size()==1)
+        {
+            recipe = (Recipe) recipes.get(0);
+        }
+
+        return recipe;
+    }
+
+
+    public String insertRecipe(Recipe currentRecipe)
+    {
+        return dataAccess.insertRecipe(currentRecipe);
+    }
+
+    public String updateRecipe(Recipe currentRecipe)
+    {
+        return dataAccess.updateRecipe(currentRecipe);
+    }
+
+    public String deleteRecipe(Recipe currentRecipe)
+    {
+        return dataAccess.deleteRecipe(currentRecipe);
     }
 }

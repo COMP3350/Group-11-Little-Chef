@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import android.app.Fragment;
 
+import android.os.Parcelable;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
@@ -21,9 +22,10 @@ import java.util.ArrayList;
 
 import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
+import comp3350.littlechef.business.ScaleRecipe;
 import comp3350.littlechef.objects.Recipe;
 
-
+//TODO get rid of static in  recipeArrayAdapter
 public class ViewFragment extends Fragment
 {
     private final String FAKE_RATING = "5/5";
@@ -84,7 +86,7 @@ public class ViewFragment extends Fragment
                     recipeNameFormatted.setSpan(new StyleSpan(Typeface.BOLD), 0, recipeNameFormatted.length(), 0);
 
                     name.setText(recipeNameFormatted);
-                    estimatedTime.setText(recipe.getTimeToMakeString());
+                    estimatedTime.setText(recipe.getAverageCookingTime());
                     difficulty.setText(recipe.getDifficultyString());
                     taste.setText(recipe.getQualityString());
                     rating.setText(FAKE_RATING);
@@ -110,5 +112,23 @@ public class ViewFragment extends Fragment
         }
 
         return view;
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        String result = accessRecipes.getRecipes(recipeList);
+
+        if(result != null)
+        {
+            Messages.fatalError(getActivity(), result);
+        }
+
+        else
+        {
+            //if the data has changed -> update
+            recipeArrayAdapter.notifyDataSetChanged();
+        }
     }
 }

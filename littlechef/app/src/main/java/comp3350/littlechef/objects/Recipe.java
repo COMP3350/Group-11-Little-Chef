@@ -2,6 +2,9 @@ package comp3350.littlechef.objects;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import comp3350.littlechef.business.TimeRecipe;
+
 // CLASS: Recipe.java
 //
 //
@@ -19,8 +22,7 @@ public class Recipe implements Serializable
     private ArrayList<String[]> instructions; //steps(instructions) to make the recipe
 
     //rating criteria
-    private int timeToMakeHrs;
-    private int timeToMakeMins;
+    private ArrayList<Integer> cookingTimes; //for each time that this recipe was cooked, contains the total seconds of cooking time
     private Difficulty difficulty;
     private Quality quality; //same as for difficulty
     private ArrayList<Float> rating; //calculate the average similar to gpa calculation, from 0 to 5(can make "animated 5 stars that fill up the color later")
@@ -30,8 +32,7 @@ public class Recipe implements Serializable
     {
         this.recipeID = recipeID;
         this.name = "null";
-        this.timeToMakeHrs = 0;
-        this.timeToMakeMins = 0;
+        this.cookingTimes = new ArrayList<Integer>();
         ingredients = new ArrayList<Ingredient>();
         instructions = new ArrayList<String[]>();
 
@@ -40,14 +41,11 @@ public class Recipe implements Serializable
         rating = new ArrayList<Float>();
     }
 
-    public Recipe(String name, int timeToMakeHrs, int timeToMakeMins)
+    public Recipe(String name)
     {
         this.name = name;
         this.recipeID = nextID++;
-        this.timeToMakeHrs = timeToMakeHrs;
-        this.timeToMakeMins = timeToMakeMins;
-        setTimeToMakeHrs(timeToMakeHrs);
-        setTimeToMakeMins(timeToMakeMins);
+        this.cookingTimes = new ArrayList<Integer>();
         ingredients = new ArrayList<Ingredient>();
         instructions = new ArrayList<String[]>();
 
@@ -82,47 +80,45 @@ public class Recipe implements Serializable
         return instructions;
     }
 
-    public void addInsturctions(String instruction, String subInstruction)
+    public void addInstructions(String instruction, String subInstruction)
     {
         instructions.add(new String[]{instruction, subInstruction});
     }
 
-    public int getTimeToMakeHrs()
+    public ArrayList<Integer> getCookingTimes()
     {
-        return timeToMakeHrs;
+        return cookingTimes;
     }
 
-    public int getTimeToMakeMins()
+    public String getAverageCookingTime()
     {
-        return timeToMakeMins;
-    }
+        String result = "Time: ";
+        int average;
+        int sum = 0;
 
-    public String getTimeToMakeString()
-    {
-        int hours = timeToMakeHrs;
-        int mins = timeToMakeMins;
-
-        String minsString = mins + "";
-        if(minsString.length() == 1)
+        if(cookingTimes.size() == 0)
         {
-            minsString = "0"+minsString; //make minutes in the format (xx) in case it took a single digit number of mins
+            result += "Not cooked";
         }
 
-        return hours + "h " + minsString + "m";
-    }
+        else
+        {
+            for(int i = 0; i < cookingTimes.size(); i++)
+            {
+                sum += cookingTimes.get(i);
+            }
 
-    public void setTimeToMakeHrs(int hours)
-    {
-      timeToMakeHrs = Math.abs(hours);
-    }
-
-    public void setTimeToMakeMins(int mins)
-    {
-        timeToMakeMins = Math.abs(mins);
-        if(timeToMakeMins % 60 != 0) {
-            timeToMakeHrs +=(int)Math.floor(timeToMakeMins/ 60);;
+            average = sum/cookingTimes.size();
+            //returns average total of seconds it take to cook a recipe
+            result += TimeRecipe.totalSecondsToString(average,true);
         }
-        timeToMakeMins = Math.abs(timeToMakeMins)%60;
+
+        return result;
+    }
+
+    public void addCookingTime(int totalSeconds)
+    {
+        cookingTimes.add(totalSeconds);
     }
 
     public Difficulty getDifficulty()
@@ -243,5 +239,23 @@ public class Recipe implements Serializable
     public int getId()
     {
         return this.recipeID;
+    }
+
+    public boolean equals(Object object)
+    {
+        boolean result;
+        Recipe recipe;
+
+        result = false;
+
+        if (object instanceof Recipe)
+        {
+            recipe = (Recipe) object;
+            if (recipe.recipeID == this.recipeID)
+            {
+                result = true;
+            }
+        }
+        return result;
     }
 }

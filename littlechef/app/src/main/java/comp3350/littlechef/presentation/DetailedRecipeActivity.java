@@ -99,8 +99,6 @@ public class DetailedRecipeActivity extends AppCompatActivity
                 String num = servingNum.getItemAtPosition(pos).toString().split(" ")[0];
                 int numServings = Integer.parseInt(num);
 
-                System.out.println(numServings);
-
                 ingredientsArrayAdapter.clear();
                 ingredientsArrayAdapter.addAll(ScaleRecipe.scaleIngredients(selectedRecipe, numServings));
                 ingredientsArrayAdapter.notifyDataSetChanged();
@@ -139,7 +137,7 @@ public class DetailedRecipeActivity extends AppCompatActivity
         textIngredientsFormatted.setSpan(new StyleSpan(Typeface.BOLD), 0, textIngredientsFormatted.length(), 0);
 
         recipeName.setText(recipeNameFormatted);
-        estimatedTime.setText(selectedRecipe.getTimeToMakeString());
+        estimatedTime.setText(selectedRecipe.getAverageCookingTime());
         difficulty.setText(selectedRecipe.getDifficultyString());
         taste.setText(selectedRecipe.getQualityString());
         rating.setText(ratingString);

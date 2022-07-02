@@ -23,20 +23,67 @@
         android:layout_below="@id/instruction_header"
         android:layout_marginStart="35dp"
         android:layout_marginEnd="35dp"
-        android:divider="@null" >
-    </ListView>
+        android:divider="@null"
+        android:dividerHeight="10dp" />
 
-    <Button
-        android:id="@+id/stop_cooking"
-        android:layout_width="280dp"
-        android:layout_marginTop="10dp"
-        android:layout_height="60dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/instruction_list_view"
-        android:background="@drawable/round_button"
-        android:theme="@style/buttonGreenTheme"
-        android:layout_centerHorizontal="true"
-        android:text="@string/stop_cooking"
+        android:layout_marginTop="10dp"
+        tools:context = ".presentation.RecipeInstructionActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/reset_timer"
+                android:text="@string/reset"
+                android:background="@drawable/round_button"
+                android:textColor="@color/red"
+                android:textSize="30sp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="15dp"
+                android:onClick="resetClicked"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/start_stop_timer"
+                android:text="@string/start"
+                android:background="@drawable/round_button"
+                android:textColor="@color/dark_green"
+                android:textSize="30sp"
+                android:layout_gravity="center"
+                android:onClick="startStopClicked"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/finish_cooking_button"
+                android:text="@string/finish"
+                android:background="@drawable/round_button"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:layout_gravity="start"
+                android:layout_marginStart="15dp"
+                android:onClick="finishClicked"/>
+
+        </androidx.appcompat.widget.Toolbar>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timer_text"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="35dp"
+        android:text="@string/timer_default"
         android:textColor="@color/black"
-        android:textSize="25sp" />
+        android:textSize="25sp"/>
 
 </RelativeLayout>
