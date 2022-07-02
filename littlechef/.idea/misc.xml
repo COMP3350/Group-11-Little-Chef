@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Brad_/Desktop/iteration_1/littlechef/app/src/main/res/layout/activity_detailed_recipe.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Brad_/Desktop/iteration_1/littlechef/app/src/main/res/layout/activity_home.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Brad_/Desktop/iteration_1/littlechef/app/src/main/res/layout/activity_recipe_instruction.xml" value="0.16789215686274508" />
+        <entry key="..\:/Users/Brad_/Desktop/iteration_1/littlechef/app/src/main/res/layout/fragment_add.xml" value="0.33" />
+        <entry key="..\:/Users/Brad_/Desktop/iteration_1/littlechef/app/src/main/res/layout/fragment_meals.xml" value="0.16789215686274508" />
+        <entry key="..\:/Users/Brad_/Desktop/iteration_1/littlechef/app/src/main/res/layout/fragment_view.xml" value="0.16789215686274508" />
+        <entry key="..\:/Users/Brad_/Desktop/iteration_1/littlechef/app/src/main/res/layout/ingredient_card.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Brad_/Desktop/iteration_1/littlechef/app/src/main/res/layout/instruction_card.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Brad_/Desktop/iteration_1/littlechef/app/src/main/res/layout/recipe_card.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/Brad_/Desktop/iteration_1/littlechef/app/src/main/res/layout/spinner_item.xml" value="0.27239583333333334" />
         <entry key="..\:/Users/Brad_/OneDrive/Desktop/iteration_1/littlechef/app/src/main/res/layout/detailed_recipe_activity.xml" value="0.33" />
         <entry key="..\:/Users/Brad_/OneDrive/Desktop/iteration_1/littlechef/app/src/main/res/layout/fragment_add.xml" value="0.290625" />
         <entry key="..\:/Users/Brad_/OneDrive/Desktop/iteration_1/littlechef/app/src/main/res/layout/fragment_meals.xml" value="0.2332516339869281" />
