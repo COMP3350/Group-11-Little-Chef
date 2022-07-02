@@ -41,7 +41,7 @@ public class Recipe implements Serializable
         rating = new ArrayList<Float>();
     }
 
-    public Recipe(String name, int timeToMakeHrs, int timeToMakeMins)
+    public Recipe(String name)
     {
         this.name = name;
         this.recipeID = nextID++;
