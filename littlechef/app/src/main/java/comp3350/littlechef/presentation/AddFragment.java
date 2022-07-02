@@ -34,7 +34,7 @@ public class AddFragment extends Fragment
     {
         super.onCreate(savedInstanceState);
 
-        
+
     }
 
     //@Override
@@ -55,15 +55,20 @@ public class AddFragment extends Fragment
 
     }
 
-    //MIGHT HAVE TO PUT THIS IN ONCREATE
+
+
+
+
+
+
+
+    //MIGHT HAVE TO fix
     //grabs input from add Recipe screen
     private Recipe createRecipeFromEditText()
     {
         EditText nameField = (EditText) getActivity().findViewById(R.id.name_input);
         EditText secondField = (EditText) getActivity().findViewById(R.id.secondField);
         EditText thirdField= (EditText) getActivity().findViewById(R.id.thirdField);
-
-
 
         Button submitButton;
         submitButton = (Button) getActivity().findViewById(R.id.addButton);
