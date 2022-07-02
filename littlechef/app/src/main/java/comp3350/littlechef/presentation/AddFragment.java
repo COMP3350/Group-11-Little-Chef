@@ -33,36 +33,34 @@ public class AddFragment extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
-
     }
 
-    //@Override
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add, container, false);
+        View v = inflater.inflate(R.layout.fragment_add, container, false);
+
+        //Get input from text fields
+        EditText nameField = (EditText) getActivity().findViewById(R.id.name_input);
+        EditText secondField = (EditText) getActivity().findViewById(R.id.secondField);
+        EditText thirdField= (EditText) getActivity().findViewById(R.id.thirdField);
+
+        //button listener
+        Button myButton = v.findViewById(R.id.addButton);
+        myButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+
+                Toast.makeText(getContext(), "Hello from fragment", Toast.LENGTH_SHORT).show();
+                //TODO: add proper text that recipe was successfully added
+            }
+        });
+
+        return v;
     }
 
-    //when submit button clicked
-    public void buttonAddRecipe(View v)
-    {
-        Recipe recipe = createRecipeFromEditText();
-        //do error checking****
-
-        System.out.println("RECIPE TEST FROM ADD: "+recipe.getName());
-
-    }
-
-
-
-
-
-
-
-
-    //MIGHT HAVE TO fix
     //grabs input from add Recipe screen
     private Recipe createRecipeFromEditText()
     {
@@ -70,6 +68,8 @@ public class AddFragment extends Fragment
         EditText secondField = (EditText) getActivity().findViewById(R.id.secondField);
         EditText thirdField= (EditText) getActivity().findViewById(R.id.thirdField);
 
+
+        //**** end of button listener
         Button submitButton;
         submitButton = (Button) getActivity().findViewById(R.id.addButton);
 
@@ -80,15 +80,15 @@ public class AddFragment extends Fragment
             public void onClick(View v)
             {
                 //set values from input boxes
-                name = nameField.getText().toString();
-                second = secondField.getText().toString();
-                third = thirdField.getText().toString();
+                //name = nameField.getText().toString();
+                //second = secondField.getText().toString();
+                //third = thirdField.getText().toString();
                 System.out.println("PRINTING!!!!");
                 Log.d("tag", "message");
 
             }
         }); //end listener
-
+        //****end of button listener
 
         //error checking on conversions??????        //recipe = new Recipe("Guacamole", 0, 30); //make a recipe
         Recipe recipe = new Recipe(name, Integer.parseInt(secondField.toString()), Integer.parseInt(thirdField.toString()) );
