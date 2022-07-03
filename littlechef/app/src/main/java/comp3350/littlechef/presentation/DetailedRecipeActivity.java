@@ -88,6 +88,7 @@ public class DetailedRecipeActivity extends AppCompatActivity
                 Intent readInstuction= new Intent(DetailedRecipeActivity.this, RecipeInstructionActivity.class);
                 readInstuction.putExtra("id", selectedRecipe); //pass the object reference to another activity
                 startActivity(readInstuction);
+                finish(); //finish detailed recipe activity after reading instruction(cooking) is done
             }
         });
 
