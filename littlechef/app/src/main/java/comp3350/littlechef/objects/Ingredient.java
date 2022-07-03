@@ -15,7 +15,7 @@ public class Ingredient implements Serializable
     private UnitType unitType;
     private Unit unit;
 
-    public Ingredient(String name, String measurement, double amount)
+    public Ingredient(String name, Unit measurement, double amount)
     {
         this.name = name;
         this.amount = amount;
@@ -30,6 +30,8 @@ public class Ingredient implements Serializable
         }
         this.unitType = UnitType.DEFAULT; // will just scale no unit conversion
         setUnitInformation(measurement);
+
+
     }
 
     //getters and setters
@@ -39,11 +41,11 @@ public class Ingredient implements Serializable
         this.name = name;
     }
 
-    public String getMeasurement() {
-        return unit.toString().toLowerCase();
+    public Unit getMeasurement() {
+        return unit;
     }
 
-    public void setMeasurement(String unit) {
+    public void setMeasurement(Unit unit) {
         setUnitInformation(unit);
     }
 
@@ -70,39 +72,22 @@ public class Ingredient implements Serializable
 
 
     //this class sets the specific unit metric depending on unit type
-    private void setUnitInformation(String measurement)
+    private void setUnitInformation(Unit measurement)
     {
-        for (Unit u : Unit.values())
-        {
-            if (measurement.equalsIgnoreCase(u.name()))
-            {
-                this.unit = u;
+        if(measurement != null) {
+            this.unit = measurement;
 
-                if (u.name().equalsIgnoreCase("PINCH") ||
-                        u.name().equalsIgnoreCase("TSP") ||
-                        u.name().equalsIgnoreCase("TBSP") ||
-                        u.name().equalsIgnoreCase("CUP") ||
-                        u.name().equalsIgnoreCase("ML") ||
-                        u.name().equalsIgnoreCase("L"))
-                {
-                    this.unitType = UnitType.VOLUME;
-                }
-                else if (u.name().equalsIgnoreCase("MG") ||
-                        u.name().equalsIgnoreCase("G") ||
-                        u.name().equalsIgnoreCase("KG"))
-                {
-                    this.unitType = UnitType.WEIGHT;
-                }
-                else if (u.name().equalsIgnoreCase("MM") ||
-                        u.name().equalsIgnoreCase("CM") ||
-                        u.name().equalsIgnoreCase("M"))
-                {
-                    this.unitType = UnitType.SIZE;
-                }
-                break;
+            if (this.unit == Unit.PINCH || this.unit == Unit.TSP || this.unit == Unit.TBSP || this.unit == Unit.CUP || this.unit == Unit.ML || this.unit == Unit.L) {
+                this.unitType = UnitType.VOLUME;
+            } else if (this.unit == Unit.MG || this.unit == Unit.G || this.unit == Unit.KG) {
+                this.unitType = UnitType.WEIGHT;
+            } else if (this.unit == Unit.MM || this.unit == Unit.CM || this.unit == Unit.M) {
+                this.unitType = UnitType.SIZE;
             }
-            // otherwise throw an error that the measurement type is invalid.
-
+        }
+        else if (this.unit == null)
+        {
+            this.unit = Unit.QUANTITY;
         }
     }
 

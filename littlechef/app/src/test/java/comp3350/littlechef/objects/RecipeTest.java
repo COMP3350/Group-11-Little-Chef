@@ -102,9 +102,9 @@ public class RecipeTest extends TestCase
     {
         Recipe recipe1 = new Recipe("aaa",1,2);
 
-        Ingredient ing1 = new Ingredient("Noodle", "aaa", 0.1);
-        Ingredient ing2 = new Ingredient("Rice", "bbb", 0.2);
-        Ingredient ing3 = new Ingredient("Cake","ccc", 0.3);
+        Ingredient ing1 = new Ingredient("Noodle", null, 0.1);
+        Ingredient ing2 = new Ingredient("Rice", null, 0.2);
+        Ingredient ing3 = new Ingredient("Cake",null, 0.3);
 
         recipe1.addIngredient(ing1);
         recipe1.addIngredient(ing2);
@@ -118,11 +118,11 @@ public class RecipeTest extends TestCase
         ing1.setName(null);
         assertNull(ing1.getName());
 
-        ing1.setMeasurement("MM");
-        assertEquals("mm" , ing1.getMeasurement());
+        ing1.setMeasurement(Unit.MM);
+        assertEquals(Unit.MM , ing1.getMeasurement());
 
-        ing1.setMeasurement("MMM");
-        assertEquals("mm" , ing1.getMeasurement());
+        ing1.setMeasurement(null);
+        assertEquals(Unit.MM , ing1.getMeasurement());
 
         ing1.setAmount(0.0);
         assertEquals(0.1 , ing1.getAmount());
@@ -136,9 +136,9 @@ public class RecipeTest extends TestCase
     {
         Recipe recipe1 = new Recipe("aaa",1,2);
 
-        Ingredient ing1 = new Ingredient("Noodle", "aaa", 0.1);
-        Ingredient ing2 = new Ingredient("Rice", "bbb", 0.2);
-        Ingredient ing3 = new Ingredient("Cake", "ccc", 0.3);
+        Ingredient ing1 = new Ingredient("Noodle", null, 0.1);
+        Ingredient ing2 = new Ingredient("Rice", null, 0.2);
+        Ingredient ing3 = new Ingredient("Cake", null, 0.3);
 
         recipe1.addIngredient(ing1);
         recipe1.addIngredient(ing2);
@@ -152,11 +152,11 @@ public class RecipeTest extends TestCase
         ing1.setName(null);
         assertNull(ing1.getName());
 
-        ing1.setMeasurement("MM");
-        assertEquals("mm" , ing1.getMeasurement());
+        ing1.setMeasurement(Unit.MM);
+        assertEquals(Unit.MM , ing1.getMeasurement());
 
-        ing1.setMeasurement("MMM");
-        assertEquals("mm" , ing1.getMeasurement());
+        ing1.setMeasurement(null);
+        assertEquals(Unit.MM , ing1.getMeasurement());
 
         ing1.setAmount(0.0);
         assertEquals(0.1 , ing1.getAmount());
