@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.lang.Math;
 import comp3350.littlechef.objects.Recipe;
 import comp3350.littlechef.objects.Ingredient;
+import comp3350.littlechef.objects.Unit;
 
 // CLASS: ScaleRecipe.java
 //
@@ -79,27 +80,27 @@ public class ScaleRecipe
 
         double tempAmount = ingredient.getAmount();
 
-        if(ingredient.getMeasurement().equalsIgnoreCase("PINCH") && tempAmount >= PINCH_IN_TSP)
+        if(ingredient.getMeasurement() == Unit.PINCH && tempAmount >= PINCH_IN_TSP)
         {
-            ingredient.setMeasurement("tsp");
+            ingredient.setMeasurement(Unit.TSP);
             tempAmount /= PINCH_IN_TSP;
         }
 
-        if(ingredient.getMeasurement().equalsIgnoreCase("tsp") && tempAmount >= TSP_IN_TBSP)
+        if(ingredient.getMeasurement() == Unit.TSP && tempAmount >= TSP_IN_TBSP)
         {
-            ingredient.setMeasurement("tbsp");
+            ingredient.setMeasurement(Unit.TBSP);
             tempAmount /= TSP_IN_TBSP;
         }
 
-        if(ingredient.getMeasurement().equalsIgnoreCase("tbsp") && tempAmount >= TBSP_IN_CUP/4)
+        if(ingredient.getMeasurement() == Unit.TBSP && tempAmount >= TBSP_IN_CUP/4)
         {
-            ingredient.setMeasurement("cup");
+            ingredient.setMeasurement(Unit.CUP);
             tempAmount /= TBSP_IN_CUP;
         }
 
-        if(ingredient.getMeasurement().equalsIgnoreCase("ml") && tempAmount >= ML_IN_L/2)
+        if(ingredient.getMeasurement() == Unit.ML && tempAmount >= ML_IN_L/2)
         {
-            ingredient.setMeasurement("l");
+            ingredient.setMeasurement(Unit.L);
             tempAmount /= ML_IN_L;
         }
 
@@ -110,15 +111,15 @@ public class ScaleRecipe
     {
         double tempAmount = ingredient.getAmount();
 
-        if(ingredient.getMeasurement().equalsIgnoreCase("MG") && tempAmount >= WEIGHT_FACTOR)
+        if(ingredient.getMeasurement() == Unit.MG && tempAmount >= WEIGHT_FACTOR)
         {
-            ingredient.setMeasurement("g");
+            ingredient.setMeasurement(Unit.G);
             tempAmount /= WEIGHT_FACTOR;
         }
 
-        if(ingredient.getMeasurement().equalsIgnoreCase("G") && tempAmount >= WEIGHT_FACTOR)
+        if(ingredient.getMeasurement()== Unit.G && tempAmount >= WEIGHT_FACTOR)
         {
-            ingredient.setMeasurement("kg");
+            ingredient.setMeasurement(Unit.KG);
             tempAmount /= WEIGHT_FACTOR;
         }
 
@@ -129,15 +130,15 @@ public class ScaleRecipe
     {
         double tempAmount = ingredient.getAmount();
 
-        if(ingredient.getMeasurement().equalsIgnoreCase("MM") && tempAmount >= MM_IN_CM)
+        if(ingredient.getMeasurement()== Unit.MM && tempAmount >= MM_IN_CM)
         {
-            ingredient.setMeasurement("CM");
+            ingredient.setMeasurement(Unit.CM);
             tempAmount /= MM_IN_CM;
         }
 
-        if(ingredient.getMeasurement().equalsIgnoreCase("CM") && tempAmount >= CM_IN_M)
+        if(ingredient.getMeasurement() == Unit.CM && tempAmount >= CM_IN_M)
         {
-            ingredient.setMeasurement("M");
+            ingredient.setMeasurement(Unit.M);
             tempAmount /= CM_IN_M;
 
         }
