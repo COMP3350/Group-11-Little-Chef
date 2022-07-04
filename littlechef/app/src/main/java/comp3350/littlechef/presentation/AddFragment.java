@@ -37,7 +37,9 @@ import comp3350.littlechef.objects.Unit;
 public class AddFragment extends Fragment
 {
     String name;
-    Recipe recipe;
+   // Recipe recipe;
+
+    EditText recipeInput;
 
     private AccessRecipes accessRecipes;
     private ArrayList<Recipe> recipeList;
@@ -94,13 +96,12 @@ public class AddFragment extends Fragment
         ingredButton.setVisibility(View.GONE);
 
         //Get input from text fields
-        EditText recipeInput = (EditText) v.findViewById(R.id.nameInput);
+        recipeInput = (EditText) v.findViewById(R.id.nameInput);
 
 
 
 
         //THIS ADDS A SMALL LIST VIEW TO ADD RECIPES
-
 
         accessRecipes = new AccessRecipes();
 
@@ -140,14 +141,10 @@ public class AddFragment extends Fragment
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                Recipe selectedRecipe = (Recipe) listView.getItemAtPosition(position);
-
-                Intent detailedRecipe = new Intent(getActivity(), DetailedRecipeActivity.class);
-                detailedRecipe.putExtra("id", selectedRecipe); //pass the object reference to another activity
-                startActivity(detailedRecipe);
+                //TODO: ADD CLICKED ON RECIPE STUFF
             }
         });
-
+        //-----end list view
 
 
 
@@ -165,8 +162,17 @@ public class AddFragment extends Fragment
                 ingredButton.setVisibility(View.VISIBLE);
                 startIngredients.setVisibility(View.GONE);
 
-                recipe = new Recipe( recipeInput.toString() );
-                Toast.makeText(getContext(), "Add ingredients to the recipe!", Toast.LENGTH_SHORT).show();
+                //add to db START
+                name = recipeInput.getText().toString();
+
+                Recipe recipe = new Recipe( name );
+                String result;
+
+
+                result = accessRecipes.insertRecipe(recipe);
+
+                //ADDED TO DB END
+                Toast.makeText(getContext(), "Added Recipe! Now add ingredients!", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -174,6 +180,7 @@ public class AddFragment extends Fragment
 
 
 
+        //TODO: add ingredient functionality
         //button listener for start Ingredients, will hide that button and show add ingredients stuff
         ingredButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,22 +188,11 @@ public class AddFragment extends Fragment
             {
                 //recipe.addIngredient(new Ingredient("Ranch Dressing", Unit.CUP, 0.25));
 
+                //String recipeString = recipe.getName();
 
-                //TODO: fix units witj  ingredMeasurement
-                recipe.addIngredient(new Ingredient(ingredName.toString(), Unit.CUP, 0.25 ));
-
-                String recipeString = recipe.getName();
-
-                Toast.makeText(getContext(), recipeString, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), recipeString, Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
-
-
-
-
 
 
         //INSERT TO DB BUTTON
@@ -213,7 +209,7 @@ public class AddFragment extends Fragment
                 ingredButton.setVisibility(View.GONE);
                 startIngredients.setVisibility(View.VISIBLE);
                 //clear text boxes
-                recipeInput.getText().clear();
+                //recipeInput.getText().clear();
 
                 ingredName.getText().clear();
                 ingredMeasurement.getText().clear();
