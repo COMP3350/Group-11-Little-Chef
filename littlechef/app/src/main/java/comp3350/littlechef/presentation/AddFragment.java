@@ -36,6 +36,15 @@ public class AddFragment extends Fragment
     }
 
 
+
+    //TODO: add proper text that recipe was successfully added
+
+    //TODO: insert this blank recipe into DB
+
+    //TODO create list of steps to add
+
+    //TODO add check for duplicates
+
     //User creates recipe name
     //then user
     @Override
@@ -52,6 +61,7 @@ public class AddFragment extends Fragment
         EditText ingredAmount= (EditText) v.findViewById(R.id.ingredAmount);
         Button ingredButton= (Button) v.findViewById(R.id.ingredButton);
         Button startIngredients= (Button) v.findViewById(R.id.startIngredients);
+        Button resetButton= (Button) v.findViewById(R.id.resetButton);
 
         //Initial all the add ingredient stuff should not be visible until recipe object created, ie button clicked
         bannerofIngredient.setVisibility(View.GONE);
@@ -61,37 +71,59 @@ public class AddFragment extends Fragment
         ingredButton.setVisibility(View.GONE);
 
         //Get input from text fields
-        EditText nameField = (EditText) v.findViewById(R.id.name_input);
+        EditText recipeInput = (EditText) v.findViewById(R.id.nameInput);
 
-        //button listener for adding name
-        ingredButton.setOnClickListener(new View.OnClickListener() {
+        //button listener for start Ingredients, will hide that button and show add ingredients stuff
+        startIngredients.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
-                name = nameField.getText().toString();
-                //recipe = new Recipe("Guacamole"); //make a recipe
-
-                //if the recipe exists then just add ingredient to it, if not then create new recipe
-                Recipe recipe = new Recipe(name);
-
+            public void onClick(View v)
+            {
                 bannerofIngredient.setVisibility(View.VISIBLE);
+                ingredName.setVisibility(View.VISIBLE);
+                ingredMeasurement.setVisibility(View.VISIBLE);
+                ingredAmount.setVisibility(View.VISIBLE);
+                ingredButton.setVisibility(View.VISIBLE);
+                startIngredients.setVisibility(View.GONE);
+
+
+
+            }
+        });
 
 
 
 
 
-                Toast.makeText(getContext(), "Created recipe!", Toast.LENGTH_SHORT).show();
 
 
 
 
-                //TODO: add proper text that recipe was successfully added
 
-                //TODO: insert this blank recipe into DB
 
-                //TODO create list of steps to add
 
-                //TODO add check for duplicates
+
+
+        //when reset button is clicked, wipe field boxes and hide again
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                //TODO: create function to auto hide these
+                bannerofIngredient.setVisibility(View.GONE);
+                ingredName.setVisibility(View.GONE);
+                ingredMeasurement.setVisibility(View.GONE);
+                ingredAmount.setVisibility(View.GONE);
+                ingredButton.setVisibility(View.GONE);
+                startIngredients.setVisibility(View.VISIBLE);
+                //clear text boxes
+                nameField.getText().clear();
+
+                ingredName.getText().clear();
+                ingredMeasurement.getText().clear();
+                ingredAmount.getText().clear();
+
+
+
             }
         });
 
