@@ -5,7 +5,12 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
 import comp3350.littlechef.R;
+import comp3350.littlechef.objects.Recipe;
 
 // CLASS: AddFragment.java
 //
@@ -15,6 +20,7 @@ import comp3350.littlechef.R;
 //-----------------------------------------
 public class AddFragment extends Fragment
 {
+    String name;
     public AddFragment()
     {
         // Required empty public constructor
