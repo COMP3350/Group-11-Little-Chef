@@ -3,7 +3,7 @@
     <string name="recipes_button">Recipes</string>
     <string name="meal_plan_button">Meal Plans</string>
     <string name="add_recipe_button">Add Recipe</string>
-    <string name="recipe_card_name_placeholder"><b><u>Recipe Name</u></b></string>
+    <string name="recipe_card_name_placeholder"><u>Recipe Name</u></string>
     <string name="time">Estimated Time:</string>
     <string name="difficulty">Difficulty:</string>
     <string name="taste">Taste:</string>
@@ -11,19 +11,19 @@
     <string name="warning">Warning</string>
     <string name="fatalError">Fatal error</string>
     <string name="detailed_view">View Recipe</string>
-    <string name="ingredients"><b>Ingredients</b></string>
+    <string name="ingredients">Ingredients</string>
     <string name="ingredient">Ingredient</string>
     <string name="measurement">Measurement</string>
     <string name="serving">serving</string>
-    <string name="instructions"><b>Instructions</b></string>
+    <string name="instructions">Instructions</string>
     <string name="start">START</string>
     <string name="stop">STOP</string>
     <string name="reset">RESET</string>
     <string name="sub_instruction">Sub-Instruction</string>
-    <string name="number"><b>1.</b></string>
+    <string name="number">1.</string>
     <string name="timer_default">00:00:00</string>
     <string name="finish">Finish</string>
-    <string name="cooked_meal"><b>Congratulations\nYou just cooked another meal!</b></string>
+    <string name="cooked_meal">Congratulations\nYou just cooked another meal!</string>
     <string-array name="serving_sizes">
         <item>1 serving</item>
         <item>2 servings</item>

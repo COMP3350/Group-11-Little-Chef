@@ -23,7 +23,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 

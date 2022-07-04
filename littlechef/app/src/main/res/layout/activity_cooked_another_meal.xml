@@ -15,14 +15,15 @@
         android:gravity="center"
         android:text="@string/cooked_meal"
         android:textColor="@color/font_header"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/cooked_meal_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="280dp"
+        android:layout_height="241dp"
         android:layout_below="@+id/cooked_another_meal"
-        android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/add_recipe" />
+        android:layout_marginTop="40dp"
+        android:src="@drawable/cooked_meal_icon" />
 </RelativeLayout>
