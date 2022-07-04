@@ -231,7 +231,33 @@ public class AddFragment extends Fragment
 
         //add to db
         String result;
-        result = accessRecipes.insertRecipe(recipe);
+        result = validateRecipeName(recipe, true);
+        Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
+
+        if(result == null)
+        {
+            result = accessRecipes.insertRecipe(recipe);
+
+            //if(accessRecup)
+        }
+
+        //result = accessRecipes.insertRecipe(recipe);
+    }
+
+    //COURSE TESTING
+    private String validateRecipeName(Recipe recipeAdd, boolean isNewRecipe)
+    {
+        if (recipeAdd.getName().length() == 0)
+        {
+            return "Recipe name required";
+        }
+
+        if (isNewRecipe && accessRecipes.getRandom(recipeAdd.getId() ) != null)
+        {
+            return "Recipe ID " + recipeAdd.getId() + " already exists.";
+        }
+
+        return null;
     }
 
 }
