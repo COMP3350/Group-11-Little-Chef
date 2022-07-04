@@ -37,7 +37,7 @@ import comp3350.littlechef.objects.Unit;
 public class AddFragment extends Fragment
 {
     String name;
-   // Recipe recipe;
+    Recipe recipe;
 
     EditText recipeInput;
 
@@ -97,9 +97,77 @@ public class AddFragment extends Fragment
         //Get input from text fields
         recipeInput = (EditText) v.findViewById(R.id.nameInput);
 
+        loadListView(v);
+
+        //button listener for start Ingredients, will hide that button and show add ingredients stuff
+        startIngredients.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                //do add recipe button and add ingredients
+                addRecipeClick(bannerofIngredient, ingredName, ingredMeasurement, ingredAmount, ingredButton, startIngredients);
+
+                //add to db
+                //String result;
+                //result = accessRecipes.insertRecipe(recipe);
+
+                //reload listview to show added blank recipe
+                //loadListView(v); //try another way to add recipe?
+                Toast.makeText(getContext(), "Added Recipe! Now add ingredients!", Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
 
+        //TODO: add ingredient functionality
+        //button listener for start Ingredients, will hide that button and show add ingredients stuff
+        ingredButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                //recipe.addIngredient(new Ingredient("Ranch Dressing", Unit.CUP, 0.25));
 
+                //String recipeString = recipe.getName();
+
+                //Toast.makeText(getContext(), recipeString, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        //INSERT TO DB BUTTON
+        //when reset button is clicked, wipe field boxes and hide again
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                //TODO: create function to auto hide these
+                bannerofIngredient.setVisibility(View.GONE);
+                ingredName.setVisibility(View.GONE);
+                ingredMeasurement.setVisibility(View.GONE);
+                ingredAmount.setVisibility(View.GONE);
+                ingredButton.setVisibility(View.GONE);
+                startIngredients.setVisibility(View.VISIBLE);
+                //clear text boxes
+                //recipeInput.getText().clear();
+
+                ingredName.getText().clear();
+                ingredMeasurement.getText().clear();
+                ingredAmount.getText().clear();
+
+                //unlock textbox
+                recipeInput.setFocusableInTouchMode(true);
+
+                //just for testing remove later!!!!
+                Toast.makeText(getContext(), "Added to db...wiping fields", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        return v;
+    }//end onclickview
+
+    private void loadListView(View v)
+    {
         //THIS ADDS A SMALL LIST VIEW TO ADD RECIPES
         accessRecipes = new AccessRecipes();
         recipeList = new ArrayList<Recipe>();
@@ -141,83 +209,29 @@ public class AddFragment extends Fragment
             }
         });
         //-----end list view
+    }
 
+    //when the add recipe button is clicked do this
+    private void addRecipeClick(TextView bannerofIngredient, EditText ingredName, EditText ingredMeasurement, EditText ingredAmount, Button ingredButton, Button startIngredients)
+    {
+        //visibility
+        bannerofIngredient.setVisibility(View.VISIBLE);
+        ingredName.setVisibility(View.VISIBLE);
+        ingredMeasurement.setVisibility(View.VISIBLE);
+        ingredAmount.setVisibility(View.VISIBLE);
+        ingredButton.setVisibility(View.VISIBLE);
+        startIngredients.setVisibility(View.GONE);
 
+        //lock recipe text
+        recipeInput.setFocusable(false);
 
+        //create recipe only with name
+        name = recipeInput.getText().toString();
+        recipe = new Recipe( name );
 
-
-        //button listener for start Ingredients, will hide that button and show add ingredients stuff
-        startIngredients.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                bannerofIngredient.setVisibility(View.VISIBLE);
-                ingredName.setVisibility(View.VISIBLE);
-                ingredMeasurement.setVisibility(View.VISIBLE);
-                ingredAmount.setVisibility(View.VISIBLE);
-                ingredButton.setVisibility(View.VISIBLE);
-                startIngredients.setVisibility(View.GONE);
-
-                //add to db START
-                name = recipeInput.getText().toString();
-
-                Recipe recipe = new Recipe( name );
-                String result;
-
-
-                result = accessRecipes.insertRecipe(recipe);
-
-                //ADDED TO DB END
-                Toast.makeText(getContext(), "Added Recipe! Now add ingredients!", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-
-
-
-        //TODO: add ingredient functionality
-        //button listener for start Ingredients, will hide that button and show add ingredients stuff
-        ingredButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                //recipe.addIngredient(new Ingredient("Ranch Dressing", Unit.CUP, 0.25));
-
-                //String recipeString = recipe.getName();
-
-                //Toast.makeText(getContext(), recipeString, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-        //INSERT TO DB BUTTON
-        //when reset button is clicked, wipe field boxes and hide again
-        resetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                //TODO: create function to auto hide these
-                bannerofIngredient.setVisibility(View.GONE);
-                ingredName.setVisibility(View.GONE);
-                ingredMeasurement.setVisibility(View.GONE);
-                ingredAmount.setVisibility(View.GONE);
-                ingredButton.setVisibility(View.GONE);
-                startIngredients.setVisibility(View.VISIBLE);
-                //clear text boxes
-                //recipeInput.getText().clear();
-
-                ingredName.getText().clear();
-                ingredMeasurement.getText().clear();
-                ingredAmount.getText().clear();
-
-                //just for testing remove later!!!!
-                Toast.makeText(getContext(), "Added to db...wiping fields", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        return v;
+        //add to db
+        String result;
+        result = accessRecipes.insertRecipe(recipe);
     }
 
 }
