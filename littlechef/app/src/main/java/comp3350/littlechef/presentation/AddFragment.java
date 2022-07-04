@@ -57,7 +57,7 @@ public class AddFragment extends Fragment
         super.onCreate(savedInstanceState);
     }
 
-
+    //NOTES: work on selecting the recipes and adding directly to, lock recipe name box, add reset button functionality
 
     //TODO: add proper text that recipe was successfully added
 
@@ -69,6 +69,8 @@ public class AddFragment extends Fragment
 
     //TODO: fix amount entry
 
+    //TODO: don't add blank recipes
+
     //User creates recipe name
     //then user
     @Override
@@ -76,9 +78,6 @@ public class AddFragment extends Fragment
                              Bundle savedInstanceState)
     {
         View v = inflater.inflate(R.layout.fragment_add, container, false);
-
-        //just to get ride of name
-        //Recipe recipe = new Recipe("Blank");
 
         TextView bannerofIngredient = (TextView) v.findViewById(R.id.textViewIngred);
         EditText ingredName= (EditText) v.findViewById(R.id.ingredName);
@@ -102,12 +101,9 @@ public class AddFragment extends Fragment
 
 
         //THIS ADDS A SMALL LIST VIEW TO ADD RECIPES
-
         accessRecipes = new AccessRecipes();
-
         recipeList = new ArrayList<Recipe>();
-        String result = accessRecipes.getRecipes(recipeList); // for testing
-
+        String result = accessRecipes.getRecipes(recipeList); // for testing if working correctly
 
         final ListView listView = (ListView) v.findViewById(R.id.existingRecipes);
 
