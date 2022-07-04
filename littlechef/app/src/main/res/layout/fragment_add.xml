@@ -6,13 +6,21 @@
 
 
     <!-- TODO: MAKE NICER -->
-
+    <ListView
+        android:id="@+id/existingRecipes"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+        android:divider="@null"
+        android:layout_marginTop="70dp"
+        android:dividerHeight="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="400dp"
         android:orientation="vertical">
 
         <TextView
@@ -78,7 +86,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="800dp"
         android:orientation="vertical">
 
         <Button
