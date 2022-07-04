@@ -85,7 +85,7 @@ public class AddFragment extends Fragment
                 ingredButton.setVisibility(View.VISIBLE);
                 startIngredients.setVisibility(View.GONE);
 
-
+                recipe = new recipe(recipeInput);
 
             }
         });
@@ -116,7 +116,7 @@ public class AddFragment extends Fragment
                 ingredButton.setVisibility(View.GONE);
                 startIngredients.setVisibility(View.VISIBLE);
                 //clear text boxes
-                nameField.getText().clear();
+                recipeInput.getText().clear();
 
                 ingredName.getText().clear();
                 ingredMeasurement.getText().clear();

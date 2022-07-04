@@ -85,7 +85,7 @@
             android:id="@+id/resetButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Start new Recipe " />
+            android:text="Insert Recipe to list" />
 
     </LinearLayout>
 
