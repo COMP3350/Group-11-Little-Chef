@@ -4,23 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:text="Add a Recipe"
-        android:textColor="@color/black"
-        android:textSize="25sp" />
 
     <!-- TODO: MAKE NICER -->
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="200dp"
         android:orientation="vertical">
-
 
         <TextView
             android:id="@+id/textView"
@@ -37,19 +30,10 @@
             android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/addButton"
+            android:id="@+id/startIngredients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Recipe!" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="400dp"
-        android:orientation="vertical">
+            android:text="Start ingredients" />
 
         <TextView
             android:id="@+id/textViewIngred"
@@ -86,6 +70,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Add Ingredient!" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="600dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/resetButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Start new Recipe (reset fields implement)" />
 
     </LinearLayout>
 
