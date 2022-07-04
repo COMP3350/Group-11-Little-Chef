@@ -23,6 +23,7 @@
     <string name="number"><b>1.</b></string>
     <string name="timer_default">00:00:00</string>
     <string name="finish">Finish</string>
+    <string name="cooked_meal"><b>Congratulations\nYou just cooked another meal!</b></string>
     <string-array name="serving_sizes">
         <item>1 serving</item>
         <item>2 servings</item>

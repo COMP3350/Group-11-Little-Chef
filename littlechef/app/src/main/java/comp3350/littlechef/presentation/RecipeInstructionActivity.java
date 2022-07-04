@@ -166,6 +166,8 @@ public class RecipeInstructionActivity extends AppCompatActivity
         result = accessRecipes.updateRecipe(selectedRecipe);
         if (result == null)
         {
+            Intent cookedMealCongrats = new Intent(this, CookedAnotherMealActivity.class);
+            startActivity(cookedMealCongrats);
             finish();
 
             // a way of coming back to the home activity -> recreates the home activity and therefore recipes are default
