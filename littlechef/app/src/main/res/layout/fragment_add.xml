@@ -9,18 +9,18 @@
     <ListView
         android:id="@+id/existingRecipes"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="500dp"
         android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="45dp"
         android:divider="@null"
-        android:layout_marginTop="40dp"
         android:dividerHeight="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="600dp"
         android:orientation="vertical">
 
         <TextView
@@ -40,54 +40,10 @@
             android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/startIngredients"
+            android:id="@+id/addRecipeButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Add Recipe!" />
-
-        <TextView
-            android:id="@+id/textViewIngred"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add Recipe then add ingredients " />
-
-        <EditText
-            android:id="@+id/ingredName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Ingredient Name"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/ingredMeasurement"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Ingredient measurement"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/ingredAmount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Ingredient measurement amount"
-            android:inputType="number" />
-
-        <Button
-            android:id="@+id/ingredButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Ingredient!" />
-
-        <Button
-            android:id="@+id/resetButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Reset" />
-
-
     </LinearLayout>
 
 

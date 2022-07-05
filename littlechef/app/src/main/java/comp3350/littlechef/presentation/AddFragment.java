@@ -1,6 +1,5 @@
 package comp3350.littlechef.presentation;
 
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -58,7 +57,6 @@ public class AddFragment extends Fragment
         super.onCreate(savedInstanceState);
     }
 
-    //TODO: add proper text that recipe was successfully added
 
     //TODO create list of steps to add
 
@@ -67,7 +65,11 @@ public class AddFragment extends Fragment
 
     //TODO: fix amount entry
 
-    //TODO: don't add blank recipes
+    //TODO: Refresh listview when recipe added (not necessary) CURRENT***
+
+    //TODO: make it so boxes shift up when keyboard active
+
+    //TODO: print listview alphabetically
 
     //User creates recipe name
     //then user
@@ -75,88 +77,76 @@ public class AddFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-
-        Log.i("QUICK TEST", "QUICK TEST");
         View v = inflater.inflate(R.layout.fragment_add, container, false);
 
-        TextView bannerofIngredient = (TextView) v.findViewById(R.id.textViewIngred);
-        EditText ingredName= (EditText) v.findViewById(R.id.ingredName);
-        EditText ingredMeasurement= (EditText) v.findViewById(R.id.ingredMeasurement);
-        EditText ingredAmount= (EditText) v.findViewById(R.id.ingredAmount);
-        Button ingredButton= (Button) v.findViewById(R.id.ingredButton);
-        Button startIngredients= (Button) v.findViewById(R.id.startIngredients);
-        Button resetButton= (Button) v.findViewById(R.id.resetButton);
-
-        //Initial all the add ingredient stuff should not be visible until recipe object created, ie button clicked
-        bannerofIngredient.setVisibility(View.GONE);
-        ingredName.setVisibility(View.GONE);
-        ingredMeasurement.setVisibility(View.GONE);
-        ingredAmount.setVisibility(View.GONE);
-        ingredButton.setVisibility(View.GONE);
+        Button addRecipeButton= (Button) v.findViewById(R.id.addRecipeButton);
         //Get input from text fields
         recipeInput = (EditText) v.findViewById(R.id.nameInput);
 
-        loadListView(v);
+        //START LISTVIEW
+        //THIS ADDS A SMALL LIST VIEW TO ADD RECIPES
+        accessRecipes = new AccessRecipes();
+        recipeList = new ArrayList<Recipe>();
+        String result = accessRecipes.getRecipes(recipeList); // for testing if working correctly
+        final ListView listView = (ListView) v.findViewById(R.id.existingRecipes);
 
-        //button listener for add recipe, will hide that button and show add ingredients stuff
-        startIngredients.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
+
+        //check if null
+        if( result != null)
+        {
+            Messages.fatalError(getActivity(), result);
+        }
+        else
+        {
+            recipeArrayAdapter = new ArrayAdapter<Recipe>(getActivity(), android.R.layout.simple_list_item_1, recipeList)
             {
-                //do add recipe button and add ingredients
-                addRecipeClick(bannerofIngredient, ingredName, ingredMeasurement, ingredAmount, ingredButton, startIngredients);
+                @Override
+                public View getView(int position, View convertView, ViewGroup parent)
+                {
+                    Recipe recipe = getItem(position);
+                    if (convertView == null)
+                    {
+                        convertView = LayoutInflater.from(getContext()).inflate(R.layout.recipe_card_small, parent, false);
+                    }
+                    TextView name = (TextView) convertView.findViewById(R.id.recipeNameSmall);
 
-                //add to db
-                //String result;
-                //result = accessRecipes.insertRecipe(recipe);
+                    SpannableString recipeNameFormatted = new SpannableString(recipe.getName());
+                    recipeNameFormatted.setSpan(new UnderlineSpan(), 0, recipeNameFormatted.length(), 0);
+                    recipeNameFormatted.setSpan(new StyleSpan(Typeface.BOLD), 0, recipeNameFormatted.length(), 0);
 
-                //reload listview to show added blank recipe
-                //loadListView(v); //try another way to add recipe?
-                Toast.makeText(getContext(), "Added Recipe! Now add ingredients!", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-
-        //TODO: add ingredient functionality
-        //button listener for start Ingredients, will hide that button and show add ingredients stuff
-        ingredButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                updateWorkingRecipe();
-            }
-        });
+                    name.setText(recipeNameFormatted);
 
 
-        //INSERT TO DB BUTTON
-        //when reset button is clicked, wipe field boxes and hide again
-        resetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                //TODO: create function to auto hide these
-                bannerofIngredient.setVisibility(View.GONE);
-                ingredName.setVisibility(View.GONE);
-                ingredMeasurement.setVisibility(View.GONE);
-                ingredAmount.setVisibility(View.GONE);
-                ingredButton.setVisibility(View.GONE);
-                startIngredients.setVisibility(View.VISIBLE);
-                //clear text boxes
-                //recipeInput.getText().clear();
+                    return convertView;
+                }
+            };
 
-                ingredName.getText().clear();
-                ingredMeasurement.getText().clear();
-                ingredAmount.getText().clear();
+            //on listview click
+            listView.setAdapter(recipeArrayAdapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    //TODO: ADD CLICKED ON RECIPE STUFF
+                    Log.i("listview selected", "listview selected!");
+                }
+            });
 
-                //unlock textbox
-                recipeInput.setFocusableInTouchMode(true);
+            //button listener for add recipe, will hide that button and show add ingredients stuff
+            addRecipeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    //do add recipe button and add ingredients
+                    addRecipeClick();
+                    Toast.makeText(getContext(), "Added Recipe!", Toast.LENGTH_SHORT).show();
 
-                //just for testing remove later!!!!
-                Toast.makeText(getContext(), "Added to db...wiping fields", Toast.LENGTH_SHORT).show();
+                    recipeArrayAdapter.notifyDataSetChanged();
+                }
+            });
 
-            }
-        });
+            //END LISTVIEW
+        }
+
 
         return v;
     }//end onclickview
@@ -167,65 +157,9 @@ public class AddFragment extends Fragment
 
     }
 
-    private void loadListView(View v)
-    {
-        //THIS ADDS A SMALL LIST VIEW TO ADD RECIPES
-        accessRecipes = new AccessRecipes();
-        recipeList = new ArrayList<Recipe>();
-        String result = accessRecipes.getRecipes(recipeList); // for testing if working correctly
-
-        final ListView listView = (ListView) v.findViewById(R.id.existingRecipes);
-
-        recipeArrayAdapter = new ArrayAdapter<Recipe>(getActivity(), android.R.layout.simple_list_item_1, recipeList)
-        {
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent)
-            {
-                Recipe recipe = getItem(position);
-                if(convertView == null)
-                {
-                    convertView = LayoutInflater.from(getContext()).inflate(R.layout.recipe_card_small,parent, false);
-                }
-                TextView name = (TextView) convertView.findViewById(R.id.recipeNameSmall);
-
-                SpannableString recipeNameFormatted = new SpannableString(recipe.getName());
-                recipeNameFormatted.setSpan(new UnderlineSpan(), 0, recipeNameFormatted.length(), 0);
-                recipeNameFormatted.setSpan(new StyleSpan(Typeface.BOLD), 0, recipeNameFormatted.length(), 0);
-
-                name.setText(recipeNameFormatted);
-
-
-                return convertView;
-            }
-        };
-
-        listView.setAdapter(recipeArrayAdapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
-                //TODO: ADD CLICKED ON RECIPE STUFF
-            }
-        });
-        //-----end list view
-    }
-
     //when the add recipe button is clicked do this
-    private void addRecipeClick(TextView bannerofIngredient, EditText ingredName, EditText ingredMeasurement, EditText ingredAmount, Button ingredButton, Button startIngredients)
+    private void addRecipeClick()
     {
-        //visibility for ingredient inputs
-        bannerofIngredient.setVisibility(View.VISIBLE);
-        ingredName.setVisibility(View.VISIBLE);
-        ingredMeasurement.setVisibility(View.VISIBLE);
-        ingredAmount.setVisibility(View.VISIBLE);
-        ingredButton.setVisibility(View.VISIBLE);
-        startIngredients.setVisibility(View.GONE);
-
-        //lock recipe text
-        recipeInput.setFocusable(false);
-
         //create recipe only with name
         name = recipeInput.getText().toString();
         currentRecipe = new Recipe( name );
@@ -233,14 +167,12 @@ public class AddFragment extends Fragment
         //add to db
         String result;
         result = validateRecipeName(currentRecipe, true);
-        Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
 
         if(result == null)
         {
             result = accessRecipes.insertRecipe(currentRecipe);
         }
 
-        //result = accessRecipes.insertRecipe(recipe);
     }
 
     //COURSE TESTING
@@ -254,7 +186,7 @@ public class AddFragment extends Fragment
         if (isNewRecipe && accessRecipes.getRandom(recipeAdd.getId() ) != null)
         {
             //TODO: THIS DOES NOT WORK
-            Log.i("Hit found recipe", "Recipe ID found");
+            //Log.i("Hit found recipe", "Recipe ID found");
             return "Recipe ID " + recipeAdd.getId() + " already exists.";
         }
 
