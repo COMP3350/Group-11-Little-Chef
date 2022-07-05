@@ -7,6 +7,7 @@ import android.app.Fragment;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,7 @@ import comp3350.littlechef.objects.Unit;
 public class AddFragment extends Fragment
 {
     String name;
-    Recipe recipe;
+    Recipe currentRecipe;
 
     EditText recipeInput;
 
@@ -57,15 +58,12 @@ public class AddFragment extends Fragment
         super.onCreate(savedInstanceState);
     }
 
-    //NOTES: work on selecting the recipes and adding directly to, lock recipe name box, add reset button functionality
-
     //TODO: add proper text that recipe was successfully added
-
-    //TODO: insert this blank recipe into DB
 
     //TODO create list of steps to add
 
     //TODO add check for duplicates
+        //current working
 
     //TODO: fix amount entry
 
@@ -77,6 +75,8 @@ public class AddFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
+
+        Log.i("QUICK TEST", "QUICK TEST");
         View v = inflater.inflate(R.layout.fragment_add, container, false);
 
         TextView bannerofIngredient = (TextView) v.findViewById(R.id.textViewIngred);
@@ -214,7 +214,7 @@ public class AddFragment extends Fragment
     //when the add recipe button is clicked do this
     private void addRecipeClick(TextView bannerofIngredient, EditText ingredName, EditText ingredMeasurement, EditText ingredAmount, Button ingredButton, Button startIngredients)
     {
-        //visibility
+        //visibility for ingredient inputs
         bannerofIngredient.setVisibility(View.VISIBLE);
         ingredName.setVisibility(View.VISIBLE);
         ingredMeasurement.setVisibility(View.VISIBLE);
@@ -227,16 +227,17 @@ public class AddFragment extends Fragment
 
         //create recipe only with name
         name = recipeInput.getText().toString();
-        recipe = new Recipe( name );
+        currentRecipe = new Recipe( name );
 
+        //TODO should not add a recipe thats already in
         //add to db
         String result;
-        result = validateRecipeName(recipe, true);
+        result = validateRecipeName(currentRecipe, true);
         Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
 
         if(result == null)
         {
-            result = accessRecipes.insertRecipe(recipe);
+            result = accessRecipes.insertRecipe(currentRecipe);
 
             //if(accessRecup)
         }
@@ -254,6 +255,7 @@ public class AddFragment extends Fragment
 
         if (isNewRecipe && accessRecipes.getRandom(recipeAdd.getId() ) != null)
         {
+            Log.i("Hit found recipe", "Recipe ID found");
             return "Recipe ID " + recipeAdd.getId() + " already exists.";
         }
 
