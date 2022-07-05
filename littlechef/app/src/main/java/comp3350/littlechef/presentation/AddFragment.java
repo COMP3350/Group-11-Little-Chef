@@ -63,7 +63,7 @@ public class AddFragment extends Fragment
     //TODO create list of steps to add
 
     //TODO add check for duplicates
-        //current working
+        //current ISSUES
 
     //TODO: fix amount entry
 
@@ -93,13 +93,12 @@ public class AddFragment extends Fragment
         ingredMeasurement.setVisibility(View.GONE);
         ingredAmount.setVisibility(View.GONE);
         ingredButton.setVisibility(View.GONE);
-
         //Get input from text fields
         recipeInput = (EditText) v.findViewById(R.id.nameInput);
 
         loadListView(v);
 
-        //button listener for start Ingredients, will hide that button and show add ingredients stuff
+        //button listener for add recipe, will hide that button and show add ingredients stuff
         startIngredients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -125,11 +124,7 @@ public class AddFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                //recipe.addIngredient(new Ingredient("Ranch Dressing", Unit.CUP, 0.25));
-
-                //String recipeString = recipe.getName();
-
-                //Toast.makeText(getContext(), recipeString, Toast.LENGTH_SHORT).show();
+                updateWorkingRecipe();
             }
         });
 
@@ -165,6 +160,12 @@ public class AddFragment extends Fragment
 
         return v;
     }//end onclickview
+
+    //this updates the working recipe
+    private void updateWorkingRecipe()
+    {
+
+    }
 
     private void loadListView(View v)
     {
@@ -229,7 +230,6 @@ public class AddFragment extends Fragment
         name = recipeInput.getText().toString();
         currentRecipe = new Recipe( name );
 
-        //TODO should not add a recipe thats already in
         //add to db
         String result;
         result = validateRecipeName(currentRecipe, true);
@@ -238,8 +238,6 @@ public class AddFragment extends Fragment
         if(result == null)
         {
             result = accessRecipes.insertRecipe(currentRecipe);
-
-            //if(accessRecup)
         }
 
         //result = accessRecipes.insertRecipe(recipe);
@@ -255,6 +253,7 @@ public class AddFragment extends Fragment
 
         if (isNewRecipe && accessRecipes.getRandom(recipeAdd.getId() ) != null)
         {
+            //TODO: THIS DOES NOT WORK
             Log.i("Hit found recipe", "Recipe ID found");
             return "Recipe ID " + recipeAdd.getId() + " already exists.";
         }
