@@ -128,6 +128,7 @@ public class AddFragment extends Fragment
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     //TODO: ADD CLICKED ON RECIPE STUFF
                     Log.i("listview selected", "listview selected!");
+                    recipeArrayAdapter.notifyDataSetChanged();
                 }
             });
 
@@ -137,17 +138,17 @@ public class AddFragment extends Fragment
                 public void onClick(View v)
                 {
                     //do add recipe button and add ingredients
+                    recipeArrayAdapter.notifyDataSetChanged();
                     addRecipeClick();
                     Toast.makeText(getContext(), "Added Recipe!", Toast.LENGTH_SHORT).show();
 
-                    recipeArrayAdapter.notifyDataSetChanged();
                 }
             });
 
             //END LISTVIEW
         }
 
-
+        recipeArrayAdapter.notifyDataSetChanged();
         return v;
     }//end onclickview
 

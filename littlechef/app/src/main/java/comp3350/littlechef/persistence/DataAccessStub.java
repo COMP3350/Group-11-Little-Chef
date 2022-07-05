@@ -103,6 +103,7 @@ public class DataAccessStub
         recipe.addIngredient(new Ingredient("Can of Tomato Sauce", Unit.QUANTITY, 1));
         recipes.add(recipe);
 
+        /*
         recipe = new Recipe("Chicken Wrap");
         recipe.addIngredient(new Ingredient("Grilled Chicken Breasts copped", Unit.CUP, 2));
         recipe.addIngredient(new Ingredient("Ranch Dressing", Unit.CUP, 0.25));
@@ -166,6 +167,7 @@ public class DataAccessStub
         recipe.addIngredient(new Ingredient("Sour Cream", Unit.TBSP, 3));
         recipes.add(recipe);
 
+
         recipe = new Recipe("Grilled Halloumi Salad");
         recipe.addIngredient(new Ingredient("Halloumi Cheese, sliced into ¼ inch thick slices", Unit.G, 250));
         recipe.addIngredient(new Ingredient("Packed Spring Greens", Unit.CUP, 2));
@@ -178,7 +180,7 @@ public class DataAccessStub
         recipe.addIngredient(new Ingredient("Cayenne Pepper", Unit.TSP, 0.25));
         recipe.addIngredient(new Ingredient("Salt", Unit.TSP, 0.5));
         recipes.add(recipe);
-
+        */
 
         System.out.println("Opened " +dbType +" database " +dbName);
     }
