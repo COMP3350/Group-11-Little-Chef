@@ -119,7 +119,8 @@ public class DetailedRecipeActivity extends AppCompatActivity
     //to set values in the detailed_recipe_view
     private void setValues()
     {
-        String ratingString = "Rating: 5/5";
+        String difficultyRating = selectedRecipe.getDifficultyRating();
+        String tasteRating = selectedRecipe.getTasteRating();
 
         //Fills values for header
         TextView recipeName = (TextView) findViewById(R.id.recipe_name);
@@ -139,9 +140,9 @@ public class DetailedRecipeActivity extends AppCompatActivity
 
         recipeName.setText(recipeNameFormatted);
         estimatedTime.setText(selectedRecipe.getAverageCookingTime());
-        difficulty.setText(selectedRecipe.getDifficultyString());
-        taste.setText(selectedRecipe.getQualityString());
-        rating.setText(ratingString);
+        difficulty.setText(difficultyRating);
+        taste.setText(tasteRating);
+        rating.setText(selectedRecipe.getRatingString());
         textIngredient.setText(textIngredientsFormatted);
 
 

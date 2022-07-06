@@ -166,6 +166,7 @@ public class RecipeInstructionActivity extends AppCompatActivity
         if (result == null)
         {
             Intent cookedMealCongrats = new Intent(this, CookedAnotherMealActivity.class);
+            cookedMealCongrats.putExtra("id", selectedRecipe); //pass the object reference to another activity
             startActivity(cookedMealCongrats);
             finish();
 
