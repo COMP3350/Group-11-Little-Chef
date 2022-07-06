@@ -23,7 +23,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -166,6 +165,9 @@ public class RecipeInstructionActivity extends AppCompatActivity
         result = accessRecipes.updateRecipe(selectedRecipe);
         if (result == null)
         {
+            Intent cookedMealCongrats = new Intent(this, CookedAnotherMealActivity.class);
+            cookedMealCongrats.putExtra("id", selectedRecipe); //pass the object reference to another activity
+            startActivity(cookedMealCongrats);
             finish();
 
             // a way of coming back to the home activity -> recreates the home activity and therefore recipes are default

@@ -32,6 +32,7 @@
         android:layout_marginStart="3dp"
         android:gravity="start"
         android:text="@string/number"
-        android:textSize="23sp" />
+        android:textSize="23sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

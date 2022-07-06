@@ -46,7 +46,7 @@ public class DetailedRecipeActivity extends AppCompatActivity
 
         //setting up drop down menu for choosing serving
         ArrayAdapter<String> servingSizeAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, getResources().getStringArray(R.array.serving_sizes));
-        servingNum = (Spinner) findViewById(R.id.servingNum);
+        servingNum = (Spinner) findViewById(R.id.serving_num);
         servingSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         servingNum.setAdapter(servingSizeAdapter);
 
@@ -119,11 +119,12 @@ public class DetailedRecipeActivity extends AppCompatActivity
     //to set values in the detailed_recipe_view
     private void setValues()
     {
-        String ratingString = "Rating: 5/5";
+        String difficultyRating = selectedRecipe.getDifficultyRating();
+        String tasteRating = selectedRecipe.getTasteRating();
 
         //Fills values for header
-        TextView recipeName = (TextView) findViewById(R.id.recipeName);
-        TextView estimatedTime = (TextView) findViewById(R.id.estimatedTime);
+        TextView recipeName = (TextView) findViewById(R.id.recipe_name);
+        TextView estimatedTime = (TextView) findViewById(R.id.estimated_time);
         TextView difficulty = (TextView) findViewById(R.id.difficulty);
         TextView taste = (TextView) findViewById(R.id.taste);
         TextView rating = (TextView) findViewById(R.id.rating);
@@ -139,9 +140,9 @@ public class DetailedRecipeActivity extends AppCompatActivity
 
         recipeName.setText(recipeNameFormatted);
         estimatedTime.setText(selectedRecipe.getAverageCookingTime());
-        difficulty.setText(selectedRecipe.getDifficultyString());
-        taste.setText(selectedRecipe.getQualityString());
-        rating.setText(ratingString);
+        difficulty.setText(difficultyRating);
+        taste.setText(tasteRating);
+        rating.setText(selectedRecipe.getRatingString());
         textIngredient.setText(textIngredientsFormatted);
 
 

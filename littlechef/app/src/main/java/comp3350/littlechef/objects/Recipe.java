@@ -23,9 +23,8 @@ public class Recipe implements Serializable
 
     //rating criteria
     private ArrayList<Integer> cookingTimes; //for each time that this recipe was cooked, contains the total seconds of cooking time
-    private Difficulty difficulty;
-    private Quality quality; //same as for difficulty
-    private ArrayList<Float> rating; //calculate the average similar to gpa calculation, from 0 to 5(can make "animated 5 stars that fill up the color later")
+    private ArrayList<Double> difficultyRatings; //for each time that this recipe is rated stores difficulty rating
+    private ArrayList<Double> tasteRatings; //for each time that this recipe is rated stores taste rating
 
     //constructors
     public Recipe(int recipeID)
@@ -36,9 +35,8 @@ public class Recipe implements Serializable
         ingredients = new ArrayList<Ingredient>();
         instructions = new ArrayList<String[]>();
 
-        difficulty = Difficulty.NOT_RATED;
-        quality = Quality.NOT_RATED;
-        rating = new ArrayList<Float>();
+        difficultyRatings = new ArrayList<Double>();
+        tasteRatings = new ArrayList<Double>();
     }
 
     public Recipe(String name)
@@ -49,9 +47,8 @@ public class Recipe implements Serializable
         ingredients = new ArrayList<Ingredient>();
         instructions = new ArrayList<String[]>();
 
-        difficulty = Difficulty.NOT_RATED;
-        quality = Quality.NOT_RATED;
-        rating = new ArrayList<Float>();
+        difficultyRatings = new ArrayList<Double>();
+        tasteRatings = new ArrayList<Double>();
     }
 
     //private methods
@@ -121,102 +118,62 @@ public class Recipe implements Serializable
         cookingTimes.add(totalSeconds);
     }
 
-    public Difficulty getDifficulty()
+    public String getDifficultyRating()
     {
-        return difficulty;
-    }
-
-    public String getDifficultyString()
-    {
-        String result;
-        Difficulty difficulty = getDifficulty();
-        switch(difficulty)
+        double rating = calcAverage(difficultyRatings);
+        String result = "Difficulty: ";
+        if(rating == 0.0)
         {
-            case MASTER_CHEF:
-                result = "Master Chef";
-                break;
-
-            case EXPERIENCED:
-                result = "Experienced";
-                break;
-
-            case AMATEUR:
-                result = "Amateur";
-                break;
-
-            case BEGINNER:
-                result = "Beginner";
-                break;
-
-            default:
-                result = "Not rated";
+            result += "-";
         }
-        return "Difficulty: " + result;
-    }
 
-    public void setDifficulty(Difficulty difficulty)
-    {
-        this.difficulty = difficulty;
-    }
-
-    public Quality getQuality()
-    {
-        return quality;
-    }
-
-    public String getQualityString()
-    {
-        String result;
-        Quality quality = getQuality();
-        switch(quality)
+        else
         {
-            case TASTY:
-                result = "Tasty";
-                break;
-
-            case HEAVENLY:
-                result = "Heavenly";
-                break;
-
-            case DELICIOUS:
-                result = "Delicious";
-                break;
-
-            case HORRIBLE:
-                result = "Horrible";
-                break;
-
-            default:
-                result = "Not rated";
+            result += Double.toString(rating);
         }
-        return "Taste: " + result;
+
+        return result;
     }
 
-    public void setQuality(Quality quality)
+    public void addDifficultyRating(double rating)
     {
-        this.quality = quality;
+        difficultyRatings.add(rating);
     }
 
-    public float getRating()
+    public String getTasteRating()
     {
-        int size = rating.size(); //number of ratings
-        float averageRating = 0.0f;
-
-        //if rating array is empty, means no rating was given yet -> defaults to 0.0
-        if(size != 0)
+        double rating = calcAverage(tasteRatings);
+        String result = "Taste: ";
+        if(rating == 0.0)
         {
-            for(float num:rating)
-            {
-                averageRating += num;
-            }
-            averageRating = averageRating/size;
+            result += "-";
         }
-        return averageRating;
+
+        else
+        {
+            result += Double.toString(rating);
+        }
+
+        return result;
+    }
+
+    public void addTasteRating(double rating)
+    {
+        tasteRatings.add(rating);
+    }
+
+    //returns average rating, which an average of difficulty and taste ratings
+    public double getRating()
+    {
+        double averageDiffictuly = calcAverage(difficultyRatings);
+        double averageTaste = calcAverage(tasteRatings);
+
+        return (averageDiffictuly+averageTaste)/2;
     }
 
     public String getRatingString()
     {
-        float rating = getRating();
+        double rating = getRating();
         String result;
         if(rating == 0.0f)
         {
@@ -225,15 +182,10 @@ public class Recipe implements Serializable
 
         else
         {
-            result = Float.toString(rating);
+            result = Double.toString(rating);
         }
 
         return result + "/5";
-    }
-
-    public void rate(float userRating)
-    {
-        rating.add(userRating);
     }
 
     public int getId()
@@ -257,5 +209,20 @@ public class Recipe implements Serializable
             }
         }
         return result;
+    }
+
+    private double calcAverage(ArrayList<Double> ratingVals)
+    {
+        double sum = 0.0;
+        if(ratingVals.size()>0)
+        {
+            for(int i = 0; i<ratingVals.size(); i++)
+            {
+                sum+=ratingVals.get(i);
+            }
+            return sum/ratingVals.size();
+        }
+        return 0.0;
+
     }
 }

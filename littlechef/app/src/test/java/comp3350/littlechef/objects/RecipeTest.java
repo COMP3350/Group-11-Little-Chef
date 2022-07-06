@@ -331,13 +331,13 @@ public class RecipeTest extends TestCase
     public void testRecipeGetDifficulty()
     {
         Recipe diff1 = new Recipe("abcde", 1,2);
-        assertEquals(Difficulty.NOT_RATED , diff1.getDifficulty());
+        assertEquals(Difficulty.NOT_RATED , diff1.getDifficultyRatings());
 
         diff1.setDifficulty(Difficulty.AMATEUR);
-        assertEquals(Difficulty.AMATEUR, diff1.getDifficulty());
+        assertEquals(Difficulty.AMATEUR, diff1.getDifficultyRatings());
 
         diff1.setDifficulty(null);
-        assertNull( diff1.getDifficulty());
+        assertNull( diff1.getDifficultyRatings());
 
 
     }
@@ -357,13 +357,13 @@ public class RecipeTest extends TestCase
     public void testRecipeSetDifficulty()
     {
         Recipe diff1 = new Recipe("abcde", 1,2);
-        assertEquals(Difficulty.NOT_RATED, diff1.getDifficulty());
+        assertEquals(Difficulty.NOT_RATED, diff1.getDifficultyRatings());
 
         diff1.setDifficulty(Difficulty.AMATEUR);
         assertEquals("Difficulty: Amateur", diff1.getDifficultyString());
 
         diff1.setDifficulty(null);
-        assertNull(diff1.getDifficulty());
+        assertNull(diff1.getDifficultyRatings());
     }//end testRecipeSetDifficulty
 
     @Test

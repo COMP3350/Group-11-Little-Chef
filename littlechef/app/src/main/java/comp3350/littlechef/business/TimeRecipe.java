@@ -1,9 +1,6 @@
 package comp3350.littlechef.business;
 
-import java.util.ArrayList;
 import java.util.Locale;
-
-import comp3350.littlechef.objects.Recipe;
 
 public class TimeRecipe
 {
@@ -30,12 +27,12 @@ public class TimeRecipe
 
     public static String timerTimeFormat(int seconds, int minutes, int hours)
     {
-        return String.format(Locale.CANADA,"%02d",hours) + ":" + String.format(Locale.CANADA,"%02d",minutes) + ":" + String.format(Locale.CANADA,"%02d",seconds);
+        return String.format(Locale.CANADA,"%02d:%02d:%02d",hours,minutes,seconds);
     }
 
 
     public static String recipeTimeFormat(int seconds, int minutes, int hours)
     {
-        return String.format(Locale.CANADA,"%02d",hours) + "h " + String.format(Locale.CANADA,"%02d",minutes) + "m " + String.format(Locale.CANADA,"%02d",seconds) + "s";
+        return String.format(Locale.CANADA,"%02dh %02dm %02ds",hours,minutes,seconds);
     }
 }

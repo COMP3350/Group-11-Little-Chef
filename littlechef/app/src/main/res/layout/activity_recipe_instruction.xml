@@ -14,7 +14,8 @@
         android:layout_marginTop="10dp"
         android:text="@string/instructions"
         android:textColor="@color/black"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/instruction_list_view"
