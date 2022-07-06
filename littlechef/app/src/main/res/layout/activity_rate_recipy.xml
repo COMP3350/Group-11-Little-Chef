@@ -140,7 +140,8 @@
         android:layout_below="@+id/rating_3"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:checkedButton="@id/difficulty_radio_1">
 
         <RadioButton
             android:id="@+id/difficulty_radio_1"
@@ -205,7 +206,8 @@
         android:orientation="horizontal"
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/difficulty_radio_group">
+        android:layout_below="@id/difficulty_radio_group"
+        android:checkedButton="@id/taste_radio_1">
         <RadioButton
             android:id="@+id/taste_radio_1"
             android:layout_width="wrap_content"

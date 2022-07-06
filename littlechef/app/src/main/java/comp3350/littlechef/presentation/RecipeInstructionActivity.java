@@ -169,13 +169,8 @@ public class RecipeInstructionActivity extends AppCompatActivity
             cookedMealCongrats.putExtra("id", selectedRecipe); //pass the object reference to another activity
             startActivity(cookedMealCongrats);
             finish();
-
-            // a way of coming back to the home activity -> recreates the home activity and therefore recipes are default
-//            Intent i=new Intent(this, HomeActivity.class);
-//            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(i);
-
         }
+
         else
         {
             Messages.fatalError(this, result);

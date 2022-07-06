@@ -2,11 +2,13 @@ package comp3350.littlechef.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import comp3350.littlechef.R;
+import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.objects.Recipe;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -18,6 +20,9 @@ public class RateRecipyActivity extends AppCompatActivity
     private RadioGroup tasteRadioGroup;
     private RadioButton radioButtonDifficulty;
     private RadioButton radioButtonTaste;
+    private Button submitButton;
+    private AccessRecipes accessRecipes;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -25,8 +30,12 @@ public class RateRecipyActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_recipy);
 
+        accessRecipes = new AccessRecipes();
+
         difficultyRadioGroup = (RadioGroup) findViewById(R.id.difficulty_radio_group);
         tasteRadioGroup = (RadioGroup) findViewById(R.id.taste_radio_group);
+        submitButton = (Button) findViewById(R.id.submit_rating);
+
 
         //get the selected recipe that was clicked from previous activity
         Intent previousIntent = getIntent();
@@ -36,29 +45,37 @@ public class RateRecipyActivity extends AppCompatActivity
     }
 
 
-//    public void submitClicked(View view)
-//    {
-//        String result;
-//        selectedRecipe.addCookingTime(time);
-//        result = accessRecipes.updateRecipe(selectedRecipe);
-//        if (result == null)
-//        {
-//            Intent cookedMealCongrats = new Intent(this, CookedAnotherMealActivity.class);
-//            startActivity(cookedMealCongrats);
-//            finish();
-//
-//            // a way of coming back to the home activity -> recreates the home activity and therefore recipes are default
-////            Intent i=new Intent(this, HomeActivity.class);
-////            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-////            startActivity(i);
-//
-//        }
-//        else
-//        {
-//            Messages.fatalError(this, result);
-//        }
-//        finish();
-//    }
+    public void submitClicked(View view)
+    {
+        int tasteRatingId = tasteRadioGroup.getCheckedRadioButtonId();
+        int difficultyRatingId = difficultyRadioGroup.getCheckedRadioButtonId();
+
+        radioButtonTaste = (RadioButton) findViewById(tasteRatingId);
+        radioButtonDifficulty = (RadioButton) findViewById(difficultyRatingId);
+
+        double tasteRating = Double.parseDouble(radioButtonTaste.getText().toString());
+        double difficultyRating = Double.parseDouble(radioButtonDifficulty.getText().toString());
+
+        String result;
+
+        selectedRecipe.addTasteRating(tasteRating);
+        selectedRecipe.addDifficultyRating(difficultyRating);
+        result = accessRecipes.updateRecipe(selectedRecipe);
+        if (result == null)
+        {
+            finish();
+            // a way of coming back to the home activity -> recreates the home activity and therefore recipes are default
+//            Intent i=new Intent(this, HomeActivity.class);
+//            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            startActivity(i);
+
+        }
+
+        else
+        {
+            Messages.fatalError(this, result);
+        }
+    }
 
     private void setValues()
     {
