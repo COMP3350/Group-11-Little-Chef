@@ -24,6 +24,13 @@
     <string name="timer_default">00:00:00</string>
     <string name="finish">Finish</string>
     <string name="cooked_meal">Congratulations\nYou just cooked another meal!</string>
+    <string name="submit">Submit</string>
+    <string name="five_rating_description">5 = Better than\nexpected</string>
+    <string name="three_rating_description">3 = Meets\nexpectations</string>
+    <string name="one_rating_description" >1 = Worse than\nexpected</string>
+    <string name="expectations_rating" >Did this meal meet your expectations?</string>
+    <string name="rate_prompt">Please take a second to rate how great of a job \nyou did in cooking this meal!</string>
+
     <string-array name="serving_sizes">
         <item>1 serving</item>
         <item>2 servings</item>

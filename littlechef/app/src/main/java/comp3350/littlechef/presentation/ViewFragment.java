@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import android.app.Fragment;
 
-import android.os.Parcelable;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
@@ -22,7 +21,6 @@ import java.util.ArrayList;
 
 import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
-import comp3350.littlechef.business.ScaleRecipe;
 import comp3350.littlechef.objects.Recipe;
 
 //TODO get rid of static in  recipeArrayAdapter
@@ -75,8 +73,8 @@ public class ViewFragment extends Fragment
                     {
                         convertView = LayoutInflater.from(getContext()).inflate(R.layout.recipe_card,parent, false);
                     }
-                    TextView name = (TextView) convertView.findViewById(R.id.recipeName);
-                    TextView estimatedTime = (TextView) convertView.findViewById(R.id.estimatedTime);
+                    TextView name = (TextView) convertView.findViewById(R.id.recipe_name);
+                    TextView estimatedTime = (TextView) convertView.findViewById(R.id.estimated_time);
                     TextView difficulty = (TextView) convertView.findViewById(R.id.difficulty);
                     TextView taste = (TextView) convertView.findViewById(R.id.taste);
                     TextView rating = (TextView) convertView.findViewById(R.id.rating);

@@ -1,9 +1,277 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.RateRecipyActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/recipe_card_rating"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:background="@color/header_footer_background">
+
+        <TextView
+            android:id="@+id/meet_expectations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="@string/expectations_rating"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/rate_prompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/meet_expectations"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="@string/rate_prompt"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/estimated_time_rating_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rate_prompt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="@string/time"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/difficulty_rating_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/estimated_time_rating_activity"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="20dp"
+            android:text="@string/difficulty"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/taste_rating_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/difficulty_rating_activity"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="20dp"
+            android:text="@string/taste"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/rating_value_rating_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/taste_rating_activity"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="20dp"
+            android:text="@string/rating"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/rating_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recipe_card_rating"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/one_rating_description"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/rating_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/recipe_card_rating"
+        android:layout_marginTop="30dp"
+        android:textSize="20sp"
+        android:text="@string/three_rating_description" />
+
+    <TextView
+        android:id="@+id/rating_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/recipe_card_rating"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="30dp"
+        android:textSize="20sp"
+        android:text="@string/five_rating_description" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/difficulty_radio_group"
+        android:layout_alignTop="@+id/difficulty_radio_group"
+        android:layout_marginStart="-103dp"
+        android:layout_marginTop="31dp"
+        android:text="@string/difficulty"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/taste_radio_group"
+        android:layout_alignTop="@+id/taste_radio_group"
+        android:layout_marginStart="-68dp"
+        android:layout_marginTop="31dp"
+        android:text="@string/taste"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+
+    <RadioGroup
+        android:id="@+id/difficulty_radio_group"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rating_3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/difficulty_radio_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@android:drawable/btn_radio"
+            android:gravity="center"
+            android:text="1"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/difficulty_radio_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@android:drawable/btn_radio"
+            android:gravity="center"
+            android:text="2"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/difficulty_radio_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@android:drawable/btn_radio"
+            android:gravity="center"
+            android:text="3"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/difficulty_radio_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@android:drawable/btn_radio"
+            android:gravity="center"
+            android:text="4"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/difficulty_radio_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@android:drawable/btn_radio"
+            android:gravity="center"
+            android:text="5"
+            android:textSize="20sp" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/taste_radio_group"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/difficulty_radio_group">
+        <RadioButton
+            android:id="@+id/taste_radio_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@android:drawable/btn_radio"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="1" />
+
+        <RadioButton
+            android:id="@+id/taste_radio_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@android:drawable/btn_radio"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="2" />
+
+        <RadioButton
+            android:id="@+id/taste_radio_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@android:drawable/btn_radio"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="3" />
+
+        <RadioButton
+            android:id="@+id/taste_radio_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@android:drawable/btn_radio"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="4" />
+
+        <RadioButton
+            android:id="@+id/taste_radio_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@android:drawable/btn_radio"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="5" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/submit_rating"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/round_button"
+        android:onClick="submitClicked"
+        android:text="@string/submit"
+        android:textColor="@color/recipe_name_text"
+        android:textSize="25sp" />
+</RelativeLayout>
