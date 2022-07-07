@@ -21,7 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="500dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:windowSoftInputMode="adjustPan">
 
         <TextView
             android:id="@+id/textView"
@@ -37,6 +38,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Recipe Name"
+            android:windowSoftInputMode="adjustResize"
             android:inputType="textPersonName" />
 
         <Button
@@ -51,6 +53,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/ingredientName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Ingredient name"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/addIngredientButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Ingredient!" />
 
     </LinearLayout>
 

@@ -38,9 +38,12 @@ import comp3350.littlechef.objects.Unit;
 public class AddFragment extends Fragment
 {
     String name;
-    Recipe currentRecipe;
+    String nameIngred;
+
+    Recipe selectedRecipe;
 
     EditText recipeInput;
+    EditText ingredientInputName;
 
     private AccessRecipes accessRecipes;
     private ArrayList<Recipe> recipeList;
@@ -61,16 +64,11 @@ public class AddFragment extends Fragment
 
     //TODO create list of steps to add
 
-    //TODO add check for duplicates
-        //current ISSUES
+    //TODO add check for duplicate
 
-    //TODO: fix amount entry
+    //TODO: make it so boxes shift up when keyboard active******
 
-    //TODO: Refresh listview when recipe added (not necessary) CURRENT***
-
-    //TODO: make it so boxes shift up when keyboard active
-
-    //TODO: print listview alphabetically
+    //TODO: print listview alphabetically??
 
     //User creates recipe name
     //then user
@@ -83,9 +81,14 @@ public class AddFragment extends Fragment
         Button addRecipeButton= (Button) view.findViewById(R.id.addRecipeButton);
         TextView workingRecipeName= (TextView) view.findViewById(R.id.workingRecipeName);
         workingRecipeName.setVisibility(View.GONE); //initially does not show selected recipe
+        EditText ingredientName= (EditText) view.findViewById(R.id.ingredientName);
+        ingredientName.setVisibility(View.GONE);
+        Button addIngredientButton= (Button) view.findViewById(R.id.addIngredientButton);
+        addIngredientButton.setVisibility(View.GONE);
 
         //Get input from text fields
         recipeInput = (EditText) view.findViewById(R.id.nameInput);
+        ingredientInputName = (EditText) view.findViewById(R.id.ingredientName);
 
         //START LISTVIEW
         //THIS ADDS A SMALL LIST VIEW TO ADD RECIPES
@@ -130,14 +133,14 @@ public class AddFragment extends Fragment
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    //TODO: ADD CLICKED ON RECIPE STUFF
-                    Log.i("item clicks", "item clicked");
+
                     //selected recipe and take to new activity
-                    Recipe selectedRecipe = (Recipe) listView.getItemAtPosition(position);
+                   // Recipe selectedRecipe = (Recipe) listView.getItemAtPosition(position);
+                    selectedRecipe = (Recipe) listView.getItemAtPosition(position);
                     workingRecipeName.setText("Add Ingredients to "+selectedRecipe.getName());
                     workingRecipeName.setVisibility(View.VISIBLE);
-                    //call update recipe
-
+                    ingredientName.setVisibility(View.VISIBLE);
+                    addIngredientButton.setVisibility(View.VISIBLE);
 
                 }
             });
@@ -156,15 +159,31 @@ public class AddFragment extends Fragment
                 }
             });
 
+            //button listener for adding an ingredient to a recipe
+            addIngredientButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view)
+                {
+                    //TODO implement
+                    Toast.makeText(getActivity(), "addIngredient button!"+selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
+                    addIngredients(view);
+
+                }
+            });
+
             //END LISTVIEW
         }
         return view;
     }//end onclickview
 
     //add ingredients
-    private void addIngredients(Recipe recipe)
+    private void addIngredients(View view)
     {
+        //TODO finish implement
         //recipe.addIngredient(new Ingredient("Olive Oil", Unit.TBSP, 1));
+
+        nameIngred = ingredientInputName.getText().toString();
+        Toast.makeText(getActivity(), ""+nameIngred, Toast.LENGTH_SHORT).show();
     }
 
     //when the add recipe button is clicked do this
