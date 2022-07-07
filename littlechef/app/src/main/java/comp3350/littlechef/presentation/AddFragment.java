@@ -163,15 +163,24 @@ public class AddFragment extends Fragment
     {
         //create recipe only with name
         name = recipeInput.getText().toString();
-        currentRecipe = new Recipe( name );
-
-        //add to db
         String result;
-        result = validateRecipeName(currentRecipe, true);
+        Recipe newRecipe = new Recipe( name );
+
+        result = validateRecipeName(newRecipe, true);
 
         if(result == null)
         {
-            result = accessRecipes.insertRecipe(currentRecipe);
+            result = accessRecipes.insertRecipe(newRecipe);
+            if(result == null)
+            {
+                accessRecipes.getRecipes(recipeList);
+                recipeArrayAdapter.notifyDataSetChanged();
+
+            }
+            else
+            {
+                Messages.fatalError(getActivity(), result);
+            }
         }
 
     }
