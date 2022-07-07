@@ -7,7 +7,8 @@ import comp3350.littlechef.R;
 
 
 //this comes from add fragment to show the ingredients and add more if necessary
-public class ingredientsView extends AppCompatActivity {
+public class ingredientsView extends AppCompatActivity
+{
 
 
 

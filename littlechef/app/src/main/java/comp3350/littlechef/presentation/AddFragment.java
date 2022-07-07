@@ -88,8 +88,7 @@ public class AddFragment extends Fragment
         //THIS ADDS A SMALL LIST VIEW TO ADD RECIPES
         accessRecipes = new AccessRecipes();
         recipeList = new ArrayList<Recipe>();
-        String result = accessRecipes.getRecipes(recipeList); // for testing if working correctly
-        final ListView listView = (ListView) v.findViewById(R.id.existingRecipes);
+        String result = accessRecipes.getRecipes(recipeList);
 
 
         //check if null
@@ -99,6 +98,8 @@ public class AddFragment extends Fragment
         }
         else
         {
+            final ListView listView = (ListView) v.findViewById(R.id.existingRecipes);
+
             recipeArrayAdapter = new ArrayAdapter<Recipe>(getActivity(), android.R.layout.simple_list_item_1, recipeList)
             {
                 @Override
@@ -129,14 +130,12 @@ public class AddFragment extends Fragment
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     //TODO: ADD CLICKED ON RECIPE STUFF
                     //selected recipe and take to new activity
-                    Log.i("listview selected", "listview selected!");
-
-                    Recipe selectedRecipe = (Recipe) listView.getItemAtPosition(position);
+                    Recipe selectRecipe = (Recipe) listView.getItemAtPosition(position);
 
                     Intent recipeIngredients = new Intent(getActivity(), ingredientsView.class);
-                    recipeIngredients.putExtra("id", selectedRecipe); //pass the object reference to another activity
+                    //TODO get selected recipe
+                    recipeIngredients.putExtra("id", selectRecipe); //pass the object reference to another activity
                     startActivity(recipeIngredients);
-                    recipeArrayAdapter.notifyDataSetChanged();
                 }
             });
 
@@ -156,7 +155,7 @@ public class AddFragment extends Fragment
             //END LISTVIEW
         }
 
-        recipeArrayAdapter.notifyDataSetChanged();
+        //recipeArrayAdapter.notifyDataSetChanged();
         return v;
     }//end onclickview
 
