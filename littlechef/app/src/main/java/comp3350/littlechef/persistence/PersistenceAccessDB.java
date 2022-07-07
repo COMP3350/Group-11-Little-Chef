@@ -67,11 +67,11 @@ public class PersistenceAccessDB implements PersistenceAccess {
     public String addRecipe(Recipe recipe) {
         String name = recipe.getName();
         String ingredients = recipe.getIngredients().toString();
-        String steps = recipe.getSteps().toString();
-        String timeToMake = String.valueOf(recipe.getTimeToMake());
-        String difficulty = recipe.getDifficulty() + "";//since last time we discussed we want to make it as user-defined string, use +""
-        String quality = recipe.getQuality() + "";//same as difficulty
-        String rate = String.valueOf(recipe.getRating());
+        String steps = recipe.getInstructions().toString();
+        String timeToMake = recipe.getAverageCookingTime();
+        String difficulty = recipe.getDifficultyRating() + "";//since last time we discussed we want to make it as user-defined string, use +""
+        String quality = recipe.getTasteRating() + "";//same as difficulty
+        String rate = recipe.getRatingString();
 
         String instruction = "'" + name + "','" + ingredients + "','" + steps + "'," + timeToMake + ",'" + difficulty + "','" + quality + "'," + rate;
 
@@ -115,7 +115,7 @@ public class PersistenceAccessDB implements PersistenceAccess {
         }
         try{
             while(resultSet.next()){
-                recipe = new Recipe(resultSet.getString("name"),resultSet.getFloat("timeToMake"));
+                recipe = new Recipe(resultSet.getString("name"));
             }
         }catch (SQLException se){
             se.printStackTrace();
@@ -141,7 +141,7 @@ public class PersistenceAccessDB implements PersistenceAccess {
 
         try{
             while(resultSet.next()){
-                recipe = new Recipe(resultSet.getString("name"),resultSet.getFloat("timeToMake"));
+                recipe = new Recipe(resultSet.getString("name"));
                 recipes.add(recipe);
             }
         }catch (SQLException se){
