@@ -78,11 +78,14 @@ public class AddFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        View v = inflater.inflate(R.layout.fragment_add, container, false);
+        View view = inflater.inflate(R.layout.fragment_add, container, false);
 
-        Button addRecipeButton= (Button) v.findViewById(R.id.addRecipeButton);
+        Button addRecipeButton= (Button) view.findViewById(R.id.addRecipeButton);
+        TextView workingRecipeName= (TextView) view.findViewById(R.id.workingRecipeName);
+        workingRecipeName.setVisibility(View.GONE); //initially does not show selected recipe
+
         //Get input from text fields
-        recipeInput = (EditText) v.findViewById(R.id.nameInput);
+        recipeInput = (EditText) view.findViewById(R.id.nameInput);
 
         //START LISTVIEW
         //THIS ADDS A SMALL LIST VIEW TO ADD RECIPES
@@ -91,14 +94,13 @@ public class AddFragment extends Fragment
         String result = accessRecipes.getRecipes(recipeList);
 
 
-        //check if null
         if( result != null)
         {
             Messages.fatalError(getActivity(), result);
         }
         else
         {
-            final ListView listView = (ListView) v.findViewById(R.id.existingRecipes);
+            final ListView listView = (ListView) view.findViewById(R.id.existingRecipes);
 
             recipeArrayAdapter = new ArrayAdapter<Recipe>(getActivity(), android.R.layout.simple_list_item_1, recipeList)
             {
@@ -129,40 +131,40 @@ public class AddFragment extends Fragment
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     //TODO: ADD CLICKED ON RECIPE STUFF
+                    Log.i("item clicks", "item clicked");
                     //selected recipe and take to new activity
-                    Recipe selectRecipe = (Recipe) listView.getItemAtPosition(position);
+                    Recipe selectedRecipe = (Recipe) listView.getItemAtPosition(position);
+                    workingRecipeName.setText("Add Ingredients to "+selectedRecipe.getName());
+                    workingRecipeName.setVisibility(View.VISIBLE);
+                    //call update recipe
 
-                    Intent recipeIngredients = new Intent(getActivity(), ingredientsView.class);
-                    //TODO get selected recipe
-                    recipeIngredients.putExtra("id", selectRecipe); //pass the object reference to another activity
-                    startActivity(recipeIngredients);
+
                 }
             });
 
             //button listener for add recipe, will hide that button and show add ingredients stuff
             addRecipeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v)
+                public void onClick(View view)
                 {
                     //do add recipe button and add ingredients
-                    recipeArrayAdapter.notifyDataSetChanged();
+                    //recipeArrayAdapter.notifyDataSetChanged();
                     addRecipeClick();
                     Toast.makeText(getContext(), "Added Recipe!", Toast.LENGTH_SHORT).show();
+                    recipeArrayAdapter.notifyDataSetChanged();
 
                 }
             });
 
             //END LISTVIEW
         }
-
-        //recipeArrayAdapter.notifyDataSetChanged();
-        return v;
+        return view;
     }//end onclickview
 
-    //this updates the working recipe
-    private void updateWorkingRecipe()
+    //add ingredients
+    private void addIngredients(Recipe recipe)
     {
-
+        //recipe.addIngredient(new Ingredient("Olive Oil", Unit.TBSP, 1));
     }
 
     //when the add recipe button is clicked do this
