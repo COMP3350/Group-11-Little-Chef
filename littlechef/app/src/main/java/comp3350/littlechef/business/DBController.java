@@ -16,7 +16,7 @@ public class DBController implements PersistenceAccess{
             public void open(String dbPath) {}
             public void close() {}
             public String addRecipe(Recipe recipe) {return null;}
-            public Recipe updateRecipe(Recipe currRecipe) {return null;}
+            public String updateRecipe(Recipe currRecipe) {return null;}
             public Recipe getRecipe(String name) {return null;}
             public ArrayList<Recipe> getListOfSameRecipe(Recipe recipe) {return null;}
             public boolean delRecipe(Recipe recipe) {return false;}
@@ -47,7 +47,7 @@ public class DBController implements PersistenceAccess{
     }
 
     @Override
-    public Recipe updateRecipe(Recipe currRecipe) {
+    public String updateRecipe(Recipe currRecipe) {
         return service.updateRecipe(currRecipe);
     }
 

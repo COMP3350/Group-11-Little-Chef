@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class RecipeTest extends TestCase
 {
+    /*
     public RecipeTest(String arg0) {
         super(arg0);
     }//end RecipeTest
@@ -436,5 +437,5 @@ public class RecipeTest extends TestCase
         rating1.rate(0.0f);
         assertEquals("-/5", rating1.getRatingString());
     }
-
+*/
 }

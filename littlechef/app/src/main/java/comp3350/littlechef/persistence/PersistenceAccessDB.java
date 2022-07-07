@@ -16,12 +16,26 @@ public class PersistenceAccessDB implements PersistenceAccess {
     private String dbType;
     private Statement statement;
 
+    private String result;
+
     public PersistenceAccessDB(String dbPath) {
         databasePath = dbPath;
     }
 
     @Override
     public void open(String dbPath) {
+
+        // Ask Briaco: is it okay to do this?
+        if(dbPath == null)
+        {
+            throw new NullPointerException("dbPath cannot be null.");
+        }
+
+        if(dbPath == "")
+        {
+            throw new IllegalArgumentException("dbPath cannot be an empty string.");
+        }
+
         try {
             dbType = "HSQL";
             Class.forName("org.hsqldb.jdbcDriver").newInstance();
@@ -31,19 +45,26 @@ public class PersistenceAccessDB implements PersistenceAccess {
             statement = connection.createStatement();
             System.out.println("Connection built successfully.");
 
-        } catch (SQLException se) {
+        }
+        catch (Exception se)
+        {
             se.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (statement != null) {
+        }
+        finally
+        {
+            try
+            {
+                if (statement != null)
+                {
                     connection.close();
                 }
-            } catch (SQLException se) {
+            }
+            catch (SQLException se)
+            {
                 se.printStackTrace();
             }
         }
+
         System.out.println(dbType + " type's database opened successfully.");
     }//end open
 
@@ -64,64 +85,82 @@ public class PersistenceAccessDB implements PersistenceAccess {
     }//end close
 
     @Override
-    public String addRecipe(Recipe recipe) {
-        String name = recipe.getName();
-        String ingredients = recipe.getIngredients().toString();
-        String steps = recipe.getInstructions().toString();
-        String timeToMake = recipe.getAverageCookingTime();
-        String difficulty = recipe.getDifficultyRating() + "";//since last time we discussed we want to make it as user-defined string, use +""
-        String quality = recipe.getTasteRating() + "";//same as difficulty
-        String rate = recipe.getRatingString();
+    public String addRecipe(Recipe recipe)
+    {
+        String name, ingredients, steps, timeToMake, difficulty, rate, quality, instruction;
+        result = null;
 
-        String instruction = "'" + name + "','" + ingredients + "','" + steps + "'," + timeToMake + ",'" + difficulty + "','" + quality + "'," + rate;
+        try
+        {
+            name = recipe.getName();
+            ingredients = recipe.getIngredients().toString();
+            steps = recipe.getInstructions().toString();
+            timeToMake = recipe.getAverageCookingTime();
+            difficulty = recipe.getDifficultyRating() + "";//since last time we discussed we want to make it as user-defined string, use +""
+            quality = recipe.getTasteRating() + "";//same as difficulty
+            rate = recipe.getRatingString();
+            instruction = "'" + name + "','" + ingredients + "','" + steps + "'," + timeToMake + ",'" + difficulty + "','" + quality + "'," + rate;
 
-        try {
             cmd = "INSERT INTO RECIPES VALUES (" + instruction + ")";
+
+            // Kajal comment: should we break this down into two statements so its not chained like this?
+            // also what is resultSet used for? Can we switch it for result like in the sample so that I can use it for error checking?
             resultSet = connection.createStatement().executeQuery(cmd);
-        } catch (SQLException se) {
-            se.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-        return name;
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
+
+        return result; // why returning name?
     }//end addRecipe
 
 
     @Override
-    public Recipe updateRecipe(Recipe currRecipe) {
+    public String updateRecipe(Recipe currRecipe) {
         //I think it should return Recipe, because we are update and get a recipe with new information
-        String name = currRecipe.getName();
-        try {
+        String name;
+        result = null;
+
+        try
+        {
+            name = currRecipe.getName();
             cmd = "UPDATE RECIPE SET";//stuck here
             resultSet = connection.createStatement().executeQuery(cmd);
-        } catch (SQLException se) {
-            se.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-        return currRecipe;
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
+        return result;
     }//end updateRecipe
 
     @Override
     public Recipe getRecipe(String name) {
         Recipe recipe = null;
-        try {
+
+        try
+        {
             cmd = "SELECT * FROM RECIPE WHERE NAME='" + name + "'";
             resultSet = connection.createStatement().executeQuery(cmd);
-        } catch (SQLException se) {
-            se.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-        try{
-            while(resultSet.next()){
+        catch (Exception se)
+        {
+            se.printStackTrace();
+        }
+
+        try
+        {
+            while(resultSet.next())
+            {
                 recipe = new Recipe(resultSet.getString("name"));
             }
-        }catch (SQLException se){
-            se.printStackTrace();
-        }catch (Exception e){
-            e.printStackTrace();
         }
+        catch (Exception se)
+        {
+            se.printStackTrace();
+        }
+
         return recipe;
     }//end getRecipe
 
@@ -169,5 +208,39 @@ public class PersistenceAccessDB implements PersistenceAccess {
         }
         return deleted;
     }//end delRecipe
+
+    public String checkWarning(Statement st, int updateCount)
+    {
+        String result;
+
+        result = null;
+        try
+        {
+            SQLWarning warning = st.getWarnings();
+            if (warning != null)
+            {
+                result = warning.getMessage();
+            }
+        }
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
+        if (updateCount != 1)
+        {
+            result = "Tuple not inserted correctly.";
+        }
+        return result;
+    }
+
+    public String processSQLError(Exception e)
+    {
+        String result = "*** SQL Error: " + e.getMessage();
+
+        // Remember, this will NOT be seen by the user!
+        e.printStackTrace();
+
+        return result;
+    }
 
 }
