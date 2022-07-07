@@ -133,9 +133,9 @@ public class AddFragment extends Fragment
 
                     Recipe selectedRecipe = (Recipe) listView.getItemAtPosition(position);
 
-                    Intent recipeIngredients = new Intent(getActivity(), DetailedRecipeActivity.class);
-                    //detailedRecipe.putExtra("id", selectedRecipe); //pass the object reference to another activity
-                    //startActivity(detailedRecipe);
+                    Intent recipeIngredients = new Intent(getActivity(), ingredientsView.class);
+                    recipeIngredients.putExtra("id", selectedRecipe); //pass the object reference to another activity
+                    startActivity(recipeIngredients);
                     recipeArrayAdapter.notifyDataSetChanged();
                 }
             });
