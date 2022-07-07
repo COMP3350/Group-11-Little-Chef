@@ -4,22 +4,25 @@ import java.util.Locale;
 
 public class TimeRecipe
 {
+    private static final int SECONDS_IN_DAY = 86400;
+    private static final int SECONDS_IN_HOUR = 3600;
+    private static final int SECONDS_IN_MINUTE = 60;
+
     public static String totalSecondsToString(int totSeconds, boolean recipeTime)
     {
-        //getting the seconds, minutes and hours from total seconds
-        int seconds = ((totSeconds % 86400) % 3600) % 60;
-        int minutes = ((totSeconds % 86400) % 3600) / 60;
-        int hours = ((totSeconds % 86400) / 3600);
-        String result;
+        String result = null;
 
-        if(recipeTime)
-        {
-            result = recipeTimeFormat(seconds, minutes, hours);
-        }
+        if(totSeconds >= 0) {
+            //getting the seconds, minutes and hours from total seconds
+            int seconds = ((totSeconds % SECONDS_IN_DAY) % SECONDS_IN_HOUR) % SECONDS_IN_MINUTE;
+            int minutes = ((totSeconds % SECONDS_IN_DAY) % SECONDS_IN_HOUR) / SECONDS_IN_MINUTE;
+            int hours = ((totSeconds % SECONDS_IN_DAY) / SECONDS_IN_HOUR);
 
-        else
-        {
-            result = timerTimeFormat(seconds, minutes, hours);;
+            if (recipeTime) {
+                result = recipeTimeFormat(seconds, minutes, hours);
+            } else {
+                result = timerTimeFormat(seconds, minutes, hours);
+            }
         }
 
         return result;
