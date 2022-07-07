@@ -1,5 +1,6 @@
 package comp3350.littlechef.presentation;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -127,7 +128,14 @@ public class AddFragment extends Fragment
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     //TODO: ADD CLICKED ON RECIPE STUFF
+                    //selected recipe and take to new activity
                     Log.i("listview selected", "listview selected!");
+
+                    Recipe selectedRecipe = (Recipe) listView.getItemAtPosition(position);
+
+                    Intent recipeIngredients = new Intent(getActivity(), DetailedRecipeActivity.class);
+                    //detailedRecipe.putExtra("id", selectedRecipe); //pass the object reference to another activity
+                    //startActivity(detailedRecipe);
                     recipeArrayAdapter.notifyDataSetChanged();
                 }
             });
