@@ -32,4 +32,12 @@
         <item>6 servings</item>
         <item>7 servings</item>
     </string-array>
+
+    <string-array name="units">
+
+        <item> Option A </item>
+        <item> Option B </item>
+
+    </string-array>
+
 </resources>

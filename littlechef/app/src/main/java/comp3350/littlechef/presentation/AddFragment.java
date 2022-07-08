@@ -1,6 +1,5 @@
 package comp3350.littlechef.presentation;
 
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -18,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 
@@ -49,6 +49,9 @@ public class AddFragment extends Fragment
     private ArrayList<Recipe> recipeList;
     private ArrayAdapter<Recipe> recipeArrayAdapter;
 
+    Spinner spinner;
+    ArrayAdapter<CharSequence> adapter;
+
 
     public AddFragment()
     {
@@ -64,11 +67,7 @@ public class AddFragment extends Fragment
 
     //TODO create list of steps to add
 
-    //TODO add check for duplicate
-
     //TODO: make it so boxes shift up when keyboard active******
-
-    //TODO: print listview alphabetically??
 
     //User creates recipe name
     //then user
@@ -76,7 +75,46 @@ public class AddFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
+        //to make the input boxes shift up when keyboard activated
+        //getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+
         View view = inflater.inflate(R.layout.fragment_add, container, false);
+
+        //for the spinner
+        spinner = (Spinner) view.findViewById(R.id.spinnerUnit);
+        adapter = ArrayAdapter.createFromResource(getActivity(), R.array.units, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                Toast.makeText(getActivity().getBaseContext(), parent.getItemAtPosition(position) + " Selected", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         Button addRecipeButton= (Button) view.findViewById(R.id.addRecipeButton);
         TextView workingRecipeName= (TextView) view.findViewById(R.id.workingRecipeName);
@@ -95,8 +133,6 @@ public class AddFragment extends Fragment
         accessRecipes = new AccessRecipes();
         recipeList = new ArrayList<Recipe>();
         String result = accessRecipes.getRecipes(recipeList);
-
-
         if( result != null)
         {
             Messages.fatalError(getActivity(), result);
@@ -165,7 +201,7 @@ public class AddFragment extends Fragment
                 public void onClick(View view)
                 {
                     //TODO implement
-                    Toast.makeText(getActivity(), "addIngredient button!"+selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "addIngredient button!"+selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
                     addIngredients(view);
 
                 }
@@ -181,9 +217,22 @@ public class AddFragment extends Fragment
     {
         //TODO finish implement
         //recipe.addIngredient(new Ingredient("Olive Oil", Unit.TBSP, 1));
-
+        String result;
         nameIngred = ingredientInputName.getText().toString();
-        Toast.makeText(getActivity(), ""+nameIngred, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), ""+nameIngred, Toast.LENGTH_SHORT).show();
+
+
+        selectedRecipe.addIngredient(new Ingredient(nameIngred,Unit.TBSP, 1 ));
+        result = accessRecipes.updateRecipe(selectedRecipe);
+        if(result != null)
+        {
+            Messages.fatalError(getActivity(), result);
+        }
+        else
+        {
+            Toast.makeText(getActivity(), "Added "+nameIngred+" to ingredients!", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     //when the add recipe button is clicked do this

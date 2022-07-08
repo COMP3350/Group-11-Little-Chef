@@ -1,35 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_alignParentTop="true"
+    android:orientation="vertical"
+    android:windowSoftInputMode="adjustResize">>
 
 
     <!-- TODO: MAKE NICER -->
     <ListView
         android:id="@+id/existingRecipes"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginStart="35dp"
+        android:layout_height="350dp"
         android:layout_marginTop="0dp"
-        android:layout_marginEnd="45dp"
+        android:layout_marginEnd="300dp"
         android:divider="@null"
         android:dividerHeight="10dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="500dp"
-        android:orientation="vertical"
-        android:windowSoftInputMode="adjustPan">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Select an existing recipe or add a new one "
-            android:textSize="20dp"/>
+            android:textSize="20dp"
+            android:windowSoftInputMode="adjustResize"/>
 
 
         <EditText
@@ -61,6 +56,11 @@
             android:ems="10"
             android:hint="Ingredient name"
             android:inputType="text" />
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id ="@+id/spinnerUnit">
+        </Spinner>
 
         <Button
             android:id="@+id/addIngredientButton"
@@ -68,9 +68,6 @@
             android:layout_height="wrap_content"
             android:text="Add Ingredient!" />
 
-    </LinearLayout>
 
 
-
-
-</FrameLayout>
+</LinearLayout>
