@@ -83,7 +83,7 @@ public class AddFragment extends Fragment
 
         View view = inflater.inflate(R.layout.fragment_add, container, false);
 
-        //for the spinner
+        //for the spinner//can remove
         spinner = (Spinner) view.findViewById(R.id.spinnerUnit);
         spinner.setVisibility(View.GONE);
         adapter = ArrayAdapter.createFromResource(getActivity(), R.array.units, android.R.layout.simple_spinner_item);
@@ -104,23 +104,23 @@ public class AddFragment extends Fragment
             {
                 //keep empty
             }
-        });
+        });//can remove
 
 
         Button addRecipeButton= (Button) view.findViewById(R.id.addRecipeButton);
         TextView workingRecipeName= (TextView) view.findViewById(R.id.workingRecipeName);
         workingRecipeName.setVisibility(View.GONE); //initially does not show selected recipe
-        EditText ingredientName= (EditText) view.findViewById(R.id.ingredientName);
+        EditText ingredientName= (EditText) view.findViewById(R.id.ingredientName); //can remove
         ingredientName.setVisibility(View.GONE);
-        EditText ingredientAmount= (EditText) view.findViewById(R.id.ingredientAmount);
+        EditText ingredientAmount= (EditText) view.findViewById(R.id.ingredientAmount); //can remove
         ingredientAmount.setVisibility(View.GONE);
-        Button addIngredientButton= (Button) view.findViewById(R.id.addIngredientButton);
+        Button addIngredientButton= (Button) view.findViewById(R.id.addIngredientButton); //can remove
         addIngredientButton.setVisibility(View.GONE);
 
         //Get input from text fields
         recipeInput = (EditText) view.findViewById(R.id.nameInput);
-        ingredientInputName = (EditText) view.findViewById(R.id.ingredientName);
-        ingredientInputAmount = (EditText) view.findViewById(R.id.ingredientAmount);
+        ingredientInputName = (EditText) view.findViewById(R.id.ingredientName); //can remove
+        ingredientInputAmount = (EditText) view.findViewById(R.id.ingredientAmount); //can remove
 
         //START LISTVIEW
         //THIS ADDS A SMALL LIST VIEW TO ADD RECIPES
@@ -167,12 +167,16 @@ public class AddFragment extends Fragment
                     //selected recipe and take to new activity
                    // Recipe selectedRecipe = (Recipe) listView.getItemAtPosition(position);
                     selectedRecipe = (Recipe) listView.getItemAtPosition(position);
-                    workingRecipeName.setText("Add Ingredients to "+selectedRecipe.getName());
-                    workingRecipeName.setVisibility(View.VISIBLE);
-                    ingredientName.setVisibility(View.VISIBLE);
-                    addIngredientButton.setVisibility(View.VISIBLE);
-                    ingredientAmount.setVisibility(View.VISIBLE);
-                    spinner.setVisibility(View.VISIBLE);
+                    //workingRecipeName.setText("Add Ingredients to "+selectedRecipe.getName());
+                    //workingRecipeName.setVisibility(View.VISIBLE);
+                    //ingredientName.setVisibility(View.VISIBLE);
+                    //addIngredientButton.setVisibility(View.VISIBLE);
+                    //ingredientAmount.setVisibility(View.VISIBLE);
+                    //spinner.setVisibility(View.VISIBLE);
+
+                    Intent addRecipeActivity = new Intent(getActivity(), AddRecipeActivity.class);
+                    addRecipeActivity.putExtra("id", selectedRecipe); //pass the object reference to another activity
+                    startActivity(addRecipeActivity);
 
                 }
             });
@@ -183,19 +187,15 @@ public class AddFragment extends Fragment
                 public void onClick(View view)
                 {
                     //do add recipe button and add ingredients
-                    //recipeArrayAdapter.notifyDataSetChanged();
-                    addRecipeClick();
-                    Toast.makeText(getContext(), "Added Recipe!", Toast.LENGTH_SHORT).show();
                     recipeArrayAdapter.notifyDataSetChanged();
-
-                    Intent addRecipeActivity = new Intent(getActivity(), AddRecipeActivity.class);
-                    addRecipeActivity.putExtra("id", selectedRecipe); //pass the object reference to another activity
-                    startActivity(addRecipeActivity);
+                    addRecipeClick();
+                    Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT).show();
+                    recipeArrayAdapter.notifyDataSetChanged();
 
                 }
             });
 
-            //button listener for adding an ingredient to a recipe
+            //button listener for adding an ingredient to a recipe//can remove
             addIngredientButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view)
@@ -244,7 +244,7 @@ public class AddFragment extends Fragment
 
     }
 
-    //this just checks the unit input and assigns it
+    //this just checks the unit input and assigns it//can remove
     private Unit checkUnit()
     {
         Unit unit;
@@ -303,7 +303,7 @@ public class AddFragment extends Fragment
 
     }
 
-    //COURSE TESTING
+    //COURSE TESTING//can remove
     private String validateIngredient(Ingredient ingredient)
     {
         if (ingredient.getName().length() == 0)

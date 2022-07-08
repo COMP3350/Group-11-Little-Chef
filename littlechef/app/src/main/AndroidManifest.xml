@@ -10,7 +10,7 @@
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustResize">
         <activity
-            android:name=".AddRecipeActivity"
+            android:name=".presentation.AddRecipeActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.HomeActivity"
@@ -29,6 +29,7 @@
         <activity
             android:name=".presentation.RecipeInstructionActivity"
             android:exported="false" />
+
     </application>
 
 </manifest>
