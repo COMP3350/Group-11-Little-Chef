@@ -19,7 +19,6 @@ public class Ingredient implements Serializable
     {
         this.name = name;
         this.amount = amount;
-
         if(amount > 0)
         {
             this.amount = amount;
