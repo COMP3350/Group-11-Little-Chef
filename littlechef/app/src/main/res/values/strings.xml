@@ -35,8 +35,18 @@
 
     <string-array name="units">
 
-        <item> Option A </item>
-        <item> Option B </item>
+        <item>PINCH</item>
+        <item>TSP</item>
+        <item>TBSP</item>
+        <item>CUP</item>
+        <item>ML</item>
+        <item>L</item>
+        <item>MG</item>
+        <item>G</item>
+        <item>KG</item>
+        <item>MM</item>
+        <item>CM</item>
+        <item>M</item>
 
     </string-array>
 

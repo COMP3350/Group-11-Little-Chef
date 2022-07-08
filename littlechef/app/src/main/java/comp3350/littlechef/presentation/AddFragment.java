@@ -38,12 +38,13 @@ import comp3350.littlechef.objects.Unit;
 public class AddFragment extends Fragment
 {
     String name;
-    String nameIngred;
+    String nameIngred,amountIngred;
 
     Recipe selectedRecipe;
 
     EditText recipeInput;
     EditText ingredientInputName;
+    EditText ingredientInputAmount;
 
     private AccessRecipes accessRecipes;
     private ArrayList<Recipe> recipeList;
@@ -52,6 +53,7 @@ public class AddFragment extends Fragment
     Spinner spinner;
     ArrayAdapter<CharSequence> adapter;
 
+    String unitString;
 
     public AddFragment()
     {
@@ -82,6 +84,7 @@ public class AddFragment extends Fragment
 
         //for the spinner
         spinner = (Spinner) view.findViewById(R.id.spinnerUnit);
+        spinner.setVisibility(View.GONE);
         adapter = ArrayAdapter.createFromResource(getActivity(), R.array.units, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -91,29 +94,16 @@ public class AddFragment extends Fragment
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                Toast.makeText(getActivity().getBaseContext(), parent.getItemAtPosition(position) + " Selected", Toast.LENGTH_LONG).show();
+                //set unit to what ever is set
+                unitString = parent.getItemAtPosition(position).toString();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent)
             {
-
+                //keep empty
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         Button addRecipeButton= (Button) view.findViewById(R.id.addRecipeButton);
@@ -121,12 +111,15 @@ public class AddFragment extends Fragment
         workingRecipeName.setVisibility(View.GONE); //initially does not show selected recipe
         EditText ingredientName= (EditText) view.findViewById(R.id.ingredientName);
         ingredientName.setVisibility(View.GONE);
+        EditText ingredientAmount= (EditText) view.findViewById(R.id.ingredientAmount);
+        ingredientAmount.setVisibility(View.GONE);
         Button addIngredientButton= (Button) view.findViewById(R.id.addIngredientButton);
         addIngredientButton.setVisibility(View.GONE);
 
         //Get input from text fields
         recipeInput = (EditText) view.findViewById(R.id.nameInput);
         ingredientInputName = (EditText) view.findViewById(R.id.ingredientName);
+        ingredientInputAmount = (EditText) view.findViewById(R.id.ingredientAmount);
 
         //START LISTVIEW
         //THIS ADDS A SMALL LIST VIEW TO ADD RECIPES
@@ -177,6 +170,8 @@ public class AddFragment extends Fragment
                     workingRecipeName.setVisibility(View.VISIBLE);
                     ingredientName.setVisibility(View.VISIBLE);
                     addIngredientButton.setVisibility(View.VISIBLE);
+                    ingredientAmount.setVisibility(View.VISIBLE);
+                    spinner.setVisibility(View.VISIBLE);
 
                 }
             });
@@ -200,10 +195,7 @@ public class AddFragment extends Fragment
                 @Override
                 public void onClick(View view)
                 {
-                    //TODO implement
-                    //Toast.makeText(getActivity(), "addIngredient button!"+selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
                     addIngredients(view);
-
                 }
             });
 
@@ -215,24 +207,68 @@ public class AddFragment extends Fragment
     //add ingredients
     private void addIngredients(View view)
     {
-        //TODO finish implement
-        //recipe.addIngredient(new Ingredient("Olive Oil", Unit.TBSP, 1));
         String result;
         nameIngred = ingredientInputName.getText().toString();
-        //Toast.makeText(getActivity(), ""+nameIngred, Toast.LENGTH_SHORT).show();
-
-
-        selectedRecipe.addIngredient(new Ingredient(nameIngred,Unit.TBSP, 1 ));
-        result = accessRecipes.updateRecipe(selectedRecipe);
-        if(result != null)
+        amountIngred = ingredientInputAmount.getText().toString();
+        int amount;
+        try
         {
-            Messages.fatalError(getActivity(), result);
+            amount = Integer.parseInt(amountIngred);
         }
+        catch(Exception e)
+        {
+            amount = 0;
+        }
+
+        Unit unit = checkUnit();
+        Ingredient newIngredient = new Ingredient(nameIngred, unit, amount);
+        result = validateIngredient(newIngredient);
+        if(result == null)
+        {
+            selectedRecipe.addIngredient(new Ingredient(nameIngred, unit, amount));
+
+            result = accessRecipes.updateRecipe(selectedRecipe);
+            if (result != null)
+            {
+                Messages.fatalError(getActivity(), result);
+            } else
+            {
+                Toast.makeText(getActivity(), "Added " + nameIngred + " to " + selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
+            }
+        }
+
+    }
+
+    //this just checks the unit input and assigns it
+    private Unit checkUnit()
+    {
+        Unit unit;
+        if( unitString.equals("PINCH") )
+            return Unit.PINCH;
+        else if( unitString.equals("TSP") )
+            return Unit.TSP;
+        else if( unitString.equals("TBSP") )
+            return Unit.TBSP;
+        else if( unitString.equals("CUP") )
+            return Unit.CUP;
+        else if( unitString.equals("ML") )
+            return Unit.ML;
+        else if( unitString.equals("L") )
+            return Unit.L;
+        else if( unitString.equals("MG") )
+            return Unit.MG;
+        else if( unitString.equals("G") )
+            return Unit.G;
+        else if( unitString.equals("KG") )
+            return Unit.KG;
+        else if( unitString.equals("MM") )
+            return Unit.MM;
+        else if( unitString.equals("CM") )
+            return Unit.CM;
+        else if( unitString.equals("M") )
+            return Unit.M;
         else
-        {
-            Toast.makeText(getActivity(), "Added "+nameIngred+" to ingredients!", Toast.LENGTH_SHORT).show();
-        }
-
+            return null;
     }
 
     //when the add recipe button is clicked do this
@@ -260,6 +296,22 @@ public class AddFragment extends Fragment
             }
         }
 
+    }
+
+    //COURSE TESTING
+    private String validateIngredient(Ingredient ingredient)
+    {
+        if (ingredient.getName().length() == 0)
+        {
+            return "Ingredient input name required";
+        }
+
+       if( ingredient.getAmount() <= 0 )
+       {
+           return "Ingredient amount must be greater then 0!";
+       }
+
+        return null;
     }
 
     //COURSE TESTING
