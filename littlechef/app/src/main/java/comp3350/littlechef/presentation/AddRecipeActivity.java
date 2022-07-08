@@ -26,15 +26,15 @@ public class AddRecipeActivity extends AppCompatActivity
 {
     Recipe selectedRecipe;
 
-    String name;
-    String nameIngred,amountIngred;
+    String nameIngred,amountIngred,instruction, instructionSteps;
 
     EditText ingredientInputName;
     EditText ingredientInputAmount;
+    EditText instructionInput;
+    EditText instructionInputSteps;
 
     private AccessRecipes accessRecipes;
     private ArrayList<Recipe> recipeList;
-    private ArrayAdapter<Recipe> recipeArrayAdapter;
 
     Spinner spinner;
     ArrayAdapter<CharSequence> adapter;
@@ -50,17 +50,18 @@ public class AddRecipeActivity extends AppCompatActivity
         Intent previousIntent = getIntent();
         selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id");
 
-        Toast.makeText(this, "clicked: "+selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
-
         TextView workingRecipeName= (TextView) findViewById(R.id.workingRecipeName);
         workingRecipeName.setText("Add Ingredients and steps to "+selectedRecipe.getName());
-        EditText ingredientName= (EditText) findViewById(R.id.ingredientName);
-        EditText ingredientAmount= (EditText) findViewById(R.id.ingredientAmount);
+        //EditText ingredientName= (EditText) findViewById(R.id.ingredientName);
+        //EditText ingredientAmount= (EditText) findViewById(R.id.ingredientAmount);
         Button addIngredientButton= (Button) findViewById(R.id.addIngredientButton);
+        Button addInstructionButton= (Button) findViewById(R.id.addInstructionButton);
 
         //Get input from text fields
         ingredientInputName = (EditText) findViewById(R.id.ingredientName);
         ingredientInputAmount = (EditText) findViewById(R.id.ingredientAmount);
+        instructionInput = (EditText) findViewById(R.id.instruction);
+        instructionInputSteps = (EditText) findViewById(R.id.instructionsSteps);
 
         //for db
         accessRecipes = new AccessRecipes();
@@ -93,15 +94,62 @@ public class AddRecipeActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                addIngredients(view);
+                addIngredients();
+                //clear fields
+                ingredientInputName.getText().clear();
+                ingredientInputAmount.getText().clear();
+            }
+        });
+
+        //button listener for adding an instruction to a recipe
+        addInstructionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                addInstruction();
+                //clear fields
+                instructionInput.getText().clear();
+                instructionInputSteps.getText().clear();
             }
         });
 
 
     }
 
+    //add instruction
+    private void addInstruction()
+    {
+        String result;
+
+        instruction = instructionInput.getText().toString();
+        instructionSteps = instructionInputSteps.getText().toString();
+
+        //adding instructions
+        //instruction = "Place eggs in a saucepan or pot and cover with cold water.";
+        //subInstruction = "Eggs first, then water. Why? Because if you put the eggs in afterward, they might crack as they fall to the bottom of the pan. It's no fun to learn this the hard way.";
+        //recipe.addInstructions(instruction,subInstruction);
+
+        //result = validateInstruction(instruction + instructionSteps);
+
+       // if(result == null)
+      //  {
+            selectedRecipe.addInstructions(instruction, instructionSteps);
+
+            result = accessRecipes.updateRecipe(selectedRecipe);
+
+            if (result != null)
+            {
+                Messages.fatalError(this, result);
+            }
+            else
+            {
+                Toast.makeText(this, "Added instruction to " + selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
+            }
+       // }
+    }
+
     //add ingredients
-    private void addIngredients(View view)
+    private void addIngredients()
     {
         String result;
         nameIngred = ingredientInputName.getText().toString();
@@ -166,7 +214,7 @@ public class AddRecipeActivity extends AppCompatActivity
             return null;
     }
 
-    //COURSE TESTING
+    //validate if proper ingredient
     private String validateIngredient(Ingredient ingredient)
     {
         if (ingredient.getName().length() == 0)
@@ -177,6 +225,17 @@ public class AddRecipeActivity extends AppCompatActivity
         if( ingredient.getAmount() <= 0 )
         {
             return "Ingredient amount must be greater then 0!";
+        }
+
+        return null;
+    }
+
+    //validate if proper instruction
+    private String validateInstruction(String string)
+    {
+        if (string.length() == 0)
+        {
+            return "Input required";
         }
 
         return null;

@@ -135,16 +135,14 @@ public class AddFragment extends Fragment
                 }
             });
 
-            //button listener for add recipe, will hide that button and show add ingredients stuff
+            //button listener for add recipe
             addRecipeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view)
                 {
-                    //do add recipe button and add ingredients
+                    //do add recipe button
                     addRecipeClick();
-                    Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT).show();
                     recipeArrayAdapter.notifyDataSetChanged();
-
                 }
             });//END LISTVIEW
 
