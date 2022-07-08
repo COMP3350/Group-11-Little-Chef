@@ -1,5 +1,6 @@
 package comp3350.littlechef.presentation;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -186,6 +187,10 @@ public class AddFragment extends Fragment
                     addRecipeClick();
                     Toast.makeText(getContext(), "Added Recipe!", Toast.LENGTH_SHORT).show();
                     recipeArrayAdapter.notifyDataSetChanged();
+
+                    Intent addRecipeActivity = new Intent(getActivity(), AddRecipeActivity.class);
+                    addRecipeActivity.putExtra("id", selectedRecipe); //pass the object reference to another activity
+                    startActivity(addRecipeActivity);
 
                 }
             });

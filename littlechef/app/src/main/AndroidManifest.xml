@@ -9,7 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustResize">
-
+        <activity
+            android:name=".AddRecipeActivity"
+            android:exported="false" />
         <activity
             android:name=".presentation.HomeActivity"
             android:exported="true"
@@ -27,7 +29,6 @@
         <activity
             android:name=".presentation.RecipeInstructionActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>
