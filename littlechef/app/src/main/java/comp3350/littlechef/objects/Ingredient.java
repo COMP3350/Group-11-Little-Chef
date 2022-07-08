@@ -9,33 +9,16 @@ import java.io.Serializable;
 //-----------------------------------------
 public class Ingredient implements Serializable
 {
-    private static int nextID = 0;
-
-    private int ingredientID;
     private String name;
     private double amount; //number of ingredient needed
 
     private UnitType unitType;
     private Unit unit;
 
-    public Ingredient(int ingredientID)
-    {
-        this.ingredientID = ingredientID;
-
-        this.name = "null";
-        this.amount = -1;
-
-        this.unitType = UnitType.DEFAULT; // will just scale no unit conversion
-        this.unit = null;
-
-
-    }
-
     public Ingredient(String name, Unit measurement, double amount)
     {
         this.name = name;
         this.amount = amount;
-        this.ingredientID = nextID++;
         if(amount > 0)
         {
             this.amount = amount;
@@ -51,10 +34,6 @@ public class Ingredient implements Serializable
     }
 
     //getters and setters
-    public int getId()
-    {
-        return this.ingredientID;
-    }
 
     public String getName() { return name; }
 
