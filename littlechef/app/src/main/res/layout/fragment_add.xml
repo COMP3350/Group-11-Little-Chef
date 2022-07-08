@@ -5,41 +5,40 @@
     android:layout_height="match_parent"
     android:layout_alignParentTop="true"
     android:orientation="vertical"
-    android:windowSoftInputMode="adjustResize">>
+    android:windowSoftInputMode="adjustResize">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select an existing recipe or add a new one. "
+        android:textSize="20dp"
+        android:windowSoftInputMode="adjustResize"/>
 
 
-    <!-- TODO: MAKE NICER -->
+    <EditText
+        android:id="@+id/nameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Recipe Name"
+        android:windowSoftInputMode="adjustResize"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/addRecipeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Recipe!" />
+
     <ListView
         android:id="@+id/existingRecipes"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="300dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp"
         android:divider="@null"
         android:dividerHeight="10dp" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select an existing recipe or add a new one "
-            android:textSize="20dp"
-            android:windowSoftInputMode="adjustResize"/>
 
-
-        <EditText
-            android:id="@+id/nameInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Recipe Name"
-            android:windowSoftInputMode="adjustResize"
-            android:inputType="textPersonName" />
-
-        <Button
-            android:id="@+id/addRecipeButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Recipe!" />
 
 </LinearLayout>

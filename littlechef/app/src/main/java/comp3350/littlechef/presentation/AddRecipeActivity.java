@@ -34,7 +34,6 @@ public class AddRecipeActivity extends AppCompatActivity
     EditText instructionInputSteps;
 
     private AccessRecipes accessRecipes;
-    private ArrayList<Recipe> recipeList;
 
     Spinner spinner;
     ArrayAdapter<CharSequence> adapter;
@@ -52,8 +51,6 @@ public class AddRecipeActivity extends AppCompatActivity
 
         TextView workingRecipeName= (TextView) findViewById(R.id.workingRecipeName);
         workingRecipeName.setText("Add Ingredients and steps to "+selectedRecipe.getName());
-        //EditText ingredientName= (EditText) findViewById(R.id.ingredientName);
-        //EditText ingredientAmount= (EditText) findViewById(R.id.ingredientAmount);
         Button addIngredientButton= (Button) findViewById(R.id.addIngredientButton);
         Button addInstructionButton= (Button) findViewById(R.id.addInstructionButton);
 
@@ -65,7 +62,6 @@ public class AddRecipeActivity extends AppCompatActivity
 
         //for db
         accessRecipes = new AccessRecipes();
-        recipeList = new ArrayList<Recipe>();
 
         //for the spinner
         spinner = (Spinner) findViewById(R.id.spinnerUnit);
@@ -121,18 +117,13 @@ public class AddRecipeActivity extends AppCompatActivity
     {
         String result;
 
+        //get text from boxes
         instruction = instructionInput.getText().toString();
         instructionSteps = instructionInputSteps.getText().toString();
 
-        //adding instructions
-        //instruction = "Place eggs in a saucepan or pot and cover with cold water.";
-        //subInstruction = "Eggs first, then water. Why? Because if you put the eggs in afterward, they might crack as they fall to the bottom of the pan. It's no fun to learn this the hard way.";
-        //recipe.addInstructions(instruction,subInstruction);
-
-        //result = validateInstruction(instruction + instructionSteps);
-
-       // if(result == null)
-      //  {
+        result = validateInstruction(instruction + instructionSteps);
+        if(result == null)
+        {
             selectedRecipe.addInstructions(instruction, instructionSteps);
 
             result = accessRecipes.updateRecipe(selectedRecipe);
@@ -145,7 +136,7 @@ public class AddRecipeActivity extends AppCompatActivity
             {
                 Toast.makeText(this, "Added instruction to " + selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
             }
-       // }
+        }
     }
 
     //add ingredients
