@@ -5,18 +5,26 @@ import java.util.ArrayList;
 import java.sql.*;
 import java.util.*;
 
+import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
+import comp3350.littlechef.objects.Unit;
+import comp3350.littlechef.objects.UnitType;
 
 public class PersistenceAccessDB implements PersistenceAccess {
 
+    private String cmd;
+    private int updateCount;
+    private String result;
+    private static String EOF = "  ";
+
     private String databasePath;
     private Connection connection;
-    private String cmd;
     private ResultSet resultSet;
     private String dbType;
     private Statement statement;
 
-    private String result;
+    private ArrayList<Recipe> recipes;
+    private ArrayList<Ingredient> ingredients;
 
     public PersistenceAccessDB(String dbPath) {
         databasePath = dbPath;
@@ -41,7 +49,7 @@ public class PersistenceAccessDB implements PersistenceAccess {
             Class.forName("org.hsqldb.jdbcDriver").newInstance();
 
             System.out.println("Connecting to selected database...");
-            connection = DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath, "User", "");
+            connection = DriverManager.getConnection("jdbc:hsqldb:file:", "SA", "");
             statement = connection.createStatement();
             System.out.println("Connection built successfully.");
 
@@ -71,9 +79,8 @@ public class PersistenceAccessDB implements PersistenceAccess {
     @Override
     public void close() {
         try {
-            connection.createStatement().executeQuery("close");
-            resultSet.close();
-            statement.close();
+            String cmdString = "shutdown compact";
+            resultSet = statement.executeQuery(cmdString);
             connection.close();
         } catch (SQLException se) {
             se.printStackTrace();
@@ -87,25 +94,26 @@ public class PersistenceAccessDB implements PersistenceAccess {
     @Override
     public String addRecipe(Recipe recipe)
     {
-        String name, ingredients, steps, timeToMake, difficulty, rate, quality, instruction;
+        String values;
         result = null;
 
         try
         {
-            name = recipe.getName();
-            ingredients = recipe.getIngredients().toString();
-            steps = recipe.getInstructions().toString();
-            timeToMake = recipe.getAverageCookingTime();
-            difficulty = recipe.getDifficultyRating() + "";//since last time we discussed we want to make it as user-defined string, use +""
-            quality = recipe.getTasteRating() + "";//same as difficulty
-            rate = recipe.getRatingString();
-            instruction = "'" + name + "','" + ingredients + "','" + steps + "'," + timeToMake + ",'" + difficulty + "','" + quality + "'," + rate;
+            values = recipe.getId()
+                    + ", '" + recipe.getName()
+                    + ", '" + recipe.getIngredients()
+                    + ", '" + recipe.getInstructions()
+                    + ", '" + recipe.getAverageCookingTime()
+                    + ", '" + recipe.getDifficultyRating()
+                    + ", '" + recipe.getTasteRating()
+                    + "'";
 
-            cmd = "INSERT INTO RECIPES VALUES (" + instruction + ")";
+            cmd = "INSERT INTO RECIPES " + " VALUES (" + values + ")";
 
             // Kajal comment: should we break this down into two statements so its not chained like this?
             // also what is resultSet used for? Can we switch it for result like in the sample so that I can use it for error checking?
-            resultSet = connection.createStatement().executeQuery(cmd);
+            updateCount = statement.executeUpdate(cmd);
+            result = checkWarning(statement, updateCount);
         }
         catch (Exception e)
         {
@@ -117,16 +125,26 @@ public class PersistenceAccessDB implements PersistenceAccess {
 
 
     @Override
-    public String updateRecipe(Recipe currRecipe) {
+    public String updateRecipe(Recipe recipe) {
         //I think it should return Recipe, because we are update and get a recipe with new information
-        String name;
+        String values;
+        String where;
         result = null;
 
         try
         {
-            name = currRecipe.getName();
-            cmd = "UPDATE RECIPE SET";//stuck here
-            resultSet = connection.createStatement().executeQuery(cmd);
+            values = "Name='" + recipe.getName()
+                    + "', Ingredients='" + recipe.getIngredients()
+                    + "', Instructions='" + recipe.getInstructions()
+                    + "', AverageCookingTime='" + recipe.getAverageCookingTime()
+                    + "', DifficultyRating='" + recipe.getDifficultyRating()
+                    + "', TasteRating='" + recipe.getTasteRating()
+                    + "'";
+            where = "WHERE RECIPEID=" + recipe.getId();
+            cmd = "UPDATE RECIPES " + " SET " + values + " " + where;
+            //System.out.println(cmdString);
+            updateCount = statement.executeUpdate(cmd);
+            result = checkWarning(statement, updateCount);
         }
         catch (Exception e)
         {
@@ -136,24 +154,28 @@ public class PersistenceAccessDB implements PersistenceAccess {
     }//end updateRecipe
 
     @Override
-    public Recipe getRecipe(String name) {
+    public String getRecipeSequential(List<Recipe> recipeList) {
+
         Recipe recipe = null;
+        String myID = EOF;
+        result = null;
 
         try
         {
-            cmd = "SELECT * FROM RECIPE WHERE NAME='" + name + "'";
+            cmd = "SELECT * FROM RECIPE";
             resultSet = connection.createStatement().executeQuery(cmd);
         }
-        catch (Exception se)
+        catch (Exception e)
         {
-            se.printStackTrace();
+            processSQLError(e);
         }
-
         try
         {
             while(resultSet.next())
             {
-                recipe = new Recipe(resultSet.getString("name"));
+                myID = resultSet.getString("RecipeID");
+                recipe = new Recipe(Integer.parseInt(myID));
+                recipeList.add(recipe);
             }
         }
         catch (Exception se)
@@ -161,52 +183,49 @@ public class PersistenceAccessDB implements PersistenceAccess {
             se.printStackTrace();
         }
 
-        return recipe;
+        return result;
     }//end getRecipe
 
     @Override
-    public ArrayList<Recipe> getListOfSameRecipe(Recipe recipe) {
-        ArrayList<Recipe> recipes = new ArrayList<>();
-        String name = recipe.getName();
+    public ArrayList<Recipe> getRecipeRandom(Recipe newRecipe)
+    {
+        Recipe recipe;
+        String myID;
 
-        try{
-            cmd = "SELECT * FROM RECIPE WHERE NAME='"+name+"'";
-            resultSet = connection.createStatement().executeQuery(cmd);
-        }catch (SQLException se) {
-            se.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        try{
-            while(resultSet.next()){
-                recipe = new Recipe(resultSet.getString("name"));
+        recipes = new ArrayList<Recipe>();
+        try
+        {
+            cmd = "SELECT * FROM INGREDIENTS WHERE RECIPEID=" + newRecipe.getId() + "'";
+            resultSet = statement.executeQuery(cmd);
+            // ResultSetMetaData md2 = rs3.getMetaData();
+            while (resultSet.next())
+            {
+                myID = resultSet.getString("RecipeID");
+                recipe = new Recipe(Integer.parseInt(myID));
                 recipes.add(recipe);
             }
-        }catch (SQLException se){
-            se.printStackTrace();
-        }catch (Exception e){
-            e.printStackTrace();
+            resultSet.close();
+        } catch (Exception e)
+        {
+            processSQLError(e);
         }
-
         return recipes;
-    }//end getListOfSameRecipe
+    }
 
     @Override
-    public boolean delRecipe(Recipe recipe) {
-        String name = recipe.getName();
-        boolean deleted = false;
+    public String deleteRecipe(Recipe recipe) {
+        int recipeId;
+        result = null;
         try{
-            cmd = "DELETE FROM RECIPE WHERE NAME='"+name+"'";
+            recipeId = recipe.getId();
+            cmd = "DELETE FROM RECIPE WHERE RECIPEID ='"+recipeId+"'";
             connection.createStatement().executeUpdate(cmd);
             System.out.println("Deleted successfully.");
-            deleted = true;
-        }catch (SQLException se){
-            se.printStackTrace();
+            result = checkWarning(statement, updateCount);
         }catch (Exception e){
-            e.printStackTrace();
+            result = processSQLError(e);
         }
-        return deleted;
+        return result;
     }//end delRecipe
 
     public String checkWarning(Statement st, int updateCount)
