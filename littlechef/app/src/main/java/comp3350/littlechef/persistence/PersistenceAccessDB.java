@@ -7,6 +7,8 @@ import java.util.*;
 
 import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
+import comp3350.littlechef.objects.Unit;
+import comp3350.littlechef.objects.UnitType;
 
 public class PersistenceAccessDB implements PersistenceAccess {
 
@@ -105,7 +107,6 @@ public class PersistenceAccessDB implements PersistenceAccess {
                     + ", '" + recipe.getDifficultyRating()
                     + ", '" + recipe.getTasteRating()
                     + "'";
-            ///////
 
             cmd = "INSERT INTO RECIPES " + " VALUES (" + values + ")";
 
@@ -154,7 +155,9 @@ public class PersistenceAccessDB implements PersistenceAccess {
 
     @Override
     public String getRecipeSequential(List<Recipe> recipeList) {
+
         Recipe recipe = null;
+        String myID = EOF;
         result = null;
 
         try
@@ -170,7 +173,8 @@ public class PersistenceAccessDB implements PersistenceAccess {
         {
             while(resultSet.next())
             {
-                recipe = new Recipe(resultSet.getString("name"));
+                myID = resultSet.getString("RecipeID");
+                recipe = new Recipe(Integer.parseInt(myID));
                 recipeList.add(recipe);
             }
         }
@@ -191,13 +195,13 @@ public class PersistenceAccessDB implements PersistenceAccess {
         recipes = new ArrayList<Recipe>();
         try
         {
-            cmd = "Select * from Recipes where RecipeID=" + newRecipe.getId() + "'";
+            cmd = "SELECT * FROM INGREDIENTS WHERE RECIPEID=" + newRecipe.getId() + "'";
             resultSet = statement.executeQuery(cmd);
             // ResultSetMetaData md2 = rs3.getMetaData();
             while (resultSet.next())
             {
                 myID = resultSet.getString("RecipeID");
-                recipe = new Recipe(myID);
+                recipe = new Recipe(Integer.parseInt(myID));
                 recipes.add(recipe);
             }
             resultSet.close();
