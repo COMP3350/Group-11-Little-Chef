@@ -2,7 +2,6 @@ package comp3350.littlechef.business;
 
 import java.security.Provider;
 import java.util.ArrayList;
-import java.util.List;
 
 import comp3350.littlechef.objects.Recipe;
 import comp3350.littlechef.persistence.PersistenceAccess;
@@ -18,9 +17,9 @@ public class DBController implements PersistenceAccess{
             public void close() {}
             public String addRecipe(Recipe recipe) {return null;}
             public String updateRecipe(Recipe currRecipe) {return null;}
-            public String getRecipeSequential(List<Recipe> name) {return null;};
-            public ArrayList<Recipe> getRecipeRandom(Recipe recipe) {return null;};
-            public String deleteRecipe(Recipe recipe) {return null;}
+            public Recipe getRecipe(String name) {return null;}
+            public ArrayList<Recipe> getListOfSameRecipe(Recipe recipe) {return null;}
+            public boolean delRecipe(Recipe recipe) {return false;}
         };
     }
 
@@ -53,15 +52,15 @@ public class DBController implements PersistenceAccess{
     }
 
     @Override
-    public String getRecipeSequential(List<Recipe> name) {
-        return service.getRecipeSequential(name);
+    public Recipe getRecipe(String name) {
+        return getService().getRecipe(name);
     }
 
     @Override
-    public ArrayList<Recipe> getRecipeRandom(Recipe recipe) { return service.getRecipeRandom(recipe); }
+    public ArrayList<Recipe> getListOfSameRecipe(Recipe recipe) { return service.getListOfSameRecipe(recipe); }
 
     @Override
-    public String deleteRecipe(Recipe recipe) {
-        return deleteRecipe(recipe);
+    public boolean delRecipe(Recipe recipe) {
+        return delRecipe(recipe);
     }
 }
