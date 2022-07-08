@@ -159,11 +159,11 @@ public class timeRecipeTest extends TestCase
     @Test
     public void testForNegativeTime()
     {
-        assertNull(null,TimeRecipe.totalSecondsToString(-1, true)); // double check that we can use assertNull
-        assertNull(null,TimeRecipe.totalSecondsToString(-1, false));
+        assertNull(TimeRecipe.totalSecondsToString(-1, true)); // double check that we can use assertNull
+        assertNull(TimeRecipe.totalSecondsToString(-1, false));
 
-        assertEquals(null,TimeRecipe.totalSecondsToString(-552, true));
-        assertEquals(null,TimeRecipe.totalSecondsToString(-595, false));
+        assertNull(TimeRecipe.totalSecondsToString(-552, true));
+        assertNull(TimeRecipe.totalSecondsToString(-595, false));
 
         assertNull(TimeRecipe.timerTimeFormat(0,-45,0));
         assertNull(TimeRecipe.timerTimeFormat(0,0,-39));
