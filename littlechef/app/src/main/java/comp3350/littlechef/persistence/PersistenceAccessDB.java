@@ -12,14 +12,14 @@ import comp3350.littlechef.objects.UnitType;
 
 public class PersistenceAccessDB implements PersistenceAccess {
 
-    private String cmd;
+    private String cmd, cmd2, cmd3, cmd4, cmd5;
     private int updateCount;
     private String result;
     private static String EOF = "  ";
 
     private String databasePath;
     private Connection connection;
-    private ResultSet resultSet;
+    private ResultSet resultSet, resultSet2, resultSet3, resultSet4, resultSet5;
     private String dbType;
     private Statement statement;
 
