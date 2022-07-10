@@ -27,6 +27,7 @@ public class DataAccessStub implements DataAccess
     private String dbName;
     private String dbType = "stub";
     private ArrayList<Recipe> recipes;
+    private boolean success = false;
 
     public DataAccessStub(String dbName)
     {
@@ -38,13 +39,16 @@ public class DataAccessStub implements DataAccess
         this(Main.dbName);
     }
 
-    public void open(String dbName)
+    public boolean open(String dbName)
     {
         Recipe recipe;
 
         recipes = new ArrayList<Recipe>();
         String instruction;
         String subInstruction;
+
+        validateName(dbName);
+        dbName = dbName.trim();
 
         recipe = new Recipe("Guacamole");
         recipe.addIngredient(new Ingredient("Ripe avocados", Unit.QUANTITY, 2));
@@ -179,13 +183,16 @@ public class DataAccessStub implements DataAccess
         recipe.addIngredient(new Ingredient("Salt", Unit.TSP, 0.5));
         recipes.add(recipe);
 
-
-        System.out.println("Opened " +dbType +" database " +dbName);
+        success = true;
+        return success;
     }
 
-    public void close()
+    public boolean close()
     {
         System.out.println("Closed " +dbType +" database " +dbName);
+        success = true;
+
+        return success;
     }
 
     public String insertRecipe(Recipe currentRecipe)
@@ -237,5 +244,20 @@ public class DataAccessStub implements DataAccess
             recipes.remove(index);
         }
         return null;
+    }
+
+    private void validateName(String name)
+    {
+        if(name == null)
+        {
+            throw new NullPointerException("Name cannot be null.");
+        }
+
+        name = name.trim();
+
+        if(name.length() == 0)
+        {
+            throw new IllegalArgumentException("Name cannot be an empty String.");
+        }
     }
 }

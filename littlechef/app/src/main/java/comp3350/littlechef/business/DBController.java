@@ -12,8 +12,8 @@ public class DBController implements DataAccess {
     //default constructor
     public DBController() {
         service = new DataAccess() {
-            public void open(String dbPath) {}
-            public void close() {}
+            public boolean open(String dbPath) {return false; }
+            public boolean close() {return false;}
             public String insertRecipe(Recipe recipe) {return null;}
             public String updateRecipe(Recipe currRecipe) {return null;}
             public String getRecipeSequential(List<Recipe> name) {return null;}
@@ -33,12 +33,12 @@ public class DBController implements DataAccess {
     }
 
     @Override
-    public void open(String dbPath) {
-        service.open(dbPath);
+    public boolean open(String dbPath) {
+        return service.open(dbPath);
     }
 
     @Override
-    public void close() { service.close();}
+    public boolean close() { return service.close();}
 
     @Override
     public String insertRecipe(Recipe recipe) {
