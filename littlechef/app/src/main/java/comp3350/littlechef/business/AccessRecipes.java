@@ -7,6 +7,8 @@ import comp3350.littlechef.application.Main;
 import comp3350.littlechef.application.Services;
 import comp3350.littlechef.objects.Recipe;
 import comp3350.littlechef.persistence.DataAccessStub;
+import comp3350.littlechef.persistence.PersistenceAccess;
+
 // CLASS: AccessRecipes.java
 //
 //
@@ -15,7 +17,7 @@ import comp3350.littlechef.persistence.DataAccessStub;
 //-----------------------------------------
 public class AccessRecipes
 {
-    private DataAccessStub dataAccess;
+    private PersistenceAccess dataAccess;
     private List<Recipe> recipes;
     private Recipe recipe;
     private int currentRecipe;
@@ -23,7 +25,7 @@ public class AccessRecipes
     //constructor
     public AccessRecipes()
     {
-        dataAccess = (DataAccessStub) Services.getDataAccess(Main.dbName);
+        dataAccess = Services.getDataAccess(Main.dbName);
         recipes = null;
         recipe = null;
         currentRecipe = 0;

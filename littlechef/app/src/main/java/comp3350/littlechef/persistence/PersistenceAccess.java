@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public interface PersistenceAccess {
     public void open(String dbPath) ;
     public void close();
-    public String addRecipe(Recipe recipe);
+    public String insertRecipe(Recipe recipe);
     public String updateRecipe(Recipe recipe);
     public String getRecipeSequential(List<Recipe> name);
     public ArrayList<Recipe> getRecipeRandom(Recipe recipe);

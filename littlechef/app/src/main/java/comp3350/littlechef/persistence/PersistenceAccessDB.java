@@ -34,6 +34,7 @@ public class PersistenceAccessDB implements PersistenceAccess {
     public void open(String dbPath) {
 
         // Ask Briaco: is it okay to do this?
+        String url;
         if(dbPath == null)
         {
             throw new NullPointerException("dbPath cannot be null.");
@@ -48,8 +49,9 @@ public class PersistenceAccessDB implements PersistenceAccess {
             dbType = "HSQL";
             Class.forName("org.hsqldb.jdbcDriver").newInstance();
 
-            System.out.println("Connecting to selected database...");
-            connection = DriverManager.getConnection("jdbc:hsqldb:file:", "SA", "");
+            System.out.println("Connecting to selected database...\n");
+            url = "jdbc:hsqldb:file:" + dbPath; // stored on disk mode
+            connection = DriverManager.getConnection(url, "SA", "");
             statement = connection.createStatement();
             System.out.println("Connection built successfully.");
 
@@ -92,7 +94,7 @@ public class PersistenceAccessDB implements PersistenceAccess {
     }//end close
 
     @Override
-    public String addRecipe(Recipe recipe)
+    public String insertRecipe(Recipe recipe)
     {
         String values;
         result = null;
