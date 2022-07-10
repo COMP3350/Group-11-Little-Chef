@@ -30,7 +30,7 @@ public class Recipe implements Serializable
     public Recipe(int recipeID)
     {
         this.recipeID = recipeID;
-        this.name = "null";
+        this.name = null;
         this.cookingTimes = new ArrayList<Integer>();
         ingredients = new ArrayList<Ingredient>();
         instructions = new ArrayList<String[]>();
@@ -41,7 +41,9 @@ public class Recipe implements Serializable
 
     public Recipe(String name)
     {
-        this.name = name;
+       validateName(name);
+
+        this.name = name.trim();
         this.recipeID = nextID++;
         this.cookingTimes = new ArrayList<Integer>();
         ingredients = new ArrayList<Ingredient>();
@@ -49,6 +51,7 @@ public class Recipe implements Serializable
 
         difficultyRatings = new ArrayList<Double>();
         tasteRatings = new ArrayList<Double>();
+
     }
 
     //private methods
@@ -59,7 +62,8 @@ public class Recipe implements Serializable
 
     public void setName(String name)
     {
-        this.name = name;
+        validateName(name);
+        this.name = name.trim();
     }
 
     public ArrayList<Ingredient> getIngredients()
@@ -224,5 +228,20 @@ public class Recipe implements Serializable
         }
         return 0.0;
 
+    }
+
+    private void validateName(String name)
+    {
+        if(name == null)
+        {
+            throw new NullPointerException("Recipe name cannot be null.");
+        }
+
+        name = name.trim();
+
+        if(name.length() == 0)
+        {
+            throw new IllegalArgumentException("Recipe name cannot be an empty String.");
+        }
     }
 }

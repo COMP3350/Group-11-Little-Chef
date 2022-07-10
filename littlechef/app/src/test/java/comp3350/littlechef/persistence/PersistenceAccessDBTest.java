@@ -96,7 +96,7 @@ public class PersistenceAccessDBTest extends TestCase
     }
 
     @Test
-    public void testSendingNullArgument()
+    public void testNullArgument()
     {
         // open db by sending null as the path
         PersistenceAccessDB dataAccessWithNull;
