@@ -1,10 +1,6 @@
 package comp3350.littlechef.objects;
 import junit.framework.TestCase;
 import org.junit.Test;
-import java.util.ArrayList;
-
-import comp3350.littlechef.application.Main;
-import comp3350.littlechef.persistence.PersistenceAccessDB;
 
 public class UpdatedRecipeTest extends TestCase
 {

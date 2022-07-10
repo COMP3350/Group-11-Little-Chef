@@ -8,9 +8,8 @@ import java.util.*;
 import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
 import comp3350.littlechef.objects.Unit;
-import comp3350.littlechef.objects.UnitType;
 
-public class PersistenceAccessDB implements PersistenceAccess {
+public class DataAccessObject implements DataAccess {
 
     private String cmd, cmd2;
     private int updateCount;
@@ -28,7 +27,7 @@ public class PersistenceAccessDB implements PersistenceAccess {
     private ArrayList<Recipe> recipes;
     private ArrayList<Ingredient> ingredients;
 
-    public PersistenceAccessDB(String dbName) {
+    public DataAccessObject(String dbName) {
         this.dbName = dbName;
     }
 

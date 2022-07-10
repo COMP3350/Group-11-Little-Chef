@@ -14,7 +14,7 @@ import comp3350.littlechef.objects.Unit;
 // REMARKS: This is the access stub database that will hold the Recipes.
 //
 //-----------------------------------------
-public class DataAccessStub
+public class DataAccessStub implements DataAccess
 {
     private final String pinch = "pinch";
     private final String teaspoon = "tsp";
@@ -188,6 +188,25 @@ public class DataAccessStub
         System.out.println("Closed " +dbType +" database " +dbName);
     }
 
+    public String insertRecipe(Recipe currentRecipe)
+    {
+        // don't bother checking for duplicates
+        recipes.add(currentRecipe);
+        return null;
+    }
+
+    public String updateRecipe(Recipe currentRecipe)
+    {
+        int index;
+
+        index = recipes.indexOf(currentRecipe);
+        if (index >= 0)
+        {
+            recipes.set(index, currentRecipe);
+        }
+        return null;
+    }
+
     public String getRecipeSequential(List<Recipe> recipeResult)
     {
         recipeResult.addAll(recipes);
@@ -206,25 +225,6 @@ public class DataAccessStub
             newRecipes.add(recipes.get(index));
         }
         return newRecipes;
-    }
-
-    public String insertRecipe(Recipe currentRecipe)
-    {
-        // don't bother checking for duplicates
-        recipes.add(currentRecipe);
-        return null;
-    }
-
-    public String updateRecipe(Recipe currentRecipe)
-    {
-        int index;
-
-        index = recipes.indexOf(currentRecipe);
-        if (index >= 0)
-        {
-            recipes.set(index, currentRecipe);
-        }
-        return null;
     }
 
     public String deleteRecipe(Recipe currentRecipe)

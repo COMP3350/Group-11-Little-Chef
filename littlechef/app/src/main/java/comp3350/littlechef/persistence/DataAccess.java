@@ -3,7 +3,7 @@ import comp3350.littlechef.objects.Recipe;
 import java.util.List;
 import java.util.ArrayList;
 
-public interface PersistenceAccess {
+public interface DataAccess {
     public void open(String dbPath) ;
     public void close();
     public String insertRecipe(Recipe recipe);

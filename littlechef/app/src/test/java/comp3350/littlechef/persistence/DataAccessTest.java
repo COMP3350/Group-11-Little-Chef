@@ -1,46 +1,53 @@
 package comp3350.littlechef.persistence;
 
-import static comp3350.littlechef.persistence.PersistenceAccessDB.*;
-import static comp3350.littlechef.persistence.DataAccessStub.*;
 import junit.framework.TestCase;
+
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
 // might not need
 import comp3350.littlechef.application.Main;
-import comp3350.littlechef.application.Services;
-import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
 import comp3350.littlechef.objects.Unit;
 
-public class PersistenceAccessDBTest extends TestCase
+public class DataAccessTest extends TestCase
 {
 
-    //private DataAccessStub dbAccess;
-    private String result;
-    private PersistenceAccessDB dbAccess;
+    private DataAccess dataAccess;
 
     // create an empty db for the empty tests
-
-    public void setUp()
+    public DataAccessTest(String arg0)
     {
-        System.out.println("\nStarting Persistence test DataAccess.");
-
-        // Use the following statements to run with the stub database:
-        // dbAccess = new DataAccessStub();
-        // dbAccess.open(Main.dbName);
-
-        //or switch to the real database:
-        dbAccess = new PersistenceAccessDB(Main.dbName);
-        dbAccess.open(Main.getDBPathName());
+        super(arg0);
     }
 
+    @BeforeClass
+    public void setUp()
+    {
+        System.out.println("\nStarting Persistence test DataAccess");
+
+        // Use the following statements to run with the stub database:
+        dataAccess = new DataAccessStub();
+        dataAccess.open(Main.dbName);
+        System.out.print(" (using the stub db). \n");
+
+        // or switch to the real database:
+        // dataAccess = new DataAccessObject(Main.dbName);
+        // dataAccess.open(Main.getDBPathName());
+        System.out.print(".\n)");
+        // note: this will increase the test execution time.
+    }
+
+    @AfterClass
     public void tearDown()
     {
         System.out.println("Finished Persistence test DataAccess.");
-        dbAccess.close();
+        dataAccess.close();
     }
 
     @Test
@@ -49,25 +56,26 @@ public class PersistenceAccessDBTest extends TestCase
         Recipe recipe1 = createRecipe("recipe1");
 
         // add a regular recipe
-        result = dbAccess.insertRecipe(recipe1);
+        //private DataAccessStub dataAccess;
+        String result = dataAccess.insertRecipe(recipe1);
         System.out.println("RESULT" + result);
         List<Recipe> recipes = new ArrayList<Recipe>();
         recipes.add(recipe1);
-        dbAccess.getRecipeSequential(recipes);
-        dbAccess.getRecipeRandom(recipe1);
-        dbAccess.deleteRecipe(recipe1);
-        //dbAccess.resetDatabase();
+        dataAccess.getRecipeSequential(recipes);
+        dataAccess.getRecipeRandom(recipe1);
+        dataAccess.deleteRecipe(recipe1);
+        //dataAccess.resetDatabase();
     }
 
     @Test
     public void testEmptyArgument()
     {
-        PersistenceAccessDB dataAccessWithEmptyString;
+        DataAccessObject dataAccessWithEmptyString;
 
         // open db by sending empty string
         try
         {
-            dataAccessWithEmptyString = new PersistenceAccessDB(Main.dbName);
+            dataAccessWithEmptyString = new DataAccessObject(Main.dbName);
             dataAccessWithEmptyString.open("");
             fail("Wanted an exception for illegal argument.");
         }
@@ -80,7 +88,7 @@ public class PersistenceAccessDBTest extends TestCase
     @Test
     public void testEdgeCases()
     {
-        PersistenceAccessDB dataAccessWithInccorectPath;
+        DataAccessObject dataAccessWithInccorectPath;
 
 
         // sending incorrect path // Kajal: does this count as an edge case?
@@ -88,7 +96,7 @@ public class PersistenceAccessDBTest extends TestCase
 
         try
         {
-            dataAccessWithInccorectPath = new PersistenceAccessDB(Main.dbName);
+            dataAccessWithInccorectPath = new DataAccessObject(Main.dbName);
             dataAccessWithInccorectPath.open("database/");
             fail("Wanted an exception for incorrect path."); // Ask Dylan: why doesn't this throw an excpetion? or maybe we should handle it soe other way?
         }
@@ -106,11 +114,11 @@ public class PersistenceAccessDBTest extends TestCase
     public void testNullArgument()
     {
         // open db by sending null as the path
-        PersistenceAccessDB dataAccessWithNull;
+        DataAccessObject dataAccessWithNull;
 
         try
         {
-            dataAccessWithNull = new PersistenceAccessDB(Main.dbName);
+            dataAccessWithNull = new DataAccessObject(Main.dbName);
             dataAccessWithNull.open(null);
             fail("Wanted an exception for null input.");
         }
