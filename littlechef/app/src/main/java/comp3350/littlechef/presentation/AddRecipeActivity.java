@@ -22,6 +22,15 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+
+// CLASS: AddRecipeActivity.java
+//
+//
+// REMARKS: This class is clicked on by addFragment, where you can add ingredients and instructions
+//            to a certain recipe
+//
+//-----------------------------------------
+
 public class AddRecipeActivity extends AppCompatActivity
 {
     Recipe selectedRecipe;
@@ -108,8 +117,6 @@ public class AddRecipeActivity extends AppCompatActivity
                 instructionInputSteps.getText().clear();
             }
         });
-
-
     }
 
     //add instruction
@@ -176,7 +183,6 @@ public class AddRecipeActivity extends AppCompatActivity
     //this just checks the unit input and assigns it
     private Unit checkUnit()
     {
-        Unit unit;
         if( unitString.equals("PINCH") )
             return Unit.PINCH;
         else if( unitString.equals("TSP") )

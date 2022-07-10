@@ -33,28 +33,20 @@ import comp3350.littlechef.objects.Unit;
 // CLASS: AddFragment.java
 //
 //
-// REMARKS: This class creates the add recipe fragment
+// REMARKS: This class creates the add recipe fragment, where you can add recipes
+//          You can then click on the recipe to add individual ingredients and instructions.
 //
 //-----------------------------------------
 public class AddFragment extends Fragment
 {
     String name;
-    String nameIngred,amountIngred;
-
     Recipe selectedRecipe;
 
     EditText recipeInput;
-    EditText ingredientInputName;
-    EditText ingredientInputAmount;
 
     private AccessRecipes accessRecipes;
     private ArrayList<Recipe> recipeList;
     private ArrayAdapter<Recipe> recipeArrayAdapter;
-
-    Spinner spinner;
-    ArrayAdapter<CharSequence> adapter;
-
-    String unitString;
 
     public AddFragment()
     {
@@ -66,11 +58,6 @@ public class AddFragment extends Fragment
     {
         super.onCreate(savedInstanceState);
     }
-
-
-    //TODO create list of steps to add
-
-    //TODO: make it so boxes shift up when keyboard active******
 
     //User creates recipe name
     //then user
@@ -115,7 +102,6 @@ public class AddFragment extends Fragment
 
                     name.setText(recipeNameFormatted);
 
-
                     return convertView;
                 }
             };
@@ -140,12 +126,10 @@ public class AddFragment extends Fragment
                 @Override
                 public void onClick(View view)
                 {
-                    //do add recipe button
                     addRecipeClick();
                     recipeArrayAdapter.notifyDataSetChanged();
                 }
             });//END LISTVIEW
-
         }
         return view;
     }//end onclickview
@@ -166,7 +150,6 @@ public class AddFragment extends Fragment
             if(result == null)
             {
                 accessRecipes.getRecipes(recipeList);
-
                 recipeArrayAdapter.notifyDataSetChanged();
                 Toast.makeText(getContext(), newRecipe.getName()+" added to recipes!", Toast.LENGTH_SHORT).show();
 
@@ -179,7 +162,7 @@ public class AddFragment extends Fragment
 
     }
 
-    //COURSE TESTING
+    //Validate the recipe
     private String validateRecipeName(Recipe recipeAdd, boolean isNewRecipe)
     {
         if (recipeAdd.getName().length() == 0)
@@ -190,7 +173,7 @@ public class AddFragment extends Fragment
         if (isNewRecipe && accessRecipes.getRandom(recipeAdd.getId() ) != null)
         {
             //TODO: THIS DOES NOT WORK
-            //Log.i("Hit found recipe", "Recipe ID found");
+            Log.i("Hit found recipe", "Recipe ID found");
             return "Recipe ID " + recipeAdd.getId() + " already exists.";
         }
 
