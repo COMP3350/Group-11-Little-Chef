@@ -197,6 +197,8 @@ public class Recipe implements Serializable
         return this.recipeID;
     }
 
+    public void setId(int id) {this.recipeID = id;}
+
     public boolean equals(Object object)
     {
         boolean result;

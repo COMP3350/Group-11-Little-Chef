@@ -1,22 +1,24 @@
 package comp3350.littlechef.application;
 
 import comp3350.littlechef.persistence.DataAccessStub;
+import comp3350.littlechef.persistence.PersistenceAccess;
+import comp3350.littlechef.persistence.PersistenceAccessDB;
 
 public class Services
 {
-    private static DataAccessStub dataAccessService = null;
+    private static PersistenceAccess dataAccessService = null;
 
-    public static DataAccessStub createDataAccess(String dbName)
+    public static PersistenceAccess createDataAccess(String dbName)
     {
         if(dataAccessService == null)
         {
-            dataAccessService = new DataAccessStub(dbName);
-            dataAccessService.open(Main.dbName);
+            dataAccessService = new PersistenceAccessDB(dbName);
+            dataAccessService.open(Main.getDBPathName());
         }
         return dataAccessService;
     }
 
-    public static DataAccessStub getDataAccess(String dbName)
+    public static PersistenceAccess getDataAccess(String dbName)
     {
         if(dataAccessService == null)
         {

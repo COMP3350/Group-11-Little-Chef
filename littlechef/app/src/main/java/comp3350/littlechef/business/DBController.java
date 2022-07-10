@@ -15,7 +15,7 @@ public class DBController implements PersistenceAccess{
         service = new PersistenceAccess() {
             public void open(String dbPath) {}
             public void close() {}
-            public String addRecipe(Recipe recipe) {return null;}
+            public String insertRecipe(Recipe recipe) {return null;}
             public String updateRecipe(Recipe currRecipe) {return null;}
             public String getRecipeSequential(List<Recipe> name) {return null;}
             public ArrayList<Recipe> getRecipeRandom(Recipe recipe) {return null;};
@@ -42,8 +42,8 @@ public class DBController implements PersistenceAccess{
     public void close() { service.close();}
 
     @Override
-    public String addRecipe(Recipe recipe) {
-        return service.addRecipe(recipe);
+    public String insertRecipe(Recipe recipe) {
+        return service.insertRecipe(recipe);
     }
 
     @Override
