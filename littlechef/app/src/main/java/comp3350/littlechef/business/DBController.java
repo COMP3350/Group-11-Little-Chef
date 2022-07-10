@@ -19,6 +19,7 @@ public class DBController implements DataAccess {
             public String getRecipeSequential(List<Recipe> name) {return null;}
             public ArrayList<Recipe> getRecipeRandom(Recipe recipe) {return null;};
             public String deleteRecipe(Recipe recipe) {return null;}
+            public void resetDatabase() {}
         };
     }
 
@@ -51,13 +52,16 @@ public class DBController implements DataAccess {
     }
 
     @Override
-    public String getRecipeSequential(List<Recipe> name) { return getService().getRecipeSequential(name); }
+    public String getRecipeSequential(List<Recipe> name) { return service.getRecipeSequential(name); }
 
     @Override
-    public ArrayList<Recipe> getRecipeRandom(Recipe recipe) { return getService().getRecipeRandom(recipe); }
+    public ArrayList<Recipe> getRecipeRandom(Recipe recipe) { return service.getRecipeRandom(recipe); }
 
     @Override
     public String deleteRecipe(Recipe recipe) {
-        return deleteRecipe(recipe);
+        return service.deleteRecipe(recipe);
     }
+
+    @Override
+    public void resetDatabase() {service.resetDatabase();}
 }

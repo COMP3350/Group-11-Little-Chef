@@ -238,4 +238,9 @@ public class DataAccessStub implements DataAccess
         }
         return null;
     }
+
+    public void resetDatabase()
+    {
+        recipes = null;
+    }
 }

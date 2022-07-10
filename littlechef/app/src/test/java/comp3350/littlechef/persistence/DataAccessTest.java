@@ -32,13 +32,13 @@ public class DataAccessTest extends TestCase
         System.out.println("\nStarting Persistence test DataAccess");
 
         // Use the following statements to run with the stub database:
-        dataAccess = new DataAccessStub();
-        dataAccess.open(Main.dbName);
+        //dataAccess = new DataAccessStub();
+        //dataAccess.open(Main.dbName);
         System.out.print(" (using the stub db). \n");
 
         // or switch to the real database:
-        // dataAccess = new DataAccessObject(Main.dbName);
-        // dataAccess.open(Main.getDBPathName());
+        dataAccess = new DataAccessObject(Main.dbName);
+        dataAccess.open(Main.getDBPathName());
         System.out.print(".\n)");
         // note: this will increase the test execution time.
     }
@@ -47,6 +47,7 @@ public class DataAccessTest extends TestCase
     public void tearDown()
     {
         System.out.println("Finished Persistence test DataAccess.");
+        dataAccess.resetDatabase();
         dataAccess.close();
     }
 
@@ -58,7 +59,6 @@ public class DataAccessTest extends TestCase
         // add a regular recipe
         //private DataAccessStub dataAccess;
         String result = dataAccess.insertRecipe(recipe1);
-        System.out.println("RESULT" + result);
         List<Recipe> recipes = new ArrayList<Recipe>();
         recipes.add(recipe1);
         dataAccess.getRecipeSequential(recipes);
