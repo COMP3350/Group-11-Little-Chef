@@ -5,6 +5,7 @@ import static comp3350.littlechef.persistence.DataAccessStub.*;
 import junit.framework.TestCase;
 import org.junit.Test;
 import java.util.ArrayList;
+import java.util.List;
 
 // might not need
 import comp3350.littlechef.application.Main;
@@ -45,11 +46,17 @@ public class PersistenceAccessDBTest extends TestCase
     @Test
     public void testSimpleCases()
     {
-        //Recipe recipe1 = createRecipe("recipe1");
+        Recipe recipe1 = createRecipe("recipe1");
 
         // add a regular recipe
-        //result = dbAccess.insertRecipe(recipe1);
-
+        result = dbAccess.insertRecipe(recipe1);
+        System.out.println("RESULT" + result);
+        List<Recipe> recipes = new ArrayList<Recipe>();
+        recipes.add(recipe1);
+        dbAccess.getRecipeSequential(recipes);
+        dbAccess.getRecipeRandom(recipe1);
+        dbAccess.deleteRecipe(recipe1);
+        //dbAccess.resetDatabase();
     }
 
     @Test
@@ -141,6 +148,7 @@ public class PersistenceAccessDBTest extends TestCase
         Recipe recipe = new Recipe(name);
         recipe.addIngredient(new Ingredient("All-Purpose Flour", Unit.CUP, 2));
         recipe.addIngredient(new Ingredient("Salt", Unit.TSP, 1));
+        recipe.addInstructions("Add salt and flour", "2 minutes");
 
         return recipe;
     }
