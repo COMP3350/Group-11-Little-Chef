@@ -4,6 +4,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 
+
 public class IngredientTest extends TestCase
 {
     public IngredientTest(String arg0) {
@@ -11,238 +12,201 @@ public class IngredientTest extends TestCase
     }
 
     @Test
-    public void testIngredientSimple()
-    {
-        //test the file could run or not
-        assertEquals(1, 1);
-    }//end testSimple
-
-    @Test
     public void testIngredientCreation()
     {
         ArrayList<Ingredient>inList = new ArrayList<>();
-        Ingredient in1 = new Ingredient("a1", null, 0.1d);
-        assertEquals("a1" , in1.getName());
-        inList.add(in1);
+        Ingredient ingredientName = new Ingredient("a1", null, 0.1d);
+        assertEquals("a1" , ingredientName.getName());
 
-        Ingredient in2 = new Ingredient("b1", null, 0.2d);
-        inList.add(in2);
+        ingredientName.setName("b1");
+        assertEquals("b1", ingredientName.getName());
+        inList.add(ingredientName);
+
+        Ingredient ingredientUnit = new Ingredient(null,Unit.MM,0.4d);
+        inList.add(ingredientUnit);
         assertEquals(2,inList.size());
 
-        Ingredient in3 = new Ingredient("",null,0.3d);
-        inList.add(in3);
+        Ingredient ingredientNewAmount = new Ingredient("e1",null,5);
+        inList.add(ingredientNewAmount);
         assertEquals(3,inList.size());
 
-        Ingredient in4 = new Ingredient(null,Unit.MM,0.4d);
-        inList.add(in4);
+        Ingredient ingredientMaxAmount = new Ingredient("f1",Unit.MM, Double.MAX_VALUE);
+        inList.add(ingredientMaxAmount);
         assertEquals(4,inList.size());
-
-        Ingredient in5 = new Ingredient("e1",null,5);
-        inList.add(in5);
-        assertEquals(5,inList.size());
-
-        Ingredient in6 = new Ingredient("f1",Unit.MM, Double.MAX_VALUE);
-        inList.add(in6);
-        assertEquals(6,inList.size());
-
-        Ingredient in7 = new Ingredient("f1",Unit.MM, Double.MAX_VALUE+1);
-        inList.add(in7);
-        assertEquals(7,inList.size());
 
     }//end testIngredientCreation
 
     @Test
-    public void testIngredientGetName()
+    public void testIngredientName()
     {
-        Ingredient in1 = new Ingredient("a1", null, 0.1d);
-        assertEquals("a1" , in1.getName());
+        Recipe recipe = new Recipe(111);
+        recipe.addIngredient(new Ingredient("a1", Unit.PINCH, 0.25));
+        recipe.addIngredient(new Ingredient("", Unit.CUP, 0.5));
+        recipe.addIngredient(new Ingredient("b", Unit.TSP, 1));
+        recipe.addIngredient(new Ingredient(" ", Unit.MM, 2d));
+        recipe.addIngredient(new Ingredient("%^&*$#饺子", Unit.MG, 100));
 
-        Ingredient in2= new Ingredient(null,null,0.2d);
-        assertNull(in2.getName());
+        assertEquals("a1" , recipe.getIngredients().get(0).getName());
+        assertEquals("" ,  recipe.getIngredients().get(1).getName());
+        assertEquals("b" , recipe.getIngredients().get(2).getName());
+        assertEquals(" " , recipe.getIngredients().get(3).getName());
+        assertEquals("%^&*$#饺子" , recipe.getIngredients().get(4).getName());
 
-        Ingredient in3 = new Ingredient("",null,0.3d);
-        assertEquals("",in3.getName());
-    }//end testIngredientGetName
+        assertEquals(Unit.PINCH,recipe.getIngredients().get(0).getMeasurement());
+        assertEquals(Unit.CUP,recipe.getIngredients().get(1).getMeasurement());
+        assertEquals(Unit.TSP,recipe.getIngredients().get(2).getMeasurement());
+        assertEquals(Unit.MM,recipe.getIngredients().get(3).getMeasurement());
+        assertEquals(Unit.MG,recipe.getIngredients().get(4).getMeasurement());
+    }//end testIngredientNameSimple
 
     @Test
-    public void testIngredientSetName()
+    public void testIngredientMeasurement()
     {
-        //assertNotNull
-        Ingredient i1 = new Ingredient("a", null, 666);
-        i1.setName("aa");
-        assertEquals("aa", i1.getName());
+        Recipe recipe = new Recipe(112);
+        recipe.addIngredient(new Ingredient("ingredient0", Unit.G, 123));
+        recipe.addIngredient(new Ingredient("ingredient1", Unit.MG, 1234));
+        recipe.addIngredient(new Ingredient("ingredient2", Unit.KG, 1234));
+        recipe.addIngredient(new Ingredient("ingredient3", Unit.L, 1234));
+        recipe.addIngredient(new Ingredient("ingredient4", Unit.ML, 1234));
 
-        i1.setName("");
-        assertEquals("",i1.getName());
+        assertEquals(Unit.G, recipe.getIngredients().get(0).getMeasurement());
+        assertEquals(Unit.MG, recipe.getIngredients().get(1).getMeasurement());
+        assertEquals(Unit.KG, recipe.getIngredients().get(2).getMeasurement());
+        assertEquals(Unit.L, recipe.getIngredients().get(3).getMeasurement());
+        assertEquals(Unit.ML, recipe.getIngredients().get(4).getMeasurement());
 
-        i1.setName(null);
-        assertNull(i1.getName());
-    }//end testIngredientSetName
+    }//end testIngredientMeasurement
 
     @Test
-    public void testIngredientGetMeasurement()
+    public void testIngredientAmount()
     {
-        Ingredient mea1 = new Ingredient("a1", Unit.MM, 123);
-        assertEquals(Unit.MM, mea1.getMeasurement());
+        Recipe recipe = new Recipe(113);
+        recipe.addIngredient(new Ingredient("ingredient0", Unit.G, 0.1));
+        recipe.addIngredient(new Ingredient("ingredient1", Unit.MG, -0.1));
+        recipe.addIngredient(new Ingredient("ingredient2", Unit.KG, 0.0));
+        recipe.addIngredient(new Ingredient("ingredient3", Unit.L, 1));
+        recipe.addIngredient(new Ingredient("ingredient4", Unit.ML, 0.987973));
+        recipe.addIngredient(new Ingredient("ingredient5", Unit.ML, Double.MAX_VALUE));
 
-        Ingredient mea2 = new Ingredient(null, Unit.MM, 123);
-        assertNull(mea2.getName());
-        assertEquals(Unit.MM, mea2.getMeasurement());
-    }//end testIngredientGetMeasurement
+        assertEquals(0.1, recipe.getIngredients().get(0).getAmount());
+        assertEquals(1.0, recipe.getIngredients().get(1).getAmount());
+        assertEquals(1.0, recipe.getIngredients().get(2).getAmount());
+        assertEquals(1.0, recipe.getIngredients().get(3).getAmount());
+        assertEquals(0.987973, recipe.getIngredients().get(4).getAmount());
+        assertEquals(Double.MAX_VALUE, recipe.getIngredients().get(5).getAmount());
+    }//end testIngredientAmount
 
-    @Test
-    public void testIngredientSetMeasurement()
-    {
-        //assertNotNull
-        Ingredient mea2 = new Ingredient("a", Unit.MM, 888);
-        assertEquals(Unit.MM, mea2.getMeasurement());
-
-        mea2.setMeasurement(Unit.PINCH);
-        assertEquals(Unit.PINCH, mea2.getMeasurement());
-
-        mea2.setMeasurement(null);
-        assertEquals(Unit.PINCH, mea2.getMeasurement());
-
-        mea2.setMeasurement(null);
-        assertEquals(Unit.PINCH, mea2.getMeasurement());
-    }//end testIngredientSetMeasurement
-
-    @Test
-    public void testIngredientGetAmount()
-    {
-        Ingredient amo1 = new Ingredient("a1", null, 0.1);
-        assertEquals(0.1, amo1.getAmount());
-
-        amo1.setAmount(Double.MAX_VALUE);
-        assertEquals(Double.MAX_VALUE,amo1.getAmount());
-
-        amo1.setAmount(-0.1d);
-        assertEquals(Double.MAX_VALUE , amo1.getAmount());
-
-        amo1.setAmount(0.0);
-        assertEquals(Double.MAX_VALUE , amo1.getAmount());
-
-        amo1.setAmount(1);
-        assertEquals(1.0 , amo1.getAmount());
-    }//end testIngredientGetAmount
-
-    @Test
-    public void testIngredientSetAmount()
-    {
-        //assertNotNull
-        Ingredient amo2 = new Ingredient("a", Unit.MM, 888.0);
-        assertEquals(888.0, amo2.getAmount());
-
-        amo2.setAmount(111);
-        assertEquals(111.0, amo2.getAmount());
-
-        amo2.setAmount(222);
-        assertEquals(222.0 , amo2.getAmount());
-
-        amo2.setAmount(-0.1d);
-        assertEquals(222.0 , amo2.getAmount());
-
-        amo2.setAmount(0.0);
-        assertEquals(222.0,amo2.getAmount());
-
-        amo2.setAmount(Integer.MAX_VALUE);
-        assertEquals((double) Integer.MAX_VALUE, amo2.getAmount());
-
-        amo2.setAmount(Integer.MIN_VALUE);
-        assertEquals(Math.abs((double)(Integer.MIN_VALUE)+1), amo2.getAmount());
-    }//end testIngredientSetMeasurement
 
 
     @Test
-    public void testIngredientGetUnitType()
+    public void testIngredientConvertUnitType()
     {
-        Ingredient unittype1 = new Ingredient("a", Unit.MM, 0.1);
-        assertEquals("SIZE", unittype1.getUnitType());
+        Recipe recipe = new Recipe(114);
+        recipe.addIngredient(new Ingredient("ingredient0", Unit.PINCH, 0.1));
+        recipe.addIngredient(new Ingredient("ingredient1", Unit.MG, -0.1));
+        recipe.addIngredient(new Ingredient("ingredient2", Unit.KG, 0.0));
+        recipe.addIngredient(new Ingredient("ingredient3", Unit.MM, 1));
+        recipe.addIngredient(new Ingredient("ingredient4", Unit.L, 0.987973));
+        recipe.addIngredient(new Ingredient("ingredient5", Unit.ML, Double.MAX_VALUE));
 
-        unittype1.setMeasurement(Unit.PINCH);
-        assertEquals("VOLUME", unittype1.getUnitType());
-
-        unittype1.setMeasurement(Unit.MG);
-        assertEquals("WEIGHT", unittype1.getUnitType());
-
-        unittype1.setMeasurement(Unit.MG);
-        assertEquals("WEIGHT" , unittype1.getUnitType());
-
-        unittype1.setMeasurement(Unit.MM);
-        assertEquals("SIZE", unittype1.getUnitType());
-
-        unittype1.setMeasurement(Unit.PINCH);
-        assertEquals("VOLUME", unittype1.getUnitType());
-
-        unittype1.setMeasurement(null);
-        assertEquals("VOLUME",unittype1.getUnitType());
-
-        unittype1.setMeasurement(null);
-        assertEquals("VOLUME" ,unittype1.getUnitType());
-    }//end testIngredientGetUnitType
+        assertEquals("WEIGHT", recipe.getIngredients().get(1).getUnitType());
+        assertEquals("WEIGHT", recipe.getIngredients().get(2).getUnitType());
+        assertEquals("SIZE", recipe.getIngredients().get(3).getUnitType());
+        assertEquals("VOLUME", recipe.getIngredients().get(4).getUnitType());
+        assertEquals("VOLUME", recipe.getIngredients().get(5).getUnitType());
+    }//end testIngredientConvertUnitType
 
     @Test
-    public void testIngredientGetDisplayMeasurement()
+    public void testIngredientDisplayMeasurement()
     {
-        Ingredient disp1 = new Ingredient("a", Unit.MM, 0.1);
-        assertEquals("0.10 mm", disp1.getDisplayMeasurement());
+        Recipe recipe = new Recipe(115);
+        recipe.addIngredient(new Ingredient("ingredient0", Unit.PINCH, 0.1));
+        recipe.addIngredient(new Ingredient("ingredient1", Unit.MG, -0.1));
+        recipe.addIngredient(new Ingredient("ingredient2", Unit.KG, 0.222));
+        recipe.addIngredient(new Ingredient("ingredient3", Unit.MM, 0.229));
+        recipe.addIngredient(new Ingredient("ingredient4", Unit.L, 0.987973));
+        recipe.addIngredient(new Ingredient("ingredient5", Unit.ML, 10001));
+        recipe.addIngredient(new Ingredient("ingredient6", Unit.ML, Double.MIN_VALUE));
+        recipe.addIngredient(new Ingredient("ingredient7", Unit.ML, 10000));
 
-        disp1.setAmount(0.22);
-        assertEquals("0.22 mm", disp1.getDisplayMeasurement());
-
-        disp1.setAmount(0.222);
-        assertEquals("0.22 mm", disp1.getDisplayMeasurement());
-
-        disp1.setAmount(0.229);
-        assertEquals("0.23 mm", disp1.getDisplayMeasurement());
-
-        disp1.setAmount(0.2222);
-        assertEquals("0.22 mm", disp1.getDisplayMeasurement());
-
-        disp1.setAmount(0.2229);
-        assertEquals("0.22 mm", disp1.getDisplayMeasurement());
-
-        disp1.setAmount(0.0);
-        assertEquals("0.22 mm" , disp1.getDisplayMeasurement());
-
-        disp1.setAmount(-0.1d);
-        assertEquals("0.22 mm" , disp1.getDisplayMeasurement());
-
-        disp1.setAmount(Integer.MAX_VALUE+1);
-        assertEquals("0.22 mm" , disp1.getDisplayMeasurement());
-
-        disp1.setAmount(Integer.MAX_VALUE);
-        assertEquals( Integer.toString(Integer.MAX_VALUE) +".00 mm" , disp1.getDisplayMeasurement());
-
-        disp1.setAmount(Integer.MIN_VALUE-1);
-        assertEquals(Integer.toString(Integer.MIN_VALUE-1) + ".00 mm" , disp1.getDisplayMeasurement());
-    }//end testIngredientGetDisplayMeasurement
+        assertEquals("0.10 PINCH", recipe.getIngredients().get(0).getDisplayMeasurement());
+        assertEquals("1.00 MG", recipe.getIngredients().get(1).getDisplayMeasurement());
+        assertEquals("0.22 KG", recipe.getIngredients().get(2).getDisplayMeasurement());
+        assertEquals("0.23 MM", recipe.getIngredients().get(3).getDisplayMeasurement());
+        assertEquals("0.99 L", recipe.getIngredients().get(4).getDisplayMeasurement());
+        assertEquals("10000.00 ML", recipe.getIngredients().get(5).getDisplayMeasurement());
+        assertEquals( "0.00 ML", recipe.getIngredients().get(6).getDisplayMeasurement());
+        recipe.getIngredients().get(7).setMax_amount(5000.0);
+        assertEquals( "5000.00 ML", recipe.getIngredients().get(7).getDisplayMeasurement());
+        assertEquals( 5000.0, recipe.getIngredients().get(7).getMax_amount());
+    }//end testIngredientDisplayMeasurement
 
     @Test
-    public void testsetUnitInformation()
+    public void testUnitInformation()
     {
-        Ingredient unitinfo1 = new Ingredient("a", Unit.MM, 0.1);
-        assertEquals("SIZE", unitinfo1.getUnitType());
+        Ingredient PINCHVolume = new Ingredient("a", Unit.PINCH, 0.1);
+        Ingredient TSPVolume = new Ingredient("a", Unit.TSP, 0.1);
+        Ingredient TBSPVolume = new Ingredient("a", Unit.TBSP, 0.1);
+        Ingredient CUPVolume = new Ingredient("a", Unit.CUP, 0.1);
+        Ingredient MLVolume = new Ingredient("a", Unit.ML, 0.1);
+        Ingredient LVolume = new Ingredient("a", Unit.ML, 0.1);
+        Ingredient EdgeVolume = new Ingredient("a", Unit.QUANTITY, 0.1);
 
-        unitinfo1.setMeasurement(Unit.PINCH);
-        assertEquals("VOLUME", unitinfo1.getUnitType());
+        assertEquals("VOLUME", PINCHVolume.getUnitType());
+        assertEquals("VOLUME", TSPVolume.getUnitType());
+        assertEquals("VOLUME", TBSPVolume.getUnitType());
+        assertEquals("VOLUME", CUPVolume.getUnitType());
+        assertEquals("VOLUME", MLVolume.getUnitType());
+        assertEquals("VOLUME", LVolume.getUnitType());
+        assertEquals("DEFAULT", EdgeVolume.getUnitType());
 
-        unitinfo1.setMeasurement(Unit.MG);
-        assertEquals("WEIGHT", unitinfo1.getUnitType());
+        Ingredient MGWeight = new Ingredient("a", Unit.MG, 0.1);
+        Ingredient GWeight = new Ingredient("a", Unit.G, 0.1);
+        Ingredient KGWeight = new Ingredient("a", Unit.KG, 0.1);
+        assertEquals("WEIGHT", MGWeight.getUnitType());
+        assertEquals("WEIGHT", GWeight.getUnitType());
+        assertEquals("WEIGHT", KGWeight.getUnitType());
 
-        unitinfo1.setMeasurement(Unit.MM);
-        assertEquals("SIZE" , unitinfo1.getUnitType());
+        Ingredient MMSize = new Ingredient("a", Unit.MM, 0.1);
+        Ingredient CMSize = new Ingredient("a", Unit.CM, 0.1);
+        Ingredient MSize = new Ingredient("a", Unit.M, 0.1);
+        assertEquals("SIZE", MMSize.getUnitType());
+        assertEquals("SIZE", CMSize.getUnitType());
+        assertEquals("SIZE", MSize.getUnitType());
 
-        Ingredient unitinfo2 = new Ingredient(null, null, 0.1);
-        assertEquals(unitinfo2.getUnitType() , "DEFAULT");
+        Ingredient unitNull = new Ingredient("a", null, 0.1);
+        unitNull.setMeasurement(null);
+        assertEquals(unitNull.getUnitType() , "DEFAULT");
+    }//end testUnitInformation
 
-        Ingredient unitinfo3 = new Ingredient(null, null, 0.1);
-        assertEquals(unitinfo3.getUnitType() , "DEFAULT");
+    @Test
+    public void testCreateIngredientNull()
+    {
+        try
+        {
+            Recipe recipe = new Recipe(1000);
+            Ingredient recipeNull = new Ingredient(null, null, 0);
+        }
+        catch (NullPointerException unused)
+        {
+            //catch error in create ingredient
+        }
+    }
 
-        Ingredient unitinfo4 = new Ingredient("", null, 0.1);
-        assertEquals(unitinfo4.getUnitType() , "DEFAULT");
-
-        Ingredient unitinfo5 = new Ingredient(null, null, 0.0);
-        assertEquals(unitinfo5.getUnitType() , "DEFAULT");
-    }//end testsetUnitInformation
+    @Test
+    public void testDisplayMeasurement()
+    {
+        try
+        {
+            Recipe recipe = new Recipe(1000);
+            Ingredient recipeNull = new Ingredient(null, null, 0);
+            recipe.addIngredient(recipeNull);
+            recipeNull.getDisplayMeasurement();
+        }
+        catch (NullPointerException unused)
+        {
+            //catch error in get display measurement
+        }
+    }
 }
+

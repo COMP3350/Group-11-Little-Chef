@@ -11,6 +11,7 @@ public class Ingredient implements Serializable
 {
     private String name;
     private double amount; //number of ingredient needed
+    private double max_amount = 10000.00;
 
     private UnitType unitType;
     private Unit unit;
@@ -19,6 +20,7 @@ public class Ingredient implements Serializable
     {
         this.name = name;
         this.amount = amount;
+
         if(amount > 0)
         {
             this.amount = amount;
@@ -64,8 +66,22 @@ public class Ingredient implements Serializable
         return unitType.toString();
     }
 
+    public double getMax_amount()
+    {
+        return max_amount;
+    }
+
+    public void setMax_amount(double max_amount)
+    {
+        this.max_amount = max_amount;
+    }
+
     public String getDisplayMeasurement()
     {
+        if (amount > max_amount)
+        {
+            return String.format("%.2f", max_amount) + " " + getMeasurement();
+        }
         return String.format("%.2f", amount) + " " + getMeasurement();
     }
 
@@ -91,3 +107,4 @@ public class Ingredient implements Serializable
     }
 
 }
+
