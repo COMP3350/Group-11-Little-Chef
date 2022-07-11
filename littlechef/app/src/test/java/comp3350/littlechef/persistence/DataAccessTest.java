@@ -11,6 +11,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 // might not need
+import java.util.ArrayList;
+import java.util.List;
+
 import comp3350.littlechef.application.Main;
 import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
@@ -56,19 +59,72 @@ public class DataAccessTest extends TestCase
     }
 
     @Test
-    public void testSimpleCases()
+    public void testTypicalCases()
     {
+        Recipe recipe1, recipe2, recipe3, recipe4, recipe5;
+        List<Recipe> returnedList;
+        List<Recipe> listOfRecipes = new ArrayList<>();
+
+        // creating and closing db
         DataAccess access1 = createAccess();
         assertTrue(access1.open(DB_NAME));
         assertTrue(access1.close());
 
-        dataAccess.insertRecipe(new Recipe("recipe"));
+        // inserting recipe
+        assertNull(dataAccess.insertRecipe(new Recipe("recipe")));
+
+        // updating recipe
+        recipe1 = new Recipe("a recipe");
+        dataAccess.insertRecipe(recipe1);
+
+        recipe2 = new Recipe("Updated recipe");
+        recipe1 = recipe2;
+
+        assertNull(dataAccess.updateRecipe(recipe1));
+        assertEquals(recipe2, recipe1);
+
+        // getting all the recipes
+        assertNull(dataAccess.getRecipeSequential(listOfRecipes));
+        assertTrue(listOfRecipes.size() > 0);
+
+        // getting random access
+        recipe3 = new Recipe("Recipe 3");
+        assertNull(dataAccess.insertRecipe(recipe3));
+        returnedList = dataAccess.getRecipeRandom(recipe3);
+        assertTrue(returnedList.size() > 0);
+        assertEquals(recipe3, returnedList.get(0));
+
+        returnedList.clear();
+        recipe4 = new Recipe("not in db");
+        returnedList = dataAccess.getRecipeRandom(recipe4);
+        assertEquals(0, returnedList.size());
+
+        // deleting a recipe
+        returnedList.clear();
+        recipe5 = new Recipe("to delete");
+        assertNull(dataAccess.insertRecipe(recipe5));
+        returnedList = dataAccess.getRecipeRandom(recipe5);
+        assertEquals(recipe5, returnedList.get(0));
+        returnedList.clear();
+        assertNull(dataAccess.deleteRecipe(recipe5));
+        returnedList = dataAccess.getRecipeRandom(recipe5);
+        assertEquals(0, returnedList.size());
+
+    }
+
+
+    @Test
+    public void testSendingArrayListToGetSequental()
+    {
+        ArrayList list = new ArrayList();
+        assertNull(dataAccess.getRecipeSequential(list));
     }
 
     @Test
     public void testEmptyArgument()
     {
-        DataAccess dataAccessWithEmptyString = createAccess();
+        DataAccess dataAccessWithEmptyString;
+        dataAccessWithEmptyString = createAccess();
         // open db by sending empty string
 
         try
@@ -106,7 +162,12 @@ public class DataAccessTest extends TestCase
     @Test
     public void testNullArgument()
     {
-        DataAccess dataAccessWithNull = createAccess();
+        DataAccess dataAccessWithNull;
+        List<Recipe> listOfRecipes = null;
+        Recipe nullRecipe = null;
+        Recipe recipe1 = new Recipe("Recipe 1");
+        Recipe recipe2 = null;
+        dataAccessWithNull = createAccess();
 
         try
         {
@@ -117,10 +178,64 @@ public class DataAccessTest extends TestCase
         {
             // this is expected
         }
+
+        try
+        {
+            dataAccess.insertRecipe(nullRecipe);
+            fail("Wanted an exception for null input.");
+        }
+        catch (NullPointerException e)
+        {
+            // this is expected
+        }
+
+        dataAccess.insertRecipe(recipe1);
+        recipe1 = nullRecipe;
+
+        try
+        {
+            dataAccess.updateRecipe(recipe1);
+            fail("Wanted an exception for null input.");
+        }
+        catch (NullPointerException e)
+        {
+            // this is expected
+        }
+
+        try
+        {
+            dataAccess.getRecipeSequential(listOfRecipes);
+            fail("Wanted an exception for null input.");
+        }
+        catch (NullPointerException e)
+        {
+            // this is expected
+        }
+
+        try
+        {
+            dataAccess.getRecipeRandom(recipe2);
+            fail("Wanted an exception for null input.");
+        }
+        catch (NullPointerException e)
+        {
+            // this is expected
+        }
+
+
+        try
+        {
+            dataAccess.deleteRecipe(recipe2);
+            fail("Wanted an exception for null input.");
+        }
+        catch (NullPointerException e)
+        {
+            // this is expected
+        }
     }
 
     @Test
-    public void testLeadingSpacesInArgument()
+    public void testLeadingSpacesDBPath()
     {
         DataAccess access1 = createAccess();
         assertTrue(access1.open(" "+DB_NAME)); // once default data is added you can check that this opened our db
@@ -130,7 +245,7 @@ public class DataAccessTest extends TestCase
     }
 
     @Test
-    public void testTrailingSpacesInArgument()
+    public void testTrailingSpacesInPath()
     {
         DataAccess access1 = createAccess();
         assertTrue(access1.open(DB_NAME+" "));
@@ -140,38 +255,182 @@ public class DataAccessTest extends TestCase
     }
 
     @Test
-    public void testLeadingAndTrailingSpacesInArgument()
+    public void testLeadingAndTrailingSpacesInDBPath()
     {
         DataAccess access = createAccess();
         assertTrue(access.open("  "+DB_NAME+" "));
     }
 
     @Test
-    public void testSendingInvalidArgument()
+    public void testDoingThingsWithoutOpeningDBConnection()
     {
-        // try to close a database that has not been opened yet.  // needed?
+        DataAccess access;
+        List<Recipe> listOfRecipes = new ArrayList<Recipe>();
+        Recipe recipe = new Recipe("Potato");
 
-        // send a string instead of a recipe when adding recipe
+        access = createAccess();
+        assertFalse(access.close());
+
+        assertEquals("connection is not open.", access.insertRecipe(new Recipe("Some Recipe")));
+        assertEquals("connection is not open.", access.updateRecipe(recipe));
+        assertEquals("connection is not open.", access.getRecipeSequential(listOfRecipes));
+        assertNull(access.getRecipeRandom(recipe));
+        assertEquals("connection is not open.", access.deleteRecipe(recipe));
+        assertEquals("connection is not open.", access.resetDatabase());
     }
 
     @Test
-    public void testDoingThingsWithoutOpeningDBConnection()
+    public void testResetEmptyDB()
     {
-        DataAccess access = createAccess();
-        assertFalse(access.close());
+        List<Recipe> oldList = new ArrayList<>();
+        List<Recipe> newList = new ArrayList<>();
+
+        dataAccess.getRecipeSequential(oldList);
+        deleteEverything();
+        assertNull(dataAccess.resetDatabase());
+        dataAccess.getRecipeSequential(newList);
+        assertEquals(oldList.size(), newList.size());
     }
 
-    private Recipe createRecipe(String name)
+    @Test
+    public void testTypicalCasesOnEmptyDB()
     {
-        Recipe recipe = new Recipe(name);
-        recipe.addIngredient(new Ingredient("All-Purpose Flour", Unit.CUP, 2));
-        recipe.addIngredient(new Ingredient("Salt", Unit.TSP, 1));
-        recipe.addInstructions("Add salt and flour", "2 minutes");
+        List<Recipe> recipes = new ArrayList<>();
+        Recipe recipe1 = new Recipe("Potato Salad");
 
-        return recipe;
+        deleteEverything();
+        dataAccess.getRecipeSequential(recipes);
+        assertEquals(0, recipes.size());
+
+        recipes.clear();
+        deleteEverything();
+        dataAccess.insertRecipe(recipe1);
+        dataAccess.getRecipeSequential(recipes);
+        assertEquals(1, recipes.size());
+
+        recipes.clear();
+        deleteEverything();
+        assertNull(dataAccess.updateRecipe(recipe1));
+        dataAccess.getRecipeSequential(recipes);
+        assertEquals(0, recipes.size());
+
+        recipes.clear();
+        deleteEverything();
+        dataAccess.insertRecipe(recipe1);
+        dataAccess.getRecipeSequential(recipes);
+        assertEquals(1, recipes.size());
+        recipe1.setName("My potato salad");
+        assertNull(dataAccess.updateRecipe(recipe1));
+        assertEquals(1, recipes.size());
+
+        recipes.clear();
+        deleteEverything();
+        recipes = dataAccess.getRecipeRandom(recipe1);
+        assertEquals(0, recipes.size());
+
+        recipes.clear();
+        deleteEverything();
+        assertNull(dataAccess.deleteRecipe(recipe1));
+        dataAccess.getRecipeSequential(recipes);
+        assertEquals(0, recipes.size());
     }
 
-    private DataAccess createAccess(){
+    @Test
+    public void testSizeOneDB()
+    {
+        List<Recipe> recipes = new ArrayList<>();
+        Recipe recipe1 = new Recipe("Potato Salad");
+
+        deleteEverything();
+        dataAccess.insertRecipe(recipe1);
+        dataAccess.getRecipeSequential(recipes);
+        assertEquals(1, recipes.size());
+
+        recipes.clear();
+        deleteEverything();
+        dataAccess.insertRecipe(recipe1);
+        recipe1.setName("New potato salad");
+        assertNull(dataAccess.updateRecipe(recipe1));
+        dataAccess.getRecipeSequential(recipes);
+        assertEquals(1, recipes.size());
+
+        recipes.clear();
+        deleteEverything();
+        dataAccess.insertRecipe(recipe1);
+        recipes = dataAccess.getRecipeRandom(recipe1);
+        assertEquals(1, recipes.size());
+        assertEquals(recipe1, recipes.get(0));
+
+        recipes.clear();
+        deleteEverything();
+        dataAccess.insertRecipe(recipe1);
+        dataAccess.getRecipeSequential(recipes);
+        assertEquals(1, recipes.size());
+        assertNull(dataAccess.deleteRecipe(recipe1));
+        dataAccess.getRecipeSequential(recipes);
+        assertEquals(0, recipes.size());
+    }
+
+    @Test
+    public void testSizeTwoDB()
+    {
+        List<Recipe> recipes = new ArrayList<>();
+        Recipe recipe1 = new Recipe("Potato Salad");
+        Recipe recipe2 = new Recipe("Salad");
+
+        deleteEverything();
+        dataAccess.insertRecipe(recipe1);
+        dataAccess.getRecipeSequential(recipes);
+        assertEquals(1, recipes.size());
+        dataAccess.insertRecipe(recipe2);
+        dataAccess.getRecipeSequential(recipes);
+        assertEquals(2, recipes.size());
+
+        recipes.clear();
+        deleteEverything();
+        dataAccess.insertRecipe(recipe1);
+        dataAccess.insertRecipe(recipe2);
+        recipe1.setName("My potato salad");
+        recipe2.setName("My favorite salad");
+        assertNull(dataAccess.updateRecipe(recipe1));
+        assertNull(dataAccess.updateRecipe(recipe2));
+        dataAccess.getRecipeSequential(recipes);
+        assertEquals(2, recipes.size());
+
+        deleteEverything();
+        dataAccess.insertRecipe(recipe1);
+        dataAccess.insertRecipe(recipe2);
+        dataAccess.getRecipeSequential(recipes);
+        assertEquals(2, recipes.size());
+
+        recipes.clear();
+        recipes = dataAccess.getRecipeRandom(recipe1);
+        assertEquals(recipe1, recipes.get(0));
+
+        recipes.clear();
+        recipes = dataAccess.getRecipeRandom(recipe2);
+        assertEquals(recipe2, recipes.get(0));
+
+        deleteEverything();
+        dataAccess.insertRecipe(recipe1);
+        dataAccess.insertRecipe(recipe2);
+
+        dataAccess.getRecipeSequential(recipes);
+        assertEquals(2, recipes.size());
+
+        recipes.clear();
+        assertNull(dataAccess.deleteRecipe(recipe1));
+        dataAccess.getRecipeSequential(recipes);
+        assertEquals(1, recipes.size());
+
+        recipes.clear();
+        assertNull(dataAccess.deleteRecipe(recipe2));
+        dataAccess.getRecipeSequential(recipes);
+        assertEquals(0, recipes.size());
+    }
+
+    private DataAccess createAccess()
+    {
         DataAccess access;
 
         if(TEST_ON_STUB)
@@ -184,6 +443,21 @@ public class DataAccessTest extends TestCase
         }
 
         return access;
+    }
+
+    private void deleteEverything()
+    {
+        List<Recipe> returnedList = new ArrayList<>();
+        dataAccess.getRecipeSequential(returnedList);
+        assertTrue(returnedList.size() >= 0);
+
+        // delete everything in db
+        for (int i = 0; i < returnedList.size(); i++) {
+            assertNull(dataAccess.deleteRecipe(returnedList.get(i)));
+        }
+
+        dataAccess.getRecipeSequential(returnedList);
+        assertEquals(0, returnedList.size());
     }
 
 }

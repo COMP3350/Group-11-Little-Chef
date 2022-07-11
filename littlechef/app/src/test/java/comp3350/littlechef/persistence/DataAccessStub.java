@@ -61,6 +61,7 @@ public class DataAccessStub implements DataAccess
     public boolean close()
     {
         success = false;
+
         if(connectionOpen)
         {
             success = true;
@@ -72,17 +73,19 @@ public class DataAccessStub implements DataAccess
     public String insertRecipe(Recipe currentRecipe)
     {
         result = null;
-        
+
+        if(currentRecipe == null)
+        {
+            throw new NullPointerException("Recipe cannot be null.");
+        }
+
         if(connectionOpen)
         {
-            try
-            {
                 recipes.add(currentRecipe);
-            }
-            catch(Exception e)
-            {
-                result = e.getMessage();
-            }
+        }
+        else
+        {
+            result = "connection is not open.";
         }
 
         return result;
@@ -94,21 +97,24 @@ public class DataAccessStub implements DataAccess
 
         result = null;
 
-        if(connectionOpen) {
+        if(currentRecipe == null)
+        {
+            throw new NullPointerException("Recipe cannot be null.");
+        }
 
-            try
+        if(connectionOpen) {
+            index = recipes.indexOf(currentRecipe);
+
+            if (index >= 0)
             {
-                index = recipes.indexOf(currentRecipe);
-                if (index >= 0)
-                {
-                    recipes.set(index, currentRecipe);
-                }
-            }
-            catch (Exception e)
-            {
-                result = e.getMessage();
+                recipes.set(index, currentRecipe);
             }
         }
+        else
+        {
+            result = "connection is not open.";
+        }
+
         return result;
     }
 
@@ -116,16 +122,19 @@ public class DataAccessStub implements DataAccess
     {
         result = null;
 
+        if(recipeResult == null)
+        {
+            throw new NullPointerException("Recipe cannot be null.");
+        }
+
         if(connectionOpen)
         {
-            try
-            {
-                recipeResult.addAll(recipes);
-            }
-            catch (Exception e)
-            {
-                result = e.getMessage();
-            }
+            recipeResult.clear();
+            recipeResult.addAll(recipes);
+        }
+        else
+        {
+            result = "connection is not open.";
         }
 
         return result;
@@ -136,6 +145,11 @@ public class DataAccessStub implements DataAccess
         ArrayList<Recipe> newRecipes = null;
         int index;
 
+        if(currentRecipe == null)
+        {
+            throw new NullPointerException("Recipe cannot be null.");
+        }
+
         if(connectionOpen)
         {
             newRecipes = new ArrayList<Recipe>();
@@ -145,6 +159,7 @@ public class DataAccessStub implements DataAccess
                 newRecipes.add(recipes.get(index));
             }
         }
+
         return newRecipes;
     }
 
@@ -154,18 +169,22 @@ public class DataAccessStub implements DataAccess
 
         result = null;
 
-        if(connectionOpen) {
-            try
+        if(currentRecipe == null)
+        {
+            throw new NullPointerException("Recipe cannot be null.");
+        }
+
+        if(connectionOpen)
+        {
+            index = recipes.indexOf(currentRecipe);
+            if (index >= 0)
             {
-                index = recipes.indexOf(currentRecipe);
-                if (index >= 0) {
                     recipes.remove(index);
-                }
             }
-            catch (Exception e)
-            {
-                result = e.getMessage();
-            }
+        }
+        else
+        {
+            result = "connection is not open.";
         }
 
         return result;
@@ -178,10 +197,10 @@ public class DataAccessStub implements DataAccess
         if(connectionOpen) {
             recipes.clear();
             addDefaultRecipes();
-
-            if (recipes.isEmpty()) {
-                result = "fail";
-            }
+        }
+        else
+        {
+            result = "connection is not open.";
         }
 
         return result;
