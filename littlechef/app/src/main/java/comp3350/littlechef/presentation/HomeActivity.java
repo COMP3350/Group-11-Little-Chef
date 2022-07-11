@@ -2,13 +2,18 @@ package comp3350.littlechef.presentation;
 
 import comp3350.littlechef.R;
 import comp3350.littlechef.application.Main;
+import comp3350.littlechef.business.TimeRecipe;
+
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.app.Fragment;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -51,8 +56,6 @@ public class HomeActivity extends AppCompatActivity
         mealsFragment = new MealsFragment();
         replaceFragment(viewFragment); //set view fragment on start
 
-        bottomNavigationView.getMenu().findItem(R.id.meals).setEnabled(false); //set meal plans button in the menu to inactive until implementation
-
         //set up bottom navigation listener
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener()
         {
@@ -71,9 +74,21 @@ public class HomeActivity extends AppCompatActivity
                         replaceFragment(addFragment);
                         return true;
 
-                    case R.id.meals://TODO make notification that it is a work in progress
-                        mealsFragment = new MealsFragment();
-                        replaceFragment(mealsFragment);
+                    case R.id.meals:
+                        AlertDialog.Builder resetAlert = new AlertDialog.Builder(HomeActivity.this);
+                        resetAlert.setTitle("Work in Progress");
+                        resetAlert.setMessage("Add meals is a work-in-progress and will be added with iteration 3. The button is present here for completeness of the bottom navigation bar.");
+
+                        resetAlert.setPositiveButton("Ok", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which)
+                            {
+                                //do nothing
+                            }
+                        });
+
+                        resetAlert.show();
                         return true;
                 }
                 return false;

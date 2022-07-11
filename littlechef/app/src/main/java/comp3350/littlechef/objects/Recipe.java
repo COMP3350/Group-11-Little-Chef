@@ -2,6 +2,7 @@ package comp3350.littlechef.objects;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import comp3350.littlechef.business.TimeRecipe;
 
@@ -143,7 +144,7 @@ public class Recipe implements Serializable
 
         else
         {
-            result += Double.toString(rating);
+            result += String.format(Locale.CANADA,"%.2f",rating);
         }
 
         return result;
@@ -165,7 +166,7 @@ public class Recipe implements Serializable
 
         else
         {
-            result += Double.toString(rating);
+            result += String.format(Locale.CANADA,"%.2f",rating);
         }
 
         return result;
@@ -179,10 +180,10 @@ public class Recipe implements Serializable
     //returns average rating, which an average of difficulty and taste ratings
     public double getRating()
     {
-        double averageDiffiсulty= calcAverage(difficultyRatings);
+        double averageDifficulty = calcAverage(difficultyRatings);
         double averageTaste = calcAverage(tasteRatings);
 
-        return (averageDiffiсulty+averageTaste)/2;
+        return (averageDifficulty+averageTaste)/2;
     }
 
     public String getRatingString()
@@ -196,10 +197,10 @@ public class Recipe implements Serializable
 
         else
         {
-            result = Double.toString(rating);
+            result = String.format(Locale.CANADA,"%.2f",rating);
         }
 
-        return result + "/5";
+        return  result + "/5";
     }
 
     public int getId()
