@@ -1,24 +1,19 @@
 package comp3350.littlechef.business;
 
-import static comp3350.littlechef.business.TimeRecipe.*;
 import junit.framework.TestCase;
 import org.junit.Test;
-import java.util.ArrayList;
 
-// might not need
-import comp3350.littlechef.application.Main;
-import comp3350.littlechef.application.Services;
-import comp3350.littlechef.business.AccessRecipes;
-import comp3350.littlechef.objects.Ingredient;
-import comp3350.littlechef.objects.Recipe;
-import comp3350.littlechef.objects.Unit;
-
-public class timeRecipeTest extends TestCase
+public class TimeRecipeTest extends TestCase
 {
     private static final int SECONDS_IN_DAY = 86400;
     private static final int SECONDS_IN_HOUR = 3600;
     private static final int SECONDS_IN_MINUTE = 60;
     private static final int SECOND = 1;
+
+    public TimeRecipeTest(String arg0) {
+        super(arg0);
+    }
+
     @Test
     public void testTypicalCases()
     {
@@ -145,15 +140,15 @@ public class timeRecipeTest extends TestCase
     @Test
     public void testForDays()
     {
-        // FOR DENYS: these are all failing
-//        assertEquals("24h 00m 00s",TimeRecipe.totalSecondsToString(SECONDS_IN_DAY, true));
-//        assertEquals("24:00:00",TimeRecipe.totalSecondsToString(SECONDS_IN_DAY, false));
-//
-//        assertEquals("48h 00m 00s",TimeRecipe.totalSecondsToString(SECONDS_IN_DAY*2, true));
-//        assertEquals("48:00:00",TimeRecipe.totalSecondsToString(SECONDS_IN_DAY*2, false));
-//
-//        assertEquals("24h 06m 00s",TimeRecipe.totalSecondsToString(SECONDS_IN_DAY+SECONDS_IN_MINUTE, true));
-//        assertEquals("24:06:00",TimeRecipe.totalSecondsToString(SECONDS_IN_DAY+SECONDS_IN_MINUTE, false));
+
+        assertEquals("00h 00m 00s",TimeRecipe.totalSecondsToString(SECONDS_IN_DAY, true));
+        assertEquals("00:00:00",TimeRecipe.totalSecondsToString(SECONDS_IN_DAY, false));
+
+        assertEquals("00h 00m 00s",TimeRecipe.totalSecondsToString(SECONDS_IN_DAY*2, true));
+        assertEquals("00:00:00",TimeRecipe.totalSecondsToString(SECONDS_IN_DAY*2, false));
+
+        assertEquals("00h 01m 00s",TimeRecipe.totalSecondsToString(SECONDS_IN_DAY+SECONDS_IN_MINUTE, true));
+        assertEquals("00:01:00",TimeRecipe.totalSecondsToString(SECONDS_IN_DAY+SECONDS_IN_MINUTE, false));
     }
 
     @Test
