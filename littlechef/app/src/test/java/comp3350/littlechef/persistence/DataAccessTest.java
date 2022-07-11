@@ -112,12 +112,22 @@ public class DataAccessTest extends TestCase
 
     }
 
-
     @Test
-    public void testSendingArrayListToGetSequental()
+    public void testDoingThingsWithoutOpeningDBConnection()
     {
-        ArrayList list = new ArrayList();
-        assertNull(dataAccess.getRecipeSequential(list));
+        DataAccess access;
+        List<Recipe> listOfRecipes = new ArrayList<Recipe>();
+        Recipe recipe = new Recipe("Potato");
+
+        access = createAccess();
+        assertFalse(access.close());
+
+        assertEquals("connection is not open.", access.insertRecipe(new Recipe("Some Recipe")));
+        assertEquals("connection is not open.", access.updateRecipe(recipe));
+        assertEquals("connection is not open.", access.getRecipeSequential(listOfRecipes));
+        assertNull(access.getRecipeRandom(recipe));
+        assertEquals("connection is not open.", access.deleteRecipe(recipe));
+        assertEquals("connection is not open.", access.resetDatabase());
     }
 
     @Test
@@ -158,6 +168,41 @@ public class DataAccessTest extends TestCase
         }
 
     }
+
+    @Test
+    public void testLeadingSpacesDBPath()
+    {
+        DataAccess access1 = createAccess();
+        assertTrue(access1.open(" "+DB_NAME)); // once default data is added you can check that this opened our db
+
+        DataAccess access2 = createAccess();
+        assertTrue(access2.open("  "+DB_NAME));
+    }
+
+    @Test
+    public void testTrailingSpacesInPath()
+    {
+        DataAccess access1 = createAccess();
+        assertTrue(access1.open(DB_NAME+" "));
+
+        DataAccess access2 = createAccess();
+        assertTrue(access2.open(DB_NAME+"  "));
+    }
+
+    @Test
+    public void testLeadingAndTrailingSpacesInDBPath()
+    {
+        DataAccess access = createAccess();
+        assertTrue(access.open("  "+DB_NAME+" "));
+    }
+
+    @Test
+    public void testSendingArrayListToGetSequental()
+    {
+        ArrayList list = new ArrayList();
+        assertNull(dataAccess.getRecipeSequential(list));
+    }
+
 
     @Test
     public void testNullArgument()
@@ -235,51 +280,6 @@ public class DataAccessTest extends TestCase
     }
 
     @Test
-    public void testLeadingSpacesDBPath()
-    {
-        DataAccess access1 = createAccess();
-        assertTrue(access1.open(" "+DB_NAME)); // once default data is added you can check that this opened our db
-
-        DataAccess access2 = createAccess();
-        assertTrue(access2.open("  "+DB_NAME));
-    }
-
-    @Test
-    public void testTrailingSpacesInPath()
-    {
-        DataAccess access1 = createAccess();
-        assertTrue(access1.open(DB_NAME+" "));
-
-        DataAccess access2 = createAccess();
-        assertTrue(access2.open(DB_NAME+"  "));
-    }
-
-    @Test
-    public void testLeadingAndTrailingSpacesInDBPath()
-    {
-        DataAccess access = createAccess();
-        assertTrue(access.open("  "+DB_NAME+" "));
-    }
-
-    @Test
-    public void testDoingThingsWithoutOpeningDBConnection()
-    {
-        DataAccess access;
-        List<Recipe> listOfRecipes = new ArrayList<Recipe>();
-        Recipe recipe = new Recipe("Potato");
-
-        access = createAccess();
-        assertFalse(access.close());
-
-        assertEquals("connection is not open.", access.insertRecipe(new Recipe("Some Recipe")));
-        assertEquals("connection is not open.", access.updateRecipe(recipe));
-        assertEquals("connection is not open.", access.getRecipeSequential(listOfRecipes));
-        assertNull(access.getRecipeRandom(recipe));
-        assertEquals("connection is not open.", access.deleteRecipe(recipe));
-        assertEquals("connection is not open.", access.resetDatabase());
-    }
-
-    @Test
     public void testResetEmptyDB()
     {
         List<Recipe> oldList = new ArrayList<>();
@@ -293,7 +293,7 @@ public class DataAccessTest extends TestCase
     }
 
     @Test
-    public void testTypicalCasesOnEmptyDB()
+    public void testSizeZeroDB()
     {
         List<Recipe> recipes = new ArrayList<>();
         Recipe recipe1 = new Recipe("Potato Salad");
