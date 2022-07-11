@@ -432,8 +432,6 @@ public class DataAccessStub implements DataAccess
         recipe.addInstructions(instruction, subInstruction);
         recipes.add(recipe);
 
-        recipes.add(recipe);
-
         recipe = new Recipe("Chocolate Chip Cookies");
         recipe.addIngredient(new Ingredient("Softened Butter", CUP, 1));
         recipe.addIngredient(new Ingredient("White Sugar", CUP, 1));
