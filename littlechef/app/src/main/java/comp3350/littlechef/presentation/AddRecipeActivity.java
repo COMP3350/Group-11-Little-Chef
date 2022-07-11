@@ -144,6 +144,10 @@ public class AddRecipeActivity extends AppCompatActivity
                 Toast.makeText(this, "Added instruction to " + selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
             }
         }
+        else
+        {
+            Messages.warning(this, result);
+        }
     }
 
     //add ingredients
@@ -173,10 +177,15 @@ public class AddRecipeActivity extends AppCompatActivity
             if (result != null)
             {
                 Messages.fatalError(this, result);
-            } else
+            }
+            else
             {
                 Toast.makeText(this, "Added " + nameIngred + " to " + selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
             }
+        }
+        else
+        {
+            Messages.warning(this, result);
         }
 
     }
@@ -216,7 +225,7 @@ public class AddRecipeActivity extends AppCompatActivity
     {
         if (ingredient.getName().length() == 0)
         {
-            return "Ingredient input name required";
+            return "Ingredient name required";
         }
 
         if( ingredient.getAmount() <= 0 )
@@ -232,7 +241,7 @@ public class AddRecipeActivity extends AppCompatActivity
     {
         if (string.length() == 0)
         {
-            return "Input required";
+            return "Instructions Input required";
         }
 
         return null;

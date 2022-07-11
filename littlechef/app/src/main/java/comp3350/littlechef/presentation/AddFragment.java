@@ -142,7 +142,7 @@ public class AddFragment extends Fragment
         String result;
         Recipe newRecipe = new Recipe( name );
 
-        result = validateRecipeName(newRecipe, true);
+        result = validateRecipeName(newRecipe);
 
         if(result == null)
         {
@@ -159,25 +159,41 @@ public class AddFragment extends Fragment
                 Messages.fatalError(getActivity(), result);
             }
         }
+        else
+        {
+            Messages.warning(getActivity(), result);
+        }
 
     }
 
     //Validate the recipe
-    private String validateRecipeName(Recipe recipeAdd, boolean isNewRecipe)
+    private String validateRecipeName(Recipe recipeAdd)
     {
         if (recipeAdd.getName().length() == 0)
         {
             return "Recipe name required";
         }
-
-        if (isNewRecipe && accessRecipes.getRandom(recipeAdd.getId() ) != null)
+        //check through all recipes for duplicats
+        if (checkDuplicates(recipeAdd))
         {
-            //TODO: THIS DOES NOT WORK
-            Log.i("Hit found recipe", "Recipe ID found");
-            return "Recipe ID " + recipeAdd.getId() + " already exists.";
+            return recipeAdd.getName() + " already exists.";
         }
 
         return null;
+    }
+    //returns true if recipe already in list
+    private boolean checkDuplicates(Recipe recipe)
+    {
+        boolean check = false;
+
+        //iterate through entire list checking for recipe name
+        for(int i = 0; i < recipeList.size(); i++)
+        {
+            if(recipe.getName().toLowerCase().equals( recipeList.get(i).getName().toLowerCase() ) )
+                check = true;
+        }
+
+        return check;
     }
 
 }
