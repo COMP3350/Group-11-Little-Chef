@@ -52,7 +52,6 @@ public class DataAccessObject implements DataAccess {
             statement = connection.createStatement();
             System.out.println("Connection built successfully.");
             success = true;
-            connectionOpen = true;
         }
         catch (Exception se)
         {
@@ -137,42 +136,6 @@ public class DataAccessObject implements DataAccess {
             catch (Exception e)
             {
                 result = processSQLError(e);
-            try {
-                values = recipe.getId()
-                        + ",'" + recipe.getName()
-                        + "'";
-                cmd = "INSERT INTO RECIPES " + " VALUES (" + values + ")";
-                updateCount = statement.executeUpdate(cmd);
-                result = checkWarning(statement, updateCount);
-                for (int i = 0; i < instructions.size(); i++) {
-                    values = "'" + instructions.get(i)[0].replace("'", "''")
-                            + "', '" + instructions.get(i)[1].replace("'", "''")
-                            + "', " + recipe.getId()
-                            + "";
-                    cmd = "INSERT INTO INSTRUCTIONS " + "(INSTRUCTION, SUBINSTRUCTION, RECIPEID)" + "VALUES(" + values + ")";
-                    updateCount = statement.executeUpdate(cmd);
-                    result += checkWarning(statement, updateCount);
-                }
-                for (int i = 0; i < ingredients.size(); i++) {
-                    values = recipe.getId()
-                            + ", '" + ingredients.get(i).getName()
-                            + "', " + ingredients.get(i).getAmount()
-                            + ", '" + ingredients.get(i).getUnitType()
-                            + "', '" + ingredients.get(i).getMeasurement().toString()
-                            + "'";
-                    cmd = "INSERT INTO INGREDIENTS " + "(RECIPEID, NAME, AMOUNT, UNITTYPE, UNIT)" + " VALUES (" + values + ")";
-                    updateCount = statement.executeUpdate(cmd);
-                    result += checkWarning(statement, updateCount);
-                }
-
-                result += insertRating(recipe, cookTimes, "COOKINGTIMES");
-                result += insertRating(recipe, difficultyRating, "DIFFICULTYRATINGS");
-                result += insertRating(recipe, tasteRating, "TASTERATINGS");
-
-            } catch (Exception e)
-            {
-                result = processSQLError(e);
-            }
             }
         }
 
