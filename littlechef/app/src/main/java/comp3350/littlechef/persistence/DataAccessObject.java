@@ -26,36 +26,31 @@ public class DataAccessObject implements DataAccess {
 
     private ArrayList<Recipe> recipes;
     private ArrayList<Ingredient> ingredients;
+    private boolean success;
 
     public DataAccessObject(String dbName) {
         this.dbName = dbName;
     }
 
     @Override
-    public void open(String dbPath) {
+    public boolean open(String dbPath)
+    {
+        success = false;
+        String url; // Ask Briaco: is it okay to do this?
 
-        // Ask Briaco: is it okay to do this?
-        String url;
-        if(dbPath == null)
+        validatePath(dbPath);
+
+        try
         {
-            throw new NullPointerException("dbPath cannot be null.");
-        }
-
-        if(dbPath == "")
-        {
-            throw new IllegalArgumentException("dbPath cannot be an empty string.");
-        }
-
-        try {
             dbType = "HSQL";
             Class.forName("org.hsqldb.jdbcDriver").newInstance();
 
             System.out.println("Connecting to selected database...\n");
-            url = "jdbc:hsqldb:file:" + dbPath; // stored on disk mode
+            url = "jdbc:hsqldb:file:" + dbPath.trim(); // stored on disk mode
             connection = DriverManager.getConnection(url, "SA", "");
             statement = connection.createStatement();
             System.out.println("Connection built successfully.");
-
+            success = true;
         }
         catch (Exception se)
         {
@@ -63,22 +58,30 @@ public class DataAccessObject implements DataAccess {
         }
 
         System.out.println(dbType + " type's database opened successfully.");
-    }//end open
+
+        return success;
+    }
 
     @Override
-    public void close() {
-        try {
+    public boolean close() {
+        success = false;
+
+        try
+        {
             String cmdString = "shutdown compact";
             resultSet = statement.executeQuery(cmdString);
             connection.close();
-        } catch (SQLException se) {
+            success = true;
+        } catch (SQLException se)
+        {
             se.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         System.out.println(dbType + " type's database closed.");
-    }//end close
+        return success;
+    }
 
     @Override
     public String insertRecipe(Recipe recipe)
@@ -368,6 +371,21 @@ public class DataAccessObject implements DataAccess {
         e.printStackTrace();
 
         return result;
+    }
+
+    private void validatePath(String path)
+    {
+        if(path == null)
+        {
+            throw new NullPointerException("Path cannot be null.");
+        }
+
+        path = path.trim();
+
+        if(path.length() == 0)
+        {
+            throw new IllegalArgumentException("Path cannot be an empty String.");
+        }
     }
 
 }
