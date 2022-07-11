@@ -16,19 +16,23 @@ import comp3350.littlechef.objects.Unit;
 //-----------------------------------------
 public class DataAccessStub implements DataAccess
 {
-    private final String pinch = "pinch";
-    private final String teaspoon = "tsp";
-    private final String tablespoon = "tbsp";
-    private final String cup = "cup";
-    private final String milliliter = "ml";
-    private final String gram = "g";
-    private final String quantity = "quantity";
+
+    private final Unit PINCH = Unit.PINCH;
+    private final Unit TEASPOON = Unit.TSP;
+    private final Unit TABLESPOON = Unit.TBSP;
+    private final Unit CUP = Unit.CUP;
+    private final Unit MILLILITER = Unit.ML;
+    private final Unit GRAM = Unit.G;
+    private final Unit QUANTITY = Unit.QUANTITY;
 
     private String dbName;
     private String dbType = "stub";
+    private boolean connectionOpen;
+    
     private ArrayList<Recipe> recipes;
     private boolean success = false;
-
+    private String result; 
+    
     public DataAccessStub(String dbName)
     {
         this.dbName = dbName;
@@ -41,24 +45,180 @@ public class DataAccessStub implements DataAccess
 
     public boolean open(String dbName)
     {
+        success = false;
+        validateName(dbName);
+        addDefaultRecipes();
+        connectionOpen = true;
+        
+        if(!recipes.isEmpty())
+        {
+            success = true;
+        }
+
+        return success;
+    }
+
+    public boolean close()
+    {
+        success = false;
+        if(connectionOpen)
+        {
+            success = true;
+            connectionOpen = false;
+        }
+        return success;
+    }
+
+    public String insertRecipe(Recipe currentRecipe)
+    {
+        result = null;
+        
+        if(connectionOpen)
+        {
+            try
+            {
+                recipes.add(currentRecipe);
+            }
+            catch(Exception e)
+            {
+                result = e.getMessage();
+            }
+        }
+
+        return result;
+    }
+
+    public String updateRecipe(Recipe currentRecipe)
+    {
+        int index;
+
+        result = null;
+
+        if(connectionOpen) {
+
+            try
+            {
+                index = recipes.indexOf(currentRecipe);
+                if (index >= 0)
+                {
+                    recipes.set(index, currentRecipe);
+                }
+            }
+            catch (Exception e)
+            {
+                result = e.getMessage();
+            }
+        }
+        return result;
+    }
+
+    public String getRecipeSequential(List<Recipe> recipeResult)
+    {
+        result = null;
+
+        if(connectionOpen)
+        {
+            try
+            {
+                recipeResult.addAll(recipes);
+            }
+            catch (Exception e)
+            {
+                result = e.getMessage();
+            }
+        }
+
+        return result;
+    }
+
+    public ArrayList<Recipe> getRecipeRandom(Recipe currentRecipe)
+    {
+        ArrayList<Recipe> newRecipes = null;
+        int index;
+
+        if(connectionOpen)
+        {
+            newRecipes = new ArrayList<Recipe>();
+            index = recipes.indexOf(currentRecipe);
+            if (index >= 0)
+            {
+                newRecipes.add(recipes.get(index));
+            }
+        }
+        return newRecipes;
+    }
+
+    public String deleteRecipe(Recipe currentRecipe)
+    {
+        int index;
+
+        result = null;
+
+        if(connectionOpen) {
+            try
+            {
+                index = recipes.indexOf(currentRecipe);
+                if (index >= 0) {
+                    recipes.remove(index);
+                }
+            }
+            catch (Exception e)
+            {
+                result = e.getMessage();
+            }
+        }
+
+        return result;
+    }
+
+    public String resetDatabase()
+    {
+        result = null;
+
+        if(connectionOpen) {
+            recipes.clear();
+            addDefaultRecipes();
+
+            if (recipes.isEmpty()) {
+                result = "fail";
+            }
+        }
+
+        return result;
+    }
+
+    private void validateName(String name)
+    {
+        if(name == null)
+        {
+            throw new NullPointerException("Name cannot be null.");
+        }
+
+        name = name.trim();
+
+        if(name.length() == 0)
+        {
+            throw new IllegalArgumentException("Name cannot be an empty String.");
+        }
+    }
+
+    private void addDefaultRecipes()
+    {
         Recipe recipe;
 
         recipes = new ArrayList<Recipe>();
         String instruction;
         String subInstruction;
 
-        validateName(dbName);
-        dbName = dbName.trim();
-
         recipe = new Recipe("Guacamole");
-        recipe.addIngredient(new Ingredient("Ripe avocados", Unit.QUANTITY, 2));
-        recipe.addIngredient(new Ingredient("Kosher salt", Unit.TSP, 0.25));
-        recipe.addIngredient(new Ingredient("Fresh Lime or Lemon Juice", Unit.TBSP, 1));
-        recipe.addIngredient(new Ingredient("Minced Red Onion", Unit.TBSP, 4));
-        recipe.addIngredient(new Ingredient("Jalapeno chillis", Unit.QUANTITY, 2));
-        recipe.addIngredient(new Ingredient("Cilantro", Unit.TBSP , 2));
-        recipe.addIngredient(new Ingredient("Black Pepper", Unit.PINCH , 1));
-        recipe.addIngredient(new Ingredient("Ripe Tomato", Unit.QUANTITY, 0.5));
+        recipe.addIngredient(new Ingredient("Ripe avocados", QUANTITY, 2));
+        recipe.addIngredient(new Ingredient("Kosher salt", TEASPOON, 0.25));
+        recipe.addIngredient(new Ingredient("Fresh Lime or Lemon Juice", TABLESPOON, 1));
+        recipe.addIngredient(new Ingredient("Minced Red Onion", TABLESPOON, 4));
+        recipe.addIngredient(new Ingredient("Jalapeno chillis", QUANTITY, 2));
+        recipe.addIngredient(new Ingredient("Cilantro", TABLESPOON , 2));
+        recipe.addIngredient(new Ingredient("Black Pepper", PINCH , 1));
+        recipe.addIngredient(new Ingredient("Ripe Tomato", QUANTITY, 0.5));
 
         //adding instructions
         instruction = "Place eggs in a saucepan or pot and cover with cold water.";
@@ -80,189 +240,107 @@ public class DataAccessStub implements DataAccess
         recipes.add(recipe);
 
         recipe = new Recipe("Pancakes");
-        recipe.addIngredient(new Ingredient("All-purpose Flour", Unit.CUP, 1.5));
-        recipe.addIngredient(new Ingredient("Baking Powder", Unit.TSP, 3.5));
-        recipe.addIngredient(new Ingredient("Salt", Unit.TSP, 0.25));
-        recipe.addIngredient(new Ingredient("White Sugar", Unit.TBSP, 1));
-        recipe.addIngredient(new Ingredient("Milk", Unit.CUP, 1.25));
-        recipe.addIngredient(new Ingredient("Egg", Unit.QUANTITY, 1));
-        recipe.addIngredient(new Ingredient("Melted Butter", Unit.TBSP, 2));
+        recipe.addIngredient(new Ingredient("All-purpose Flour", CUP, 1.5));
+        recipe.addIngredient(new Ingredient("Baking Powder", TEASPOON, 3.5));
+        recipe.addIngredient(new Ingredient("Salt", TEASPOON, 0.25));
+        recipe.addIngredient(new Ingredient("White Sugar", TABLESPOON, 1));
+        recipe.addIngredient(new Ingredient("Milk", CUP, 1.25));
+        recipe.addIngredient(new Ingredient("Egg", QUANTITY, 1));
+        recipe.addIngredient(new Ingredient("Melted Butter", TABLESPOON, 2));
         recipes.add(recipe);
 
         recipe = new Recipe("Chili");
-        recipe.addIngredient(new Ingredient("Olive Oil", Unit.TBSP, 1));
-        recipe.addIngredient(new Ingredient("Yellow onion - diced", Unit.QUANTITY, 1));
-        recipe.addIngredient(new Ingredient("Lean Ground Beaf", Unit.G, 453));
-        recipe.addIngredient(new Ingredient("Chili Powder", Unit.TBSP, 2.5));
-        recipe.addIngredient(new Ingredient("Ground Cumin", Unit.TBSP, 2));
-        recipe.addIngredient(new Ingredient("Granulated Sugar", Unit.TBSP, 2));
-        recipe.addIngredient(new Ingredient("Tomato Paste", Unit.TBSP, 1));
-        recipe.addIngredient(new Ingredient("Garlic Powder", Unit.TBSP, 1));
-        recipe.addIngredient(new Ingredient("Salt", Unit.TSP, 1.5));
-        recipe.addIngredient(new Ingredient("Ground Black Pepper", Unit.TSP, 0.5));
-        recipe.addIngredient(new Ingredient("Ground Cayenne Pepper", Unit.TSP, 0.25));
-        recipe.addIngredient(new Ingredient("Beef Broth", Unit.CUP, 1.5));
-        recipe.addIngredient(new Ingredient("Can of Diced Tomatoes", Unit.QUANTITY, 1));
-        recipe.addIngredient(new Ingredient("Can Red Kidney, drained and rinsed", Unit.QUANTITY, 1));
-        recipe.addIngredient(new Ingredient("Can of Tomato Sauce", Unit.QUANTITY, 1));
+        recipe.addIngredient(new Ingredient("Olive Oil", TABLESPOON, 1));
+        recipe.addIngredient(new Ingredient("Yellow onion - diced", QUANTITY, 1));
+        recipe.addIngredient(new Ingredient("Lean Ground Beaf", GRAM, 453));
+        recipe.addIngredient(new Ingredient("Chili Powder", TABLESPOON, 2.5));
+        recipe.addIngredient(new Ingredient("Ground Cumin", TABLESPOON, 2));
+        recipe.addIngredient(new Ingredient("Granulated Sugar", TABLESPOON, 2));
+        recipe.addIngredient(new Ingredient("Tomato Paste", TABLESPOON, 1));
+        recipe.addIngredient(new Ingredient("Garlic Powder", TABLESPOON, 1));
+        recipe.addIngredient(new Ingredient("Salt", TEASPOON, 1.5));
+        recipe.addIngredient(new Ingredient("Ground Black Pepper", TEASPOON, 0.5));
+        recipe.addIngredient(new Ingredient("Ground Cayenne Pepper", TEASPOON, 0.25));
+        recipe.addIngredient(new Ingredient("Beef Broth", CUP, 1.5));
+        recipe.addIngredient(new Ingredient("Can of Diced Tomatoes", QUANTITY, 1));
+        recipe.addIngredient(new Ingredient("Can Red Kidney, drained and rinsed", QUANTITY, 1));
+        recipe.addIngredient(new Ingredient("Can of Tomato Sauce", QUANTITY, 1));
         recipes.add(recipe);
 
         recipe = new Recipe("Chicken Wrap");
-        recipe.addIngredient(new Ingredient("Grilled Chicken Breasts copped", Unit.CUP, 2));
-        recipe.addIngredient(new Ingredient("Ranch Dressing", Unit.CUP, 0.25));
-        recipe.addIngredient(new Ingredient("Mozzarella Cheese", Unit.CUP, 0.5));
-        recipe.addIngredient(new Ingredient("Cilantro", Unit.CUP, 0.25));
-        recipe.addIngredient(new Ingredient("8 inch tortillas", Unit.ML, 4));
+        recipe.addIngredient(new Ingredient("Grilled Chicken Breasts copped", CUP, 2));
+        recipe.addIngredient(new Ingredient("Ranch Dressing", CUP, 0.25));
+        recipe.addIngredient(new Ingredient("Mozzarella Cheese", CUP, 0.5));
+        recipe.addIngredient(new Ingredient("Cilantro", CUP, 0.25));
+        recipe.addIngredient(new Ingredient("8 inch tortillas", MILLILITER, 4));
         recipes.add(recipe);
 
         recipe = new Recipe("Pizza");
-        recipe.addIngredient(new Ingredient("Active Dry Yeast", Unit.TBSP, 0.5));
-        recipe.addIngredient(new Ingredient("Sugar", Unit.TSP, 1));
-        recipe.addIngredient(new Ingredient("Warm Water", Unit.CUP, 1.25));
-        recipe.addIngredient(new Ingredient("Canola Oil", Unit.CUP, 0.25));
-        recipe.addIngredient(new Ingredient("Salt", Unit.TSP, 1));
-        recipe.addIngredient(new Ingredient("All-purpose Flour", Unit.CUP, 4));
-        recipe.addIngredient(new Ingredient("Small Onion", Unit.QUANTITY, 1));
-        recipe.addIngredient(new Ingredient("Can of tomato sauce", Unit.QUANTITY, 1));
-        recipe.addIngredient(new Ingredient("Dried Oregano", Unit.TSP, 3));
-        recipe.addIngredient(new Ingredient("Dried Basil", Unit.TSP, 1));
-        recipe.addIngredient(new Ingredient("Medium Green Pepper", Unit.QUANTITY, 1));
-        recipe.addIngredient(new Ingredient("Shredded Part-skim Mozzarella Cheese", Unit.CUP, 2));
+        recipe.addIngredient(new Ingredient("Active Dry Yeast", TABLESPOON, 0.5));
+        recipe.addIngredient(new Ingredient("Sugar", TEASPOON, 1));
+        recipe.addIngredient(new Ingredient("Warm Water", CUP, 1.25));
+        recipe.addIngredient(new Ingredient("Canola Oil", CUP, 0.25));
+        recipe.addIngredient(new Ingredient("Salt", TEASPOON, 1));
+        recipe.addIngredient(new Ingredient("All-purpose Flour", CUP, 4));
+        recipe.addIngredient(new Ingredient("Small Onion", QUANTITY, 1));
+        recipe.addIngredient(new Ingredient("Can of tomato sauce", QUANTITY, 1));
+        recipe.addIngredient(new Ingredient("Dried Oregano", TEASPOON, 3));
+        recipe.addIngredient(new Ingredient("Dried Basil", TEASPOON, 1));
+        recipe.addIngredient(new Ingredient("Medium Green Pepper", QUANTITY, 1));
+        recipe.addIngredient(new Ingredient("Shredded Part-skim Mozzarella Cheese", CUP, 2));
         recipes.add(recipe);
 
         recipe = new Recipe("Chocolate Cip Cookies");
-        recipe.addIngredient(new Ingredient("Softened Butter", Unit.CUP, 1));
-        recipe.addIngredient(new Ingredient("White Sugar", Unit.CUP, 1));
-        recipe.addIngredient(new Ingredient("Packed Brown Sugar", Unit.CUP, 1));
-        recipe.addIngredient(new Ingredient("Eggs", Unit.QUANTITY, 2));
-        recipe.addIngredient(new Ingredient("Vanilla Extract", Unit.TSP, 1));
-        recipe.addIngredient(new Ingredient("Baking Soda", Unit.TSP, 1));
-        recipe.addIngredient(new Ingredient("Hot Water", Unit.TSP, 2));
-        recipe.addIngredient(new Ingredient("Salt", Unit.TSP, 0.5));
-        recipe.addIngredient(new Ingredient("All-Purpose Flour", Unit.CUP, 3));
-        recipe.addIngredient(new Ingredient("Semisweet Chocolate Chips", Unit.CUP, 2));
-        recipe.addIngredient(new Ingredient("Chopped Walnuts", Unit.CUP, 1));
+        recipe.addIngredient(new Ingredient("Softened Butter", CUP, 1));
+        recipe.addIngredient(new Ingredient("White Sugar", CUP, 1));
+        recipe.addIngredient(new Ingredient("Packed Brown Sugar", CUP, 1));
+        recipe.addIngredient(new Ingredient("Eggs", QUANTITY, 2));
+        recipe.addIngredient(new Ingredient("Vanilla Extract", TEASPOON, 1));
+        recipe.addIngredient(new Ingredient("Baking Soda", TEASPOON, 1));
+        recipe.addIngredient(new Ingredient("Hot Water", TEASPOON, 2));
+        recipe.addIngredient(new Ingredient("Salt", TEASPOON, 0.5));
+        recipe.addIngredient(new Ingredient("All-Purpose Flour", CUP, 3));
+        recipe.addIngredient(new Ingredient("Semisweet Chocolate Chips", CUP, 2));
+        recipe.addIngredient(new Ingredient("Chopped Walnuts", CUP, 1));
         recipes.add(recipe);
 
         recipe = new Recipe("Perogies");
-        recipe.addIngredient(new Ingredient("All-Purpose Flour", Unit.CUP, 2));
-        recipe.addIngredient(new Ingredient("Salt", Unit.TSP, 1));
-        recipe.addIngredient(new Ingredient("Beaten Egg", Unit.QUANTITY, 1));
-        recipe.addIngredient(new Ingredient("Cold Water", Unit.CUP, 0.75));
-        recipe.addIngredient(new Ingredient("Baking Potatoes", Unit.QUANTITY, 5));
-        recipe.addIngredient(new Ingredient("Shredded Cheese", Unit.CUP, 1));
-        recipe.addIngredient(new Ingredient("Salt", Unit.PINCH, 1));
-        recipe.addIngredient(new Ingredient("Pepper", Unit.PINCH, 1));
-        recipe.addIngredient(new Ingredient("Jar Sauerkraut - drained, rinsed and minced", Unit.CUP, 4));
-        recipe.addIngredient(new Ingredient("Sour Cream", Unit.TBSP, 3));
+        recipe.addIngredient(new Ingredient("All-Purpose Flour", CUP, 2));
+        recipe.addIngredient(new Ingredient("Salt", TEASPOON, 1));
+        recipe.addIngredient(new Ingredient("Beaten Egg", QUANTITY, 1));
+        recipe.addIngredient(new Ingredient("Cold Water", CUP, 0.75));
+        recipe.addIngredient(new Ingredient("Baking Potatoes", QUANTITY, 5));
+        recipe.addIngredient(new Ingredient("Shredded Cheese", CUP, 1));
+        recipe.addIngredient(new Ingredient("Salt", PINCH, 1));
+        recipe.addIngredient(new Ingredient("Pepper", PINCH, 1));
+        recipe.addIngredient(new Ingredient("Jar Sauerkraut - drained, rinsed and minced", CUP, 4));
+        recipe.addIngredient(new Ingredient("Sour Cream", TABLESPOON, 3));
         recipes.add(recipe);
 
         recipe = new Recipe("Perogies");
-        recipe.addIngredient(new Ingredient("All-Purpose Flour", Unit.CUP, 2));
-        recipe.addIngredient(new Ingredient("Salt", Unit.TSP, 1));
-        recipe.addIngredient(new Ingredient("Beaten Egg", Unit.QUANTITY, 1));
-        recipe.addIngredient(new Ingredient("Cold Water", Unit.CUP, 0.75));
-        recipe.addIngredient(new Ingredient("Baking Potatoes", Unit.QUANTITY, 5));
-        recipe.addIngredient(new Ingredient("Shredded Cheese", Unit.CUP, 1));
-        recipe.addIngredient(new Ingredient("Salt", Unit.PINCH, 1));
-        recipe.addIngredient(new Ingredient("Pepper", Unit.PINCH, 1));
-        recipe.addIngredient(new Ingredient("Jar Sauerkraut - drained, rinsed and minced", Unit.CUP, 4));
-        recipe.addIngredient(new Ingredient("Sour Cream", Unit.TBSP, 3));
+        recipe.addIngredient(new Ingredient("All-Purpose Flour", CUP, 2));
+        recipe.addIngredient(new Ingredient("Salt", TEASPOON, 1));
+        recipe.addIngredient(new Ingredient("Beaten Egg", QUANTITY, 1));
+        recipe.addIngredient(new Ingredient("Cold Water", CUP, 0.75));
+        recipe.addIngredient(new Ingredient("Baking Potatoes", QUANTITY, 5));
+        recipe.addIngredient(new Ingredient("Shredded Cheese", CUP, 1));
+        recipe.addIngredient(new Ingredient("Salt", PINCH, 1));
+        recipe.addIngredient(new Ingredient("Pepper", PINCH, 1));
+        recipe.addIngredient(new Ingredient("Jar Sauerkraut - drained, rinsed and minced", CUP, 4));
+        recipe.addIngredient(new Ingredient("Sour Cream", TABLESPOON, 3));
         recipes.add(recipe);
 
         recipe = new Recipe("Grilled Halloumi Salad");
-        recipe.addIngredient(new Ingredient("Halloumi Cheese, sliced into ¼ inch thick slices", Unit.G, 250));
-        recipe.addIngredient(new Ingredient("Packed Spring Greens", Unit.CUP, 2));
-        recipe.addIngredient(new Ingredient("Chopped Cucumber", Unit.CUP, 1));
-        recipe.addIngredient(new Ingredient("Chopped Pineapple", Unit.CUP, 1.5));
-        recipe.addIngredient(new Ingredient("Red Onion, thinly sliced", Unit.QUANTITY, 0.2));
-        recipe.addIngredient(new Ingredient("Toasted Almonds", Unit.CUP, 0.25));
-        recipe.addIngredient(new Ingredient("Olive Oil", Unit.TBSP, 3));
-        recipe.addIngredient(new Ingredient("Lemon Juice", Unit.CUP, 0.25));
-        recipe.addIngredient(new Ingredient("Cayenne Pepper", Unit.TSP, 0.25));
-        recipe.addIngredient(new Ingredient("Salt", Unit.TSP, 0.5));
+        recipe.addIngredient(new Ingredient("Halloumi Cheese, sliced into ¼ inch thick slices", GRAM, 250));
+        recipe.addIngredient(new Ingredient("Packed Spring Greens", CUP, 2));
+        recipe.addIngredient(new Ingredient("Chopped Cucumber", CUP, 1));
+        recipe.addIngredient(new Ingredient("Chopped Pineapple", CUP, 1.5));
+        recipe.addIngredient(new Ingredient("Red Onion, thinly sliced", QUANTITY, 0.2));
+        recipe.addIngredient(new Ingredient("Toasted Almonds", CUP, 0.25));
+        recipe.addIngredient(new Ingredient("Olive Oil", TABLESPOON, 3));
+        recipe.addIngredient(new Ingredient("Lemon Juice", CUP, 0.25));
+        recipe.addIngredient(new Ingredient("Cayenne Pepper", TEASPOON, 0.25));
+        recipe.addIngredient(new Ingredient("Salt", TEASPOON, 0.5));
         recipes.add(recipe);
-
-        success = true;
-        return success;
-    }
-
-    public boolean close()
-    {
-        System.out.println("Closed " +dbType +" database " +dbName);
-        success = true;
-
-        return success;
-    }
-
-    public String insertRecipe(Recipe currentRecipe)
-    {
-        // don't bother checking for duplicates
-        recipes.add(currentRecipe);
-        return null;
-    }
-
-    public String updateRecipe(Recipe currentRecipe)
-    {
-        int index;
-
-        index = recipes.indexOf(currentRecipe);
-        if (index >= 0)
-        {
-            recipes.set(index, currentRecipe);
-        }
-        return null;
-    }
-
-    public String getRecipeSequential(List<Recipe> recipeResult)
-    {
-        recipeResult.addAll(recipes);
-        return null;
-    }
-
-    public ArrayList<Recipe> getRecipeRandom(Recipe currentRecipe)
-    {
-        ArrayList<Recipe> newRecipes;
-        int index;
-
-        newRecipes = new ArrayList<Recipe>();
-        index = recipes.indexOf(currentRecipe);
-        if (index >= 0)
-        {
-            newRecipes.add(recipes.get(index));
-        }
-        return newRecipes;
-    }
-
-    public String deleteRecipe(Recipe currentRecipe)
-    {
-        int index;
-
-        index = recipes.indexOf(currentRecipe);
-        if (index >= 0)
-        {
-            recipes.remove(index);
-        }
-        return null;
-    }
-
-    public void resetDatabase()
-    {
-        recipes = null;
-    }
-
-    private void validateName(String name)
-    {
-        if(name == null)
-        {
-            throw new NullPointerException("Name cannot be null.");
-        }
-
-        name = name.trim();
-
-        if(name.length() == 0)
-        {
-            throw new IllegalArgumentException("Name cannot be an empty String.");
-        }
     }
 }

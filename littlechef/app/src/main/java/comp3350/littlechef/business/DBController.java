@@ -19,7 +19,7 @@ public class DBController implements DataAccess {
             public String getRecipeSequential(List<Recipe> name) {return null;}
             public ArrayList<Recipe> getRecipeRandom(Recipe recipe) {return null;};
             public String deleteRecipe(Recipe recipe) {return null;}
-            public void resetDatabase() {}
+            public String resetDatabase() {return null;}
         };
     }
 
@@ -63,5 +63,5 @@ public class DBController implements DataAccess {
     }
 
     @Override
-    public void resetDatabase() {service.resetDatabase();}
+    public String resetDatabase() { return service.resetDatabase();}
 }

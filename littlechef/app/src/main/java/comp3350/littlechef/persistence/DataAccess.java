@@ -11,5 +11,5 @@ public interface DataAccess {
     public String getRecipeSequential(List<Recipe> name);
     public ArrayList<Recipe> getRecipeRandom(Recipe recipe);
     public String deleteRecipe(Recipe recipe);
-    public void resetDatabase();
+    public String resetDatabase();
 }

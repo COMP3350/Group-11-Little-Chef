@@ -4,7 +4,9 @@ import android.provider.ContactsContract;
 
 import junit.framework.TestCase;
 
+import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -27,8 +29,8 @@ public class DataAccessTest extends TestCase
         super(arg0);
     }
 
-    @BeforeClass
-    public static void setUpClass()
+    @Before
+    public void setUp()
     {
         System.out.println("\nStarting Persistence test DataAccess.");
 
@@ -45,10 +47,11 @@ public class DataAccessTest extends TestCase
         }
     }
 
-    @AfterClass
-    public static void tearDownClass()
+    @After
+    public void tearDown()
     {
         System.out.println("Finished Persistence test DataAccess.");
+        dataAccess.resetDatabase();
         dataAccess.close();
     }
 
@@ -59,8 +62,7 @@ public class DataAccessTest extends TestCase
         assertTrue(access1.open(DB_NAME));
         assertTrue(access1.close());
 
-        Recipe recipe = createRecipe("potato");
-        access1.insertRecipe(recipe);
+        dataAccess.insertRecipe(new Recipe("recipe"));
     }
 
     @Test
@@ -100,8 +102,6 @@ public class DataAccessTest extends TestCase
         }
 
     }
-
-
 
     @Test
     public void testNullArgument()
@@ -152,6 +152,13 @@ public class DataAccessTest extends TestCase
         // try to close a database that has not been opened yet.  // needed?
 
         // send a string instead of a recipe when adding recipe
+    }
+
+    @Test
+    public void testDoingThingsWithoutOpeningDBConnection()
+    {
+        DataAccess access = createAccess();
+        assertFalse(access.close());
     }
 
     private Recipe createRecipe(String name)
