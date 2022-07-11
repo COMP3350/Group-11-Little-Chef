@@ -18,7 +18,8 @@
 
     <EditText
         android:id="@+id/nameInput"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
+        android:layout_marginLeft="110dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Recipe Name"
@@ -27,9 +28,12 @@
 
     <Button
         android:id="@+id/addRecipeButton"
-        android:layout_width="match_parent"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:text="Add Recipe!" />
+        android:layout_marginLeft="150dp"
+        android:text="Add Recipe!"
+        android:textColor="@color/black"
+        android:textSize="15sp"/>
 
     <ListView
         android:id="@+id/existingRecipes"

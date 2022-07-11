@@ -15,7 +15,8 @@
 
     <EditText
         android:id="@+id/ingredientName"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
+        android:layout_marginLeft="110dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Ingredient name"
@@ -45,21 +46,30 @@
 
     <Button
         android:id="@+id/addIngredientButton"
-        android:layout_width="match_parent"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:text="Add Ingredient!" />
+        android:text="Add Ingredient!"
+        android:textSize="15sp"
+        android:layout_marginLeft="150dp"
+        android:background="@drawable/round_button"
+        android:textColor="@color/black"/>
 
 
     <Button
         android:id="@+id/addInstructionButton"
-        android:layout_width="match_parent"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="150dp"
+        android:background="@drawable/round_button"
         android:text="Add Instruction!"
-        android:layout_marginTop="25dp"/>
+        android:textColor="@color/black"
+        android:textSize="15sp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:hint="Instruction Step">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/instruction"
@@ -77,7 +87,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/instructionsSteps"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="600dp"
             android:inputType="textMultiLine"
             android:lines="10"
             android:gravity="top" />
