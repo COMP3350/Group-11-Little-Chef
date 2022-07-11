@@ -110,7 +110,7 @@ public class DataAccessObject implements DataAccess {
                         + "";
                 cmd = "INSERT INTO INSTRUCTIONS " + "(INSTRUCTION, SUBINSTRUCTION, RECIPEID)" + "VALUES(" + values + ")";
                 updateCount = statement.executeUpdate(cmd);
-                result += checkWarning(statement, updateCount);
+                result = checkWarning(statement, updateCount);
             }
             for(int i = 0; i < ingredients.size(); i++)
             {
@@ -122,18 +122,18 @@ public class DataAccessObject implements DataAccess {
                         + "'";
                 cmd = "INSERT INTO INGREDIENTS " + "(RECIPEID, NAME, AMOUNT, UNITTYPE, UNIT)" + " VALUES (" + values + ")";
                 updateCount = statement.executeUpdate(cmd);
-                result += checkWarning(statement, updateCount);
+                result = checkWarning(statement, updateCount);
             }
-            result += insertRating(recipe, cookTimes, "COOKINGTIMES");
-            result += insertRating(recipe, difficultyRating, "DIFFICULTYRATINGS");
-            result += insertRating(recipe, tasteRating, "TASTERATINGS");
+            result = insertRating(recipe, cookTimes, "COOKINGTIMES");
+            result = insertRating(recipe, difficultyRating, "DIFFICULTYRATINGS");
+            result = insertRating(recipe, tasteRating, "TASTERATINGS");
         }
         catch (Exception e)
         {
             result = processSQLError(e);
         }
 
-        return result; // why returning name?
+        return result;
     }//end addRecipe
 
     //insert recipe helper method
