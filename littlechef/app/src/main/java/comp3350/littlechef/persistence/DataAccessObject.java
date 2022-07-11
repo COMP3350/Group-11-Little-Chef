@@ -25,7 +25,6 @@ public class DataAccessObject implements DataAccess {
     private Statement statement;
 
     private ArrayList<Recipe> recipes;
-    private ArrayList<Ingredient> ingredients;
     private boolean success;
 
     public DataAccessObject(String dbName) {
@@ -63,7 +62,8 @@ public class DataAccessObject implements DataAccess {
     }
 
     @Override
-    public boolean close() {
+    public boolean close()
+    {
         success = false;
 
         try
@@ -158,7 +158,8 @@ public class DataAccessObject implements DataAccess {
         return result;
     }
     @Override
-    public String updateRecipe(Recipe recipe) {
+    public String updateRecipe(Recipe recipe)
+    {
         result = null;
 
         try
@@ -174,7 +175,8 @@ public class DataAccessObject implements DataAccess {
     }//end updateRecipe
 
     @Override
-    public String getRecipeSequential(List<Recipe> recipeList) {
+    public String getRecipeSequential(List<Recipe> recipeList)
+    {
 
         Recipe recipe;
         String myID, myName;
@@ -299,7 +301,8 @@ public class DataAccessObject implements DataAccess {
     }
 
     @Override
-    public String deleteRecipe(Recipe recipe) {
+    public String deleteRecipe(Recipe recipe)
+    {
         int recipeId;
         result = null;
         try{
@@ -314,7 +317,8 @@ public class DataAccessObject implements DataAccess {
         return result;
     }//end delRecipe
 
-    public String resetDatabase() {
+    public String resetDatabase()
+    {
 
         result = null;
         try{
