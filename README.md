@@ -41,7 +41,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 - Design Decisions and Rationale
 
 ### Big Picture Overview
-Currently our app allows a user to hold a list of thier recipes with included ingredients and instruction set. A user will also be also to adjust the measurements of each ingredient by how many servings they wish to make, up to 7 servings. The app also allows the user to time their meals so they can get a time for how long each meal will take to make in the future. Once the meal is made a user can then rate the meal so they can reference this information in the future. 
+Currently our app allows a user to hold a list of thier recipes with included ingredients and instruction set. A user will also be also to adjust the measurements of each ingredient by how many servings they wish to make, from 1 to up to 7 servings. This app also allows the user to time their meals so they can get a reference for how long each meal will take to prepare. Once the meal is made a user can then rate the meal so they can reference this if they choose to make the meal again. The app allows the user to add whatever recipes they choose very easily. 
 
 ### Overview of the features
 
