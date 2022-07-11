@@ -86,6 +86,16 @@ public class DataAccessTest extends TestCase
         // getting all the recipes
         assertNull(dataAccess.getRecipeSequential(listOfRecipes));
         assertTrue(listOfRecipes.size() > 0);
+        assertEquals(11, listOfRecipes.size());
+        assertEquals("Guacamole", listOfRecipes.get(0).getName());
+        assertEquals("Pancakes", listOfRecipes.get(1).getName());
+        assertEquals("Chili", listOfRecipes.get(2).getName());
+        assertEquals("Chicken Wrap", listOfRecipes.get(3).getName());
+        assertEquals("Pizza", listOfRecipes.get(4).getName());
+        assertEquals("Chocolate Chip Cookies", listOfRecipes.get(5).getName());
+        assertEquals("Perogies", listOfRecipes.get(6).getName());
+        assertEquals("Perogies", listOfRecipes.get(7).getName());
+        assertEquals("Grilled Halloumi Salad", listOfRecipes.get(8).getName());
 
         // getting random access
         recipe3 = new Recipe("Recipe 3");
@@ -109,7 +119,42 @@ public class DataAccessTest extends TestCase
         assertNull(dataAccess.deleteRecipe(recipe5));
         returnedList = dataAccess.getRecipeRandom(recipe5);
         assertEquals(0, returnedList.size());
+    }
 
+    @Test
+    public void testGettingRandomAccessBoundaryCases()
+    {
+        List<Recipe> listOfRecipes = new ArrayList<>();
+        List<Recipe> returnedList;
+        int lastRecipesIndex;
+
+        // get all the recipes
+        assertNull(dataAccess.getRecipeSequential(listOfRecipes));
+        lastRecipesIndex = listOfRecipes.size()-1;
+
+        // get random access to the first item
+        returnedList = dataAccess.getRecipeRandom(listOfRecipes.get(0));
+        assertEquals(1, returnedList.size());
+        assertEquals("Guacamole", returnedList.get(0).getName());
+
+        // get random access to the last item
+        returnedList = dataAccess.getRecipeRandom(listOfRecipes.get(lastRecipesIndex));
+        assertEquals(1, returnedList.size());
+        assertEquals("Grilled Halloumi Salad", returnedList.get(0).getName());
+    }
+
+    @Test
+    public void testGettingRandomAccessToRecipeNotInDB()
+    {
+        Recipe notAddedRecipe = new Recipe("nothing");
+        List<Recipe> returnedList;
+
+        returnedList = dataAccess.getRecipeRandom(notAddedRecipe);
+        assertEquals(0,returnedList.size());
+
+        deleteEverything();
+        returnedList = dataAccess.getRecipeRandom(notAddedRecipe);
+        assertEquals(0,returnedList.size());
     }
 
     @Test
@@ -199,8 +244,19 @@ public class DataAccessTest extends TestCase
     @Test
     public void testSendingArrayListToGetSequental()
     {
-        ArrayList list = new ArrayList();
-        assertNull(dataAccess.getRecipeSequential(list));
+        Recipe recipe;
+        ArrayList recipes = new ArrayList();
+        assertNull(dataAccess.getRecipeSequential(recipes));
+
+        assertEquals(9, recipes.size());
+        recipe = (Recipe) recipes.get(0);
+        assertEquals("Guacamole", recipe.getName());
+        recipe = (Recipe) recipes.get(1);
+        assertEquals("Pancakes", recipe.getName());
+        recipe = (Recipe) recipes.get(7);
+        assertEquals("Perogies", recipe.getName());
+        recipe = (Recipe) recipes.get(8);
+        assertEquals("Grilled Halloumi Salad", recipe.getName());
     }
 
 
@@ -289,7 +345,7 @@ public class DataAccessTest extends TestCase
         deleteEverything();
         assertNull(dataAccess.resetDatabase());
         dataAccess.getRecipeSequential(newList);
-        assertEquals(oldList.size(), newList.size());
+        assertEquals(0, newList.size());
     }
 
     @Test

@@ -210,6 +210,11 @@ public class Recipe implements Serializable
 
     public void setId(int id) {this.recipeID = id;}
 
+    public static void resetID()
+    {
+        nextID = 0;
+    }
+
     public boolean equals(Object object)
     {
         boolean result;
@@ -257,4 +262,5 @@ public class Recipe implements Serializable
             throw new IllegalArgumentException("Recipe name cannot be an empty String.");
         }
     }
+
 }

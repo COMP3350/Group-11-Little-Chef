@@ -59,15 +59,21 @@ public class AccessRecipes
             recipe = null;
             currentRecipe = 0;
         }
+
         return recipe;
     }
 
     public Recipe getRandom(int recipeID)
     {
+        recipe = null;
+
         recipes = dataAccess.getRecipeRandom(new Recipe(recipeID));
-        if (recipes.size()==1)
+
+        if(recipes != null)
         {
-            recipe = (Recipe) recipes.get(0);
+            if (recipes.size() == 1) {
+                recipe = (Recipe) recipes.get(0);
+            }
         }
 
         return recipe;
@@ -91,8 +97,11 @@ public class AccessRecipes
 
     public void resetDatabase()
     {
-        dataAccess.resetDatabase();
-        addDefaultData();
+        if(dataAccess.resetDatabase() == null)
+        {
+            Recipe.resetID();
+            addDefaultData();
+        }
     }
 
     private void addDefaultData()
@@ -182,7 +191,7 @@ public class AccessRecipes
         recipe.addIngredient(new Ingredient("Shredded Part-skim Mozzarella Cheese", Unit.CUP, 2));
         insertRecipe(recipe);
 
-        recipe = new Recipe("Chocolate Cip Cookies");
+        recipe = new Recipe("Chocolate Chip Cookies");
         recipe.addIngredient(new Ingredient("Softened Butter", Unit.CUP, 1));
         recipe.addIngredient(new Ingredient("White Sugar", Unit.CUP, 1));
         recipe.addIngredient(new Ingredient("Packed Brown Sugar", Unit.CUP, 1));

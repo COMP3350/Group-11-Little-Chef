@@ -196,7 +196,6 @@ public class DataAccessStub implements DataAccess
 
         if(connectionOpen) {
             recipes.clear();
-            addDefaultRecipes();
         }
         else
         {
@@ -309,7 +308,7 @@ public class DataAccessStub implements DataAccess
         recipe.addIngredient(new Ingredient("Shredded Part-skim Mozzarella Cheese", CUP, 2));
         recipes.add(recipe);
 
-        recipe = new Recipe("Chocolate Cip Cookies");
+        recipe = new Recipe("Chocolate Chip Cookies");
         recipe.addIngredient(new Ingredient("Softened Butter", CUP, 1));
         recipe.addIngredient(new Ingredient("White Sugar", CUP, 1));
         recipe.addIngredient(new Ingredient("Packed Brown Sugar", CUP, 1));
