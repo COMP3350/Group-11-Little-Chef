@@ -40,6 +40,9 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 - Wen’s activity log
 - Design Decisions and Rationale
 
+### Big Picture Overview
+Currently our app allows a user to hold a list of thier recipes with included ingredients and instruction set. A user will also be also to adjust the measurements of each ingredient by how many servings they wish to make, up to 7 servings. The app also allows the user to time their meals so they can get a time for how long each meal will take to make in the future. Once the meal is made a user can then rate the meal so they can reference this information in the future. 
+
 ### Overview of the features
 
 1. See a list of all recipes
