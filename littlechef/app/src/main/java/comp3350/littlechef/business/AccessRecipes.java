@@ -30,7 +30,6 @@ public class AccessRecipes
         recipes = null;
         recipe = null;
         currentRecipe = 0;
-        addDefaultData();
     }
 
     public String getRecipes(List<Recipe> recipes)
@@ -89,6 +88,11 @@ public class AccessRecipes
         return dataAccess.deleteRecipe(currentRecipe);
     }
 
+    public void resetDatabase()
+    {
+        dataAccess.resetDatabase();
+        addDefaultData();
+    }
 
     private void addDefaultData()
     {
