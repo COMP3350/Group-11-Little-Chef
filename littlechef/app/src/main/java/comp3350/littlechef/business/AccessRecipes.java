@@ -30,7 +30,6 @@ public class AccessRecipes
         recipes = null;
         recipe = null;
         currentRecipe = 0;
-        resetDatabase();
     }
 
     public String getRecipes(List<Recipe> recipes)
