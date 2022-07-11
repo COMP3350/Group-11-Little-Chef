@@ -121,7 +121,7 @@ public class DataAccessTest extends TestCase
     }
 
     @Test
-    public void testEmptyArgument()
+    public void testEmptyDBPath()
     {
         DataAccess dataAccessWithEmptyString;
         dataAccessWithEmptyString = createAccess();
