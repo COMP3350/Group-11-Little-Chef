@@ -5,8 +5,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 
 import android.app.Fragment;
-
-import android.os.Parcelable;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
@@ -17,12 +15,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-
 import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
-import comp3350.littlechef.business.ScaleRecipe;
 import comp3350.littlechef.objects.Recipe;
 
 //TODO get rid of static in  recipeArrayAdapter
