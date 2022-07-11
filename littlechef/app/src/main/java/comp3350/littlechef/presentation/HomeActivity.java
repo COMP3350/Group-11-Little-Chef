@@ -71,7 +71,7 @@ public class HomeActivity extends AppCompatActivity
                         replaceFragment(addFragment);
                         return true;
 
-                    case R.id.meals:
+                    case R.id.meals://TODO make notification that it is a work in progress
                         mealsFragment = new MealsFragment();
                         replaceFragment(mealsFragment);
                         return true;

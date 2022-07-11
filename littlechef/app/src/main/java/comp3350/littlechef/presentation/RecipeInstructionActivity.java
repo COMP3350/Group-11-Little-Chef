@@ -213,5 +213,3 @@ public class RecipeInstructionActivity extends AppCompatActivity
         stopStartButton.setTextColor(ContextCompat.getColor(this, color));
     }
 }
-
-//TODO make finish button go to rate activity and save time into recipe once clicked

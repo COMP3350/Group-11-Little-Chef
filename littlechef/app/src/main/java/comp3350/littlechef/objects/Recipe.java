@@ -179,10 +179,10 @@ public class Recipe implements Serializable
     //returns average rating, which an average of difficulty and taste ratings
     public double getRating()
     {
-        double averageDiffictuly = calcAverage(difficultyRatings);
+        double averageDiffiсulty= calcAverage(difficultyRatings);
         double averageTaste = calcAverage(tasteRatings);
 
-        return (averageDiffictuly+averageTaste)/2;
+        return (averageDiffiсulty+averageTaste)/2;
     }
 
     public String getRatingString()
