@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".AddRecipeActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.RateRecipyActivity"
             android:exported="false" />
         <activity
