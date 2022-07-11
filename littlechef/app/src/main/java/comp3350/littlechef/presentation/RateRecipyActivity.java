@@ -20,7 +20,6 @@ public class RateRecipyActivity extends AppCompatActivity
     private RadioGroup tasteRadioGroup;
     private RadioButton radioButtonDifficulty;
     private RadioButton radioButtonTaste;
-    private Button submitButton;
     private AccessRecipes accessRecipes;
 
 
@@ -34,8 +33,6 @@ public class RateRecipyActivity extends AppCompatActivity
 
         difficultyRadioGroup = (RadioGroup) findViewById(R.id.difficulty_radio_group);
         tasteRadioGroup = (RadioGroup) findViewById(R.id.taste_radio_group);
-        submitButton = (Button) findViewById(R.id.submit_rating);
-
 
         //get the selected recipe that was clicked from previous activity
         Intent previousIntent = getIntent();
