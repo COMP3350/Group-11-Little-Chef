@@ -314,7 +314,9 @@ public class DataAccessObject implements DataAccess {
         return result;
     }//end delRecipe
 
-    public void resetDatabase() {
+    public String resetDatabase() {
+
+        result = null;
         try{
             cmd = "drop table if exists INGREDIENTS;\n" +
                     "drop table if exists INSTRUCTIONS;\n" +
@@ -337,6 +339,8 @@ public class DataAccessObject implements DataAccess {
         }catch (Exception e){
             result = processSQLError(e);
         }
+
+        return result;
     }
 
     public String checkWarning(Statement st, int updateCount)
