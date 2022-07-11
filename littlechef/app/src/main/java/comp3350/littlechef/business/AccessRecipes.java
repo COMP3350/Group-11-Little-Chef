@@ -318,7 +318,9 @@ public class AccessRecipes
         instruction = "Bake";
         subInstruction = "Bake pizza in the 475°F oven, one at a time, until the crust is browned and the cheese is golden, about 10 to 15 minutes. If you want, toward the end of the cooking time you can sprinkle on a little more cheese.";
         recipe.addInstructions(instruction, subInstruction);
+
         insertRecipe(recipe);
+
 
         recipe = new Recipe("Chocolate Chip Cookies");
         recipe.addIngredient(new Ingredient("Softened Butter", Unit.CUP, 1));
@@ -435,6 +437,8 @@ public class AccessRecipes
         subInstruction = "";
         recipe.addInstructions(instruction, subInstruction);
         insertRecipe(recipe);
+
+
 
         recipe = new Recipe("Perogies");
         recipe.addIngredient(new Ingredient("All-Purpose Flour", Unit.CUP, 2));

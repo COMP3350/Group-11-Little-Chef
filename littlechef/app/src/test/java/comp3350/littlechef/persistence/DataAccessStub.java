@@ -196,7 +196,6 @@ public class DataAccessStub implements DataAccess
 
         if(connectionOpen) {
             recipes.clear();
-            addDefaultRecipes();
         }
         else
         {
@@ -432,6 +431,7 @@ public class DataAccessStub implements DataAccess
         subInstruction = "Bake pizza in the 475°F oven, one at a time, until the crust is browned and the cheese is golden, about 10 to 15 minutes. If you want, toward the end of the cooking time you can sprinkle on a little more cheese.";
         recipe.addInstructions(instruction, subInstruction);
 
+        recipes.add(recipe);
 
         recipe = new Recipe("Chocolate Chip Cookies");
         recipe.addIngredient(new Ingredient("Softened Butter", CUP, 1));
