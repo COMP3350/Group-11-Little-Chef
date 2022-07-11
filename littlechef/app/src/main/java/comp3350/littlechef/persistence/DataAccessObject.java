@@ -89,8 +89,8 @@ public class DataAccessObject implements DataAccess {
         ArrayList<Ingredient> ingredients = recipe.getIngredients();
         ArrayList<String[]> instructions = recipe.getInstructions();
         ArrayList<Integer> cookTimes = recipe.getCookingTimes();
-        ArrayList<Integer> difficultyRating = recipe.getCookingTimes();
-        ArrayList<Integer> tasteRating = recipe.getCookingTimes();
+        ArrayList<Double> difficultyRating = recipe.getDifficultyRatingsList();
+        ArrayList<Double> tasteRating = recipe.getTasteRatingsList();
         String values;
         result = null;
 
@@ -110,7 +110,7 @@ public class DataAccessObject implements DataAccess {
                         + "";
                 cmd = "INSERT INTO INSTRUCTIONS " + "(INSTRUCTION, SUBINSTRUCTION, RECIPEID)" + "VALUES(" + values + ")";
                 updateCount = statement.executeUpdate(cmd);
-                result += checkWarning(statement, updateCount);
+                result = checkWarning(statement, updateCount);
             }
             for(int i = 0; i < ingredients.size(); i++)
             {
@@ -122,11 +122,11 @@ public class DataAccessObject implements DataAccess {
                         + "'";
                 cmd = "INSERT INTO INGREDIENTS " + "(RECIPEID, NAME, AMOUNT, UNITTYPE, UNIT)" + " VALUES (" + values + ")";
                 updateCount = statement.executeUpdate(cmd);
-                result += checkWarning(statement, updateCount);
+                result = checkWarning(statement, updateCount);
             }
-            result += insertRating(recipe, cookTimes, "COOKINGTIMES");
-            result += insertRating(recipe, difficultyRating, "DIFFICULTYRATINGS");
-            result += insertRating(recipe, tasteRating, "TASTERATINGS");
+            result = insertRating(recipe, cookTimes, "COOKINGTIMES");
+            result = insertRating(recipe, difficultyRating, "DIFFICULTYRATINGS");
+            result = insertRating(recipe, tasteRating, "TASTERATINGS");
         }
         catch (Exception e)
         {
@@ -206,25 +206,25 @@ public class DataAccessObject implements DataAccess {
                     Ingredient ing = new Ingredient(resultSet2.getString("NAME"),Unit.valueOf(resultSet2.getString("UNIT")),resultSet2.getDouble("AMOUNT"));
                     recipe.addIngredient(ing);
                 }
-                cmd2 = "SELECT * FROM INSTRUCTIONS";
+                cmd2 = "SELECT * FROM INSTRUCTIONS WHERE RECIPEID=" + myID;
                 resultSet2 = statement.executeQuery(cmd2);
                 while(resultSet2.next())
                 {
                     recipe.addInstructions(resultSet2.getString("INSTRUCTION"), resultSet2.getString("SUBINSTRUCTION"));
                 }
-                cmd2 = "SELECT * FROM DIFFICULTYRATINGS";
+                cmd2 = "SELECT * FROM DIFFICULTYRATINGS WHERE RECIPEID=" + myID;
                 resultSet2 = statement.executeQuery(cmd2);
                 while(resultSet2.next())
                 {
                     recipe.addDifficultyRating(resultSet2.getDouble("RATING"));
                 }
-                cmd2 = "SELECT * FROM TASTERATINGS";
+                cmd2 = "SELECT * FROM TASTERATINGS WHERE RECIPEID=" + myID;
                 resultSet2 = statement.executeQuery(cmd2);
                 while(resultSet2.next())
                 {
                     recipe.addTasteRating(resultSet2.getDouble("RATING"));
                 }
-                cmd2 = "SELECT * FROM COOKINGTIMES";
+                cmd2 = "SELECT * FROM COOKINGTIMES WHERE RECIPEID=" + myID;
                 resultSet2 = statement.executeQuery(cmd2);
                 while(resultSet2.next())
                 {
@@ -264,25 +264,25 @@ public class DataAccessObject implements DataAccess {
                     Ingredient ing = new Ingredient(resultSet2.getString("NAME"),Unit.valueOf(resultSet2.getString("UNIT")),resultSet2.getDouble("AMOUNT"));
                     recipe.addIngredient(ing);
                 }
-                cmd2 = "SELECT * FROM INSTRUCTIONS";
+                cmd2 = "SELECT * FROM INSTRUCTIONS WHERE RECIPEID=" + myID;
                 resultSet2 = statement.executeQuery(cmd2);
                 while(resultSet2.next())
                 {
                     recipe.addInstructions(resultSet2.getString("INSTRUCTION"), resultSet2.getString("SUBINSTRUCTION"));
                 }
-                cmd2 = "SELECT * FROM DIFFICULTYRATINGS";
+                cmd2 = "SELECT * FROM DIFFICULTYRATINGS WHERE RECIPEID=" + myID;
                 resultSet2 = statement.executeQuery(cmd2);
                 while(resultSet2.next())
                 {
                     recipe.addDifficultyRating(resultSet2.getDouble("RATING"));
                 }
-                cmd2 = "SELECT * FROM TASTERATINGS";
+                cmd2 = "SELECT * FROM TASTERATINGS WHERE RECIPEID=" + myID;
                 resultSet2 = statement.executeQuery(cmd2);
                 while(resultSet2.next())
                 {
                     recipe.addTasteRating(resultSet2.getDouble("RATING"));
                 }
-                cmd2 = "SELECT * FROM COOKINGTIMES";
+                cmd2 = "SELECT * FROM COOKINGTIMES WHERE RECIPEID=" + myID;
                 resultSet2 = statement.executeQuery(cmd2);
                 while(resultSet2.next())
                 {

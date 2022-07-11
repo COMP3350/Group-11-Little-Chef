@@ -122,6 +122,16 @@ public class Recipe implements Serializable
         cookingTimes.add(totalSeconds);
     }
 
+    public ArrayList<Double> getDifficultyRatingsList()
+    {
+        return difficultyRatings;
+    }
+
+    public ArrayList<Double> getTasteRatingsList()
+    {
+        return tasteRatings;
+    }
+
     public String getDifficultyRating()
     {
         double rating = calcAverage(difficultyRatings);
