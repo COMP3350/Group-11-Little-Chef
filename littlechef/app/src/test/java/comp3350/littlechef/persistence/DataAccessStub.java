@@ -254,7 +254,6 @@ public class DataAccessStub implements DataAccess
                 "(Chilled water isn't cold enough - you want cold water with lots of ice cubes floating in it.) " +
                 "If you're planning to peel the eggs, crack them slightly before putting them in the ice water and let them sit for an hour for maximum ease of peeling.";
         recipe.addInstructions(instruction, subInstruction);
-
         recipes.add(recipe);
 
         recipe = new Recipe("Pancakes");
@@ -265,6 +264,15 @@ public class DataAccessStub implements DataAccess
         recipe.addIngredient(new Ingredient("Milk", CUP, 1.25));
         recipe.addIngredient(new Ingredient("Egg", QUANTITY, 1));
         recipe.addIngredient(new Ingredient("Melted Butter", TABLESPOON, 2));
+
+        //adding instructions
+        instruction = "Whisk banana, eggs, almond flour, almond butter, vanilla extract, cinnamon, baking soda, and baking powder together in a bowl until batter is smooth.";
+        subInstruction = "";
+        recipe.addInstructions(instruction,subInstruction);
+
+        instruction = "Heat olive oil on a griddle or skillet over medium-high heat. Drop batter by large spoonfuls onto the griddle and cook until bubbles form and the edges are dry, 3 to 4 minutes. Flip and cook until browned on the other side, 2 to 3 minutes. Repeat with remaining batter.";
+        subInstruction = "";
+        recipe.addInstructions(instruction, subInstruction);
         recipes.add(recipe);
 
         recipe = new Recipe("Chili");
@@ -584,7 +592,6 @@ public class DataAccessStub implements DataAccess
         instruction = "Cook or Freeze.";
         subInstruction = "Cook the pierogies according to the instructions below.";
         recipe.addInstructions(instruction, subInstruction);
-
         recipes.add(recipe);
 
         recipe = new Recipe("Grilled Halloumi Salad");
