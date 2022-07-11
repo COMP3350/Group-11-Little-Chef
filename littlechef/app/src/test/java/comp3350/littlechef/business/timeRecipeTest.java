@@ -20,7 +20,7 @@ public class timeRecipeTest extends TestCase
     private static final int SECONDS_IN_MINUTE = 60;
     private static final int SECOND = 1;
     @Test
-    public void testSimpleCases()
+    public void testTypicalCases()
     {
         assertEquals("00h 00m 24s",TimeRecipe.totalSecondsToString(24, true));
         assertEquals("00:00:24",TimeRecipe.totalSecondsToString(24, false));
