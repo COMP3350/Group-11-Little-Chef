@@ -89,13 +89,7 @@ public class DataAccessTest extends TestCase
         assertEquals(11, listOfRecipes.size());
         assertEquals("Guacamole", listOfRecipes.get(0).getName());
         assertEquals("Pancakes", listOfRecipes.get(1).getName());
-        assertEquals("Chili", listOfRecipes.get(2).getName());
-        assertEquals("Chicken Wrap", listOfRecipes.get(3).getName());
-        assertEquals("Pizza", listOfRecipes.get(4).getName());
-        assertEquals("Chocolate Chip Cookies", listOfRecipes.get(5).getName());
-        assertEquals("Perogies", listOfRecipes.get(6).getName());
-        assertEquals("Perogies", listOfRecipes.get(7).getName());
-        assertEquals("Grilled Halloumi Salad", listOfRecipes.get(8).getName());
+
 
         // getting random access
         recipe3 = new Recipe("Recipe 3");
