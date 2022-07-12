@@ -2,6 +2,7 @@ package comp3350.littlechef.presentation;
 
 import comp3350.littlechef.R;
 import comp3350.littlechef.application.Main;
+import comp3350.littlechef.business.AccessRecipes;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -165,6 +166,8 @@ public class HomeActivity extends AppCompatActivity
                     count = in.read(buffer);
                 }
 
+                AccessRecipes accessRecipes = new AccessRecipes();
+                accessRecipes.resetDatabase();
                 out.close();
                 in.close();
             }

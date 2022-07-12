@@ -96,11 +96,9 @@ public class AccessRecipes
 
     public void resetDatabase()
     {
-        if(dataAccess.resetDatabase() == null)
-        {
-            Recipe.resetID();
-            addDefaultData();
-        }
+        dataAccess.resetDatabase();
+        Recipe.resetID();
+        addDefaultData();
     }
 
     private void addDefaultData()
