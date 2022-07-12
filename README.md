@@ -70,6 +70,14 @@ Currently our app allows a user to hold a list of their recipes with included in
 	
 **Note**: the functional bottom navigation menu has three buttons: "Recipes", "Add Recipe", and "Meal Plans". You can use only two of the buttons("Recipes", "Add Recipe") to switch between activities. "Meal Plans" will be implemented in the future iteration and for now, if pressed it notifies user that it is a work in progress. All three buttons, however, are needed now to show the functionality of the navigation menu. In the future iterations "Meal Plans" will allow scheduling of created recipes.
 
+4. Read instructions
+**Overview**: Every recipe in the app has its own instructions which consist of the main instruction, which is bold and numbered, and a more detailed sub instruction, which is optional. The instructions are scrollable if they don't fit onto the screen and are easy to read
+**Where to find it**: Choose a recipe from the list of recipes and once chosen, you will be taken to the ingredient page of the recipe where you would see instructions button at the very bottom of the page, press it and you will be taken to the instructions page of the recipe.
+
+5. Start cooking(Start timer)
+**Overview**: On the same page where a user reads instructions, the user can also start cooking or start a timer and the app will track the amount of time the user spends on cooking by the recipe. If the user gets distracted and needs to pause cooking for a bit, the user can stop the timer and then continue cooking when back. The timer can also be restarted by a click of a button, if the restart is pressed, a pop up warning message will come up to make sure the user did not press it unintentionally. Once the user finishes cooking, the stop should be pressed, and the user can press finish then to finish cooking the recipe and be taken to a rating page.
+**Where to find it**: same place where the instructions are found.
+
 ### This App was tested on the following devices:
 1.  	- Android Systems: Android 6.0 Google APIs|x86 (Marshmallow)
     	- Emulator: Nexus 7 API 23
