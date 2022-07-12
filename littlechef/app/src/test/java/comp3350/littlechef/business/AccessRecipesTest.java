@@ -32,14 +32,13 @@ public class AccessRecipesTest extends TestCase
 
        Services.createDataAccess(new DataAccessStub(DB_NAME));
        accessRecipes = new AccessRecipes();
+       accessRecipes.resetDatabase();
     }
 
     @After
     public void tearDown()
     {
-        accessRecipes.resetDatabase();
         Services.closeDataAccess();
-
         System.out.println("Finished test AccessCourses");
     }
 
@@ -52,15 +51,15 @@ public class AccessRecipesTest extends TestCase
         // get all the recipes, should only be default ones
         assertNull(accessRecipes.getRecipes(recipes));
         assertEquals(9, recipes.size());
-//        assertEquals("Guacamole", recipes.get(0).getName());
-//        assertEquals("Pancakes", recipes.get(1).getName());
-//        assertEquals("Chili", recipes.get(2).getName());
-//        assertEquals("Chicken Wrap", recipes.get(3).getName());
-//        assertEquals("Pizza", recipes.get(4).getName());
-//        assertEquals("Chocolate Chip Cookies", recipes.get(5).getName());
-//        assertEquals("Perogies", recipes.get(6).getName());
-//        assertEquals("Perogies", recipes.get(7).getName());
-//        assertEquals("Grilled Halloumi Salad", recipes.get(8).getName());
+        assertEquals("Guacamole", recipes.get(0).getName());
+        assertEquals("Pancakes", recipes.get(1).getName());
+        assertEquals("Chili", recipes.get(2).getName());
+        assertEquals("Chicken Wrap", recipes.get(3).getName());
+        assertEquals("Pizza", recipes.get(4).getName());
+        assertEquals("Chocolate Chip Cookies", recipes.get(5).getName());
+        assertEquals("Perogies", recipes.get(6).getName());
+        assertEquals("Perogies", recipes.get(7).getName());
+        assertEquals("Grilled Halloumi Salad", recipes.get(8).getName());
 
         for(int i = 0; i < recipes.size(); i++)
         {
