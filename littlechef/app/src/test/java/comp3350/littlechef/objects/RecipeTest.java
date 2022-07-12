@@ -3,439 +3,339 @@ import junit.framework.TestCase;
 import org.junit.Test;
 import java.util.ArrayList;
 
+import comp3350.littlechef.R;
+import comp3350.littlechef.presentation.CookedAnotherMealActivity;
+
 public class RecipeTest extends TestCase
 {
-//
-//    public RecipeTest(String arg0) {
-//        super(arg0);
-//    }//end RecipeTest
-//
-//    @Test
-//    public void testRecipeSimple()
-//    {
-//        //test the file could run or not
-//        assertEquals(1, 1);
-//    }//end testSimple
-//
-//    @Test
-//    public void testRecipeCreation()
-//    {
-//        //constructor1
-//        Recipe recipe1 = new Recipe(0);
-//        assertNotNull(recipe1);
-//
-//        Recipe recipe2 = new Recipe(0);
-//
-//        ArrayList<Recipe> inList = new ArrayList<>();
-//        inList.add(recipe1);
-//        inList.add(recipe2);
-//
-//        assertEquals(2, inList.size());
-//    }//end testRecipeCreation
-//
-//    @Test
-//    public void testRecipeCreation2()
-//    {
-//        //constructor2
-//        Recipe recipe1 = new Recipe("a1");
-//        assertEquals("a1",recipe1.getName());
-//
-//        Recipe recipe2 = new Recipe("b1");
-//
-//        ArrayList<Recipe> inList = new ArrayList<>();
-//        inList.add(recipe1);
-//        inList.add(recipe2);
-//
-//        assertEquals("b1", recipe2.getName());
-//
-//        assertEquals(2, inList.size());
-//
-//        //retest - constructor 1 & 2 combination
-//
-//        Recipe recipe3 = new Recipe(123);
-//        inList.add(recipe3);
-//
-//        assertEquals("null",recipe3.getName());
-//        assertEquals(3, inList.size());
-//    }//end testRecipeCreation2
-//
-//    @Test
-//    public void testRecipeGetName()
-//    {
-//        Recipe recipe1 = new Recipe("Paste");
-//        assertEquals("Paste", recipe1.getName());
-//
-//        recipe1.setName("");
-//        assertEquals("", recipe1.getName());
-//
-//        recipe1.setName(" ");
-//        assertEquals(" ", recipe1.getName());
-//
-//        recipe1.setName(null);
-//        assertNull(recipe1.getName());
-//
-//        recipe1.setName("%paste1");
-//        assertEquals("%paste1", recipe1.getName());
-//    }//testRecipeGetName
-//
-//    @Test
-//    public void testRecipeSetName()
-//    {
-//        Recipe recipe1 = new Recipe("juice");
-//        recipe1.setName("aa");
-//        assertEquals("aa", recipe1.getName());
-//
-//        recipe1.setName("");
-//        assertEquals("", recipe1.getName());
-//
-//        recipe1.setName(" ");
-//        assertEquals(" ", recipe1.getName());
-//
-//        recipe1.setName(null);
-//        assertNull( recipe1.getName());
-//
-//        recipe1.setName("%paste1");
-//        assertEquals("%paste1", recipe1.getName());
-//    }//testRecipeSetName
-//
-//    @Test
-//    public void testRecipeGetIngredients()
-//    {
-//        Recipe recipe1 = new Recipe("aaa",1,2);
-//
-//        Ingredient ing1 = new Ingredient("Noodle", null, 0.1);
-//        Ingredient ing2 = new Ingredient("Rice", null, 0.2);
-//        Ingredient ing3 = new Ingredient("Cake",null, 0.3);
-//
-//        recipe1.addIngredient(ing1);
-//        recipe1.addIngredient(ing2);
-//        recipe1.addIngredient(ing3);
-//
-//        assertEquals(3, recipe1.getIngredients().size());
-//
-//        ing1.setName("");
-//        assertEquals("" , ing1.getName());
-//
-//        ing1.setName(null);
-//        assertNull(ing1.getName());
-//
-//        ing1.setMeasurement(Unit.MM);
-//        assertEquals(Unit.MM , ing1.getMeasurement());
-//
-//        ing1.setMeasurement(null);
-//        assertEquals(Unit.MM , ing1.getMeasurement());
-//
-//        ing1.setAmount(0.0);
-//        assertEquals(0.1 , ing1.getAmount());
-//
-//        ing1.setAmount(-0.1);
-//        assertEquals(0.1 , ing1.getAmount());
-//    }//testRecipeGetIngredients
-//
-//    @Test
-//    public void testRecipeAddIngredients()
-//    {
-//        Recipe recipe1 = new Recipe("aaa",1,2);
-//
-//        Ingredient ing1 = new Ingredient("Noodle", null, 0.1);
-//        Ingredient ing2 = new Ingredient("Rice", null, 0.2);
-//        Ingredient ing3 = new Ingredient("Cake", null, 0.3);
-//
-//        recipe1.addIngredient(ing1);
-//        recipe1.addIngredient(ing2);
-//        recipe1.addIngredient(ing3);
-//
-//        assertEquals(3, recipe1.getIngredients().size());
-//
-//        ing1.setName("");
-//        assertEquals("" , ing1.getName());
-//
-//        ing1.setName(null);
-//        assertNull(ing1.getName());
-//
-//        ing1.setMeasurement(Unit.MM);
-//        assertEquals(Unit.MM , ing1.getMeasurement());
-//
-//        ing1.setMeasurement(null);
-//        assertEquals(Unit.MM , ing1.getMeasurement());
-//
-//        ing1.setAmount(0.0);
-//        assertEquals(0.1 , ing1.getAmount());
-//
-//        ing1.setAmount(-0.2);
-//        assertEquals(0.1 , ing1.getAmount());
-//    }//testRecipeAddIngredients
-//
-//    @Test
-//    public void testRecipeGetStep() //TODO CHANGE -> RECIPE HAS String[] FOR INSTRUCTIONS
-//    {
-//        Recipe step1 = new Recipe("abcde", 1,2);
-//
-//        step1.addStep("ufo");
-//        assertEquals(1, step1.getSteps().size());
-//        step1.addStep("FD");
-//        assertEquals(2, step1.getSteps().size());
-//
-//        step1.addStep("");
-//        assertEquals(3, step1.getSteps().size());
-//
-//        step1.addStep(null);
-//        assertEquals(4, step1.getSteps().size());
-//
-//        step1.addStep("123");
-//        assertEquals(5, step1.getSteps().size());
-//
-//        step1.addStep("^&*@!#");
-//        assertEquals(6, step1.getSteps().size());
-//    }//end testRecipeGetStep
-//
-//    @Test
-//    public void testRecipeAddStep() //TODO CHANGE -> RECIPE HAS String[] FOR INSTRUCTIONS
-//    {
-//        Recipe step1 = new Recipe("abcde", 1,2);
-//
-//        step1.addStep("ufo");
-//        assertEquals(1, step1.getSteps().size());
-//
-//        step1.addStep("FD");
-//        assertEquals(2, step1.getSteps().size());
-//
-//        step1.addStep("");
-//        assertEquals(3, step1.getSteps().size());
-//
-//        step1.addStep(null);
-//        assertEquals(4, step1.getSteps().size());
-//
-//        step1.addStep("123");
-//        assertEquals(5, step1.getSteps().size());
-//
-//        step1.addStep("^&*@!#");
-//        assertEquals(6, step1.getSteps().size());
-//    }//end testRecipeAddStep
-//
-//    @Test
-//    public void testRecipeGetTimeToMakeHrs()
-//    {
-//        Recipe time1 = new Recipe("abcde", 1,2);
-//        assertEquals(1, time1.getTimeToMakeHrs());
-//
-//        time1.setTimeToMakeHrs(0);
-//        assertEquals(0 , time1.getTimeToMakeHrs());
-//
-//        time1.setTimeToMakeHrs(Integer.MAX_VALUE);
-//        assertEquals(Integer.MAX_VALUE , time1.getTimeToMakeHrs());
-//
-//        time1.setTimeToMakeHrs(Integer.MIN_VALUE);
-//        assertEquals(Integer.MIN_VALUE , time1.getTimeToMakeHrs());
-//
-//        time1.setTimeToMakeHrs(-1);
-//        assertEquals(1 , time1.getTimeToMakeHrs());
-//    }//end testRecipeGetTimeToMakeHrs
-//
-//    @Test
-//    public void testRecipeGetTimeToMakeMins()
-//    {
-//        Recipe time1 = new Recipe("abcde", 0,2);
-//        assertEquals(2 , time1.getTimeToMakeMins());
-//
-//        time1.setTimeToMakeMins(0);
-//        assertEquals(0 , time1.getTimeToMakeMins());
-//
-//        time1.setTimeToMakeMins(-1);
-//        assertEquals(1 , time1.getTimeToMakeMins());
-//
-//        time1.setTimeToMakeMins(61);
-//        assertEquals(1, time1.getTimeToMakeMins());
-//        assertEquals(1, time1.getTimeToMakeHrs());
-//
-//        time1.setTimeToMakeMins(123);
-//        assertEquals(3, time1.getTimeToMakeMins());
-//        assertEquals(3, time1.getTimeToMakeHrs());
-//
-//        time1.setTimeToMakeMins(Integer.MAX_VALUE);
-//        assertEquals( 7, time1.getTimeToMakeMins());
-//
-//        time1.setTimeToMakeMins(Integer.MIN_VALUE);
-//        assertEquals( -8, time1.getTimeToMakeMins());
-//    }//end testRecipeGetTimeToMakeMins
-//
-//    @Test
-//    public void testRecipeGetTimeToMakeString()
-//    {
-//        Recipe time1 = new Recipe("abcde", 1,2);
-//        assertEquals("1h 02m" , time1.getTimeToMakeString());
-//
-//        Recipe time2 = new Recipe("abcde", 0,10);
-//        assertEquals("0h 10m" , time2.getTimeToMakeString());
-//
-//        Recipe time3 = new Recipe("abcde", 0,0);
-//        assertEquals("0h 00m" , time3.getTimeToMakeString());
-//
-//        Recipe time4 = new Recipe("abcde", 0,1);
-//        assertEquals("0h 01m" , time4.getTimeToMakeString());
-//
-//        Recipe time5 = new Recipe("abcde", 0,Integer.MAX_VALUE);
-//        assertEquals("35791394"+ "h " +
-//                "07"+ "m" , time5.getTimeToMakeString());
-//
-//        Recipe time6 = new Recipe("abcde", -1,-2);
-//        assertEquals("1h 02m" , time6.getTimeToMakeString());
-//    }//testRecipeGetTimeToMakeString
-//
-//    @Test
-//    public void testRecipeSetTimeToMakeHrs()
-//    {
-//        Recipe time1 = new Recipe("abcde", 1,2);
-//        time1.setTimeToMakeHrs(99);
-//        assertEquals(99 , time1.getTimeToMakeHrs());
-//
-//        time1.setTimeToMakeMins(61);
-//        assertEquals(1, time1.getTimeToMakeMins());
-//        assertEquals(100, time1.getTimeToMakeHrs());
-//
-//        time1.setTimeToMakeHrs(-1);
-//        assertEquals(1, time1.getTimeToMakeHrs());
-//
-//        time1.setTimeToMakeHrs(Integer.MAX_VALUE);
-//        assertEquals(Integer.MAX_VALUE, time1.getTimeToMakeHrs());
-//
-//        time1.setTimeToMakeHrs(Integer.MIN_VALUE);
-//        assertEquals(Integer.MIN_VALUE, time1.getTimeToMakeHrs());
-//    }//end testRecipeSetTimeToMakeHrs
-//
-//    @Test
-//    public void testRecipeSetTimeToMakeMins()
-//    {
-//        Recipe time1 = new Recipe("abcde", 1,2);
-//
-//        time1.setTimeToMakeMins(88);
-//        assertEquals(28, time1.getTimeToMakeMins());
-//
-//        time1.setTimeToMakeMins(61);
-//        assertEquals(1, time1.getTimeToMakeMins());
-//        assertEquals(3, time1.getTimeToMakeHrs());
-//
-//        time1.setTimeToMakeHrs(-1);
-//        assertEquals(1, time1.getTimeToMakeHrs());
-//
-//        time1.setTimeToMakeHrs(0);
-//        assertEquals(0, time1.getTimeToMakeHrs());
-//
-//        time1.setTimeToMakeHrs(Integer.MAX_VALUE);
-//        assertEquals(Integer.MAX_VALUE, time1.getTimeToMakeHrs());
-//
-//        time1.setTimeToMakeHrs(Integer.MIN_VALUE);
-//        assertEquals(Integer.MIN_VALUE, time1.getTimeToMakeHrs());
-//    }
-//
-//    @Test
-//    public void testRecipeGetDifficulty()
-//    {
-//        Recipe diff1 = new Recipe("abcde", 1,2);
-//        assertEquals(Difficulty.NOT_RATED , diff1.getDifficultyRatings());
-//
-//        diff1.setDifficulty(Difficulty.AMATEUR);
-//        assertEquals(Difficulty.AMATEUR, diff1.getDifficultyRatings());
-//
-//        diff1.setDifficulty(null);
-//        assertNull( diff1.getDifficultyRatings());
-//
-//
-//    }
-//
-//    @Test
-//    public void testRecipeGetDifficultyString(){
-//        Recipe diff1 = new Recipe("abcde", 1,2);
-//
-//        assertEquals("Difficulty: Not rated" , diff1.getDifficultyString());
-//
-//        diff1.setDifficulty(Difficulty.MASTER_CHEF);
-//        assertEquals("Difficulty: Master Chef", diff1.getDifficultyString());
-//    }//end testRecipeGetDifficultyString
-//
-//
-//    @Test
-//    public void testRecipeSetDifficulty()
-//    {
-//        Recipe diff1 = new Recipe("abcde", 1,2);
-//        assertEquals(Difficulty.NOT_RATED, diff1.getDifficultyRatings());
-//
-//        diff1.setDifficulty(Difficulty.AMATEUR);
-//        assertEquals("Difficulty: Amateur", diff1.getDifficultyString());
-//
-//        diff1.setDifficulty(null);
-//        assertNull(diff1.getDifficultyRatings());
-//    }//end testRecipeSetDifficulty
-//
-//    @Test
-//    public void testRecipeGetQuality()
-//    {
-//        Recipe qua1 = new Recipe("abcde", 1,2);
-//        assertEquals(Quality.NOT_RATED, qua1.getQuality());
-//
-//        qua1.setQuality(Quality.TASTY);
-//        assertEquals(Quality.TASTY, qua1.getQuality());
-//
-//        qua1.setQuality(null);
-//        assertNull( qua1.getQuality());
-//    }//end testRecipeGetQuality
-//
-//    @Test
-//    public void testRecipeGetQualityString()
-//    {
-//        Recipe qua1 = new Recipe("abcde", 1,2);
-//
-//        assertEquals("Taste: Not rated" , qua1.getQualityString());
-//
-//        qua1.setQuality(Quality.TASTY);
-//        assertEquals("Taste: Tasty", qua1.getQualityString());
-//    }//end testRecipeGetQualityString
-//
-//
-//    @Test
-//    public void testRecipeSetQuality(){
-//        Recipe qua1 = new Recipe("abcde", 1,2);
-//        assertEquals(Quality.NOT_RATED, qua1.getQuality());
-//
-//        qua1.setQuality(Quality.TASTY);
-//        assertEquals("Taste: Tasty", qua1.getQualityString());
-//
-//        qua1.setQuality(null);
-//        assertNull(qua1.getQuality());
-//
-//    }
-//
-//    @Test
-//    public void testAddRecipeRate()
-//    {
-//        Recipe rate1 = new Recipe(666);
-//        rate1.rate(0.0f);
-//        assertEquals(0.0f, rate1.getRating());
-//
-//        rate1.rate(0.2f);
-//        assertEquals(0.1f, rate1.getRating());
-//    }//end testAddRecipeRate
-//
-//    @Test
-//    public void testRecipeGetRating()
-//    {
-//        Recipe rating1 = new Recipe("abcde", 1,2);
-//        rating1.rate(0.1f);
-//        assertEquals(0.1f, rating1.getRating());
-//
-//        rating1.rate(0.0f);
-//        assertEquals(0.05f,rating1.getRating());
-//
-//        rating1.rate(0.5f);
-//        assertEquals(0.2f,rating1.getRating());
-//    }//testRecipeGetRating
-//
-//    @Test
-//    public void testRecipeGetRatingString()
-//    {
-//        Recipe rating1 = new Recipe("abcde", 1,2);
-//        rating1.rate(0.0f);
-//        assertEquals("-/5", rating1.getRatingString());
-//    }
-//
+
+    public RecipeTest(String arg0)
+    {
+        super(arg0);
+    }//end RecipeTest
+
+    @Test
+    public void testRecipeSimple()
+    {
+        //add recipe ID number
+        Recipe recipeID1 = new Recipe(0);
+        Recipe recipeID2 = new Recipe(1);
+
+        ArrayList<Recipe> inList = new ArrayList<>();
+        inList.add(recipeID1);
+        inList.add(recipeID2);
+        assertEquals(2, inList.size());
+
+        //add recipe name
+        Recipe recipeName1 = new Recipe("a1");
+        Recipe recipeName2 = new Recipe("b1");
+
+        inList.add(recipeName1);
+        inList.add(recipeName2);
+        assertEquals(4, inList.size());
+    }//end testRecipeCreation
+
+    @Test
+    public void testRecipeName()
+    {
+        Recipe recipe = new Recipe("Paste");
+        assertEquals("Paste", recipe.getName());
+
+        recipe.setName("123");
+        assertEquals("123", recipe.getName());
+        recipe.setName("%paste1^&");
+        assertEquals("%paste1^&", recipe.getName());
+
+        Recipe recipeSetNewName = new Recipe("juice");
+        recipeSetNewName.setName("aa");
+        assertEquals("aa", recipeSetNewName.getName());
+
+        recipeSetNewName.setName("%paste1");
+        assertEquals("%paste1", recipeSetNewName.getName());
+    }//end testRecipeName
+
+    @Test
+    public void testRecipeNameNull()
+    {
+        try
+        {
+            Recipe recipe = new Recipe(null);
+        }
+        catch (NullPointerException unused)
+        {
+            //catch error in create recipe name
+        }
+    }//end testRecipeNameNull
+
+    @Test
+    public void testRecipeIngredients()
+    {
+        Recipe recipe = new Recipe("aaa");
+
+        Ingredient ingredient1 = new Ingredient("Noodle", null, 0.1);
+        Ingredient ingredient2 = new Ingredient("Rice", null, 0.2);
+        Ingredient ingredient3 = new Ingredient("Cake",null, 0.3);
+
+        recipe.addIngredient(ingredient1);
+        recipe.addIngredient(ingredient2);
+        recipe.addIngredient(ingredient3);
+
+        assertEquals(3, recipe.getIngredients().size());
+
+        ingredient1.setName("");
+        assertEquals("" , ingredient1.getName());
+
+        ingredient1.setMeasurement(Unit.MM);
+        assertEquals(Unit.MM , ingredient1.getMeasurement());
+
+        ingredient1.setMeasurement(null);
+        assertEquals(Unit.MM , ingredient1.getMeasurement());
+
+        ingredient1.setAmount(0.0);
+        assertEquals(0.1 , ingredient1.getAmount());
+
+        ingredient1.setAmount(-0.1);
+        assertEquals(0.1 , ingredient1.getAmount());
+    }//testRecipeIngredients
+
+    @Test
+    public void testAddIngredientNull()
+    {
+        try
+        {
+            Recipe recipe = new Recipe(1);
+            Ingredient ingredient1 = new Ingredient("Noodle", null, 0.1);
+
+            recipe.addIngredient(ingredient1);
+            ingredient1.setName(null);
+        }
+        catch (NullPointerException unused)
+        {
+            //catch error in add ingredient
+        }
+    }//end testAddIngredientNull
+
+    @Test
+    public void testLeadingAndTrailingSpacesInArgument()
+    {
+        Recipe recipe = new Recipe(" a recipe ");
+        assertEquals("a recipe", recipe.getName());
+
+        recipe.setName(" new name ");
+        assertEquals("new name", recipe.getName());
+    }//end testLeadingAndTrailingSpacesInArgument
+
+    @Test
+    public void testSymbolsInArgument()
+    {
+        Recipe recipe1 = new Recipe("a recipe!!!");
+        assertEquals("a recipe!!!", recipe1.getName());
+
+        Recipe recipe2 = new Recipe("~~** a recipe **~~");
+        assertEquals("~~** a recipe **~~", recipe2.getName());
+    }//end testSymbolsInArgument
+
+    @Test
+    public void testRecipeInstruction() {
+        Recipe recipe = new Recipe("salad");
+        assertEquals(true, recipe.getInstructions().isEmpty()); //EmptyList
+
+        recipe.addInstructions("add vegetable", "add salt");
+        assertEquals(1, recipe.getInstructions().size());
+
+        //add same instructions at once will be an invalid input
+        recipe.addInstructions("add sugar", "add sugar");
+        assertEquals(1, recipe.getInstructions().size());
+    }//end testRecipeInstruction
+
+    @Test
+    public void testRecipeInstructionNull()
+    {
+        try
+        {
+            Recipe recipe = new Recipe("salad");
+            recipe.addInstructions(null,null);
+        }
+        catch (NullPointerException unused)
+        {
+            //catch error in create instruction
+        }
+    }//end testRecipeInstructionNull
+
+    @Test
+    public void testAverageCookingTime()
+    {
+        //when there is no cooking time added
+        Recipe recipe = new Recipe("smoothie");
+        //testEmptyList
+        assertEquals("Time: Not cooked", recipe.getAverageCookingTime());
+
+        recipe.addCookingTime(10);
+        assertEquals("Time: 00h 00m 10s", recipe.getAverageCookingTime());
+        recipe.addCookingTime(100);
+        assertEquals("Time: 00h 00m 55s", recipe.getAverageCookingTime());
+        recipe.addCookingTime(-10);
+        assertEquals("Time: 00h 00m 55s", recipe.getAverageCookingTime());
+        recipe.addCookingTime(0);
+        assertEquals("Time: 00h 00m 36s", recipe.getAverageCookingTime());
+    }//end testAverageCookingTime
+
+    @Test
+    public void testDifficultyRating() {
+        Recipe recipe = new Recipe("fish and chips");
+        //testEmptyList
+        assertEquals("Difficulty: -", recipe.getDifficultyRating());
+
+        recipe.addDifficultyRating(1.0);
+        assertEquals("Difficulty: 1.00", recipe.getDifficultyRating());
+        recipe.addDifficultyRating(6.0);
+        assertEquals("Difficulty: 3.50", recipe.getDifficultyRating());
+        recipe.addDifficultyRating(-1.0);
+        assertEquals("Difficulty: 3.50", recipe.getDifficultyRating());
+        recipe.addDifficultyRating(0);
+        assertEquals("Difficulty: 2.33", recipe.getDifficultyRating());
+    }//end testDifficultyRating
+
+    @Test
+    public void testTasteRating() {
+        Recipe recipe = new Recipe("fish taco");
+        //testEmptyList
+        assertEquals("Taste: -", recipe.getTasteRating());
+
+        recipe.addTasteRating(1.0);
+        assertEquals("Taste: 1.00", recipe.getTasteRating());
+        recipe.addTasteRating(6.0);
+        assertEquals("Taste: 3.50", recipe.getTasteRating());
+        recipe.addTasteRating(-1.0);
+        assertEquals("Taste: 3.50", recipe.getTasteRating());
+        recipe.addTasteRating(0);
+        assertEquals("Taste: 2.33", recipe.getTasteRating());
+    }//end testTasteRating
+
+    @Test
+    public void testRating()
+    {
+        Recipe recipe = new Recipe("fish taco");
+        //testEmptyList
+        assertEquals(0.0, recipe.getRating());
+
+        recipe.addTasteRating(1.0);
+        recipe.addDifficultyRating(3.0);
+        assertEquals(2.0, recipe.getRating());
+
+        recipe.addTasteRating(0.2);
+        recipe.addDifficultyRating(0.4);
+        assertEquals(1.15, recipe.getRating());
+
+        //reserve two decimal places
+        recipe.addTasteRating(1.222);
+        recipe.addDifficultyRating(3.444);
+        assertEquals(1.54, recipe.getRating());
+    }//end testRating
+
+    @Test
+    public void testObjectEquals()
+    {
+        Recipe recipe = new Recipe("beef noodle");
+        Recipe recipeNew = new Recipe("chicken soup");
+        Recipe recipeSameID = new Recipe(recipe.getId());
+
+        //boolean equals
+        assertTrue(recipe.equals(recipeSameID));
+        assertTrue(!recipe.equals(recipeNew));
+    }
+    @Test
+    public void testNullArgument()
+    {
+        Recipe recipe1;
+        Recipe recipe2 = new Recipe("recipe");
+
+        try
+        {
+            recipe1 = new Recipe(null);
+            fail("Wanted an exception for null input.");
+        }
+        catch (NullPointerException e)
+        {
+            // this is expected
+        }
+
+        try
+        {
+            recipe2.setName(null);
+            fail("Wanted an exception for null input.");
+        }
+        catch (NullPointerException e)
+        {
+            // this is expected
+        }
+
+    }
+
+    @Test
+    public void testEmptyArgument()
+    {
+        Recipe recipe1;
+        Recipe recipe2 = new Recipe("recipe");
+        try
+        {
+            recipe1 = new Recipe("");
+            fail("Wanted an illegal argument exception for empty input.");
+        }
+        catch (IllegalArgumentException e)
+        {
+            // this is expected
+        }
+
+        try
+        {
+            recipe1 = new Recipe(" ");
+            fail("Wanted an illegal argument exception for empty input.");
+        }
+        catch (IllegalArgumentException e)
+        {
+            // this is expected
+        }
+
+        try
+        {
+            recipe1 = new Recipe("       ");
+            fail("Wanted an illegal argument exception for empty input.");
+        }
+        catch (IllegalArgumentException e)
+        {
+            // this is expected
+        }
+
+        try
+        {
+            recipe2.setName("");
+            fail("Wanted an exception for illegal input.");
+        }
+        catch (IllegalArgumentException e)
+        {
+            // this is expected
+        }
+
+        try
+        {
+            recipe2.setName(" ");
+            fail("Wanted an exception for illegal input.");
+        }
+        catch (IllegalArgumentException e)
+        {
+            // this is expected
+        }
+
+        try
+        {
+            recipe2.setName("   ");
+            fail("Wanted an exception for illegal input.");
+        }
+        catch (IllegalArgumentException e)
+        {
+            // this is expected
+        }
+    }
+
 }

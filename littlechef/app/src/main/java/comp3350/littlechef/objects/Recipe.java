@@ -84,7 +84,9 @@ public class Recipe implements Serializable
 
     public void addInstructions(String instruction, String subInstruction)
     {
-        instructions.add(new String[]{instruction, subInstruction});
+        if(instruction != subInstruction) {
+            instructions.add(new String[]{instruction, subInstruction});
+        }
     }
 
     public ArrayList<Integer> getCookingTimes()
@@ -120,6 +122,7 @@ public class Recipe implements Serializable
 
     public void addCookingTime(int totalSeconds)
     {
+        if (totalSeconds >= 0)
         cookingTimes.add(totalSeconds);
     }
 
@@ -152,6 +155,7 @@ public class Recipe implements Serializable
 
     public void addDifficultyRating(double rating)
     {
+        if(rating >= 0)
         difficultyRatings.add(rating);
     }
 
@@ -174,16 +178,22 @@ public class Recipe implements Serializable
 
     public void addTasteRating(double rating)
     {
+        if(rating >= 0)
         tasteRatings.add(rating);
     }
 
     //returns average rating, which an average of difficulty and taste ratings
     public double getRating()
     {
+        double rating;
+        String result;
         double averageDifficulty = calcAverage(difficultyRatings);
         double averageTaste = calcAverage(tasteRatings);
 
-        return (averageDifficulty+averageTaste)/2;
+        rating = (averageDifficulty+averageTaste)/2;
+        result = String.format(Locale.CANADA, "%.2f", rating);
+        return Double.parseDouble(result);
+
     }
 
     public String getRatingString()
