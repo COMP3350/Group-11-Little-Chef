@@ -224,7 +224,7 @@ In attendance: Brad, Denys, Dylan, Kajal, Wen
 -(more GUI and functionality testing, polishing and fixing found mistakes and inconsistencies; 40 mins, Tuesday,July 12, 2022)
 -(Added outstanding issues and major changes sections to the readme; 20 mins, Tuesday,July 12, 2022)
 -(Final Review of the code, polishing of code; 1,5 hrs, Tuesday, July 12, 2022)
-
+- (Fixing DB's ability to put default recipes on the first startup; 4 hrs, Tuesday, July 12, 2022)
 ---
 ---
 
@@ -250,6 +250,7 @@ In attendance: Brad, Denys, Dylan, Kajal, Wen
 - (Read HSQL documentation guide, got jar file working, designed DB and wrote the sql script for the tables, 3hrs, July 9)
 - (fixed the persistence access files to align with the db, bug fixed DB, 5.5hr, July 10)
 - (fixed more DB bugs, did DB tests 3hr, Jul 11)
+- (Fixing DB's ability to put default recipes on the first startup; 4 hrs, July 12)
 
 ---
 ---
@@ -332,6 +333,7 @@ In attendance: Brad, Denys, Dylan, Kajal, Wen
 - (Fix Recipe class, avoid negative number when input time/amount etc. Also add an upper boundary for input number. Rewrite Recipe test file; 12 hours, July 11)
 - (Communicate with Dylan for the Database class, how to rewrite tests; 1 hour, July 11)
 - (Got help from Kajal and Dylan about push/pull conflict problems; 20 mins, July 11)
+- (Fixing DB's ability to put default recipes on the first startup; 4 hrs, July 12)
 
 
 >>>DESIGN DECISIONS AND RATIONALE
