@@ -13,18 +13,26 @@
 - application.Main.java
 - application.Services.java
 - business.AccessRecipes.java
+- business.DecimalFractionConversion.java
 - business.ScaleRecipe.java
+- business.TimeRecipe.java
 - objects.Ingredient.java
 - objects.Recipe.java
-- persistence.DataAccessStub.java
+- persistence.DataAccess.java
+- persistence.DataAccessObject.java
+- presentation.AddFragment.java
+- presentation.AddRecipeActivity.java
+- presentation.CookedAnotherMealActivity.java
 - presentation.DetailedRecipeActivity.java
 - presentation.HomeActivity.java
 - presentation.ViewFragment.java 
 - presentation.Messages.java
+- presentation.RateRecipyActivity.java
+- presentation.RecipeInstructionActivity.java
 
 
 ### URL TO GIT REPO
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+the link was sent to the professor
 
 ### The Log
 
@@ -41,7 +49,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 - Design Decisions and Rationale
 
 ### Big Picture Overview
-Currently our app allows a user to hold a list of thier recipes with included ingredients and instruction set. A user will also be able to adjust the measurements of each ingredient by how many servings they wish to make, from 1 up to 7 servings. This app also allows the user to time their meals so they can get a reference for how long each meal will take to prepare. Once the meal is made a user can then rate the meal so they can reference this if they choose to make the meal again. The app allows the user to add whatever recipes they choose very easily. 
+Currently our app allows a user to hold a list of their recipes with included ingredients and instruction set. A user will also be able to adjust the measurements of each ingredient by how many servings they wish to make, from 1 up to 7 servings. This app also allows the user to time their meals so they can get a reference for how long each meal will take to prepare. Once the meal is made a user can then rate the meal so they can reference this if they choose to make the meal again. The app allows the user to add whatever recipes they choose very easily. 
 
 ### Overview of the features
 
@@ -57,7 +65,7 @@ Currently our app allows a user to hold a list of thier recipes with included in
 **Overview**: You can use a drop-down menu to adjust the serving size of the recipe you are viewing. The quantity and unit (if applicable) of each ingredient in the recipe will be adjusted to reflect the new serving size. For instance, if 1 serving of a given recipe calls for 250 ml of Milk needed, then if "2 servings" is chosen, the amount shown will be changed to 0.5, and the measurement will be l - which stands for litres).
 **Where to find it**: Start on the Recipe screen. Click on the title of any recipe. A new page will open up, showing you the ingredients in the recipe. A button on the top right corner is labelled ‘1 serving’. If you click the button, a drop-down menu will show up where you can select the new serving size. 
 	
-**Note**: the functional bottom navigation menu has three buttons: "Recipes", "Add Recipe", and "Meal Plans". You can use all three buttons to switch between activities. However, "Add Recipe" and "Meal Plans" will be blank pages because they have not been implemented yet. They are needed now to show the functionality of the navigation menu. The AddFragment.java, MealsFragment.java and their respective .xml files were created to support this. In the future, iterations "Add recipe" will allow creating and adding the recipes to a database and "Meal Plans" will allow scheduling of created recipes.
+**Note**: the functional bottom navigation menu has three buttons: "Recipes", "Add Recipe", and "Meal Plans". You can use only two of the buttons("Recipes", "Add Recipe") to switch between activities. "Meal Plans" will be implemented in the future iteration and for now, if pressed it notifies user that it is a work in progress. All three buttons, however, are needed now to show the functionality of the navigation menu. In the future iterations "Meal Plans" will allow scheduling of created recipes.
 
 ### This App was tested on the following devices:
 1.  	- Android Systems: Android 6.0 Google APIs|x86 (Marshmallow)
@@ -66,7 +74,7 @@ Currently our app allows a user to hold a list of thier recipes with included in
 
 2.  	- Android Systems: Android 6.0 Google APIs|x86 (Marshmallow)
     	- Emulator: Nexus 7 API 23
-    	- Hardware: Windows 10, GPU: NVIDIA GeFrce GTX 690M, 16gb RAM, CPU: Intel(R) Core(TM) i7-6700HQ CPU
+    	- Hardware: Windows 10, GPU: NVIDIA GeForce GTX 690M, 16gb RAM, CPU: Intel(R) Core(TM) i7-6700HQ CPU
 
 
 3.  	- Android Systems: Android 6.0 Google APIs|x86 (Marshmallow)
