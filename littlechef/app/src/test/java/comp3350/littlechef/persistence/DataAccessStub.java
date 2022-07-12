@@ -254,8 +254,7 @@ public class DataAccessStub implements DataAccess
                 "(Chilled water isn't cold enough - you want cold water with lots of ice cubes floating in it.) " +
                 "If you're planning to peel the eggs, crack them slightly before putting them in the ice water and let them sit for an hour for maximum ease of peeling.";
         recipe.addInstructions(instruction, subInstruction);
-
-        recipes.add(recipe); // added guac
+        recipes.add(recipe);
 
         recipe = new Recipe("Pancakes");
         recipe.addIngredient(new Ingredient("All-purpose Flour", CUP, 1.5));
@@ -266,7 +265,15 @@ public class DataAccessStub implements DataAccess
         recipe.addIngredient(new Ingredient("Egg", QUANTITY, 1));
         recipe.addIngredient(new Ingredient("Melted Butter", TABLESPOON, 2));
 
-        recipes.add(recipe); // added pancakes
+        //adding instructions
+        instruction = "Whisk banana, eggs, almond flour, almond butter, vanilla extract, cinnamon, baking soda, and baking powder together in a bowl until batter is smooth.";
+        subInstruction = "";
+        recipe.addInstructions(instruction,subInstruction);
+
+        instruction = "Heat olive oil on a griddle or skillet over medium-high heat. Drop batter by large spoonfuls onto the griddle and cook until bubbles form and the edges are dry, 3 to 4 minutes. Flip and cook until browned on the other side, 2 to 3 minutes. Repeat with remaining batter.";
+        subInstruction = "";
+        recipe.addInstructions(instruction, subInstruction);
+        recipes.add(recipe);
 
         recipe = new Recipe("Chili");
         recipe.addIngredient(new Ingredient("Olive Oil", TABLESPOON, 1));
@@ -298,8 +305,7 @@ public class DataAccessStub implements DataAccess
                 "Add more masa paste and/or water to get the chili to your preferred consistency, or to add more corn flavor. " +
                 "Add the beans and simmer for 10 minutes. Serve with shredded Cheddar, chopped onions, tortilla chips and lime wedges.";
         recipe.addInstructions(instruction, subInstruction);
-
-        recipes.add(recipe); // added chilli
+        recipes.add(recipe);
 
         recipe = new Recipe("Chicken Wrap");
         recipe.addIngredient(new Ingredient("Grilled Chicken Breasts copped", CUP, 2));
@@ -316,8 +322,7 @@ public class DataAccessStub implements DataAccess
         instruction = "Heat a heavy-duty pan or grill to medium heat. Coat with a light layer or oil or cooking spray and cook wraps for 1-2 minutes on each side or until the tortilla is crispy and golden. Remove from heat, slice in half and serve immediately.";
         subInstruction = "";
         recipe.addInstructions(instruction, subInstruction);
-
-        recipes.add(recipe); // added chicken wrap
+        recipes.add(recipe);
 
 
         recipe = new Recipe("Pizza");
@@ -433,8 +438,7 @@ public class DataAccessStub implements DataAccess
         instruction = "Bake";
         subInstruction = "Bake pizza in the 475°F oven, one at a time, until the crust is browned and the cheese is golden, about 10 to 15 minutes. If you want, toward the end of the cooking time you can sprinkle on a little more cheese.";
         recipe.addInstructions(instruction, subInstruction);
-
-        recipes.add(recipe); // added pizza
+        recipes.add(recipe);
 
         recipe = new Recipe("Chocolate Chip Cookies");
         recipe.addIngredient(new Ingredient("Softened Butter", CUP, 1));
@@ -501,8 +505,7 @@ public class DataAccessStub implements DataAccess
         instruction = "Enjoy";
         subInstruction = "";
         recipe.addInstructions(instruction, subInstruction);
-
-        recipes.add(recipe); // added cookies
+        recipes.add(recipe);
 
         recipe = new Recipe("Perogies");
         recipe.addIngredient(new Ingredient("All-Purpose Flour", CUP, 2));
@@ -551,8 +554,7 @@ public class DataAccessStub implements DataAccess
         instruction = "Sauté the shallots or onion in the butter in a large skillet until the onion begins to brown. Add the drained pierogi and cook until browned and crisped. Serve hot with additional sour cream, applesauce, or other condiments.";
         subInstruction = "";
         recipe.addInstructions(instruction, subInstruction);
-
-        recipes.add(recipe); // added perogies
+        recipes.add(recipe);
 
         recipe = new Recipe("Perogies");
         recipe.addIngredient(new Ingredient("All-Purpose Flour", CUP, 2));
@@ -590,8 +592,7 @@ public class DataAccessStub implements DataAccess
         instruction = "Cook or Freeze.";
         subInstruction = "Cook the pierogies according to the instructions below.";
         recipe.addInstructions(instruction, subInstruction);
-
-        recipes.add(recipe); // added perogies
+        recipes.add(recipe);
 
         recipe = new Recipe("Grilled Halloumi Salad");
         recipe.addIngredient(new Ingredient("Halloumi Cheese, sliced into ¼ inch thick slices", GRAM, 250));
@@ -629,6 +630,6 @@ public class DataAccessStub implements DataAccess
         instruction = "Serve.";
         subInstruction = "Serve immediately and enjoy!";
         recipe.addInstructions(instruction, subInstruction);
-        recipes.add(recipe); // added salad
+        recipes.add(recipe);
     }
 }
