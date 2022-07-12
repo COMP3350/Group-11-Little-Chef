@@ -518,6 +518,6 @@ public class AccessRecipes
         subInstruction = "Serve immediately and enjoy!";
         recipe.addInstructions(instruction, subInstruction);
 
-        insertRecipe(recipe); // added salad
+        insertRecipe(recipe);
     }
 }

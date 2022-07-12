@@ -3,7 +3,8 @@ import comp3350.littlechef.objects.Recipe;
 import java.util.List;
 import java.util.ArrayList;
 
-public interface DataAccess {
+public interface DataAccess
+{
     public boolean open(String dbPath) ;
     public boolean close();
     public String insertRecipe(Recipe recipe);

@@ -169,12 +169,6 @@ public class RecipeInstructionActivity extends AppCompatActivity
             cookedMealCongrats.putExtra("id", selectedRecipe); //pass the object reference to another activity
             startActivity(cookedMealCongrats);
             finish();
-
-            // a way of coming back to the home activity -> recreates the home activity and therefore recipes are default
-//            Intent i=new Intent(this, HomeActivity.class);
-//            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(i);
-
         }
         else
         {
@@ -205,7 +199,6 @@ public class RecipeInstructionActivity extends AppCompatActivity
         //fixed rate goes by 1000 milliseconds which is 1 second, so for each run execution - passes 1 second of time
         timer.scheduleAtFixedRate(timerTask, 0 , 1000);
     }
-
 
     private void changeStartButton(int textOnButton, int color)
     {

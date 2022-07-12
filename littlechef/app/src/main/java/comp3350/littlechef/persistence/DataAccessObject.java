@@ -9,7 +9,8 @@ import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
 import comp3350.littlechef.objects.Unit;
 
-public class DataAccessObject implements DataAccess {
+public class DataAccessObject implements DataAccess
+{
 
     private String cmd, cmd2;
     private int updateCount;
@@ -27,7 +28,8 @@ public class DataAccessObject implements DataAccess {
     private ArrayList<Recipe> recipes;
     private boolean success;
 
-    public DataAccessObject(String dbName) {
+    public DataAccessObject(String dbName)
+    {
         this.dbName = dbName;
     }
 
@@ -35,7 +37,7 @@ public class DataAccessObject implements DataAccess {
     public boolean open(String dbPath)
     {
         success = false;
-        String url; // Ask Briaco: is it okay to do this?
+        String url;
 
         validatePath(dbPath);
 
@@ -72,10 +74,13 @@ public class DataAccessObject implements DataAccess {
             resultSet = statement.executeQuery(cmdString);
             connection.close();
             success = true;
-        } catch (SQLException se)
+        }
+        catch (SQLException se)
         {
             se.printStackTrace();
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
 
@@ -299,7 +304,8 @@ public class DataAccessObject implements DataAccess {
                 recipes.add(recipe);
             }
             resultSet.close();
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             processSQLError(e);
         }
@@ -311,13 +317,16 @@ public class DataAccessObject implements DataAccess {
     {
         int recipeId;
         result = null;
-        try{
+        try
+        {
             recipeId = recipe.getId();
             cmd = "DELETE FROM RECIPES WHERE RECIPEID ='"+recipeId+"'";
             connection.createStatement().executeUpdate(cmd);
             System.out.println("Deleted successfully.");
             result = checkWarning(statement, updateCount);
-        }catch (Exception e){
+        }
+        catch (Exception e)
+        {
             result = processSQLError(e);
         }
         return result;
@@ -327,7 +336,8 @@ public class DataAccessObject implements DataAccess {
     {
 
         result = null;
-        try{
+        try
+        {
             cmd = "drop table if exists INGREDIENTS;\n" +
                     "drop table if exists INSTRUCTIONS;\n" +
                     "drop table if exists DIFFICULTYRATINGS;\n" +
@@ -346,7 +356,9 @@ public class DataAccessObject implements DataAccess {
             connection.createStatement().executeUpdate(cmd);
             result = checkWarning(statement, updateCount);
             System.out.println("DATABASE RESET SUCCESSFULLY.");
-        }catch (Exception e){
+        }
+        catch (Exception e)
+        {
             result = processSQLError(e);
         }
 

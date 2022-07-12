@@ -57,6 +57,21 @@
         <entry key="..\:/Users/VestH/Desktop/COMP3350/3350GroupPrj/iteration_1/littlechef/app/src/main/res/menu/menu_home.xml" value="0.37083333333333335" />
         <entry key="..\:/Users/VestH/Desktop/COMP3350/3350GroupPrj/iteration_1/littlechef/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.11" />
         <entry key="..\:/Users/VestH/Desktop/COMP3350/3350GroupPrj/iteration_1/littlechef/app/src/main/res/xml/bottom_navigation_selector.xml" value="0.1" />
+        <entry key="..\:/Users/VestH/Desktop/COMP3350/iteration_1/littlechef/app/src/main/res/drawable/bottom_navigation_selector.xml" value="0.195" />
+        <entry key="..\:/Users/VestH/Desktop/COMP3350/iteration_1/littlechef/app/src/main/res/layout/activity_add_recipe.xml" value="0.28489583333333335" />
+        <entry key="..\:/Users/VestH/Desktop/COMP3350/iteration_1/littlechef/app/src/main/res/layout/activity_cooked_another_meal.xml" value="0.28489583333333335" />
+        <entry key="..\:/Users/VestH/Desktop/COMP3350/iteration_1/littlechef/app/src/main/res/layout/activity_detailed_recipe.xml" value="0.28489583333333335" />
+        <entry key="..\:/Users/VestH/Desktop/COMP3350/iteration_1/littlechef/app/src/main/res/layout/activity_home.xml" value="0.28489583333333335" />
+        <entry key="..\:/Users/VestH/Desktop/COMP3350/iteration_1/littlechef/app/src/main/res/layout/activity_rate_recipy.xml" value="0.28489583333333335" />
+        <entry key="..\:/Users/VestH/Desktop/COMP3350/iteration_1/littlechef/app/src/main/res/layout/activity_recipe_instruction.xml" value="0.28489583333333335" />
+        <entry key="..\:/Users/VestH/Desktop/COMP3350/iteration_1/littlechef/app/src/main/res/layout/fragment_add.xml" value="0.28489583333333335" />
+        <entry key="..\:/Users/VestH/Desktop/COMP3350/iteration_1/littlechef/app/src/main/res/layout/fragment_meals.xml" value="0.28489583333333335" />
+        <entry key="..\:/Users/VestH/Desktop/COMP3350/iteration_1/littlechef/app/src/main/res/layout/fragment_view.xml" value="0.28489583333333335" />
+        <entry key="..\:/Users/VestH/Desktop/COMP3350/iteration_1/littlechef/app/src/main/res/layout/ingredient_card.xml" value="0.28489583333333335" />
+        <entry key="..\:/Users/VestH/Desktop/COMP3350/iteration_1/littlechef/app/src/main/res/layout/instruction_card.xml" value="0.28489583333333335" />
+        <entry key="..\:/Users/VestH/Desktop/COMP3350/iteration_1/littlechef/app/src/main/res/layout/recipe_card.xml" value="0.28489583333333335" />
+        <entry key="..\:/Users/VestH/Desktop/COMP3350/iteration_1/littlechef/app/src/main/res/layout/spinner_item.xml" value="0.28489583333333335" />
+        <entry key="..\:/Users/VestH/Desktop/COMP3350/iteration_1/littlechef/app/src/main/res/menu/bottom_nav_menu.xml" value="0.28489583333333335" />
         <entry key="..\:/Users/trans/OneDrive/Documents/GitHub Stuff/iteration_1/littlechef/app/src/main/res/layout/activity_home.xml" value="0.24673202614379086" />
       </map>
     </option>

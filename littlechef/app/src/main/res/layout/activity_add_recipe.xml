@@ -10,17 +10,17 @@
         android:id="@+id/workingRecipeName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30dp"/>
+        android:textSize="30sp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:text="Add for one serving. "/>
 
     <EditText
         android:id="@+id/ingredientName"
         android:layout_width="350dp"
-        android:layout_marginLeft="110dp"
+        android:layout_marginStart="110dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Ingredient name"
@@ -37,14 +37,14 @@
             android:ems="10"
             android:hint="Ingredient amount"
             android:inputType="numberDecimal"
-            android:layout_marginLeft="150dp"
+            android:layout_marginStart="150dp"
             android:digits="0123456789.,"/>
 
         <Spinner
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:id ="@+id/spinnerUnit"
-            android:layout_marginLeft="25dp">
+            android:layout_marginStart="25dp">
         </Spinner>
 
     </LinearLayout>
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:text="Add Ingredient!"
         android:textSize="15sp"
-        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:background="@drawable/round_button"
         android:textColor="@color/black"/>
 
@@ -65,7 +65,7 @@
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:background="@drawable/round_button"
         android:text="Add Instruction!"
         android:textColor="@color/black"
@@ -97,7 +97,4 @@
             android:lines="10"
             android:gravity="top" />
     </com.google.android.material.textfield.TextInputLayout>
-
-
-
 </LinearLayout>

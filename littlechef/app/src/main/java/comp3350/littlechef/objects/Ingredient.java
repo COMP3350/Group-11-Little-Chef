@@ -89,14 +89,20 @@ public class Ingredient implements Serializable
     //this class sets the specific unit metric depending on unit type
     private void setUnitInformation(Unit measurement)
     {
-        if(measurement != null) {
+        if(measurement != null)
+        {
             this.unit = measurement;
 
-            if (this.unit == Unit.PINCH || this.unit == Unit.TSP || this.unit == Unit.TBSP || this.unit == Unit.CUP || this.unit == Unit.ML || this.unit == Unit.L) {
+            if (this.unit == Unit.PINCH || this.unit == Unit.TSP || this.unit == Unit.TBSP || this.unit == Unit.CUP || this.unit == Unit.ML || this.unit == Unit.L)
+            {
                 this.unitType = UnitType.VOLUME;
-            } else if (this.unit == Unit.MG || this.unit == Unit.G || this.unit == Unit.KG) {
+            }
+            else if (this.unit == Unit.MG || this.unit == Unit.G || this.unit == Unit.KG)
+            {
                 this.unitType = UnitType.WEIGHT;
-            } else if (this.unit == Unit.MM || this.unit == Unit.CM || this.unit == Unit.M) {
+            }
+            else if (this.unit == Unit.MM || this.unit == Unit.CM || this.unit == Unit.M)
+            {
                 this.unitType = UnitType.SIZE;
             }
         }

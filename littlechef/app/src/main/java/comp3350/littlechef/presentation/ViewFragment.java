@@ -134,7 +134,5 @@ public class ViewFragment extends Fragment
         difficulty.setText(difficultyRating);
         taste.setText(tasteRating);
         rating.setText(recipe.getRatingString());
-
-
     }
 }

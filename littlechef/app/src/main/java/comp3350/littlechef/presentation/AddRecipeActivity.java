@@ -90,7 +90,8 @@ public class AddRecipeActivity extends AppCompatActivity
         });
 
         //button listener for adding an ingredient to a recipe
-        addIngredientButton.setOnClickListener(new View.OnClickListener() {
+        addIngredientButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view)
             {
@@ -102,7 +103,8 @@ public class AddRecipeActivity extends AppCompatActivity
         });
 
         //button listener for adding an instruction to a recipe
-        addInstructionButton.setOnClickListener(new View.OnClickListener() {
+        addInstructionButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view)
             {

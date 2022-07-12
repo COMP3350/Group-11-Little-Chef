@@ -68,7 +68,8 @@ public class AddFragment extends Fragment
 
 
         //button listener for add recipe
-        addRecipeButton.setOnClickListener(new View.OnClickListener() {
+        addRecipeButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view)
             {

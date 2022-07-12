@@ -10,7 +10,5 @@
         android:id="@+id/recipe_list_view"
         android:drawSelectorOnTop="true"/>
         <!-- android:drawSelectorOnTop="true"   makes a ripple effect when an item is clicked-->
-
 </FrameLayout>
 
-<!--TODO make a gap between each item-->

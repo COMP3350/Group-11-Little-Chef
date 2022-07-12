@@ -84,7 +84,7 @@ public class Recipe implements Serializable
 
     public void addInstructions(String instruction, String subInstruction)
     {
-        if(instruction != subInstruction) {
+        if(!instruction.equals(subInstruction)) {
             instructions.add(new String[]{instruction, subInstruction});
         }
     }
