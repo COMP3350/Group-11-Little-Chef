@@ -78,6 +78,9 @@ Currently our app allows a user to hold a list of their recipes with included in
 **Overview**: On the same page where a user reads instructions, the user can also start cooking or start a timer and the app will track the amount of time the user spends on cooking by the recipe. If the user gets distracted and needs to pause cooking for a bit, the user can stop the timer and then continue cooking when back. The timer can also be restarted by a click of a button, if the restart is pressed, a pop up warning message will come up to make sure the user did not press it unintentionally. Once the user finishes cooking, the stop should be pressed, and the user can press finish then to finish cooking the recipe and be taken to a rating page.
 **Where to find it**: same place where the instructions are found.
 
+6. Add Recipe
+**Overview**: Every Recipe will have ingredients and instructions which can be added through the fragment at the bottom. The user will first need to add the name of the recipe which will then open an activity to add ingredients and instructions to that specific recipe. The text boxes in the add instruction section have been made bigger to allow for more text to be seen, the ingredients text boxes were left smaller since not as much information will inputted. The add ingredient section consists of a spinner where the user can selected the measurement of the ingredient.
+
 ### This App was tested on the following devices:
 1.  	- Android Systems: Android 6.0 Google APIs|x86 (Marshmallow)
     	- Emulator: Nexus 7 API 23
