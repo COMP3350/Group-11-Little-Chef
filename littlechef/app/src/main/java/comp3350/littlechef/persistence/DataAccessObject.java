@@ -86,6 +86,7 @@ public class DataAccessObject implements DataAccess {
     @Override
     public String insertRecipe(Recipe recipe)
     {
+        int recipeID;
         ArrayList<Ingredient> ingredients = recipe.getIngredients();
         ArrayList<String[]> instructions = recipe.getInstructions();
         ArrayList<Integer> cookTimes = recipe.getCookingTimes();
@@ -96,12 +97,17 @@ public class DataAccessObject implements DataAccess {
 
         try
         {
-            values = recipe.getId()
-                    + ",'" + recipe.getName()
+            values = "'" + recipe.getName()
                     + "'";
-            cmd = "INSERT INTO RECIPES " + " VALUES (" + values + ")";
+            cmd = "INSERT INTO RECIPES " + "(NAME)" + " VALUES (" + values + ")";
             updateCount = statement.executeUpdate(cmd);
             result = checkWarning(statement, updateCount);
+            cmd = "CALL IDENTITY()";
+            resultSet = statement.executeQuery(cmd);
+            resultSet.next();
+            recipeID = resultSet.getInt(1);
+            recipe.setId(recipeID);
+
             for(int i = 0; i < instructions.size(); i++)
             {
                 values = "'" + instructions.get(i)[0].replace("'","''")
