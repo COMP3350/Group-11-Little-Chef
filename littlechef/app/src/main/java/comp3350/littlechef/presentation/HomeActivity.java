@@ -165,9 +165,6 @@ public class HomeActivity extends AppCompatActivity
                     out.write(buffer, 0, count);
                     count = in.read(buffer);
                 }
-
-                AccessRecipes accessRecipes = new AccessRecipes();
-                accessRecipes.resetDatabase();
                 out.close();
                 in.close();
             }

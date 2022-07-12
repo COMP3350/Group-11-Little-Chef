@@ -47,6 +47,8 @@ public class ViewFragment extends Fragment
         View view = inflater.inflate(R.layout.fragment_view, container, false);
 
         accessRecipes = new AccessRecipes();
+//        AccessRecipes accessRecipes = new AccessRecipes();
+//        accessRecipes.resetDatabase();
 
         recipeList = new ArrayList<Recipe>();
         String result = accessRecipes.getRecipes(recipeList);
