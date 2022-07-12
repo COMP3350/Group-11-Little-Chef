@@ -37,7 +37,9 @@ public class AccessRecipesTest extends TestCase
     @After
     public void tearDown()
     {
+        accessRecipes.resetDatabase();
         Services.closeDataAccess();
+
         System.out.println("Finished test AccessCourses");
     }
 
@@ -62,7 +64,7 @@ public class AccessRecipesTest extends TestCase
 
         for(int i = 0; i < recipes.size(); i++)
         {
-            System.out.println(">>>>>>>>>>>>>>>>>"+recipes.get(i).getName());
+            System.out.println(">>>>>>>>>>>>>>>>>"+recipes.get(i).getName()+": "+recipes.get(i).getId()+" (id)");
         }
         // get each recipe sequentially
         recipe = accessRecipes.getSequential();
@@ -407,6 +409,7 @@ public class AccessRecipesTest extends TestCase
         assertEquals("a recipe", recipe.getName());
 
         // test getting sequential with only one recipe
+        accessRecipes.resetDatabase();
         deleteEverything();
         recipe = new Recipe("a new recipe");
         accessRecipes.insertRecipe(recipe);
@@ -416,13 +419,13 @@ public class AccessRecipesTest extends TestCase
         assertEquals(recipe.getName(), returnedRecipe.getName());
 
         // get the recipe we just added with id
-        recipe = accessRecipes.getRandom(10);
-        assertEquals(10, recipe.getId());
+        recipe = accessRecipes.getRandom(9);
+        assertEquals(9, recipe.getId());
 
         // update the only recipe
         recipe.setName("Updated recipe");
         assertNull(accessRecipes.updateRecipe(recipe));
-        assertEquals("Updated recipe", accessRecipes.getRandom(10).getName());
+        assertEquals("Updated recipe", accessRecipes.getRandom(9).getName());
 
         // delete the only recipe
         assertNull(accessRecipes.deleteRecipe(recipe));
@@ -498,29 +501,29 @@ public class AccessRecipesTest extends TestCase
         assertEquals(recipe2.getName(), returnedRecipe.getName());
 
         // get the recipe we just added with id
-        recipe = accessRecipes.getRandom(11);
-        assertEquals(11, recipe.getId());
+        recipe = accessRecipes.getRandom(9);
+        assertEquals(9, recipe.getId());
         assertEquals(recipe1.getName(), recipe.getName());
 
-        recipe = accessRecipes.getRandom(12);
-        assertEquals(12, recipe.getId());
+        recipe = accessRecipes.getRandom(10);
+        assertEquals(10, recipe.getId());
         assertEquals(recipe2.getName(), recipe.getName());
 
         // update the both recipes
-        recipe1 = accessRecipes.getRandom(11);
+        recipe1 = accessRecipes.getRandom(9);
         recipe1.setName("updated recipe 1");
         accessRecipes.updateRecipe(recipe1);
-        recipe = accessRecipes.getRandom(11);
+        recipe = accessRecipes.getRandom(9);
         assertEquals("updated recipe 1", recipe.getName());
 
-        recipe2 = accessRecipes.getRandom(12);
+        recipe2 = accessRecipes.getRandom(10);
         recipe2.setName("updated recipe 2");
         accessRecipes.updateRecipe(recipe2);
-        recipe = accessRecipes.getRandom(12);
+        recipe = accessRecipes.getRandom(10);
         assertEquals("updated recipe 2", recipe.getName());
 
         // delete the first recipe only
-        recipe1 = accessRecipes.getRandom(11);
+        recipe1 = accessRecipes.getRandom(9);
         assertNull(accessRecipes.deleteRecipe(recipe1));
         assertNull(accessRecipes.getRecipes(recipes));
         assertEquals(1, recipes.size());
@@ -581,6 +584,7 @@ public class AccessRecipesTest extends TestCase
     {
         Recipe recipe;
         List<Recipe> recipes = new ArrayList<Recipe>();
+        accessRecipes.resetDatabase();
         assertNull(accessRecipes.getRecipes(recipes));
 
         for(int i =0; i <recipes.size(); i++)
@@ -588,6 +592,9 @@ public class AccessRecipesTest extends TestCase
             recipe = recipes.get(i);
             accessRecipes.deleteRecipe(recipe);
         }
+
+        assertNull(accessRecipes.getRecipes(recipes));
+        assertEquals(0, recipes.size());
     }
 
 }

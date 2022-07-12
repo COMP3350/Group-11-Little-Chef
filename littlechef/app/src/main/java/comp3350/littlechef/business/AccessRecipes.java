@@ -137,7 +137,7 @@ public class AccessRecipes
                 "If you're planning to peel the eggs, crack them slightly before putting them in the ice water and let them sit for an hour for maximum ease of peeling.";
         recipe.addInstructions(instruction, subInstruction);
 
-        insertRecipe(recipe);
+        insertRecipe(recipe); // added guac
 
         recipe = new Recipe("Pancakes");
         recipe.addIngredient(new Ingredient("All-purpose Flour", Unit.CUP, 1.5));
@@ -155,7 +155,8 @@ public class AccessRecipes
         instruction = "Heat olive oil on a griddle or skillet over medium-high heat. Drop batter by large spoonfuls onto the griddle and cook until bubbles form and the edges are dry, 3 to 4 minutes. Flip and cook until browned on the other side, 2 to 3 minutes. Repeat with remaining batter.";
         subInstruction = "";
         recipe.addInstructions(instruction, subInstruction);
-        insertRecipe(recipe);
+
+        insertRecipe(recipe); // added pancakes
 
         recipe = new Recipe("Chili");
         recipe.addIngredient(new Ingredient("Olive Oil", Unit.TBSP, 1));
@@ -187,7 +188,8 @@ public class AccessRecipes
                 "Add more masa paste and/or water to get the chili to your preferred consistency, or to add more corn flavor. " +
                 "Add the beans and simmer for 10 minutes. Serve with shredded Cheddar, chopped onions, tortilla chips and lime wedges.";
         recipe.addInstructions(instruction, subInstruction);
-        insertRecipe(recipe);
+
+        insertRecipe(recipe); // added chilli
 
         recipe = new Recipe("Chicken Wrap");
         recipe.addIngredient(new Ingredient("Grilled Chicken Breasts copped", Unit.CUP, 2));
@@ -204,7 +206,8 @@ public class AccessRecipes
         instruction = "Heat a heavy-duty pan or grill to medium heat. Coat with a light layer or oil or cooking spray and cook wraps for 1-2 minutes on each side or until the tortilla is crispy and golden. Remove from heat, slice in half and serve immediately.";
         subInstruction = "";
         recipe.addInstructions(instruction, subInstruction);
-        insertRecipe(recipe);
+
+        insertRecipe(recipe); // added chicken wrap
 
         recipe = new Recipe("Pizza");
         recipe.addIngredient(new Ingredient("Active Dry Yeast", Unit.TBSP, 0.5));
@@ -319,8 +322,7 @@ public class AccessRecipes
         subInstruction = "Bake pizza in the 475°F oven, one at a time, until the crust is browned and the cheese is golden, about 10 to 15 minutes. If you want, toward the end of the cooking time you can sprinkle on a little more cheese.";
         recipe.addInstructions(instruction, subInstruction);
 
-        insertRecipe(recipe);
-
+        insertRecipe(recipe); // added pizza
 
         recipe = new Recipe("Chocolate Chip Cookies");
         recipe.addIngredient(new Ingredient("Softened Butter", Unit.CUP, 1));
@@ -387,7 +389,8 @@ public class AccessRecipes
         instruction = "Enjoy";
         subInstruction = "";
         recipe.addInstructions(instruction, subInstruction);
-        insertRecipe(recipe);
+
+        insertRecipe(recipe); // added chocolate chips
 
         recipe = new Recipe("Perogies");
         recipe.addIngredient(new Ingredient("All-Purpose Flour", Unit.CUP, 2));
@@ -436,9 +439,8 @@ public class AccessRecipes
         instruction = "Sauté the shallots or onion in the butter in a large skillet until the onion begins to brown. Add the drained pierogi and cook until browned and crisped. Serve hot with additional sour cream, applesauce, or other condiments.";
         subInstruction = "";
         recipe.addInstructions(instruction, subInstruction);
-        insertRecipe(recipe);
 
-
+        insertRecipe(recipe); // added perogies
 
         recipe = new Recipe("Perogies");
         recipe.addIngredient(new Ingredient("All-Purpose Flour", Unit.CUP, 2));
@@ -474,9 +476,10 @@ public class AccessRecipes
         recipe.addInstructions(instruction, subInstruction);
 
         instruction = "Cook or Freeze.";
-        subInstruction = "Cook the pierogies according to the instructions below.";
+        subInstruction = "Cook the perogies according to the instructions below.";
         recipe.addInstructions(instruction, subInstruction);
-        insertRecipe(recipe);
+
+        insertRecipe(recipe); // added perogies
 
         recipe = new Recipe("Grilled Halloumi Salad");
         recipe.addIngredient(new Ingredient("Halloumi Cheese, sliced into ¼ inch thick slices", Unit.G, 250));
@@ -514,6 +517,7 @@ public class AccessRecipes
         instruction = "Serve.";
         subInstruction = "Serve immediately and enjoy!";
         recipe.addInstructions(instruction, subInstruction);
-        insertRecipe(recipe);
+
+        insertRecipe(recipe); // added salad
     }
 }
