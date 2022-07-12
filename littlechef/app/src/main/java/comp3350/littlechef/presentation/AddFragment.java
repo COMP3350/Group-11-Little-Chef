@@ -33,14 +33,12 @@ import comp3350.littlechef.objects.Recipe;
 //-----------------------------------------
 public class AddFragment extends Fragment
 {
-    String name;
-    Recipe selectedRecipe;
+    String name; //recipe name
 
     EditText recipeInput;
 
     private AccessRecipes accessRecipes;
     private ArrayList<Recipe> recipeList;
-    private ArrayAdapter<Recipe> recipeArrayAdapter;
 
     public AddFragment()
     {
@@ -70,62 +68,22 @@ public class AddFragment extends Fragment
         accessRecipes = new AccessRecipes();
         recipeList = new ArrayList<Recipe>();
         String result = accessRecipes.getRecipes(recipeList);
-        if( result != null)
+        if(result != null)
         {
             Messages.fatalError(getActivity(), result);
         }
-        else
-        {
-            final ListView listView = (ListView) view.findViewById(R.id.existingRecipes);
 
-            recipeArrayAdapter = new ArrayAdapter<Recipe>(getActivity(), android.R.layout.simple_list_item_1, recipeList)
+
+        //button listener for add recipe
+        addRecipeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
             {
-                @Override
-                public View getView(int position, View convertView, ViewGroup parent)
-                {
-                    Recipe recipe = getItem(position);
-                    if (convertView == null)
-                    {
-                        convertView = LayoutInflater.from(getContext()).inflate(R.layout.recipe_card_small, parent, false);
-                    }
-                    TextView name = (TextView) convertView.findViewById(R.id.recipeNameSmall);
-
-                    SpannableString recipeNameFormatted = new SpannableString(recipe.getName());
-                    recipeNameFormatted.setSpan(new UnderlineSpan(), 0, recipeNameFormatted.length(), 0);
-                    recipeNameFormatted.setSpan(new StyleSpan(Typeface.BOLD), 0, recipeNameFormatted.length(), 0);
-
-                    name.setText(recipeNameFormatted);
-
-                    return convertView;
-                }
-            };
-
-            //on recipe click, start activity to add
-            listView.setAdapter(recipeArrayAdapter);
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-                {
-                    selectedRecipe = (Recipe) listView.getItemAtPosition(position);
-
-                    Intent addRecipeActivity = new Intent(getActivity(), AddRecipeActivity.class);
-                    addRecipeActivity.putExtra("id", selectedRecipe); //pass the object reference to another activity
-                    startActivity(addRecipeActivity);
-
-                }
-            });
-
-            //button listener for add recipe
-            addRecipeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view)
-                {
-                    addRecipeClick();
-                    recipeArrayAdapter.notifyDataSetChanged();
-                }
-            });//END LISTVIEW
-        }
+                addRecipeClick();
+            }
+        });//END LISTVIEW
         return view;
+
     }//end onclickview
 
     //when the add recipe button is clicked do this
@@ -143,9 +101,10 @@ public class AddFragment extends Fragment
             result = accessRecipes.insertRecipe(newRecipe);
             if(result == null)
             {
-                accessRecipes.getRecipes(recipeList);
-                recipeArrayAdapter.notifyDataSetChanged();
-                Toast.makeText(getContext(), newRecipe.getName()+" added to recipes!", Toast.LENGTH_SHORT).show();
+                //launch new activity to add instructions/ingredients
+                Intent addRecipeActivity = new Intent(getActivity(), AddRecipeActivity.class);
+                addRecipeActivity.putExtra("id", newRecipe); //pass the object reference to another activity
+                startActivity(addRecipeActivity);
 
             }
             else
