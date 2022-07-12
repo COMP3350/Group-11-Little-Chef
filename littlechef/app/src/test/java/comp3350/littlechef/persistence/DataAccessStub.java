@@ -194,7 +194,8 @@ public class DataAccessStub implements DataAccess
     {
         result = null;
 
-        if(connectionOpen) {
+        if(connectionOpen)
+        {
             recipes.clear();
         }
         else

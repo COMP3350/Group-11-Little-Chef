@@ -3,9 +3,6 @@ import junit.framework.TestCase;
 import org.junit.Test;
 import java.util.ArrayList;
 
-import comp3350.littlechef.R;
-import comp3350.littlechef.presentation.CookedAnotherMealActivity;
-
 public class RecipeTest extends TestCase
 {
 

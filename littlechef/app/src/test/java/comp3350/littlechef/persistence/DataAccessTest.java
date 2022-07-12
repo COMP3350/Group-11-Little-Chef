@@ -1,23 +1,15 @@
 package comp3350.littlechef.persistence;
 
-import android.provider.ContactsContract;
-
 import junit.framework.TestCase;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-
-// might not need
 import java.util.ArrayList;
 import java.util.List;
 
 import comp3350.littlechef.application.Main;
-import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
-import comp3350.littlechef.objects.Unit;
 
 public class DataAccessTest extends TestCase
 {
