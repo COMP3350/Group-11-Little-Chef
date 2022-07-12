@@ -91,6 +91,8 @@ The app will show a list of all the recipes on the homepage. You can also see ea
 Our group made no significant changes to the code's structure or system's behaviour. All the changes made were the system's extensions in Iteration 1 in terms of functionality and addition of the real DataBase.
 
 ### Outstanding issues or bugs:
+- Currently the database will not have any default recipes stored in the list. The user must manually enter all recipes they wish to store. This is because we were unable to find the issue that was preventing the default values from being entered on first startup of the app. We will fix this issue in the next iteration.
+
 - A recipe is moved to the end of the list of recipes if the estimated recipe time is updated or the recipe is rated. This is because updates are implemented as reinsertion in our Database. We will fix this issue in the next iteration by implementing the database update functionality to update rather than reinsert a recipe.
 - You cannot cancel adding a recipe. Once you press the add recipe button, a recipe will be created with whatever information you enter. We will fix this issue in the next iteration by adding an exit button. The recipe will not be added if the user goes back to the previous page. The recipe will only be added is the user presses the 'submit recipe' button. 
 
