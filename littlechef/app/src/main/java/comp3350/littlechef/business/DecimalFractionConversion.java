@@ -1,6 +1,6 @@
 package comp3350.littlechef.business;
 
-public class FractionDecimalConversion
+public class DecimalFractionConversion
 {
 
     public static String convertDecimalToFraction(double numberToConvert)

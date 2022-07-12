@@ -10,10 +10,8 @@ import java.util.List;
 
 import comp3350.littlechef.application.Services;
 import comp3350.littlechef.application.Main;
-import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.objects.Recipe;
 import comp3350.littlechef.persistence.DataAccess;
-import comp3350.littlechef.persistence.DataAccessObject;
 import comp3350.littlechef.persistence.DataAccessStub;
 
 public class AccessRecipesTest extends TestCase
@@ -61,10 +59,6 @@ public class AccessRecipesTest extends TestCase
         assertEquals("Perogies", recipes.get(7).getName());
         assertEquals("Grilled Halloumi Salad", recipes.get(8).getName());
 
-        for(int i = 0; i < recipes.size(); i++)
-        {
-            System.out.println(">>>>>>>>>>>>>>>>>"+recipes.get(i).getName()+": "+recipes.get(i).getId()+" (id)");
-        }
         // get each recipe sequentially
         recipe = accessRecipes.getSequential();
         assertEquals("Guacamole", recipe.getName());

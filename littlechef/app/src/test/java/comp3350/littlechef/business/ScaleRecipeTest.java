@@ -11,8 +11,12 @@ import comp3350.littlechef.objects.Unit;
 public class ScaleRecipeTest extends TestCase
 {
 
+    public ScaleRecipeTest(String arg0) {
+        super(arg0);
+    }
+
     @Test
-    public void testScaleRecipeSimple()
+    public void testTypicalCases()
     {
         Recipe recipe = new Recipe(1000);
         recipe.addIngredient(new Ingredient("ingr0", Unit.G, 0.25));

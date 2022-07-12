@@ -3,7 +3,7 @@ package comp3350.littlechef;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import comp3350.littlechef.business.FractionDecimalConversionTest;
+import comp3350.littlechef.business.DecimalFractionConversionTest;
 import comp3350.littlechef.business.ScaleRecipeTest;
 import comp3350.littlechef.objects.IngredientTest;
 import comp3350.littlechef.objects.RecipeTest;
@@ -29,7 +29,7 @@ public class AllTests extends TestCase
 
     private static void tBusiness()
     {
-        suite.addTestSuite(FractionDecimalConversionTest.class);
+        suite.addTestSuite(DecimalFractionConversionTest.class);
         suite.addTestSuite(ScaleRecipeTest.class);
     }
 }

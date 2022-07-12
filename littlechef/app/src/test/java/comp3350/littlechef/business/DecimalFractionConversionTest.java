@@ -1,14 +1,18 @@
 package comp3350.littlechef.business;
 
-import static comp3350.littlechef.business.FractionDecimalConversion.convertDecimalToFraction;
+import static comp3350.littlechef.business.DecimalFractionConversion.convertDecimalToFraction;
 import junit.framework.TestCase;
 import org.junit.Test;
 
-public class FractionDecimalConversionTest extends TestCase
+public class DecimalFractionConversionTest extends TestCase
 {
 
+    public DecimalFractionConversionTest(String arg0) {
+        super(arg0);
+    }
+
     @Test
-    public void testFractionDecimalConversionSimple()
+    public void testTypicalCases()
     {
         assertEquals("1/8", convertDecimalToFraction(0.125));
         assertEquals("3/5", convertDecimalToFraction(0.6));
