@@ -79,7 +79,7 @@ Currently our app allows a user to hold a list of their recipes with included in
 **Where to find it**: same place where the instructions are found.
 
 6. Add Recipe
-**Overview**: Every Recipe will have ingredients and instructions which can be added through the fragment at the bottom. The user will first need to add the name of the recipe which will then open an activity to add ingredients and instructions to that specific recipe. The text boxes in the add instruction section have been made bigger to allow for more text to be seen, the ingredients text boxes were left smaller since not as much information will inputted. The add ingredient section consists of a spinner where the user can selected the measurement of the ingredient.
+**Overview**: Every Recipe will have ingredients and instructions which can be added through the add recipe fragment at the bottom menu bar. The user will first need to add the name of the recipe which will then open an activity to add ingredients and instructions to that specific recipe. The text boxes in the add instruction section have been made bigger to allow for more text to be seen, the ingredients text boxes were left smaller since not as much information will be inputted. The add ingredient section consists of a spinner where the user can selected the measurement of the ingredient. Once the user is finished adding the information they can go back to where the full recipe will be stored.
 
 ### This App was tested on the following devices:
 1.  	- Android Systems: Android 6.0 Google APIs|x86 (Marshmallow)
