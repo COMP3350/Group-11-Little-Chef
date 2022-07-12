@@ -3,6 +3,7 @@ package comp3350.littlechef.presentation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,24 +84,32 @@ public class AddFragment extends Fragment
         //create recipe only with name
         name = recipeInput.getText().toString();
         String result;
-        Recipe newRecipe = new Recipe( name );
+        //Recipe newRecipe = new Recipe(name );
 
-        result = validateRecipeName(newRecipe);
-
+        result = checkEmpty(recipeInput);
         if(result == null)
         {
-            result = accessRecipes.insertRecipe(newRecipe);
-            if(result == null)
+            Recipe newRecipe = new Recipe(name );
+            result = validateRecipeName(newRecipe);
+            if (result == null)
             {
-                //launch new activity to add instructions/ingredients
-                Intent addRecipeActivity = new Intent(getActivity(), AddRecipeActivity.class);
-                addRecipeActivity.putExtra("id", newRecipe); //pass the object reference to another activity
-                startActivity(addRecipeActivity);
+                result = accessRecipes.insertRecipe(newRecipe);
+                if (result == null)
+                {
+                    //launch new activity to add instructions/ingredients
+                    Intent addRecipeActivity = new Intent(getActivity(), AddRecipeActivity.class);
+                    addRecipeActivity.putExtra("id", newRecipe); //pass the object reference to another activity
+                    startActivity(addRecipeActivity);
 
+                }
+                else
+                {
+                    Messages.fatalError(getActivity(), result);
+                }
             }
             else
             {
-                Messages.fatalError(getActivity(), result);
+                Messages.warning(getActivity(), result);
             }
         }
         else
@@ -110,13 +119,17 @@ public class AddFragment extends Fragment
 
     }
 
+
+    private String checkEmpty(EditText editText)
+    {
+        if(editText.getText().toString().equals(""))
+            return "Recipe name required";
+
+        return null;
+    }
     //Validate the recipe
     private String validateRecipeName(Recipe recipeAdd)
     {
-        if (recipeAdd.getName().length() == 0)
-        {
-            return "Recipe name required";
-        }
         //check through all recipes for duplicats
         if (checkDuplicates(recipeAdd))
         {

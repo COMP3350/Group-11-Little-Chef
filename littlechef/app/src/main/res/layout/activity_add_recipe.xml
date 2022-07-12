@@ -31,8 +31,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Ingredient amount"
-            android:inputType="number"
-            android:layout_marginLeft="150dp"/>
+            android:inputType="numberDecimal"
+            android:layout_marginLeft="150dp"
+            android:digits="0123456789.,"/>
 
         <Spinner
             android:layout_width="150dp"

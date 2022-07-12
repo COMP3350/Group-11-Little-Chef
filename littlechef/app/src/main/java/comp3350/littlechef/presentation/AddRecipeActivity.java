@@ -151,10 +151,10 @@ public class AddRecipeActivity extends AppCompatActivity
         String result;
         nameIngred = ingredientInputName.getText().toString();
         amountIngred = ingredientInputAmount.getText().toString();
-        int amount;
+        double amount;
         try
         {
-            amount = Integer.parseInt(amountIngred);
+            amount = Double.parseDouble(amountIngred);
         }
         catch(Exception e)
         {
