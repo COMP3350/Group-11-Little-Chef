@@ -1,5 +1,7 @@
 package comp3350.littlechef.presentation;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -84,32 +86,41 @@ public class AddFragment extends Fragment
         //create recipe only with name
         name = recipeInput.getText().toString();
         String result;
-        //Recipe newRecipe = new Recipe(name );
-
         result = checkEmpty(recipeInput);
         if(result == null)
         {
             Recipe newRecipe = new Recipe(name );
-            result = validateRecipeName(newRecipe);
+            result = validateRecipeName(newRecipe);//checks if already exists
             if (result == null)
             {
-                result = accessRecipes.insertRecipe(newRecipe);
-                if (result == null)
-                {
-                    //launch new activity to add instructions/ingredients
-                    Intent addRecipeActivity = new Intent(getActivity(), AddRecipeActivity.class);
-                    addRecipeActivity.putExtra("id", newRecipe); //pass the object reference to another activity
-                    startActivity(addRecipeActivity);
-
-                }
-                else
-                {
-                    Messages.fatalError(getActivity(), result);
-                }
+                insertRecipe(newRecipe);
             }
             else
             {
-                Messages.warning(getActivity(), result);
+                //return recipeAdd.getName() + " already exists.";
+                AlertDialog.Builder resetAlert = new AlertDialog.Builder(getActivity());
+                resetAlert.setTitle("Duplicate Recipe Name");
+                resetAlert.setMessage("Do you want to add anyway?");
+
+                resetAlert.setPositiveButton("Continue", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        insertRecipe(newRecipe);
+                    }
+                });
+
+                resetAlert.setNeutralButton("Cancel", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        //do nothing
+                    }
+                });
+
+                resetAlert.show();
             }
         }
         else
@@ -117,6 +128,27 @@ public class AddFragment extends Fragment
             Messages.warning(getActivity(), result);
         }
 
+    }
+    private void insertRecipe(Recipe newRecipe)
+    {
+        String result;
+        result = accessRecipes.insertRecipe(newRecipe);
+        if (result == null)
+        {
+            //launch new activity to add instructions/ingredients
+            launchAddActivity(newRecipe);
+        }
+        else
+        {
+            Messages.fatalError(getActivity(), result);
+        }
+    }
+
+    private void launchAddActivity(Recipe newRecipe)
+    {
+        Intent addRecipeActivity = new Intent(getActivity(), AddRecipeActivity.class);
+        addRecipeActivity.putExtra("id", newRecipe); //pass the object reference to another activity
+        startActivity(addRecipeActivity);
     }
 
 
