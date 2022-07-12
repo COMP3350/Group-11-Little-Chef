@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,7 +96,6 @@ public class AddFragment extends Fragment
             }
             else
             {
-                //return recipeAdd.getName() + " already exists.";
                 AlertDialog.Builder resetAlert = new AlertDialog.Builder(getActivity());
                 resetAlert.setTitle("Duplicate Recipe Name");
                 resetAlert.setMessage("Do you want to add anyway?");
