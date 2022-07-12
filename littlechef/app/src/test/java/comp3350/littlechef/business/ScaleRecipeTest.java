@@ -168,10 +168,10 @@ public class ScaleRecipeTest extends TestCase
         assertEquals(Unit.TBSP,ingredients.get(1).getMeasurement());
         assertEquals(Unit.CUP,ingredients.get(2).getMeasurement());
         assertEquals(Unit.G,ingredients.get(3).getMeasurement());
-        assertEquals("kg",ingredients.get(4).getMeasurement());
+        assertEquals(Unit.KG,ingredients.get(4).getMeasurement());
         assertEquals(Unit.CM,ingredients.get(5).getMeasurement());
-        assertEquals("m",ingredients.get(6).getMeasurement());
-        assertEquals("l",ingredients.get(7).getMeasurement());
+        assertEquals(Unit.M,ingredients.get(6).getMeasurement());
+        assertEquals(Unit.L,ingredients.get(7).getMeasurement());
     }
 
     @Test
@@ -215,7 +215,7 @@ public class ScaleRecipeTest extends TestCase
         assertEquals(2.0,ingredients.get(1).getAmount());
 
         assertEquals(Unit.CUP,ingredients.get(0).getMeasurement());
-        assertEquals("m",ingredients.get(1).getMeasurement());
+        assertEquals(Unit.M,ingredients.get(1).getMeasurement());
 
     }
 
@@ -302,10 +302,10 @@ public class ScaleRecipeTest extends TestCase
         assertEquals(Unit.TBSP,ingredients.get(1).getMeasurement());
         assertEquals(Unit.CUP,ingredients.get(2).getMeasurement());
         assertEquals(Unit.G,ingredients.get(3).getMeasurement());
-        assertEquals("kg",ingredients.get(4).getMeasurement());
+        assertEquals(Unit.KG,ingredients.get(4).getMeasurement());
         assertEquals(Unit.CM,ingredients.get(5).getMeasurement());
-        assertEquals("m",ingredients.get(6).getMeasurement());
-        assertEquals("l",ingredients.get(7).getMeasurement());
+        assertEquals(Unit.M,ingredients.get(6).getMeasurement());
+        assertEquals(Unit.L,ingredients.get(7).getMeasurement());
 
     }
 

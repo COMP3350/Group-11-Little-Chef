@@ -22,7 +22,7 @@ public class AllTests extends TestCase
 
         tBusiness();
         tObjects();
-        tPersistance();
+        tPersistence();
 
         return suite;
     }
@@ -41,7 +41,7 @@ public class AllTests extends TestCase
         suite.addTestSuite(RecipeTest.class);
     }
 
-    private static void tPersistance()
+    private static void tPersistence()
     {
         suite.addTestSuite(DataAccessTest.class);
     }
