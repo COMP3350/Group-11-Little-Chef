@@ -57,6 +57,7 @@ public class AddRecipeActivity extends AppCompatActivity
         workingRecipeName.setText("Add Ingredients and steps to "+selectedRecipe.getName());
         Button addIngredientButton= (Button) findViewById(R.id.addIngredientButton);
         Button addInstructionButton= (Button) findViewById(R.id.addInstructionButton);
+        Button finishAddingButton= (Button) findViewById(R.id.finishAdding);
 
         //Get input from text fields
         ingredientInputName = (EditText) findViewById(R.id.ingredientName);
@@ -112,6 +113,18 @@ public class AddRecipeActivity extends AppCompatActivity
                 //clear fields
                 instructionInput.getText().clear();
                 instructionInputSteps.getText().clear();
+            }
+        });
+
+        //button to go back to the main activity when finish
+        finishAddingButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                // a way of coming back to the home activity -> recreates the home activity and therefore recipes are default
+                finish();
+
             }
         });
     }

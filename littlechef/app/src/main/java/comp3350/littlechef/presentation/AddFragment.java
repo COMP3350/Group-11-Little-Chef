@@ -107,6 +107,8 @@ public class AddFragment extends Fragment
                     public void onClick(DialogInterface dialog, int which)
                     {
                         insertRecipe(newRecipe);
+                        //then just clear the box once insert is called
+
                     }
                 });
 
@@ -134,6 +136,7 @@ public class AddFragment extends Fragment
         result = accessRecipes.insertRecipe(newRecipe);
         if (result == null)
         {
+
             //launch new activity to add instructions/ingredients
             launchAddActivity(newRecipe);
         }
@@ -145,6 +148,7 @@ public class AddFragment extends Fragment
 
     private void launchAddActivity(Recipe newRecipe)
     {
+        recipeInput.getText().clear();
         Intent addRecipeActivity = new Intent(getActivity(), AddRecipeActivity.class);
         addRecipeActivity.putExtra("id", newRecipe); //pass the object reference to another activity
         startActivity(addRecipeActivity);
