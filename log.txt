@@ -1,51 +1,82 @@
 GROUP 11 LOG
-Last updated June 16, 2022.
----
----
->>>MEETING NOTES
+Last updated July 12, 2022.
 
-(Date
-- In Attendence: our names
-- What we did: )
+---
+---
+
+>>>MEETING NOTES
+Date
+- In Attendance: our names
+- What we did: 
 
 May 16, 2020
-- In attendence: Brad, Denys, Dylan, Kajal, Wen
+- In attendance: Brad, Denys, Dylan, Kajal, Wen
 - What we did: first introductions, brainstormed ideas for our app
 
+
 May 19, 2022
-- In attendence: Brad, Denys, Dylan, Kajal, Wen
-- What we did: creates notes for the vision statement, create big and detailed user stories, planned out tasks for iteration 0.
+- In attendance: Brad, Denys, Dylan, Kajal, Wen
+- What we did: created notes for the vision statement, created big and detailed user stories, planned out tasks for iteration 0.
+
 
 May 25, 2022
-- In attendence: Brad, Denys, Dylan, Kajal, Wen
-- What we did: planned out and assigned developer tasks for iteraiton 1.
+- In attendance: Brad, Denys, Dylan, Kajal, Wen
+- What we did: planned out and assigned developer tasks for iteration 1.
+
 
 June 9, 2022
-- In attendence: Denys, Dylan, Kajal
+- In attendance: Denys, Dylan, Kajal
 - What we did: Reviewed GUI code, split up and discussed dev tasks to do in the near future.
 
+
 June 14, 2022
-- In attendence: Brad, Denys, Dylan, Kajal, Wen
-- What we did: Update the tasks finished so far, clarify unfinished tasks and split them to team members set deadline for new tasks schedule date and time for next meeting.
+- In attendance: Brad, Denys, Dylan, Kajal, Wen
+- What we did: Update the tasks finished so far, clarify unfinished tasks and split them to team members, set deadlines for new tasks, schedule date and time for the next meeting.
+
 
 June 15, 2022
-- In attendence: Brad, Dylan, Kajal, Wen
-- What we did: merged files and resolved conflicts. 
+- In attendance: Brad, Dylan, Kajal, Wen
+- What we did: merged files and resolved conflicts.
+
 
 June 16, 2022
-- In attendence: Brad, Dylan, Denys, Kajal, Wen
-- What we did: finalized the final submission. 
+- In attendance: Brad, Dylan, Denys, Kajal, Wen
+- What we did: finalized the final submission.
+
+
+June 23, 2022
+In attendance: Brad, Denys, Dylan, Wen
+-What we did: Read and analysis iteration 2 description and requirementS, clarified iteration 2 requirements, creates and assigned tasks, set an approximately next meeting time
+
+June 27, 2022
+In attendance: Brad, Denys, Dylan, Kajal, Wen
+-What we did: touched base about progress.
+
+July 4, 2022
+In attendance: Brad, Denys, Dylan, Kajal, Wen
+-What we did: touched base about our progress.
+
+July 11, 2022
+In attendance: Brad, Denys, Dylan, Kajal, Wen
+-What we did: merged files and resolved conflicts.
+
+July 12, 2022
+In attendance: Brad, Denys, Dylan, Kajal, Wen
+-What we did: Finalized the submission.
+
 
 ---
 ---
->>>DEV TASKS 
-(Title; [Assigned To]; [User Story Points]; [Due Date]; Iteration #)
+
+>>>DEV TASKS
+(Title; [Assigned To]; Iteration #; [Due Date]; )
+
+>> Iteration 1
 - (0; A task; a person; 5h; May 23; 0)
-
 - (pick a topic; everyone; iteration 0) ✓
 - (write vision statement; brad; iteration 0) ✓
 - (create 12 big user stories; everyone; iteration 0) ✓
-- (create 5-10 iteration 1 stories; everyone; iteratoin 0)✓
+- (create 5-10 iteration 1 stories; everyone; iteration 0)✓
 - (review iteration 1 stories; everyone; iteration 0)✓
 - (edit, format and compile everything into a submission; Kajal; iteration 0)✓
 - (review iteration 0 submission; everyone; iteration 0)✓
@@ -72,80 +103,160 @@ June 16, 2022
 - (write (at least 3) tests for the UI; Brad; iteration 1)✓
 - (review iteration 1 submission; everyone; iteration 1)✓
 
+>> Iteration 2
+(Title; [Assigned To]; Iteration #; estimated time; Date Finished;)
+- (create a prototype for the add recipe page; Brad and Kajal; iteration 2; 1 days; July 2, 2022)✓
+- (implement the add recipe page; Brad and Wen; iteration 2; 2 days; July 10, 2022 )✓
+- (implement the recipe instructions page; Denys; iteration 2; 2 days;June 30, 2022)✓
+- (implement UI rating; Denys; iteration 2; 1 day; July 5, 2022)✓
+- (implement the timer in the recipe instructions page; Denys; iteration 2; 2 days; July 5, 2022)✓
+- (implement the logic for rating; Denys; iteration 2; 2 days; July 5, 2022)✓
+- (review the database code created by Wen and test it; Denys and Wen; iteration 2; 1 day; July 3)✓
+- (implement the DBservice; Dylan; iteration 2; 2 days; July 7)✓
+- (implement DBaccess (controller); Dylan; iteration 2; 2 days; July 7)✓
+- (test the add recipe page; Kajal and Denys; iteration 2; 1 day; July 7;)✓
+- (test the recipe instructions page; Kajal and Denys; iteration 2; 1 day; July 7)✓
+- (test the the rating; Kajal and Denys; iteration 2; 1 day; July 5)✓
+- (test the timer; Kajal and Denys; iteration 2; 2 days; July 6)✓
+- (test the DBService; Kajal and Denys; iteration 2; 2 days; July 11)✓
+- (test DBaccess; Kajal and Denys; iteration 2; 2 days; July 11)✓
+
 
 ---
 ---
->>>BRAD'S ACTIVTY LOG
-- (activtiy Name; [comment]; amount spent on task)
+
+>>>BRAD'S ACTIVITY LOG
+>>Iteration 1
+- (activity Name; [comment]; amount spent on task)
 
 - (Downloaded installed Android studio; 2 hours)
 - (Played around with the sample project user interface to customize it; 1.5 hour )
 - (Drew a few very basic GUI designs for opening app; 30 mins)
 - (more android studio bugs, not loading correctly; 1.5 hour)
 - (made some basic designs for the add recipe page; 30 mins)
-- (started on detail view implementation; ~3 hours)
-- (finished ingredients/detailed list view; ~3 hours)
 - (attempted to get the list view working for the recipes did not; 5 hours)
 - (started on detail view implementation; ~3 hours)
 - (finished ingredients/detailed list view; ~3 hours)
 - (went over code for programming standards; 2hrs)
 
+>>Iteration 2
+- (activity Name, Amount spent on task, date finished)
+
+- (started add recipe design on marvel; 1.5 hr, July 1, 2022)
+- (worked on add recipe design on marvel; 1 hr, July 2, 2022)
+- (worked on add recipe, adding blank recipe to database; 1 hr, July 3, 2022)
+- (android studio bugs; 2 hr, July 4, 2022)
+- (add recipe added fields figured out how to get input from user; 4.5 hr, July 5, 2022)
+- (transferred new changes from main to add recipe branch, added buttons disappearing when clicked, create recipe then sending it to database, added listview for selecting existing recipes; 4 hrs, July 6, 2022)
+- (moved listview back to onclick, trying to get validate data to work, completely remade the screen page, moved ingredients to other list, tried to make listview auto refresh; 3hr, July 7, 2022)
+-(got the listview to auto refresh on new entry, worked on inserting duplicates; 1 hr, July 8, 2022)
+- (start added ingredients functionality; 1hr, July 8, 2022)
+- (tried to get input box shift working, added spinner for unit sizes, fixed spinner, fixed add amount bugs, added validate ingredient/instruction, transferred adding ingreds/steps to an activity, addInstruct bug, made listview nicer-ish; 5.5hr, July 9, 2022)
+- (cleaned up code, fixed validate methods ;1 hr, July 10, 2022)
+- (changed GUI a bit, wrote rationales, big picture writing ;1 hr, July 10, 2022)
+- (finished big picture overview ;15 mins, July 11, 2022)
+- (Merged add recipe fixed merging issues ;1.5 hours, July 11, 2022)
+- (removed some unfinished functionality,wrote overview for addRecipe ;2 hours, July 11, 2022)
+- (bug fixes, added dialog box when duplicate recipe; 2.5 hours, July 12, 2022)
+
+
+
 ---
 ---
->>>DENYS' ACTIVTY LOG
-- (activtiy Name; [comment]; amount spent on task)
+
+>>>DENYS' ACTIVITY LOG
+>>Iteration 1
+- (activity Name; [comment]; amount spent on task)
 
 - (edited the vision statement document; 30 mins)
 - (Downloaded, configured and learned how to use Android studio; 2 hrs)
-- (Went over sample project and sucessfully ran it on Android studio; Emulators are so slow :( ; 2 hrs)
+- (Went over a sample project and successfully ran it on Android studio; Emulators are so slow :( ; 2 hrs)
 - (created a template for the project, copied the architecture from the sample project and uploaded everything to gitHub; 30 min)
-- (Created recipe class with all the getters, setters,instance variables, also created logic for rating; 1hr)
+- (created recipe class with all the getters, setters,instance variables, also created logic for rating; 1hr)
 - (more android studio fixing; 1 hr)
-- (Created a activity_home.xml, HomeActivity.java, style.xml, dimens.xml, menu_home.xml and checked if everything works; 1 hr)
-- (Created a stub DB; 1 hr)
+- (created a activity_home.xml, HomeActivity.java, style.xml, dimens.xml, menu_home.xml and checked if everything works; 1 hr)
+- (created a stub DB; 1 hr)
 - (played around with Android Studio GUI editor and learned some basics; 3 hrs)
-- (set color palette for the app with suggested by Kajal colours; 5 min)
-- (Recreated GUI by Kajal's design {created bottom navigation menu and top menu/header} + created view recipes, add recipes and meal plans fragments, and made the navbar 
-functional by making it change the fragment on click (plus nice effects for on click); 5 hrs)
-- (Played a bit more with GUI, especially top/tool/action bar; 1 hr)
-- (Helped a team member to figure out how our GUI works in terms of code and what tools to use in Android Studio to make GUI; 30 mins)
-- (Created Services.java; 30 mins)
-- (Created AccessRecipes.java and added recipeID instance variable to a Recipe class; 1 hr)
-- (Created recipe_card.xml; 1 hr)
-- (Finished version one of a ViewFragment, now it shows up all the recipes present in the stubDB in a nice list using recipe_card.xml; 4 hrs)
-- (Created Messages.java; 10 mins)
-- (Updated Recipe.java with new methods and made ViewFragment.java to show all the info about a recipe in the recipe_card.xml; 1hr)
-- (Created DetailedRecipeActivity.java and detailed_activity_xml and made listView items in ViewFragment be clickable and open detailed_activity_xml on click; 3.5 hrs)
+- (set color palette for the app with suggested by Kajal colors; 5 min)
+- (Recreated GUI by Kajal's design {created bottom navigation menu and top menu/header} + created view recipes, add recipes and meal plans fragments, and made the navbar functional by making it change the fragment on click (plus nice effects for on click); 5 hrs)
+- (played a bit more with GUI, especially top/tool/action bar; 1 hr)
+- (helped a team member to figure out how our GUI works in terms of code and what tools to use in Android Studio to make GUI; 30 mins)
+- (created Services.java; 30 mins)
+- (created AccessRecipes.java and added recipeID instance variable to a Recipe class; 1 hr)
+- (created recipe_card.xml; 1 hr)
+- (finished version one of a ViewFragment, now it shows up all the recipes present in the stubDB in a nice list using recipe_card.xml; 4 hrs)
+- (created Messages.java; 10 mins)
+- (updated Recipe.java with new methods and made ViewFragment.java to show all the info about a recipe in the recipe_card.xml; 1hr)
+- (created DetailedRecipeActivity.java and detailed_activity_xml and made listView items in ViewFragment be clickable and open detailed_activity_xml on click; 3.5 hrs)
 - (added a few visual tweaks to detailed recipe activity and xml, created ingredient_card.xml, got rid of some dead code in ViewFragment.java and also minor tweaks in all xml files related to using sp instead of dp for textViews and other stuff ; 2 hrs)
-- (Made objects serializable to pass them down through activities, fixed necessity of having static fragments in HomeActivity; 1 hr)
+- (made objects serializable to pass them down through activities, fixed necessity of having static fragments in HomeActivity; 1 hr)
 - (created a dropdown button for serving size and connected it to the business layer; 1 hr)
 - (with Kajal connected serving size button to the business layer; 30 mins)
-- (Reviewed the code in branches, resolved the conflicts and merged; 1 hr)
-- (Planned out final set of tasks for iteration 1 deadline; 30 mins)
-- (Created architecture picture and wrote readme.txt, 1 hr)
+- (reviewed the code in branches, resolved the conflicts and merged; 1 hr)
+- (planned out final set of tasks for iteration 1 deadline; 30 mins)
+- (created architecture picture and wrote readme.txt, 1 hr)
 
-|Iteration 2|
-- (Created recipe instructions activity and started on creating the layout for it, 1 hr)
-- (Added reading instructions feature for recipe, when any of the ingredients is clicked, changed how instructions are stored in a recipe class, 2 hrs)
-- (GUI tweaks to detailed_recipe_activity.xml and recipe_instruction_activity, and also changed GUI layout of both xml files based on teams feedback, 2 hrs)
+>>Iteration 2
+- (activity Name, Amount spent on task, date finished)
+- (Created recipe instructions activity and started on creating the layout for it; 1 hr, Monday, June 27, 2022)
+- (Added reading instructions feature for recipe, when any of the ingredients is clicked, changed how instructions are stored in a recipe clas; 2 hrs, Tuesday, June 28, 2022)
+- (GUI tweaks to detailed_recipe_activity.xml and recipe_instruction_activity, and also changed GUI layout of both xml files based on teams feedback; 2 hrs, Tuesday, June 28, 2022)
+- (added a round buttons to activity_read_instrucitons and activity_detailed_recipe and finished readInstructions dev task, also tested the gui; 1.5 hrs, Thursday, June 30, 2022)
+- (Started working on timer for start cooking when reading instructions, first iteration of timer is done, also changed the button in detailed recipe activity from “Start Cooking” to “instructions”; 2.5 hrs, Thursday, June 30, 2022)
+- (Made the Finish button inactive in reading recipe until the user has finished cooking, also inactive on reset of the timer; 20 mins, Friday, July 1, 2022)
+-(Set meal plans button to inactive until implementation, but to also leave the navBar functionality; 5 mins, Friday, July 1, 2022)
+-(Created TimeRecipe.java and refactored some methods from RecipeInstructionsActivity into it; 30 mins, Friday, July 1, 2022)
+-(Worked on timer processing; 2 hrs, Friday, July 1, 2022)
+-(Finished timer and made it save the average time for the recipes while updating the recipe adapter in ViewFragment; 2.5 hrs, Saturday, July 2, 2022)
+-(finished the cycle of activities: view recipe -> view ingredients -> view instructions -> start cooking -> finish cooking; 2 hrs, Monday, July 4, 2022)
+-(Changed the way recipe stores and processes its ratings, also deleted enums, since they are not needed anymore, changed rating to be just double values instead of enums; 1 hrs, Tuesday, July 5, 2022)
+-(Created and finished the GUI for the rate recipe activity, made sure the ratings are stored in the database and that the ratings are processed/displayed/stored correctly when the app is run; 5 hrs, Tuesday, July 5, 2022)
+-(Reviewed the code of other team members; 2 hrs, Friday, July 8, 2022)
+-(Helped the team to fix some of the Android studio errors and discussed next steps; 10 mins, Friday, July 8, 2022)
+-(Added decisions and rationales to the log that I have made throughout making the rate recipe activity and read instructions activity; 40 mins, Sunday, July 10, 2022)
+
+-(More real DB code review, talking to Dylan about DB implementation, helping figure out bugs and comparing to real DB in sample project; 1 hr, Sunday, July 10, 2022)
+-(Polished GUI code a bit and added a function will be added soon for the add meals button; 30 mins, Monday, July 11, 2022)
+-(Tested how GUI works with the real database, if recipes and updates to them are saved, played around with GUI to try breaking something; 1hr, Monday, July 11, 2022)
+-(Populated both DBs with default recipes; 1hr, Monday, July 11, 2022)
+-(Updated major source code files in the readme and fixed a few spelling mistake; 20 mins, Monday, July 11, 2022)
+-(Added the overview of activities that I have created in the app and also review the ReadMe; 40 mins, Monday, July 11, 2022)
+-(more GUI and functionality testing, polishing and fixing found mistakes and inconsistencies; 40 mins, Tuesday,July 12, 2022)
+-(Added outstanding issues and major changes sections to the readme; 20 mins, Tuesday,July 12, 2022)
+-(Final Review of the code, polishing of code; 1,5 hrs, Tuesday, July 12, 2022)
 
 ---
 ---
->>>DYLAN'S ACTIVTY LOG
-- (activtiy Name; [comment]; amount spent on task)
 
-- (Setup Android Studio and played around with the sample project; 1 hr)
-- (Setup Github Desktop and repository; 15 min)
-- (Created Ingredient Class; 30 min)
-- (Updated Recipe class to use Ingredient object and played around with the sample project test code; 30 min)
-- (Created Unit-Conversion Class, created methods to switch between fractions and decimal numbers, fixed bugs, 3 hr)
-- (Fixed fractionToDecimal method, added unit tests, 70 min)
-- (Added Unit Tests, Fixed Bugs, 5.5 hr)
+>>>DYLAN'S ACTIVITY LOG
+>>Iteration 1
+- (activity Name; [comment]; amount spent on task)
+
+- (setup Android Studio and played around with the sample project; 1 hr)
+- (setup Github Desktop and repository; 15 min)
+- (created Ingredient Class; 30 min)
+- (updated Recipe class to use Ingredient object and played around with the sample project test code; 30 min)
+- (created Unit-Conversion Class, created methods to switch between fractions and decimal numbers, fixed bugs, 3 hr)
+- (fixed fractionToDecimal method, added unit tests, 70 min)
+- (added Unit Tests, Fixed Bugs, 5.5 hr)
+
+>>Iteration 2
+- (activity Name, Amount spent on task, date finished)
+.
+- (Tried to get Android Studio iteration 2 sample project to work; 2hr, July 6)
+- (Worked with Wen to redo class Tests from Iteration 1; 2 hr)
+- (helped Kajal understand the PersistanceAccessDB class; 10 min; July 8);
+- (fixed the database from iteration 1 to align with the sample project, rewrote methods and interface for DB 4hr July 7)
+- (Read HSQL documentation guide, got jar file working, designed DB and wrote the sql script for the tables, 3hrs, July 9)
+- (fixed the persistence access files to align with the db, bug fixed DB, 5.5hr, July 10)
+- (fixed more DB bugs, did DB tests 3hr, Jul 11)
 
 ---
 ---
->>>KAJAL'S ACTIVTY LOG
-- (activtiy Name, Amount spent on task, comments)
+
+>>>KAJAL'S ACTIVITY LOG
+>>Iteration 1
+- (activity Name, Amount spent on task, comments)
 
 - (set up gitHub repository and gitHub projects; 30m)
 - (edited the vision statement document; 1h)
@@ -154,50 +265,116 @@ functional by making it change the fragment on click (plus nice effects for on c
 - (created log file and formatted it; 30m)
 - (downloaded and configured Android studio; 1h)
 - (created the prototype for the view recipes page; 30m)
-- (added all the devtasks and meeting notes to the log, 30m)
+- (added all the dev tasks and meeting notes to the log, 30m)
 - (Denys walked Dylan and I through the front end code, 1h)
 - (Denys, Dylan and I split up some tasks, 30m)
 - (created the options for prototype for the detailed recipe view; 1h30m)
 - (implemented the serving size calculator; 7h)
-- (with Denys connected serving size button to the business layer ; 30 mins)
-- (Reviewed the code in branches, resolved the conflicts and merged ; 1 hr)
-- (Planned out final set of tasks for iteration 1 deadline; 30 mins)
-- (Added recipes and ingredients to the stub database; 1 h)
+- (with Denys connected serving size button to the business layer ; 30m)
+- (reviewed the code in branches, resolved the conflicts and merged ; 1hr)
+- (planned out final set of tasks for iteration 1 deadline; 30m)
+- (added recipes and ingredients to the stub database; 1h)
+
+>>Iteration 2
+- (activity Name, Amount spent on task, date finished)
+
+- (created google doc for the activity log, formatted and updated it; 1hr; June 21)
+- (archived the old branches, created new ones for iteration 2, created a workflow to minimize conflicts and shared it with the team; 1hr; Jun 22)
+- (found out done, ip and to-do and who was doing what then updated everyone on the current status of  the project; 15 m; June 22) 
+- (made changes to address this iteration 1 feedback -> when you have the enum UnitType, why would you want to convert it back to a string before you check what type of unit it is?; 1 hr; June 28)
+- (changed difficulty and quality rating to doubles instead of enums, created a RateRecipe and TestRateRacipe. Added a simple calculation to calculate the rating; 1h; June 29);
+- (found out done, ip and to-do and who was doing what then updated everyone on the current status of  the project; 20 m; June 29) 
+- (came up with tests for accessRecipes and started writing them; 2h; July 3)
+- (set up PersistenceAccessDBTest and Dylan helped me understand the PersistenceAccessDB class; 1h; July 8)
+- (found out done, ip and to-do and who was doing what then updated everyone on the current status of  the project; 15 m; July 8) 
+- (worked on Recipe object tests, 2h; July 8)
+- (worked on data access tests and made changes as needed; 8h; July 9)
+- (worked on access Recipes tests and made changes as needed; 8h; July 9)
+- (debug why some tests weren’t passing; 1h; July 10)
+- (updated the project to reflect iteration 1 comments; 4h; July 10)
+- (found out done, ip and to-do and who was doing what then updated everyone on the current status of  the project; 15 m; July 11) 
+- (created new architecture model; 20m; July 11)
+- (worked on the documentation for iteration 2; 1h; July 11)
+- (fixes issue in AllTests; 30m; July 12)
+- (updated the readme; 1h; July 12)
 
 
 ---
 ---
->>>WEN'S ACTIVTY LOG
-- (activtiy Name; [comment]; time spent on task)
+
+>>>WEN'S ACTIVITY LOG
+>>Iteration 1
+- (activity Name; [comment]; time spent on task)
 
 - (downloaded and configured Android studio; 1h)
-- (Setup Android Studio, configuration, tried the sample code with tests; 2 hours)
-- (Setup Github desktop, tried pull, push and other functions; 1 hour)
-- (Create stub database and real datebase, learned how to setup hsqldb and jdbc; debug, 8 hours)
-- (Write tests for Ingredient and Recipe, debug, fix code, 20 hours)
-- (Recording meeting notes, 30 mins)
-- (Rewrite tests and debug, 10 hours)
-- (With Dylan working on tests and debug, 5 hours)
-- (Reviewed the code in branches, resolved the confilcts and merge, 1 hour)
-- (Add tests all together and debug, 6 hours)
-- (Review iteration requirement and modify code, 2 hours)
-- (Review code again, 2 hours)
+- (setup Android Studio, configuration, tried the sample code with tests; 2 hours)
+- (setup Github desktop, tried pull, push and other functions; 1 hour)
+- (create stub database and real database, learned how to setup hsqldb and jdbc; debug, 8 hours)
+- (write tests for Ingredient and Recipe, debug, fix code, 20 hours)
+- (recording meeting notes, 30 mins)
+- (rewrite tests and debug, 10 hours)
+- (with Dylan working on tests and debug, 5 hours)
+- (reviewed the code in branches, resolved the conflicts and merge, 1 hour)
+- (add tests all together and debug, 6 hours)
+- (review iteration requirement and modify code, 2 hours)
+- (review code again, 2 hours)
 
->>>DESIGN DECISIONS AND RATIONALE 
+>>Iteration 2
+- (activity Name, Amount spent on task, date finished)
+- (Download and review iteration 2 sample code, make sure it works; 2 hours, June 18)
+- (Meeting recording, write down and share notes for meeting; 30 mins, June 23)
+- (Read and watch HSQL instructions; 3 hours, July 1)
+- (Communicate with Brad for the addRecipe; 20 mins, July 6)
+- (Learned about how to design addRecipe; 2 hours, July 6)
+- (Denys helped me understand add Fragment class and add Recipe class; 15 mins, July 7)
+- (Review and appeal iteration 1 feedback with professor, communicate with teammates; 4 hours, July 7)
+- (Fix Ingredient class, add upper bound for amount variable, and rewrite Ingredient test files; 10 hours, July 9)
+- (Fix Recipe class, avoid negative number when input time/amount etc. Also add an upper boundary for input number. Rewrite Recipe test file; 12 hours, July 11)
+- (Communicate with Dylan for the Database class, how to rewrite tests; 1 hour, July 11)
+- (Got help from Kajal and Dylan about push/pull conflict problems; 20 mins, July 11)
 
-- Decision: The overview of recipes should be scrollable. 
-- Rationale: Compared to page view, you can see more recipes in a shorter amount of time when scrolling. 
-  This is because in page view you have to press the button a lot of times to get to the bottom of the list. 
+
+>>>DESIGN DECISIONS AND RATIONALE
+
+- Decision: The overview of recipes should be scrollable.
+- Rationale: Compared to page view, you can see more recipes in a shorter amount of time when scrolling.This is because in page view you have to press the button a lot of times to get to the bottom of the list.
+
 
 - Decision: We should be able to adjust the serving size with a drop down menu and serving size should be limited 1-7.
-- Rationale: We wanted to make sure invalid data is not added to the serving size field. This could create errrors in the 
-  processing code. Since our app is a weakly planner for a student, we are assuming that they will not need to make a meal 
-  more than 7 times in a week. At the max serving size (7) they can eat the meal once a day for the whole week. 
+- Rationale: We wanted to make sure invalid data is not added to the serving size field. This could create errors in the processing code. Since our app is a weekly planner for a student, we are assuming that they will not need to make a meal more than 7 times in a week. At the max serving size (7) they can eat the meal once a day for the whole week.
+
 
 - Decision: abbreviate the measurement units when showing the ingredients
-- Rationale: we did this because some of the measurement units (like millimeter) took up a lot of space and it didn't look nice.
-  Also, most people are used to seeing the abbreviated version (tsp, tbsp, cm, m).
+- Rationale: we did this because some of the measurement units (like millimeters) took up a lot of space and it didn't look nice. Also, most people are used to seeing the abbreviated version (tsp, tbsp, cm, m).
 
+
+- Decision: Make the timer at the top right and limit it to 23:59:59.
+- Rationale: the top right position seemed the most suitable for the timer counter for the current GUI made, it is easy to notice it and it is small enough not to distract while cooking as well as big enough to see it without needing to keep the phone close. Also the limit of 23:59:59 was chosen because it is unrealistic that the user would cook something beyond 24-hour-mark and the limit is enough for the user to cook some very time-consuming recipes and still be able to use our app.
+
+- Decision: Reset and stop buttons.
+- Rationale: Reset and stop buttons felt essential for the cooking timer to account for the situation when the user needs to leave the kitchen for some reason, but would still continue cooking after and wants to save the progress of the cooking - therefore the stop button. The reset button was implemented for situations when say the user pressed start on the timer accidentally and wants to reset or when the user just wants to start over.
+
+- Decision: Ratings are 1 to 5 rather than some arbitrary words.
+- Rationale: the rating was changed from some arbitrary words like “delicious” for taste and “easy” for difficulty to just a number from 1 to 5. This was done because it is much more to understand what the rating actually is for both the user and the dev, it is much easier to process the integers rather than strings for rating, and much easier to calculate the overall rating of the recipe, which is now just an average of taste and quality ratings. Simplicity won here.
+
+- Decision: Disable the finish button in reading recipe activity
+- Rationale: The finish button is disabled and the user cannot press it until the timer is started and stopped, if the user resets the timer the button will become disabled again. This was done so that the user cannot proceed to rate recipe activity and cannot store 00:00:00 for the time of the recipe until the user actually start and finishes cooking the recipe
+
+- Decision: Disable the meal plans button
+- Rationale: The meal plans button on the bottom navigation menu was disabled because that feature is planned for iteration 3 and is not accessible for the users for now.
+
+- Decision: Warning message when restart is pressed.
+- Rationale: When restart is pressed, a pop up warning message will come up to make sure the user does not press restart unintentionally and ruins his timer progress on the recipe.
+
+- Decision: Add Recipe view only for adding recipes
+- Rationale: When initially creating the view it showed that the page was quickly becoming too cluttered with the add ingredient, add instructions and add recipe buttons and boxes. So to make it easier for the user to use and not so cluttered we created a separate activity that opens where the user can add ingredients and/or instructions to that recipe only. And go back to the add recipe page only to add a new recipe.
+
+- Decision: Making the add instruction text windows a lot bigger
+- Rationale: When trying to add a lot of text it quickly fills just a normal text box, so in order for the user to be able to see everything they are typing before they submit it we made the windows a lot bigger than regular to see multiple lines of written text.
+
+- Decision: Adding duplicate recipe check with continue or cancel alert
+- Rationale: Before we would not allow duplicates into the recipe list but there might be a time when there could be different recipes for the same thing so we added a dialog box to warn the user there is a duplicate and they can choose whether to continue adding or cancel.
 ---
 ---
+
 >>> END OF LOG
