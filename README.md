@@ -83,7 +83,7 @@ Currently our app allows a user to hold a list of their recipes with included in
 **Where to find it**: Get to the instructions screen, press start the timer, then stop the timer and finish to get to the rate recipe screen.
 
 7. Add Recipe
-**Overview**: The Add Recipe screen allows the user to add their own recipes to the collection. It guides the user through each step. To start, the user will name their recipe, then they will add the all the ingredients and steps for the recipe. There is also a check that if there is a recipe with the same name the user will get an alert and the user can choose if they want to add the recipe with the same name or cancel and try a new name.
+**Overview**: The Add Recipe screen allows the user to add their own recipes to the collection. It guides the user through each step. To start, the user will name their recipe, then they will add all the ingredients and instruction steps for the recipe. There is also a check if there is a recipe with the same name the user will get an alert and the user can choose if they want to add the recipe with the same name or cancel and try a new name.
 
 **Note**: the functional bottom navigation menu has three buttons: "Recipes", "Add Recipe", and "Meal Plans". You can use only two of the buttons("Recipes", "Add Recipe") to switch between activities. "Meal Plans" will be implemented in the future iteration and for now, if pressed it notifies user that it is a work in progress. All three buttons, however, are needed now to show the functionality of the navigation menu. In the future iterations "Meal Plans" will allow scheduling of created recipes.
 
