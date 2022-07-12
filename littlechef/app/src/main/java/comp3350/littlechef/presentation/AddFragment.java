@@ -76,8 +76,8 @@ public class AddFragment extends Fragment
         }
         else
         {
-            final ListView listView = (ListView) view.findViewById(R.id.existingRecipes);
-
+            // ListView listView = (ListView) view.findViewById(R.id.existingRecipes);
+            /*
             recipeArrayAdapter = new ArrayAdapter<Recipe>(getActivity(), android.R.layout.simple_list_item_1, recipeList)
             {
                 @Override
@@ -106,25 +106,25 @@ public class AddFragment extends Fragment
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id)
                 {
-                    selectedRecipe = (Recipe) listView.getItemAtPosition(position);
-
+                    //selectedRecipe = (Recipe) listView.getItemAtPosition(position);
                     Intent addRecipeActivity = new Intent(getActivity(), AddRecipeActivity.class);
                     addRecipeActivity.putExtra("id", selectedRecipe); //pass the object reference to another activity
                     startActivity(addRecipeActivity);
 
                 }
-            });
+            }); */
+        }//done else
 
-            //button listener for add recipe
-            addRecipeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view)
-                {
-                    addRecipeClick();
-                    recipeArrayAdapter.notifyDataSetChanged();
-                }
-            });//END LISTVIEW
-        }
+
+        //button listener for add recipe
+        addRecipeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                addRecipeClick();
+                //recipeArrayAdapter.notifyDataSetChanged();
+            }
+        });//END LISTVIEW
         return view;
     }//end onclickview
 
@@ -143,9 +143,13 @@ public class AddFragment extends Fragment
             result = accessRecipes.insertRecipe(newRecipe);
             if(result == null)
             {
-                accessRecipes.getRecipes(recipeList);
-                recipeArrayAdapter.notifyDataSetChanged();
-                Toast.makeText(getContext(), newRecipe.getName()+" added to recipes!", Toast.LENGTH_SHORT).show();
+                //accessRecipes.getRecipes(recipeList);
+                //recipeArrayAdapter.notifyDataSetChanged();
+                //Toast.makeText(getContext(), newRecipe.getName()+" added to recipes!", Toast.LENGTH_SHORT).show();
+                //launch new activity to add instructions/ingredients
+                Intent addRecipeActivity = new Intent(getActivity(), AddRecipeActivity.class);
+                addRecipeActivity.putExtra("id", newRecipe); //pass the object reference to another activity
+                startActivity(addRecipeActivity);
 
             }
             else
