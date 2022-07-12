@@ -82,6 +82,9 @@ Currently our app allows a user to hold a list of their recipes with included in
 **Overview**: Once the user cooked the recipe and pressed submit, the user will be taken to the page where the user could rate the recipe. There are two criterias by which the recipe is rated, taste and difficulty, the user can choose to rate both criterias from 1-5 and then press submit which will take the user to the home page, where the list of all recipes are and the where the user can start over
 **Where to find it**: Get to the instructions page, press start the timer, then stop the timer and finish to get to the rate recipe page.
 
+7. Add Recipe
+**Overview**: Every Recipe will have ingredients and instructions which can be added through the add recipe fragment at the bottom menu bar. The user will first need to add the name of the recipe which will then open an activity to add ingredients and instructions to that specific recipe. The text boxes in the add instruction section have been made bigger to allow for more text to be seen, the ingredients text boxes were left smaller since not as much information will be inputted. The add ingredient section consists of a spinner where the user can selected the measurement of the ingredient. Once the user is finished adding the information they can go back to where the full recipe will be stored.
+
 ### This App was tested on the following devices:
 1.  	- Android Systems: Android 6.0 Google APIs|x86 (Marshmallow)
     	- Emulator: Nexus 7 API 23
