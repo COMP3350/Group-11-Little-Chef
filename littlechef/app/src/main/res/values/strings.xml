@@ -30,6 +30,7 @@
     <string name="one_rating_description">1 = Worse than\nexpected</string>
     <string name="expectations_rating">Did this meal meet your expectations?</string>
     <string name="rate_prompt">Please take a second to rate how great of a job \nyou did in cooking this meal!</string>
+    <string name="delete">Delete</string>
 
     <string-array name="serving_sizes">
         <item>1 serving</item>

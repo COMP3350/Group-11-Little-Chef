@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height = "match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".presentation.DetailedRecipeActivity">
 
     <RelativeLayout
         android:id="@+id/recipe_card_layout"
@@ -62,6 +64,21 @@
             android:textColor="@color/black"
             android:textSize="20sp" />
 
+        <Button
+            android:id="@+id/delete_recipe"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_toEndOf="@+id/recipe_name"
+            android:onClick="deleteClicked"
+            android:text="@string/delete"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:theme="@style/buttonRedTheme" />
+
     </RelativeLayout>
 
     <TextView
@@ -116,6 +133,8 @@
         android:theme="@style/buttonGreenTheme"
         android:textColor="@color/black"
         android:textSize="25sp" />
+
+
 
 
 

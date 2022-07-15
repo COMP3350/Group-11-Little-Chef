@@ -25,5 +25,9 @@
         <item name="colorPrimary">@color/header_footer_background</item>
     </style>
 
+    <style name="buttonRedTheme" parent="Base.Widget.AppCompat.Button.Colored">
+        <item name="colorPrimary">@color/red</item>
+    </style>
+
 
 </resources>

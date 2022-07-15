@@ -14,9 +14,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import comp3350.littlechef.R;
+import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
 import comp3350.littlechef.business.ScaleRecipe;
@@ -146,5 +149,22 @@ public class DetailedRecipeActivity extends AppCompatActivity
         textIngredient.setText(textIngredientsFormatted);
 
 
+    }
+
+    public void deleteClicked(View view)
+    {
+        String result;
+        AccessRecipes accessRecipes = new AccessRecipes();
+        result = accessRecipes.deleteRecipe(selectedRecipe);
+        if (result == null)
+        {
+            finish();
+            Toast.makeText(this, "Deleted Recipe: " + selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
+        }
+
+        else
+        {
+            Messages.fatalError(this, result);
+        }
     }
 }
