@@ -68,10 +68,8 @@
             android:id="@+id/delete_recipe"
             android:layout_width="100dp"
             android:layout_height="40dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="110dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
             android:layout_toEndOf="@+id/recipe_name"
             android:onClick="deleteClicked"
             android:text="@string/delete"
@@ -133,9 +131,5 @@
         android:theme="@style/buttonGreenTheme"
         android:textColor="@color/black"
         android:textSize="25sp" />
-
-
-
-
 
 </RelativeLayout>
