@@ -170,8 +170,8 @@ public class DetailedRecipeActivity extends AppCompatActivity
                 result = accessRecipes.deleteRecipe(selectedRecipe);
                 if (result == null)
                 {
-                    finish();
                     Toast.makeText(DetailedRecipeActivity.this, "Deleted Recipe: " + selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
+                    finish();
                 }
 
                 else
