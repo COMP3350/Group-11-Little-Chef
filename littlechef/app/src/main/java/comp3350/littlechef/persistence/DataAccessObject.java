@@ -321,7 +321,7 @@ public class DataAccessObject implements DataAccess
         {
             recipeId = recipe.getId();
             cmd = "DELETE FROM RECIPES WHERE RECIPEID ='"+recipeId+"'";
-            connection.createStatement().executeUpdate(cmd);
+            updateCount = connection.createStatement().executeUpdate(cmd);
             System.out.println("Deleted successfully.");
             result = checkWarning(statement, updateCount);
         }
