@@ -192,4 +192,9 @@ public class DetailedRecipeActivity extends AppCompatActivity
 
         deleteAlert.show();
     }
+
+    public void editClicked(View view)
+    {
+
+    }
 }
