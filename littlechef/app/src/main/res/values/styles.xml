@@ -29,5 +29,13 @@
         <item name="colorPrimary">@color/red</item>
     </style>
 
+    <style name="buttonAltRedTheme" parent="Base.Widget.AppCompat.Button.Colored">
+        <item name="colorPrimary">@color/alt_red</item>
+    </style>
+
+    <style name="buttonPastelGreenTheme" parent="Base.Widget.AppCompat.Button.Colored">
+        <item name="colorPrimary">@color/pastel_green</item>
+    </style>
+
 
 </resources>
