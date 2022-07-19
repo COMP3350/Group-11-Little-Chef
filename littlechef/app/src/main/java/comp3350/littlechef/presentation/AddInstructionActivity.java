@@ -33,7 +33,18 @@ public class AddInstructionActivity extends AppCompatActivity
         Intent previousIntent = getIntent();
         selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id");
 
-        Toast.makeText(this, "Add to " + selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Add to " + selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
+        Button addRecipeButton= (Button) findViewById(R.id.finishAddingInstruction);
 
-    }
+        //button to go back to the main add recipe screen when done
+        addRecipeButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                finish();
+            }
+        });
+
+    }//finish oCreate
 }
