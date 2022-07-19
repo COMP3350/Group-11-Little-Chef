@@ -58,6 +58,7 @@ public class AddRecipeActivity extends AppCompatActivity
         Button addIngredientButton= (Button) findViewById(R.id.addIngredientButton);
         Button addInstructionButton= (Button) findViewById(R.id.addInstructionButton);
         Button finishAddingButton= (Button) findViewById(R.id.finishAdding);
+        Button cancelButton= (Button) findViewById(R.id.cancelButton);
 
         //Get input from text fields
         ingredientInputName = (EditText) findViewById(R.id.ingredientName);
@@ -127,6 +128,31 @@ public class AddRecipeActivity extends AppCompatActivity
 
             }
         });
+
+        //button to cancel and delete working recipe
+        cancelButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                deleteRecipe();
+            }
+        });
+    }
+
+    private void deleteRecipe()
+    {
+        String result;
+        AccessRecipes accessRecipes = new AccessRecipes();
+        result = accessRecipes.deleteRecipe(selectedRecipe);
+        if (result == null)
+        {
+            finish();
+        }
+        else
+        {
+            Messages.fatalError(this, result);
+        }
     }
 
     //add instruction
