@@ -34,5 +34,6 @@ public class AddInstructionActivity extends AppCompatActivity
         selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id");
 
         Toast.makeText(this, "Add to " + selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
+
     }
 }
