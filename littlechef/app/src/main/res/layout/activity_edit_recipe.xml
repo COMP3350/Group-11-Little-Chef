@@ -13,84 +13,59 @@
         android:layout_height="170dp"
         android:background="@color/header_footer_background">
 
-        <TextView
-            android:id="@+id/recipe_name"
+        <EditText
+            android:id="@+id/recipe_name_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
+            android:inputType="textNoSuggestions"
+            android:maxLength="27"
+            android:textStyle="bold"
+
             android:text="@string/recipe_card_name_placeholder"
             android:textColor="@color/black"
             android:textSize="25sp" />
 
         <TextView
-            android:id="@+id/estimated_time"
+            android:id="@+id/estimated_time_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/recipe_name"
+            android:layout_below="@id/recipe_name_edit"
             android:layout_alignParentStart="true"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
             android:text="@string/time"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/difficulty"
+            android:id="@+id/difficulty_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/estimated_time"
+            android:layout_below="@+id/estimated_time_edit"
             android:layout_marginStart="20dp"
             android:text="@string/difficulty"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/taste"
+            android:id="@+id/taste_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/difficulty"
+            android:layout_below="@id/difficulty_edit"
             android:layout_marginStart="20dp"
             android:text="@string/taste"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/rating"
+            android:id="@+id/rating_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/taste"
+            android:layout_below="@id/taste_edit"
             android:layout_marginStart="20dp"
             android:text="@string/rating"
             android:textColor="@color/black"
             android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/delete_recipe"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="5dp"
-            android:onClick="deleteClicked"
-            android:text="@string/delete"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:theme="@style/buttonAltRedTheme" />
-
-        <Button
-            android:id="@+id/edit_recipe"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="10dp"
-            android:layout_toStartOf="@+id/delete_recipe"
-            android:onClick="editClicked"
-            android:text="@string/edit"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:theme="@style/buttonPastelGreenTheme" />
-
     </RelativeLayout>
 
     <TextView
@@ -110,7 +85,7 @@
 
 
     <ListView
-        android:id="@+id/ingredients_list"
+        android:id="@+id/ingredients_list_edit"
         android:layout_width="match_parent"
         android:layout_height="510dp"
         android:layout_below="@id/recipe_card_layout"
@@ -119,7 +94,7 @@
         android:divider="@null" />
 
     <Spinner
-        android:id="@+id/serving_num"
+        android:id="@+id/serving_num_edit"
         android:layout_width="130dp"
         android:layout_height="35dp"
         android:layout_below="@id/recipe_card_layout"
@@ -134,13 +109,13 @@
         android:theme="@style/spinnerTheme" />
 
     <Button
-        android:id="@+id/start_cooking"
-        android:layout_width="280dp"
+        android:id="@+id/save_edit"
+        android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_below="@+id/ingredients_list"
+        android:layout_below="@+id/ingredients_list_edit"
         android:layout_centerHorizontal="true"
         android:background="@drawable/round_button"
-        android:text="@string/instructions"
+        android:text="@string/save"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:theme="@style/buttonGreenTheme" />
