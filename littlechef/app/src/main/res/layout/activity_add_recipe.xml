@@ -96,7 +96,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginStart="150dp"
         android:background="@drawable/round_button"
-        android:text="Add Instruction!"
+        android:text="Next/Add Instruction!"
         android:textColor="@color/black"
         android:textSize="15sp"/>
 

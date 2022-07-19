@@ -158,32 +158,9 @@ public class AddRecipeActivity extends AppCompatActivity
     //add instruction
     private void addInstruction()
     {
-        String result;
-
-        //get text from boxes
-        instruction = instructionInput.getText().toString();
-        instructionSteps = instructionInputSteps.getText().toString();
-
-        result = validateInstruction(instruction + instructionSteps);
-        if(result == null)
-        {
-            selectedRecipe.addInstructions(instruction, instructionSteps);
-
-            result = accessRecipes.updateRecipe(selectedRecipe);
-
-            if (result != null)
-            {
-                Messages.fatalError(this, result);
-            }
-            else
-            {
-                Toast.makeText(this, "Added instruction to " + selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
-            }
-        }
-        else
-        {
-            Messages.warning(this, result);
-        }
+        Intent addInstructionActivity = new Intent(this, AddInstructionActivity.class);
+        addInstructionActivity.putExtra("id", selectedRecipe); //pass the object reference to another activity
+        startActivity(addInstructionActivity);
     }
 
     //add ingredients
