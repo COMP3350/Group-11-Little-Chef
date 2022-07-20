@@ -25,6 +25,7 @@ public class MealsFragment extends Fragment {
 
     private AccessRecipes accessRecipes;
     private ArrayList<Recipe> recipeList;
+    private ArrayList<Recipe> mealPlan;
 
     public MealsFragment() {
         // Required empty public constructor
@@ -43,7 +44,11 @@ public class MealsFragment extends Fragment {
         //database
         accessRecipes = new AccessRecipes();
         recipeList = new ArrayList<Recipe>();
+        mealPlan = new ArrayList<Recipe>();
         String result = accessRecipes.getRecipes(recipeList);
+
+
+
 
         //check if received list of recipes
         if(result != null)
@@ -52,7 +57,11 @@ public class MealsFragment extends Fragment {
         }
         else
         {
-            //do list view
+            //for now just add 1 recipe to a meal plan, ASSUMING YOU HAVE ONE IN STORAGE
+            mealPlan.add( recipeList.get(0) );
+            //do listview stuff
+            MealPlanListAdapter adapter = new MealPlanListAdapter(this, R.layout.meal_plan_layout, mealPlan);
+            mListView.setAdapter(adapter);
         }
 
         //Edit button
