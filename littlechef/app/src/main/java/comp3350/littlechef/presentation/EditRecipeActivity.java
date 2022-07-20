@@ -2,6 +2,7 @@ package comp3350.littlechef.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import comp3350.littlechef.R;
+import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.business.ScaleRecipe;
 import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -27,6 +29,7 @@ public class EditRecipeActivity extends AppCompatActivity
 {
     private Recipe selectedRecipe;
     private ArrayAdapter<Ingredient> ingredientsArrayAdapter;
+    private AccessRecipes accessRecipes;
     private Spinner servingNum;
 
     @Override
@@ -34,6 +37,7 @@ public class EditRecipeActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_recipe);
+        accessRecipes = new AccessRecipes();
 
         final ListView listView = (ListView) findViewById(R.id.ingredients_list_edit);
 
@@ -48,7 +52,7 @@ public class EditRecipeActivity extends AppCompatActivity
         Intent previousIntent = getIntent();
         selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id"); // will never return null, since some recipe was clicked in prev activity
 
-        ingredientsArrayAdapter = new ArrayAdapter<Ingredient>(this,android.R.layout.simple_list_item_1, new ArrayList<Ingredient>())
+        ingredientsArrayAdapter = new ArrayAdapter<Ingredient>(this,android.R.layout.simple_list_item_1, selectedRecipe.getIngredients())
         {
             @Override
             public View getView(int position, View convertView, ViewGroup parent)
@@ -73,6 +77,33 @@ public class EditRecipeActivity extends AppCompatActivity
         listView.setAdapter(ingredientsArrayAdapter);
 
         setValues();
+    }
+
+    public void saveClicked(View view)
+    {
+        String result;
+        EditText editName = (EditText)findViewById(R.id.recipe_name_edit);
+
+        result = validateRecipeData();
+        if (result == null)
+        {
+            selectedRecipe.setName(editName.getText().toString());
+            result = accessRecipes.updateRecipe(selectedRecipe);
+            if (result == null)
+            {
+                finish();
+                //TODO get rid of if nothing else is updated
+            }
+            else
+            {
+                Messages.fatalError(this, result);
+            }
+        }
+
+        else
+        {
+            Messages.warning(this, result);
+        }
     }
 
 
@@ -101,5 +132,17 @@ public class EditRecipeActivity extends AppCompatActivity
         rating.setText(selectedRecipe.getRatingString());
 
 
+    }
+
+
+    private String validateRecipeData()
+    {
+        EditText editName = (EditText)findViewById(R.id.recipe_name_edit);
+        if(editName.getText().length() == 0)
+        {
+            return "Recipe name required";
+        }
+
+        return null;
     }
 }

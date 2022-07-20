@@ -90,9 +90,9 @@ public class DetailedRecipeActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Intent readInstuction= new Intent(DetailedRecipeActivity.this, RecipeInstructionActivity.class);
-                readInstuction.putExtra("id", selectedRecipe); //pass the object reference to another activity
-                startActivity(readInstuction);
+                Intent readInstruction= new Intent(DetailedRecipeActivity.this, RecipeInstructionActivity.class);
+                readInstruction.putExtra("id", selectedRecipe); //pass the object reference to another activity
+                startActivity(readInstruction);
                 finish(); //finish detailed recipe activity after reading instruction(cooking) is done
             }
         });
