@@ -92,17 +92,13 @@ public class DataAccessObject implements DataAccess
     public String insertRecipe(Recipe recipe)
     {
         int recipeID;
-        ArrayList<Ingredient> ingredients = recipe.getIngredients();
-        ArrayList<String[]> instructions = recipe.getInstructions();
-        ArrayList<Integer> cookTimes = recipe.getCookingTimes();
-        ArrayList<Double> difficultyRating = recipe.getDifficultyRatingsList();
-        ArrayList<Double> tasteRating = recipe.getTasteRatingsList();
+
         String values;
         result = null;
 
         try
         {
-            values = "'" + recipe.getName()
+            values = "'" + recipe.getName().replace("'","''")
                     + "'";
             cmd = "INSERT INTO RECIPES " + "(NAME)" + " VALUES (" + values + ")";
             updateCount = statement.executeUpdate(cmd);
@@ -113,6 +109,30 @@ public class DataAccessObject implements DataAccess
             recipeID = resultSet.getInt(1);
             recipe.setId(recipeID);
 
+            insertRecipeData(recipe);
+
+        }
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
+
+        return result; // why returning name?
+    }//end addRecipe
+
+    private void insertRecipeData(Recipe recipe)
+    {
+        ArrayList<Ingredient> ingredients = recipe.getIngredients();
+        ArrayList<String[]> instructions = recipe.getInstructions();
+        ArrayList<Integer> cookTimes = recipe.getCookingTimes();
+        ArrayList<Double> difficultyRating = recipe.getDifficultyRatingsList();
+        ArrayList<Double> tasteRating = recipe.getTasteRatingsList();
+
+        String values;
+        result = null;
+
+        try
+        {
             for(int i = 0; i < instructions.size(); i++)
             {
                 values = "'" + instructions.get(i)[0].replace("'","''")
@@ -126,7 +146,7 @@ public class DataAccessObject implements DataAccess
             for(int i = 0; i < ingredients.size(); i++)
             {
                 values = recipe.getId()
-                        + ", '" + ingredients.get(i).getName()
+                        + ", '" + ingredients.get(i).getName().replace("'","''")
                         + "', " + ingredients.get(i).getAmount()
                         + ", '" + ingredients.get(i).getUnitType()
                         + "', '" + ingredients.get(i).getMeasurement().toString()
@@ -144,8 +164,7 @@ public class DataAccessObject implements DataAccess
             result = processSQLError(e);
         }
 
-        return result; // why returning name?
-    }//end addRecipe
+    }
 
     //insert recipe helper method
     private String insertRating(Recipe recipe, ArrayList list, String table)
@@ -169,14 +188,23 @@ public class DataAccessObject implements DataAccess
         return result;
     }
     @Override
-    public String updateRecipe(Recipe recipe)
-    {
+    public String updateRecipe(Recipe recipe) {
+
+        String table;
+        String values;
+        String where = "WHERE RECIPEID=" + recipe.getId();
         result = null;
 
         try
         {
-            deleteRecipe(recipe);
-            insertRecipe(recipe);
+            table = "RECIPES";
+            values = "NAME='" + recipe.getName().replace("'","''") + "'";
+            cmd = "UPDATE " + table + " SET " + values + " " + where;
+            updateCount = statement.executeUpdate(cmd);
+            result = checkWarning(statement, updateCount);
+
+            deleteAllRecipeInfo(recipe.getId());
+            insertRecipeData(recipe);
         }
         catch (Exception e)
         {
@@ -184,6 +212,25 @@ public class DataAccessObject implements DataAccess
         }
         return result;
     }//end updateRecipe
+
+    private void deleteAllRecipeInfo(int RECIPEID)
+    {
+        String tables[] = {"INGREDIENTS", "INSTRUCTIONS", "COOKINGTIMES" , "TASTERATINGS", "DIFFICULTYRATINGS"};
+
+        try
+        {
+            for (int i = 0; i < tables.length; i++)
+            {
+                cmd = "DELETE FROM " + tables[i] + " WHERE RECIPEID=" + RECIPEID;
+                updateCount = statement.executeUpdate(cmd);
+                result = checkWarning(statement, updateCount);
+            }
+        }
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
+    }
 
     @Override
     public String getRecipeSequential(List<Recipe> recipeList)
@@ -321,7 +368,7 @@ public class DataAccessObject implements DataAccess
         {
             recipeId = recipe.getId();
             cmd = "DELETE FROM RECIPES WHERE RECIPEID ='"+recipeId+"'";
-            updateCount = connection.createStatement().executeUpdate(cmd);
+            updateCount = statement.executeUpdate(cmd);
             System.out.println("Deleted successfully.");
             result = checkWarning(statement, updateCount);
         }
