@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
@@ -47,7 +48,7 @@ public class MealsFragment extends Fragment {
         mealPlan = new ArrayList<Recipe>();
         String result = accessRecipes.getRecipes(recipeList);
 
-
+        ListView mealListView = (ListView) view.findViewById(R.id.plan_list_view);
 
 
         //check if received list of recipes
@@ -60,8 +61,9 @@ public class MealsFragment extends Fragment {
             //for now just add 1 recipe to a meal plan, ASSUMING YOU HAVE ONE IN STORAGE
             mealPlan.add( recipeList.get(0) );
             //do listview stuff
-            MealPlanListAdapter adapter = new MealPlanListAdapter(this, R.layout.meal_plan_layout, mealPlan);
-            mListView.setAdapter(adapter);
+            //possible issues with getActivity() -try-> getContext or something
+            MealPlanListAdapter adapter = new MealPlanListAdapter(getActivity(), R.layout.meal_plan_layout, mealPlan);
+            mealListView.setAdapter(adapter);
         }
 
         //Edit button
