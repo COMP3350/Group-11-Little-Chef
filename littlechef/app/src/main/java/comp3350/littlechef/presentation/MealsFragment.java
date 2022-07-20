@@ -2,23 +2,33 @@ package comp3350.littlechef.presentation;
 
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
+//import androidx.fragment.app.Fragment;
+import android.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import comp3350.littlechef.R;
+import comp3350.littlechef.business.AccessRecipes;
+import comp3350.littlechef.objects.Recipe;
 
 
 public class MealsFragment extends Fragment {
 
+    private AccessRecipes accessRecipes;
+    private ArrayList<Recipe> recipeList;
 
     public MealsFragment() {
         // Required empty public constructor
     }
-
-
 
 
     @Override
@@ -27,7 +37,48 @@ public class MealsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_meals, container, false);
+        //inflate view
+        View view = inflater.inflate(R.layout.fragment_meals, container, false);
+
+        //database
+        accessRecipes = new AccessRecipes();
+        recipeList = new ArrayList<Recipe>();
+        String result = accessRecipes.getRecipes(recipeList);
+
+        //check if received list of recipes
+        if(result != null)
+        {
+            Messages.fatalError(getActivity(), result);
+        }
+        else
+        {
+            //do list view
+        }
+
+        //Edit button
+        Button editPlanButton= (Button) view.findViewById(R.id.editMealPlanButton);
+        editPlanButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                editPlanOnClick();
+            }
+        });
+
+
+        ListView listView = (ListView) view.findViewById(R.id.plan_list_view);
+
+
+        return view;
+
     }
+
+    //to edit a meal plan
+    public void editPlanOnClick()
+    {
+        Messages.warning(getActivity(), "Implement");
+    }
+
+
 }
