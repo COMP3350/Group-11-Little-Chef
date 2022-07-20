@@ -7,6 +7,7 @@ import comp3350.littlechef.business.ScaleRecipe;
 import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -40,13 +42,6 @@ public class EditRecipeActivity extends AppCompatActivity
         accessRecipes = new AccessRecipes();
 
         final ListView listView = (ListView) findViewById(R.id.ingredients_list_edit);
-
-//        //setting up drop down menu for choosing serving
-//        ArrayAdapter<String> servingSizeAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, getResources().getStringArray(R.array.serving_sizes));
-//        servingNum = (Spinner) findViewById(R.id.serving_num);
-//        servingSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        servingNum.setAdapter(servingSizeAdapter);
-
 
         //get the selected recipe that was clicked from previous activity
         Intent previousIntent = getIntent();
@@ -74,7 +69,19 @@ public class EditRecipeActivity extends AppCompatActivity
         };
 
 
+
         listView.setAdapter(ingredientsArrayAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                Ingredient selectedIngredient = (Ingredient) listView.getItemAtPosition(position);
+                showEditIngrWindow(selectedIngredient.getName(), Double.toString(selectedIngredient.getAmount()), "1");
+
+            }
+        });
 
         setValues();
     }
@@ -104,6 +111,32 @@ public class EditRecipeActivity extends AppCompatActivity
         {
             Messages.warning(this, result);
         }
+    }
+
+    private void showEditIngrWindow(String ingrName, String ingrAmount, String unit)
+    {
+        final Dialog editIngredientWindow = new Dialog(EditRecipeActivity.this);
+
+        //no need for title
+        editIngredientWindow.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        //make it disappear if user click outside of the window
+        editIngredientWindow.setCancelable(true);
+
+        //set the layout
+        editIngredientWindow.setContentView(R.layout.edit_ingredient_window);
+
+        final EditText ingrNameField = (EditText) (editIngredientWindow).findViewById(R.id.editIngredient);
+        final EditText ingrAmountField = (EditText) (editIngredientWindow).findViewById(R.id.editAmount);
+        final Spinner unitField = (Spinner) (editIngredientWindow).findViewById(R.id.editIngredientUnit);
+        final Button saveEdit = (Button) (editIngredientWindow).findViewById(R.id.save_dialog_box);
+        final Button cancelEdit = (Button) (editIngredientWindow).findViewById(R.id.cancel_dialog_box);
+        final Button deleteIngr = (Button) (editIngredientWindow).findViewById(R.id.delete_dialog_box);
+
+        ingrNameField.setText(ingrName);
+        ingrAmountField.setText(ingrAmount);
+
+        editIngredientWindow.show();
     }
 
 

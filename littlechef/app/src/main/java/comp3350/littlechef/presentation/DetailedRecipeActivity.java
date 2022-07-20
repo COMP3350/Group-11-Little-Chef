@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.SpannableString;
+import android.text.method.ScrollingMovementMethod;
 import android.text.style.StyleSpan;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -133,6 +134,8 @@ public class DetailedRecipeActivity extends AppCompatActivity
         TextView difficulty = (TextView) findViewById(R.id.difficulty);
         TextView taste = (TextView) findViewById(R.id.taste);
         TextView rating = (TextView) findViewById(R.id.rating);
+
+        recipeName.setSelected(true);
 
         //make recipe name bold
         SpannableString recipeNameFormatted = new SpannableString(selectedRecipe.getName());

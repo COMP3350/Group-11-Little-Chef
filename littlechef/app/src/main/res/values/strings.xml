@@ -34,6 +34,9 @@
     <string name="edit">Edit</string>
     <string name="save">Save</string>
     <string name="one_serving_edit">1 Serving</string>
+    <string name="cancel">cancel</string>
+    <string name="amount">Amount</string>
+    <string name="unit">Unit</string>
 
     <string-array name="serving_sizes">
         <item>1 serving</item>
