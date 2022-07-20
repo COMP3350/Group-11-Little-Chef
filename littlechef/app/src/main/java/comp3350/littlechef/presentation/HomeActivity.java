@@ -34,6 +34,7 @@ public class HomeActivity extends AppCompatActivity
     private BottomNavigationView bottomNavigationView;
     private ViewFragment viewFragment;
     private AddFragment addFragment;
+    private MealsFragment mealsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,6 +52,7 @@ public class HomeActivity extends AppCompatActivity
         //create all the fragments
         viewFragment = new ViewFragment();
         addFragment = new AddFragment();
+        mealsFragment = new MealsFragment();
         replaceFragment(viewFragment); //set view fragment on start
 
         //set up bottom navigation listener
@@ -72,20 +74,8 @@ public class HomeActivity extends AppCompatActivity
                         return true;
 
                     case R.id.meals:
-                        AlertDialog.Builder resetAlert = new AlertDialog.Builder(HomeActivity.this);
-                        resetAlert.setTitle("Work in Progress");
-                        resetAlert.setMessage("Add meals is a work-in-progress and will be added with iteration 3. The button is present here for completeness of the bottom navigation bar.");
-
-                        resetAlert.setPositiveButton("Ok", new DialogInterface.OnClickListener()
-                        {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which)
-                            {
-                                //do nothing
-                            }
-                        });
-
-                        resetAlert.show();
+                        mealsFragment = new MealsFragment();
+                        replaceFragment(mealsFragment);
                         return true;
                 }
                 return false;
