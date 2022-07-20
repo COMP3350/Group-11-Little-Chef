@@ -17,6 +17,8 @@ import java.util.ArrayList;
 
 import comp3350.littlechef.objects.Recipe;
 
+//POSSIBLY DELETE IF NOT WORKING CORRECTLY https://www.youtube.com/watch?v=E6vE8fqQPTE&t=11s&ab_channel=CodingWithMitch
+
 public class MealPlanListAdapter extends ArrayAdapter<Recipe>
 {
     private static final String TAG = "MealPlanListAdapter";

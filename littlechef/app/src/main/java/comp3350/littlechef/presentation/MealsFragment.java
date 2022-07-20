@@ -1,10 +1,14 @@
 package comp3350.littlechef.presentation;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 //import androidx.fragment.app.Fragment;
 import android.app.Fragment;
 
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -20,6 +25,7 @@ import java.util.List;
 import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.objects.Recipe;
+import comp3350.littlechef.objects.MealPlanDay;
 
 
 public class MealsFragment extends Fragment {
@@ -27,6 +33,7 @@ public class MealsFragment extends Fragment {
     private AccessRecipes accessRecipes;
     private ArrayList<Recipe> recipeList;
     private ArrayList<Recipe> mealPlan;
+    private ArrayAdapter<Recipe> recipeArrayAdapter;
 
     public MealsFragment() {
         // Required empty public constructor
@@ -45,8 +52,11 @@ public class MealsFragment extends Fragment {
         //database
         accessRecipes = new AccessRecipes();
         recipeList = new ArrayList<Recipe>();
-        mealPlan = new ArrayList<Recipe>();
+        mealPlan = new ArrayList<MealPlanDay>();
         String result = accessRecipes.getRecipes(recipeList);
+
+        //for now add starting recipe. IF THERE IS ONE IN DATABASE
+        //mealPlan.add( recipeList.get(0) );//adds just a starting recipe
 
         ListView mealListView = (ListView) view.findViewById(R.id.plan_list_view);
 
@@ -58,12 +68,33 @@ public class MealsFragment extends Fragment {
         }
         else
         {
-            //for now just add 1 recipe to a meal plan, ASSUMING YOU HAVE ONE IN STORAGE
-            mealPlan.add( recipeList.get(0) );
-            //do listview stuff
-            //possible issues with getActivity() -try-> getContext or something
-            MealPlanListAdapter adapter = new MealPlanListAdapter(getActivity(), R.layout.meal_plan_layout, mealPlan);
-            mealListView.setAdapter(adapter);
+
+            final ListView listView = (ListView) view.findViewById(R.id.plan_list_view);
+
+            recipeArrayAdapter = new ArrayAdapter<Recipe>(getActivity(), android.R.layout.simple_list_item_1, mealPlan)
+            {
+                @Override
+                public View getView(int position, View convertView, ViewGroup parent)
+                {
+                    //recipe = getItem(position);
+                    if(convertView == null)
+                    {
+                        convertView = LayoutInflater.from(getContext()).inflate(R.layout.meal_plan_layout,parent, false);
+                    }
+
+                    setValues(convertView);
+
+                    return convertView;
+                }
+            };
+
+            listView.setAdapter(recipeArrayAdapter);
+
+
+
+
+
+
         }
 
         //Edit button
@@ -77,12 +108,21 @@ public class MealsFragment extends Fragment {
             }
         });
 
-
-        ListView listView = (ListView) view.findViewById(R.id.plan_list_view);
-
-
         return view;
 
+    }
+    //sets values for meal plan day
+    private void setValues(View convertView)
+    {
+
+
+        TextView name1 = (TextView) convertView.findViewById(R.id.textView1);
+        TextView name2 = (TextView) convertView.findViewById(R.id.textView2);
+        TextView name3 = (TextView) convertView.findViewById(R.id.textView3);
+
+        name1.setText(mealPlan.get(0).getName());
+        name2.setText("test2");
+        name3.setText("test3");
     }
 
     //to edit a meal plan
@@ -90,6 +130,8 @@ public class MealsFragment extends Fragment {
     {
         Messages.warning(getActivity(), "Implement");
     }
+
+
 
 
 }
