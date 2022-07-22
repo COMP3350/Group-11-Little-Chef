@@ -19,4 +19,8 @@
     <color name="alt_red">#EF5656</color>
     <color name="dark_green">#005a00</color>
     <color name="pastel_green">#6A9080</color>
+
+
+    <color name ="gray">#888</color>
+    <color name ="blue">#0000FF</color>
 </resources>
