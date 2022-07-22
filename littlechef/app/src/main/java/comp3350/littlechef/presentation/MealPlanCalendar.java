@@ -15,11 +15,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
+
+//TODO: (Currently working on): 
 
 public class MealPlanCalendar extends AppCompatActivity
 {
@@ -29,6 +32,7 @@ public class MealPlanCalendar extends AppCompatActivity
     private Recipe recipe;
 
     private ArrayList<Recipe> sundayList;
+    private ArrayList<Recipe> mondayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -39,37 +43,58 @@ public class MealPlanCalendar extends AppCompatActivity
         accessRecipes = new AccessRecipes();
         recipeList = new ArrayList<Recipe>();
         String result = accessRecipes.getRecipes(recipeList);
-
-        //sundayList = new ArrayList<Recipe>();
-        //sundayList.add(recipeList.get(0));
-
+        //check database
         if(result != null)
         {
             Messages.fatalError(this, result);
         }
-        else
+
+        //adding some views to list
+        sundayList = new ArrayList<Recipe>();
+        sundayList.add(recipeList.get(0));
+        sundayList.add(recipeList.get(1));
+
+        mondayList = new ArrayList<Recipe>();
+        mondayList.add(recipeList.get(2));
+        mondayList.add(recipeList.get(3));
+
+        makeListViews(R.id.sunday_list_view, sundayList);
+        makeListViews(R.id.monday_list_view, mondayList);
+
+        //Edit button
+        Button editPlanButton= (Button) findViewById(R.id.editMealPlanButton);
+        editPlanButton.setOnClickListener(new View.OnClickListener()
         {
-            final ListView listView = (ListView) findViewById(R.id.sunday_list_view);
-
-            recipeArrayAdapter = new ArrayAdapter<Recipe>(this, android.R.layout.simple_list_item_1, recipeList)
+            @Override
+            public void onClick(View view)
             {
-                @Override
-                public View getView(int position, View convertView, ViewGroup parent)
+                editPlanOnClick();
+            }
+        });
+
+    }
+
+    //this makes the list views for each day
+    private void makeListViews(int id, ArrayList<Recipe> dayList)
+    {
+        final ListView listView = (ListView) findViewById(id);
+
+        recipeArrayAdapter = new ArrayAdapter<Recipe>(this, android.R.layout.simple_list_item_1, dayList)
+        {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent)
+            {
+                recipe = getItem(position);
+                if(convertView == null)
                 {
-                    recipe = getItem(position);
-                    if(convertView == null)
-                    {
-                        convertView = LayoutInflater.from(getContext()).inflate(R.layout.recipe_card,parent, false);
-                    }
-
-                    setValues(convertView);
-
-                    return convertView;
+                    convertView = LayoutInflater.from(getContext()).inflate(R.layout.recipe_card,parent, false);
                 }
-            };
-            listView.setAdapter(recipeArrayAdapter);
-        }
 
+                setValues(convertView);
+
+                return convertView;
+            }};
+        listView.setAdapter(recipeArrayAdapter);
     }
 
     private void setValues(View convertView)
@@ -92,6 +117,12 @@ public class MealPlanCalendar extends AppCompatActivity
         difficulty.setText(difficultyRating);
         taste.setText(tasteRating);
         rating.setText(recipe.getRatingString());
+    }
+
+    //to edit a meal plan
+    public void editPlanOnClick()
+    {
+        Messages.warning(this, "Implement");
     }
 
 

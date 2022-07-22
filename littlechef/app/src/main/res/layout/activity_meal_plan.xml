@@ -26,6 +26,17 @@
             android:textAlignment="center"
             android:textColor="@color/black"/>
 
+        <Button
+            android:id="@+id/editMealPlanButton"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="15dp"
+            android:text="Edit"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
     </LinearLayout>
 
     <!--Sunday view -->
@@ -45,7 +56,7 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             android:id="@+id/sunday_list_view" />
 
     </LinearLayout>
@@ -67,7 +78,7 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="150dp"
             android:id="@+id/monday_list_view" />
 
     </LinearLayout>
