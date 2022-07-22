@@ -100,7 +100,7 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="150dp"
             android:id="@+id/tuesday_list_view" />
 
     </LinearLayout>
@@ -122,7 +122,7 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="150dp"
             android:id="@+id/wednesday_list_view" />
 
     </LinearLayout>
@@ -144,7 +144,7 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="150dp"
             android:id="@+id/thursday_list_view" />
 
     </LinearLayout>
@@ -166,7 +166,7 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="150dp"
             android:id="@+id/friday_list_view" />
 
     </LinearLayout>
@@ -188,7 +188,7 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="150dp"
             android:id="@+id/saturday_list_view" />
 
     </LinearLayout>
