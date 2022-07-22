@@ -46,12 +46,12 @@
         android:fillViewport="true">
 
 
-        <!--Sunday view -->
+        <!--Day views -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
+            <!--Sunday view -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,17 +63,10 @@
 
             <ListView
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="350dp"
                 android:id="@+id/sunday_list_view" />
 
-        </LinearLayout>
-
-        <!--monday view -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
+            <!--Monday view -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -85,9 +78,41 @@
 
             <ListView
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="350dp"
                 android:id="@+id/monday_list_view" />
 
+            <!--Tuesday view -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tuesday"
+                android:textColor="@color/gray"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:id="@+id/tuesday_list_view" />
+            <!--Wednesday view -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Wednesday"
+                android:textColor="@color/gray"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:id="@+id/wednesday_list_view" />
+
         </LinearLayout>
+
+
     </ScrollView>
 </LinearLayout>

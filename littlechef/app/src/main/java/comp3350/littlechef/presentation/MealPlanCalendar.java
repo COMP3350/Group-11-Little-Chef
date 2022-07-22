@@ -57,11 +57,13 @@ public class MealPlanCalendar extends AppCompatActivity
         mondayList = new ArrayList<Recipe>();
         mondayList.add(recipeList.get(2));
         mondayList.add(recipeList.get(3));
+        mondayList.add(recipeList.get(4));
+        mondayList.add(recipeList.get(5));
 
         makeListViews(R.id.sunday_list_view, sundayList);
         makeListViews(R.id.monday_list_view, mondayList);
-        //makeListViews(R.id.tuesday_list_view, mondayList);
-        //makeListViews(R.id.wednesday_list_view, mondayList);
+        makeListViews(R.id.tuesday_list_view, mondayList);
+        makeListViews(R.id.wednesday_list_view, mondayList);
         //makeListViews(R.id.thursday_list_view, mondayList);
         //makeListViews(R.id.friday_list_view, mondayList);
         //makeListViews(R.id.saturday_list_view, mondayList);
