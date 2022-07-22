@@ -83,6 +83,11 @@ public class MealPlanCalendar extends AppCompatActivity
         TextView taste = (TextView) convertView.findViewById(R.id.taste);
         TextView rating = (TextView) convertView.findViewById(R.id.rating);
 
+        SpannableString recipeNameFormatted = new SpannableString(recipe.getName());
+        recipeNameFormatted.setSpan(new UnderlineSpan(), 0, recipeNameFormatted.length(), 0);
+        recipeNameFormatted.setSpan(new StyleSpan(Typeface.BOLD), 0, recipeNameFormatted.length(), 0);
+
+        name.setText(recipeNameFormatted);
         estimatedTime.setText(recipe.getAverageCookingTime());
         difficulty.setText(difficultyRating);
         taste.setText(tasteRating);
