@@ -11,6 +11,7 @@
         android:layout_above="@+id/editIngredient"
         android:layout_marginStart="100dp"
         android:text="@string/ingredient"
+        android:textColor="@color/black"
 
         android:textSize="20sp" />
 
@@ -24,6 +25,7 @@
         android:layout_marginBottom="15dp"
         android:layout_toEndOf="@id/editAmount"
         android:text="@string/unit"
+        android:textColor="@color/black"
 
         android:textSize="20sp" />
 
@@ -32,10 +34,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/editAmount"
-        android:layout_toEndOf="@id/editIngredient"
         android:layout_marginStart="5dp"
+        android:layout_toEndOf="@id/editIngredient"
 
         android:text="@string/amount"
+        android:textColor="@color/black"
 
         android:textSize="20sp" />
 
@@ -48,7 +51,7 @@
 
         android:ems="10"
         android:inputType="textNoSuggestions"
-        android:textColor="@color/black"
+        android:textColor="@color/header_alt"
         android:textSize="25sp" />
 
     <EditText
@@ -61,7 +64,7 @@
 
         android:ems="3"
         android:inputType="numberDecimal"
-        android:textColor="@color/black"
+        android:textColor="@color/header_alt"
         android:textSize="25sp" />
 
     <Spinner
@@ -108,7 +111,6 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
 
-        android:enabled="false"
         android:text="@string/save"
         android:textColor="@color/white"
         android:textSize="15sp"

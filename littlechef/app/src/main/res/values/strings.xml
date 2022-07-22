@@ -37,6 +37,8 @@
     <string name="cancel">cancel</string>
     <string name="amount">Amount</string>
     <string name="unit">Unit</string>
+    <string name="next">Next</string>
+    <string name="plus_sign">+</string>
 
     <string-array name="serving_sizes">
         <item>1 serving</item>
@@ -50,6 +52,7 @@
 
     <string-array name="units">
 
+        <item>QUANTITY</item>
         <item>PINCH</item>
         <item>TSP</item>
         <item>TBSP</item>

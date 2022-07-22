@@ -85,6 +85,37 @@ public class Ingredient implements Serializable
         return String.format("%.2f", amount) + " " + getMeasurement();
     }
 
+    public String getUnit()
+    {
+        return unit.toString();
+    }
+
+    public void setUnit(String unit)
+    {
+        if(unit != null)
+        {
+            this.unit = Unit.valueOf(unit.toUpperCase());
+        }
+    }
+
+    public boolean equals(Object object)
+    {
+        boolean result;
+        Ingredient ingredient;
+
+        result = false;
+
+        if (object instanceof Ingredient)
+        {
+            ingredient = (Ingredient) object;
+            if (ingredient.getName() == this.getName())
+            {
+                result = true;
+            }
+        }
+        return result;
+    }
+
 
     //this class sets the specific unit metric depending on unit type
     private void setUnitInformation(Unit measurement)
