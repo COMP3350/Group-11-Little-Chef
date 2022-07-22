@@ -31,9 +31,9 @@ public class MealPlanCalendar extends AppCompatActivity implements CalendarAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal_plan_calendar);
 
-        //initWidgets();
-        //selectedDate = LocalDate.now();
-        //setMonthView();
+        initWidgets();
+        selectedDate = LocalDate.now();
+        setMonthView();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
