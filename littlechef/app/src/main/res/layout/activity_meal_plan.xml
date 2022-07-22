@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.MealPlanCalendar">
+
+    <!--Week of view -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="0dp">
+
+        <TextView
+            android:id="@+id/monthYearTV"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:text="Week of [ ]"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <!--Sunday view -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sunday"
+            android:textColor="@color/gray"
+            android:textAlignment="center"
+            android:textSize="16sp"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:id="@+id/sunday_list_view" />
+
+    </LinearLayout>
+
+    <!--monday view -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Monday"
+            android:textColor="@color/gray"
+            android:textAlignment="center"
+            android:textSize="16sp"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:id="@+id/monday_list_view" />
+
+    </LinearLayout>
+
+    <!--tuesday view -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tuesday"
+            android:textColor="@color/gray"
+            android:textAlignment="center"
+            android:textSize="16sp"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:id="@+id/tuesday_list_view" />
+
+    </LinearLayout>
+
+    <!--wednesday view -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Wednesday"
+            android:textColor="@color/gray"
+            android:textAlignment="center"
+            android:textSize="16sp"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:id="@+id/wednesday_list_view" />
+
+    </LinearLayout>
+
+    <!--thursday view -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Thursday"
+            android:textColor="@color/gray"
+            android:textAlignment="center"
+            android:textSize="16sp"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:id="@+id/thursday_list_view" />
+
+    </LinearLayout>
+
+    <!--friday view -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Friday"
+            android:textColor="@color/gray"
+            android:textAlignment="center"
+            android:textSize="16sp"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:id="@+id/friday_list_view" />
+
+    </LinearLayout>
+
+    <!--saturday view -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Saturday"
+            android:textColor="@color/gray"
+            android:textAlignment="center"
+            android:textSize="16sp"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:id="@+id/saturday_list_view" />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

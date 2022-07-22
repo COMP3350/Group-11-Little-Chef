@@ -9,13 +9,11 @@ import android.os.Bundle;
 public class MealPlanCalendar extends AppCompatActivity
 {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_meal_plan_calendar);
+        setContentView(R.layout.activity_meal_plan);
 
     }
 
