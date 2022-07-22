@@ -1,6 +1,8 @@
 package comp3350.littlechef.presentation;
 
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 
 //import androidx.fragment.app.Fragment;
@@ -19,21 +21,22 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.time.LocalDate;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.objects.Recipe;
-import comp3350.littlechef.objects.MealPlanDay;
 
-
-public class MealsFragment extends Fragment {
-
-    private AccessRecipes accessRecipes;
-    private ArrayList<Recipe> recipeList;
-    private ArrayList<Recipe> mealPlan;
-    private ArrayAdapter<Recipe> recipeArrayAdapter;
+public class MealsFragment extends Fragment
+{
 
     public MealsFragment() {
         // Required empty public constructor
@@ -48,14 +51,15 @@ public class MealsFragment extends Fragment {
         //inflate view
         View view = inflater.inflate(R.layout.fragment_meals, container, false);
 
-        //Edit button
-        Button editPlanButton= (Button) view.findViewById(R.id.editMealPlanButton);
-        editPlanButton.setOnClickListener(new View.OnClickListener()
+        Button goToMealPlanButton= (Button) view.findViewById(R.id.goToMealCalendar);
+        //button listener for add recipe
+        goToMealPlanButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                editPlanOnClick();
+                Intent MealPlanCalendar = new Intent(getActivity(), MealPlanCalendar.class);
+                startActivity(MealPlanCalendar);
             }
         });
 
