@@ -52,7 +52,7 @@ public class MealsFragment extends Fragment {
         //database
         accessRecipes = new AccessRecipes();
         recipeList = new ArrayList<Recipe>();
-        mealPlan = new ArrayList<MealPlanDay>();
+        //mealPlan = new ArrayList<MealPlanDay>();
         String result = accessRecipes.getRecipes(recipeList);
 
         //for now add starting recipe. IF THERE IS ONE IN DATABASE
