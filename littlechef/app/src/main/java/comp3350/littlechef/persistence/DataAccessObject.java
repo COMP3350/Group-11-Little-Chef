@@ -156,7 +156,7 @@ public class DataAccessObject implements DataAccess
                         + ", '" + ingredients.get(i).getUnitType()
                         + "', '" + ingredients.get(i).getMeasurement().toString()
                         + "'";
-                cmd += "\nINSERT INTO INGREDIENTS " + "(RECIPEID, NAME, AMOUNT, UNITTYPE, UNIT)" + " VALUES (" + values + ")"+"\n";
+                cmd = "\nINSERT INTO INGREDIENTS " + "(RECIPEID, NAME, AMOUNT, UNITTYPE, UNIT)" + " VALUES (" + values + ")"+"\n";
                 updateCount = statement.executeUpdate(cmd);
                 result = checkWarning(statement, updateCount);
             }
