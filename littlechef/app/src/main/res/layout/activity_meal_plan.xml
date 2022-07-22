@@ -17,7 +17,7 @@
         android:layout_marginTop="0dp">
 
         <TextView
-            android:id="@+id/monthYearTV"
+            android:id="@+id/weekOfTV"
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="100dp"
             android:id="@+id/sunday_list_view" />
 
     </LinearLayout>
@@ -67,7 +67,7 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="35dp"
             android:id="@+id/monday_list_view" />
 
     </LinearLayout>
@@ -89,7 +89,7 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="35dp"
             android:id="@+id/tuesday_list_view" />
 
     </LinearLayout>
@@ -111,7 +111,7 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="35dp"
             android:id="@+id/wednesday_list_view" />
 
     </LinearLayout>
@@ -133,7 +133,7 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="35dp"
             android:id="@+id/thursday_list_view" />
 
     </LinearLayout>
@@ -155,7 +155,7 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="35dp"
             android:id="@+id/friday_list_view" />
 
     </LinearLayout>
@@ -177,7 +177,7 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="35dp"
             android:id="@+id/saturday_list_view" />
 
     </LinearLayout>
