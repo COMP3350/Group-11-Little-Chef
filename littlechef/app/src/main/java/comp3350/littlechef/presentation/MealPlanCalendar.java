@@ -29,11 +29,11 @@ public class MealPlanCalendar extends AppCompatActivity
 {
     private AccessRecipes accessRecipes;
     private ArrayList<Recipe> recipeList;
-    private ArrayAdapter<Recipe> recipeArrayAdapter;
+    private ArrayAdapter recipeArrayAdapter;
     private Recipe recipe;
 
-    private ArrayList<Recipe> sundayList;
-    private ArrayList<Recipe> mondayList;
+    private ArrayList sundayList;
+    private ArrayList mondayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,58 +51,75 @@ public class MealPlanCalendar extends AppCompatActivity
         }
 
         //adding some views to list
-        sundayList = new ArrayList<Recipe>();
+        sundayList = new ArrayList();
+        sundayList.add("Sunday");
         sundayList.add(recipeList.get(0));
         sundayList.add(recipeList.get(1));
 
-        mondayList = new ArrayList<Recipe>();
+        mondayList = new ArrayList();
+        mondayList.add("Monday");
         mondayList.add(recipeList.get(2));
         mondayList.add(recipeList.get(3));
         mondayList.add(recipeList.get(4));
         mondayList.add(recipeList.get(5));
 
+        sundayList.addAll(mondayList);
         makeListViews(R.id.sunday_list_view, sundayList);
-        makeListViews(R.id.monday_list_view, mondayList);
-        makeListViews(R.id.tuesday_list_view, mondayList);
-        makeListViews(R.id.wednesday_list_view, mondayList);
-        makeListViews(R.id.thursday_list_view, mondayList);
-        makeListViews(R.id.friday_list_view, mondayList);
-        makeListViews(R.id.saturday_list_view, mondayList);
 
         //Edit button
-        Button editPlanButton= (Button) findViewById(R.id.editMealPlanButton);
-        editPlanButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                editPlanOnClick();
-            }
-        });
+        //Button editPlanButton= (Button) findViewById(R.id.editMealPlanButton);
+        //editPlanButton.setOnClickListener(new View.OnClickListener()
+       //{
+           //@Override
+            //public void onClick(View view)
+            //{
+              //  editPlanOnClick();
+            //}
+        //});
 
     }
 
     //this makes the list views for each day
-    private void makeListViews(int id, ArrayList<Recipe> dayList)
+    private void makeListViews(int id, ArrayList dayList)
     {
         final ListView listView = (ListView) findViewById(id);
 
-        recipeArrayAdapter = new ArrayAdapter<Recipe>(this, android.R.layout.simple_list_item_1, dayList)
+        recipeArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, dayList)
         {
             @Override
             public View getView(int position, View convertView, ViewGroup parent)
             {
-                recipe = getItem(position);
-                if(convertView == null)
+                //if its a recipe
+                if(getItem(position) instanceof Recipe)
                 {
-                    convertView = LayoutInflater.from(getContext()).inflate(R.layout.recipe_card,parent, false);
+                    recipe = (Recipe) getItem(position);
+                    if (convertView == null)
+                    {
+                        convertView = LayoutInflater.from(getContext()).inflate(R.layout.recipe_card, parent, false);
+                    }
+
+                    setValues(convertView);
+
+                    return convertView;
                 }
-
-                setValues(convertView);
-
-                return convertView;
+                else
+                {
+                    if (convertView == null)
+                    {
+                        convertView = LayoutInflater.from(getContext()).inflate(R.layout.day_card, parent, false);
+                    }
+                    setValuesDay(convertView, getItem(position).toString());
+                    return convertView;
+                }
             }};
         listView.setAdapter(recipeArrayAdapter);
+    }
+
+    //set days value
+    private void setValuesDay(View convertView, String day)
+    {
+        TextView name = (TextView) convertView.findViewById(R.id.day_name);
+        name.setText(day);
     }
 
     private void setValues(View convertView)
@@ -132,6 +149,4 @@ public class MealPlanCalendar extends AppCompatActivity
     {
         Messages.warning(this, "Implement");
     }
-
-
 }

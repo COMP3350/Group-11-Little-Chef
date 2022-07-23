@@ -107,9 +107,9 @@
         android:gravity="center"
         android:text="@string/one_serving_edit"
         android:textColor="@color/black"
-        android:theme="@style/spinnerTheme"
         android:textSize="17sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:theme="@style/spinnerTheme" />
 
     <Button
         android:id="@+id/save_edit"
