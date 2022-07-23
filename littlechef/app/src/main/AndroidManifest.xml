@@ -9,6 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".presentation.AddInstructionActivity"
             android:name=".presentation.EditRecipeActivity"
             android:exported="false" />
         <activity
