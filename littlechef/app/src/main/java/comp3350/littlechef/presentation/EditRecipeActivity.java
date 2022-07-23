@@ -51,6 +51,9 @@ public class EditRecipeActivity extends AppCompatActivity
         Intent previousIntent = getIntent();
         selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id"); // will never return null, since some recipe was clicked in prev activity
 
+        Button nextButton = (Button) findViewById(R.id.next_button);
+        Button addIngredientButton = (Button) findViewById(R.id.add_ingredient_button);
+
         ingredientsArrayAdapter = new ArrayAdapter<Ingredient>(this,android.R.layout.simple_list_item_1, selectedRecipe.getIngredients())
         {
             @Override
@@ -74,7 +77,25 @@ public class EditRecipeActivity extends AppCompatActivity
             }
         };
 
+        // button to save the edits
+        nextButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                nextClicked(view);
+            }
+        });
 
+        // button to save the edits
+        addIngredientButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                addEditClicked(view);
+            }
+        });
 
         listView.setAdapter(ingredientsArrayAdapter);
 
@@ -94,29 +115,9 @@ public class EditRecipeActivity extends AppCompatActivity
 
     public void nextClicked(View view)
     {
-        String result;
-        EditText editName = (EditText)findViewById(R.id.recipe_name_edit);
-
-        result = validateRecipeData();
-        if (result == null)
-        {
-            selectedRecipe.setName(editName.getText().toString());
-            result = accessRecipes.updateRecipe(selectedRecipe);
-            if (result == null)
-            {
-                finish();
-                //TODO get rid of if nothing else is updated
-            }
-            else
-            {
-                Messages.fatalError(this, result);
-            }
-        }
-
-        else
-        {
-            Messages.warning(this, result);
-        }
+        Intent EditInstructionsActivity = new Intent(this, EditInstructionsActivity.class);
+        EditInstructionsActivity.putExtra("id", selectedRecipe); // pass the object reference to another activity
+        startActivity(EditInstructionsActivity);
     }
 
 
@@ -271,8 +272,6 @@ public class EditRecipeActivity extends AppCompatActivity
         difficulty.setText(difficultyRating);
         taste.setText(tasteRating);
         rating.setText(selectedRecipe.getRatingString());
-
-
     }
 
 

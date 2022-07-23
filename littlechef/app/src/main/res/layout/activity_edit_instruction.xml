@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentTop="true"
+    android:orientation="vertical"
+    tools:context=".presentation.EditInstructionsActivity">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        tools:context=".presentation.EditInstructionsActivity">
+
+        <TextView
+            android:id="@+id/instruction_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="35dp"
+            android:text="@string/instructions"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/add_instructions_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_toEndOf="@+id/instruction_header"
+            android:gravity="center"
+            android:text="@string/plus_sign"
+            android:textColor="@color/dark_green"
+            android:textSize="35sp"
+
+            android:theme="@style/buttonWhiteTheme" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="@drawable/round_button"
+            android:text="@string/x_sign"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:theme="@style/buttonWhiteTheme" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/instruction_list_edit_view"
+        android:layout_width="match_parent"
+        android:layout_height="675dp"
+        android:layout_below="@+id/header"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="-1dp"
+        android:layout_marginEnd="35dp"
+        android:background="#FFFFFF"
+        android:cacheColorHint="#FFFFFF"
+        android:divider="@null"
+        android:dividerHeight="10dp"></ListView>
+
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/instruction_list_edit_view"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/round_button"
+        android:onClick="saveEdits"
+        android:text="@string/save"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:theme="@style/buttonGreenTheme" />
+
+
+</RelativeLayout>

@@ -40,6 +40,10 @@
         <activity
             android:name=".presentation.CookedAnotherMealActivity"
             android:exported="false" />
+        <activity
+            android:name=".presentation.EditInstructionsActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
