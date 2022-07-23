@@ -121,7 +121,7 @@ public class EditInstructionsActivity extends AppCompatActivity
             }
         });
     }
-
+    
     public void saveEdits(View view)
     {
         String result;
