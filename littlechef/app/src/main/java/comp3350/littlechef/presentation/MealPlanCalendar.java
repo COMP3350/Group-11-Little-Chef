@@ -22,7 +22,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 
-//TODO: (Currently working on): scroll view for items off screen
+//TODO: (Currently working on): fix listview inside scrollview
+// https://stackoverflow.com/questions/18367522/android-list-view-inside-a-scroll-view
 
 public class MealPlanCalendar extends AppCompatActivity
 {
@@ -64,9 +65,9 @@ public class MealPlanCalendar extends AppCompatActivity
         makeListViews(R.id.monday_list_view, mondayList);
         makeListViews(R.id.tuesday_list_view, mondayList);
         makeListViews(R.id.wednesday_list_view, mondayList);
-        //makeListViews(R.id.thursday_list_view, mondayList);
-        //makeListViews(R.id.friday_list_view, mondayList);
-        //makeListViews(R.id.saturday_list_view, mondayList);
+        makeListViews(R.id.thursday_list_view, mondayList);
+        makeListViews(R.id.friday_list_view, mondayList);
+        makeListViews(R.id.saturday_list_view, mondayList);
 
         //Edit button
         Button editPlanButton= (Button) findViewById(R.id.editMealPlanButton);
