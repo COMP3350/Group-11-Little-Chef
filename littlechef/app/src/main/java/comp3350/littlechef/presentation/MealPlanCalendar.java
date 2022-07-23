@@ -19,7 +19,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 //TODO: (Currently working on): fix listview inside scrollview
@@ -32,14 +34,22 @@ public class MealPlanCalendar extends AppCompatActivity
     private ArrayAdapter recipeArrayAdapter;
     private Recipe recipe;
 
+    private ArrayList allDaysList;
     private ArrayList sundayList;
     private ArrayList mondayList;
+    private ArrayList tuesdayList;
+    private ArrayList wednesdayList;
+    private ArrayList thursdayList;
+    private ArrayList fridayList;
+    private ArrayList saturdayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal_plan);
+
+        setTime();
 
         accessRecipes = new AccessRecipes();
         recipeList = new ArrayList<Recipe>();
@@ -49,34 +59,78 @@ public class MealPlanCalendar extends AppCompatActivity
         {
             Messages.fatalError(this, result);
         }
+        createInitialList();
+        addMealsToDays();
+        combineLists();
 
-        //adding some views to list
-        sundayList = new ArrayList();
-        sundayList.add("Sunday");
-        sundayList.add(recipeList.get(0));
-        sundayList.add(recipeList.get(1));
-
-        mondayList = new ArrayList();
-        mondayList.add("Monday");
-        mondayList.add(recipeList.get(2));
-        mondayList.add(recipeList.get(3));
-        mondayList.add(recipeList.get(4));
-        mondayList.add(recipeList.get(5));
-
-        sundayList.addAll(mondayList);
-        makeListViews(R.id.sunday_list_view, sundayList);
+        makeListViews(R.id.all_list_view, allDaysList);
 
         //Edit button
-        //Button editPlanButton= (Button) findViewById(R.id.editMealPlanButton);
-        //editPlanButton.setOnClickListener(new View.OnClickListener()
-       //{
-           //@Override
-            //public void onClick(View view)
-            //{
-              //  editPlanOnClick();
-            //}
-        //});
+        Button editPlanButton= (Button) findViewById(R.id.editMealPlanButton);
+        editPlanButton.setOnClickListener(new View.OnClickListener()
+       {
+           @Override
+            public void onClick(View view)
+            {
+                editPlanOnClick();
+            }
+        });
 
+    }
+
+    //JUST TESTING REMOVE LATER
+    private void addMealsToDays()
+    {
+        sundayList.add(recipeList.get(0));
+        mondayList.add(recipeList.get(1));
+        tuesdayList.add(recipeList.get(2));
+        wednesdayList.add(recipeList.get(0));
+        thursdayList.add(recipeList.get(1));
+        fridayList.add(recipeList.get(2));
+        saturdayList.add(recipeList.get(0));
+    }
+
+    private void combineLists()
+    {
+        allDaysList.addAll(sundayList);
+        allDaysList.addAll(mondayList);
+        allDaysList.addAll(tuesdayList);
+        allDaysList.addAll(wednesdayList);
+        allDaysList.addAll(thursdayList);
+        allDaysList.addAll(fridayList);
+        allDaysList.addAll(saturdayList);
+    }
+
+    private void createInitialList()
+    {
+        allDaysList = new ArrayList();
+        sundayList = new ArrayList();
+        mondayList = new ArrayList();
+        tuesdayList = new ArrayList();
+        wednesdayList = new ArrayList();
+        thursdayList = new ArrayList();
+        fridayList = new ArrayList();
+        saturdayList = new ArrayList();
+
+        //add initial day to lists
+        sundayList.add("Sunday");
+        mondayList.add("Monday");
+        tuesdayList.add("Tuesday");
+        wednesdayList.add("Wednesday");
+        thursdayList.add("Thursday");
+        fridayList.add("Friday");
+        saturdayList.add("Saturday");
+
+    }
+
+    private void setTime()
+    {
+        String pattern = "MMMM dd yyyy";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String date = simpleDateFormat.format(new Date());
+
+        TextView textView = findViewById(R.id.weekOfTV);
+        textView.setText("Week of "+date);
     }
 
     //this makes the list views for each day
