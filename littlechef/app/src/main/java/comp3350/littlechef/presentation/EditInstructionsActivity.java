@@ -45,16 +45,14 @@ public class EditInstructionsActivity extends AppCompatActivity
         setContentView(R.layout.activity_edit_instruction);
         accessRecipes = new AccessRecipes();
 
-        final ListView listView = (ListView) findViewById(R.id.instruction_list_edit_view);
-
-        //get the selected recipe that was clicked from previous activity
         Intent previousIntent = getIntent();
+        selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id"); // will never return null, since some recipe was clicked in prev activity
 
+        final ListView listView = (ListView) findViewById(R.id.instruction_list_edit_view);
         Button saveButton = (Button) findViewById(R.id.save_button);
         Button addInstructionButton = (Button) findViewById(R.id.add_button);
         Button cancelButton= (Button) findViewById(R.id.cancelButton);
-
-        selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id"); // will never return null, since some recipe was clicked in prev activity
+        /*
 
         InstructionsArrayAdapter = new ArrayAdapter<String[]>(this,android.R.layout.simple_list_item_1, selectedRecipe.getInstructions())
         {
@@ -120,7 +118,8 @@ public class EditInstructionsActivity extends AppCompatActivity
                 finish();
             }
         });
-    }
+        */
+    }//end
 
     public void saveEdits(View view)
     {
