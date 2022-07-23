@@ -10,6 +10,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".presentation.AddInstructionActivity"
+            android:name=".presentation.EditRecipeActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.AddRecipeActivity"

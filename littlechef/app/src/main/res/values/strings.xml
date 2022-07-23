@@ -3,7 +3,7 @@
     <string name="recipes_button">Recipes</string>
     <string name="meal_plan_button">Meal Plans</string>
     <string name="add_recipe_button">Add Recipe</string>
-    <string name="recipe_card_name_placeholder"><u>Recipe Name</u></string>
+    <string name="recipe_card_name_placeholder">Recipe Name</string>
     <string name="time">Estimated Time:</string>
     <string name="difficulty">Difficulty:</string>
     <string name="taste">Taste:</string>
@@ -32,6 +32,13 @@
     <string name="rate_prompt">Please take a second to rate how great of a job \nyou did in cooking this meal!</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
+    <string name="save">Save</string>
+    <string name="one_serving_edit">1 Serving</string>
+    <string name="cancel">cancel</string>
+    <string name="amount">Amount</string>
+    <string name="unit">Unit</string>
+    <string name="next">Next</string>
+    <string name="plus_sign">+</string>
 
     <string-array name="serving_sizes">
         <item>1 serving</item>
@@ -45,6 +52,7 @@
 
     <string-array name="units">
 
+        <item>QUANTITY</item>
         <item>PINCH</item>
         <item>TSP</item>
         <item>TBSP</item>

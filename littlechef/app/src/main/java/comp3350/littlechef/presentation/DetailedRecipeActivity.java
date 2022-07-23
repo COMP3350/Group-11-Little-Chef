@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.SpannableString;
+import android.text.method.ScrollingMovementMethod;
 import android.text.style.StyleSpan;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -22,7 +23,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
-import comp3350.littlechef.business.TimeRecipe;
 import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
 import comp3350.littlechef.business.ScaleRecipe;
@@ -91,9 +91,9 @@ public class DetailedRecipeActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Intent readInstuction= new Intent(DetailedRecipeActivity.this, RecipeInstructionActivity.class);
-                readInstuction.putExtra("id", selectedRecipe); //pass the object reference to another activity
-                startActivity(readInstuction);
+                Intent readInstruction= new Intent(DetailedRecipeActivity.this, RecipeInstructionActivity.class);
+                readInstruction.putExtra("id", selectedRecipe); //pass the object reference to another activity
+                startActivity(readInstruction);
                 finish(); //finish detailed recipe activity after reading instruction(cooking) is done
             }
         });
@@ -134,24 +134,18 @@ public class DetailedRecipeActivity extends AppCompatActivity
         TextView difficulty = (TextView) findViewById(R.id.difficulty);
         TextView taste = (TextView) findViewById(R.id.taste);
         TextView rating = (TextView) findViewById(R.id.rating);
-        TextView textIngredient = (TextView) findViewById(R.id.text_ingredients);
+
+        recipeName.setSelected(true);
 
         //make recipe name bold
         SpannableString recipeNameFormatted = new SpannableString(selectedRecipe.getName());
         recipeNameFormatted.setSpan(new StyleSpan(Typeface.BOLD), 0, recipeNameFormatted.length(), 0);
-
-        //make "Ingredients" bold
-        SpannableString textIngredientsFormatted = new SpannableString("Ingredients");
-        textIngredientsFormatted.setSpan(new StyleSpan(Typeface.BOLD), 0, textIngredientsFormatted.length(), 0);
 
         recipeName.setText(recipeNameFormatted);
         estimatedTime.setText(selectedRecipe.getAverageCookingTime());
         difficulty.setText(difficultyRating);
         taste.setText(tasteRating);
         rating.setText(selectedRecipe.getRatingString());
-        textIngredient.setText(textIngredientsFormatted);
-
-
     }
 
     public void deleteClicked(View view)
@@ -195,6 +189,9 @@ public class DetailedRecipeActivity extends AppCompatActivity
 
     public void editClicked(View view)
     {
-
+        Intent editRecipe= new Intent(DetailedRecipeActivity.this, EditRecipeActivity.class);
+        editRecipe.putExtra("id", selectedRecipe); //pass the object reference to another activity
+        startActivity(editRecipe);
+        finish(); //finish detailed recipe activity after editing recipe
     }
 }
