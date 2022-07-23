@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_alignParentTop="true"
-    android:orientation="vertical"
-    tools:context=".presentation.EditInstructionsActivity">
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/header"
@@ -25,7 +24,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/add_instructions_button"
+            android:id="@+id/add_button"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
