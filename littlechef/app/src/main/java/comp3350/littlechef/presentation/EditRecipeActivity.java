@@ -272,7 +272,6 @@ public class EditRecipeActivity extends AppCompatActivity
         taste.setText(tasteRating);
         rating.setText(selectedRecipe.getRatingString());
 
-
     }
 
 
