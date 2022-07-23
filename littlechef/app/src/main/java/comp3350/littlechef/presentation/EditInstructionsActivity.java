@@ -51,7 +51,38 @@ public class EditInstructionsActivity extends AppCompatActivity
         final ListView listView = (ListView) findViewById(R.id.instruction_list_edit_view);
         Button saveButton = (Button) findViewById(R.id.save_button);
         Button addInstructionButton = (Button) findViewById(R.id.add_button);
-        Button cancelButton= (Button) findViewById(R.id.cancelButton);
+        Button cancelButton= (Button) findViewById(R.id.cancel_button);
+
+        // button to save the edits
+        saveButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                finish();
+            }
+        });
+
+        //button listener for adding an instruction to a recipe
+        addInstructionButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                // show the pop-up to add a new instruction
+            }
+        });
+
+        // button to cancel edits
+        cancelButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                finish();
+            }
+        });
+
         /*
 
         InstructionsArrayAdapter = new ArrayAdapter<String[]>(this,android.R.layout.simple_list_item_1, selectedRecipe.getInstructions())
@@ -86,36 +117,6 @@ public class EditInstructionsActivity extends AppCompatActivity
             {
                 String selectedInstruction =  (String) listView.getItemAtPosition(position);
                 //showEditInstructionWindow(selectedIngredient, false);
-            }
-        });
-
-        // button to save the edits
-        saveButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                finish();
-            }
-        });
-
-        //button listener for adding an instruction to a recipe
-        addInstructionButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                // show the pop-up to add a new instruction
-            }
-        });
-
-        // button to cancel edits
-        cancelButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                finish();
             }
         });
         */

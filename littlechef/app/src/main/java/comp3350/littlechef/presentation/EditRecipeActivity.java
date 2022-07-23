@@ -118,6 +118,7 @@ public class EditRecipeActivity extends AppCompatActivity
         Intent EditInstructionsActivity = new Intent(this, EditInstructionsActivity.class);
         EditInstructionsActivity.putExtra("id", selectedRecipe); // pass the object reference to another activity
         startActivity(EditInstructionsActivity);
+        finish();
     }
 
 
