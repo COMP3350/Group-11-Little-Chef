@@ -4,11 +4,9 @@ package comp3350.littlechef.presentation;
 import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
@@ -35,20 +33,20 @@ import comp3350.littlechef.R;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class HomeActivityTest {
+public class ReadRateRecipeAcceptanceTest2 {
 
     @Rule
     public ActivityScenarioRule<HomeActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(HomeActivity.class);
 
     @Test
-    public void homeActivityTest() {
+    public void readRateRecipeAcceptanceTest2() {
         DataInteraction relativeLayout = onData(anything())
                 .inAdapterView(allOf(withId(R.id.recipe_list_view),
                         childAtPosition(
                                 withClassName(is("android.widget.FrameLayout")),
                                 0)))
-                .atPosition(1);
+                .atPosition(3);
         relativeLayout.perform(click());
 
         ViewInteraction materialButton = onView(
@@ -101,24 +99,24 @@ public class HomeActivityTest {
         }
 
         ViewInteraction materialRadioButton = onView(
-                allOf(withId(R.id.difficulty_radio_3), withText("3"),
+                allOf(withId(R.id.difficulty_radio_4), withText("4"),
                         childAtPosition(
                                 allOf(withId(R.id.difficulty_radio_group),
                                         childAtPosition(
                                                 withClassName(is("android.widget.RelativeLayout")),
                                                 6)),
-                                2),
+                                3),
                         isDisplayed()));
         materialRadioButton.perform(click());
 
         ViewInteraction materialRadioButton2 = onView(
-                allOf(withId(R.id.taste_radio_4), withText("4"),
+                allOf(withId(R.id.taste_radio_2), withText("2"),
                         childAtPosition(
                                 allOf(withId(R.id.taste_radio_group),
                                         childAtPosition(
                                                 withClassName(is("android.widget.RelativeLayout")),
                                                 7)),
-                                3),
+                                1),
                         isDisplayed()));
         materialRadioButton2.perform(click());
 
@@ -131,24 +129,6 @@ public class HomeActivityTest {
                                 8),
                         isDisplayed()));
         materialButton5.perform(click());
-
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.taste), withText("Taste: 4.00"),
-                        withParent(withParent(withId(R.id.recipe_list_view))),
-                        isDisplayed()));
-        textView.check(matches(withText("Taste: 4.00")));
-
-        ViewInteraction textView2 = onView(
-                allOf(withId(R.id.difficulty), withText("Difficulty: 3.00"),
-                        withParent(withParent(withId(R.id.recipe_list_view))),
-                        isDisplayed()));
-        textView2.check(matches(withText("Difficulty: 3.00")));
-
-        ViewInteraction textView3 = onView(
-                allOf(withId(R.id.estimated_time), withText("Time: 00h 00m 03s"),
-                        withParent(withParent(withId(R.id.recipe_list_view))),
-                        isDisplayed()));
-        textView3.check(matches(withText("Time: 00h 00m 03s")));
     }
 
     private static Matcher<View> childAtPosition(
