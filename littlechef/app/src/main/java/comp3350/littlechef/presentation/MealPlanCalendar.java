@@ -61,6 +61,7 @@ public class MealPlanCalendar extends AppCompatActivity
         //initialize the meal plan
         mealPlan = new MealPlan();
         allDaysList = mealPlan.combineLists();
+        Toast.makeText(MealPlanCalendar.this, " "+mealPlan.sizeSunday(), Toast.LENGTH_SHORT).show();
 
         final ListView listView = (ListView) findViewById(R.id.all_list_view);
 
@@ -102,7 +103,7 @@ public class MealPlanCalendar extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                Toast.makeText(MealPlanCalendar.this, "Listview click", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MealPlanCalendar.this, " ", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -113,12 +114,9 @@ public class MealPlanCalendar extends AppCompatActivity
            @Override
             public void onClick(View view)
             {
-                mealPlan.removeFrom("Sunday", 0);
-                allDaysList.clear();
-                allDaysList = mealPlan.combineLists();
-                Toast.makeText(MealPlanCalendar.this, "", Toast.LENGTH_SHORT).show();
+                allDaysList.remove(2);
                 recipeArrayAdapter.notifyDataSetChanged();
-                //editPlanOnClick();
+
             }
         });
 
@@ -138,8 +136,10 @@ public class MealPlanCalendar extends AppCompatActivity
     //set days value
     private void setValuesDay(View convertView, String day)
     {
+
         TextView name = (TextView) convertView.findViewById(R.id.day_name);
         name.setText(day);
+
     }
 
     private void setValues(View convertView)

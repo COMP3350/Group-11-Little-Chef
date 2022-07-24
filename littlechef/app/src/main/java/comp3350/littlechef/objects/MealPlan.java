@@ -9,6 +9,7 @@ public class MealPlan implements Serializable
 {
 
     private ArrayList allDaysList;
+
     private ArrayList<Recipe> sundayList;
     private ArrayList<Recipe> mondayList;
     private ArrayList<Recipe> tuesdayList;
@@ -52,21 +53,35 @@ public class MealPlan implements Serializable
 
     public void removeFrom(String day, int index)
     {
-        if(day.equals("Sunday"))
+        if(day.equals("Sunday") && !sundayList.isEmpty())
         {
             sundayList.remove(index);
         }
 
     }
+    public void addTo(String day, Recipe recipe)
+    {
+        if(day.equals("Sunday"))
+        {
+            sundayList.add(recipe);
+        }
+
+    }
+
+    public int sizeSunday()
+    {
+        return sundayList.size();
+    }
 
     //combine all lists into one list with day names, for listview
     public ArrayList combineLists()
     {
-        ArrayList newList = new ArrayList();
-        newList.add("Sunday");
-        newList.addAll(sundayList);
-        newList.add("Monday");
-        newList.addAll(mondayList);
+        allDaysList = new ArrayList();
+        allDaysList.add("Sunday");
+        if(sundayList.size() != 0)
+            allDaysList.addAll(sundayList);
+        allDaysList.add("Monday");
+        //newList.addAll(mondayList);
         //newList.add("Tuesday");
         //newList.addAll(tuesdayList);
         //newList.add("Wednesday");
@@ -77,6 +92,6 @@ public class MealPlan implements Serializable
         //newList.addAll(fridayList);
         //newList.add("Saturday");
         //newList.addAll(saturdayList);
-        return newList;
+        return allDaysList;
     }
 }
