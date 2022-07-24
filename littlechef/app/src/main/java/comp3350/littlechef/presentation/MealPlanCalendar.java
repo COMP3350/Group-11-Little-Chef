@@ -15,6 +15,7 @@ import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -61,12 +62,10 @@ public class MealPlanCalendar extends AppCompatActivity
             Messages.fatalError(this, result);
         }
         createInitialList();
-        addMealsToDays();
+        addMealsToDays(); //test case
         combineLists();
 
-        //makeListViews(R.id.all_list_view, allDaysList);
-
-        final ListView listView = (ListView) findViewById(R.id.all_list_view);
+        ListView listView = (ListView) findViewById(R.id.all_list_view);
 
         recipeArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, allDaysList)
         {
@@ -106,9 +105,12 @@ public class MealPlanCalendar extends AppCompatActivity
            @Override
             public void onClick(View view)
             {
-                sundayList.remove(0);
                 //editPlanOnClick();
-                combineLists();
+                sundayList.remove(0);
+                allDaysList.clear();
+                //allDaysList.add("TEST1");
+                allDaysList.add("Sunday");
+                allDaysList.addAll(sundayList);
                 recipeArrayAdapter.notifyDataSetChanged();
             }
         });
@@ -130,8 +132,7 @@ public class MealPlanCalendar extends AppCompatActivity
 
     private void combineLists()
     {
-        allDaysList = new ArrayList();
-        allDaysList.add(0,"Sunday");
+        allDaysList.add("Sunday");
         allDaysList.addAll(sundayList);
         allDaysList.add("Monday");
         allDaysList.addAll(mondayList);
@@ -149,7 +150,7 @@ public class MealPlanCalendar extends AppCompatActivity
 
     private void createInitialList()
     {
-        //allDaysList = new ArrayList();
+        allDaysList = new ArrayList();
         sundayList = new ArrayList();
         mondayList = new ArrayList();
         tuesdayList = new ArrayList();
@@ -239,12 +240,6 @@ public class MealPlanCalendar extends AppCompatActivity
     //to edit a meal plan
     public void editPlanOnClick()
     {
-        //Messages.warning(this, "Implement");
-        /*Intent editMealPlan = new Intent(this, EditMealPlan.class);
-        editMealPlan.putExtra("id", sundayList); //pass the object reference to another activity
-        startActivity(editMealPlan);
-        */
-        //ArrayList<Object> object = new ArrayList<Object>();
         Intent intent = new Intent(this, EditMealPlan.class);
         Bundle args = new Bundle();
         args.putSerializable("ARRAYLIST",(Serializable)sundayList);
