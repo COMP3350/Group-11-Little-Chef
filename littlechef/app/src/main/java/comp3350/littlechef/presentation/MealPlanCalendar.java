@@ -6,6 +6,7 @@ import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.objects.Recipe;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -19,13 +20,13 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 
-//TODO: (Currently working on): fix listview inside scrollview
-// https://stackoverflow.com/questions/18367522/android-list-view-inside-a-scroll-view
+//TODO: (Currently working on): edit button
 
 public class MealPlanCalendar extends AppCompatActivity
 {
@@ -35,8 +36,8 @@ public class MealPlanCalendar extends AppCompatActivity
     private Recipe recipe;
 
     private ArrayList allDaysList;
-    private ArrayList sundayList;
-    private ArrayList mondayList;
+    private ArrayList<Recipe> sundayList;
+    private ArrayList<Recipe> mondayList;
     private ArrayList tuesdayList;
     private ArrayList wednesdayList;
     private ArrayList thursdayList;
@@ -63,7 +64,40 @@ public class MealPlanCalendar extends AppCompatActivity
         addMealsToDays();
         combineLists();
 
-        makeListViews(R.id.all_list_view, allDaysList);
+        //makeListViews(R.id.all_list_view, allDaysList);
+
+        final ListView listView = (ListView) findViewById(R.id.all_list_view);
+
+        recipeArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, allDaysList)
+        {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent)
+            {
+                //if its a recipe
+                if(getItem(position) instanceof Recipe)
+                {
+                    recipe = (Recipe) getItem(position);
+                    if (convertView == null)
+                    {
+                        convertView = LayoutInflater.from(getContext()).inflate(R.layout.recipe_card, parent, false);
+                    }
+
+                    setValues(convertView);
+
+                    return convertView;
+                }
+                else
+                {
+                    if (convertView == null)
+                    {
+                        convertView = LayoutInflater.from(getContext()).inflate(R.layout.day_card, parent, false);
+                    }
+                    setValuesDay(convertView, getItem(position).toString());
+                    return convertView;
+                }
+
+            }};//adapater end
+        listView.setAdapter(recipeArrayAdapter);
 
         //Edit button
         Button editPlanButton= (Button) findViewById(R.id.editMealPlanButton);
@@ -72,7 +106,10 @@ public class MealPlanCalendar extends AppCompatActivity
            @Override
             public void onClick(View view)
             {
-                editPlanOnClick();
+                sundayList.remove(0);
+                //editPlanOnClick();
+                combineLists();
+                recipeArrayAdapter.notifyDataSetChanged();
             }
         });
 
@@ -82,6 +119,7 @@ public class MealPlanCalendar extends AppCompatActivity
     private void addMealsToDays()
     {
         sundayList.add(recipeList.get(0));
+        sundayList.add(recipeList.get(1));
         mondayList.add(recipeList.get(1));
         tuesdayList.add(recipeList.get(2));
         wednesdayList.add(recipeList.get(0));
@@ -92,18 +130,26 @@ public class MealPlanCalendar extends AppCompatActivity
 
     private void combineLists()
     {
+        allDaysList = new ArrayList();
+        allDaysList.add(0,"Sunday");
         allDaysList.addAll(sundayList);
+        allDaysList.add("Monday");
         allDaysList.addAll(mondayList);
-        allDaysList.addAll(tuesdayList);
-        allDaysList.addAll(wednesdayList);
-        allDaysList.addAll(thursdayList);
-        allDaysList.addAll(fridayList);
-        allDaysList.addAll(saturdayList);
+        //allDaysList.add("Tuesday");
+        //allDaysList.addAll(tuesdayList);
+        //allDaysList.add(tuesdayList.size(),"Wednesday");
+        //allDaysList.addAll(wednesdayList);
+        //allDaysList.add(wednesdayList.size(),"Thursday");
+        //allDaysList.addAll(thursdayList);
+        //allDaysList.add(thursdayList.size(),"Friday");
+        //allDaysList.addAll(fridayList);
+        //allDaysList.add(fridayList.size(),"Saturday");
+        //allDaysList.addAll(saturdayList);
     }
 
     private void createInitialList()
     {
-        allDaysList = new ArrayList();
+        //allDaysList = new ArrayList();
         sundayList = new ArrayList();
         mondayList = new ArrayList();
         tuesdayList = new ArrayList();
@@ -111,16 +157,6 @@ public class MealPlanCalendar extends AppCompatActivity
         thursdayList = new ArrayList();
         fridayList = new ArrayList();
         saturdayList = new ArrayList();
-
-        //add initial day to lists
-        sundayList.add("Sunday");
-        mondayList.add("Monday");
-        tuesdayList.add("Tuesday");
-        wednesdayList.add("Wednesday");
-        thursdayList.add("Thursday");
-        fridayList.add("Friday");
-        saturdayList.add("Saturday");
-
     }
 
     private void setTime()
@@ -132,7 +168,7 @@ public class MealPlanCalendar extends AppCompatActivity
         TextView textView = findViewById(R.id.weekOfTV);
         textView.setText("Week of "+date);
     }
-
+    /*
     //this makes the list views for each day
     private void makeListViews(int id, ArrayList dayList)
     {
@@ -169,6 +205,8 @@ public class MealPlanCalendar extends AppCompatActivity
         listView.setAdapter(recipeArrayAdapter);
     }
 
+    */
+
     //set days value
     private void setValuesDay(View convertView, String day)
     {
@@ -201,6 +239,17 @@ public class MealPlanCalendar extends AppCompatActivity
     //to edit a meal plan
     public void editPlanOnClick()
     {
-        Messages.warning(this, "Implement");
+        //Messages.warning(this, "Implement");
+        /*Intent editMealPlan = new Intent(this, EditMealPlan.class);
+        editMealPlan.putExtra("id", sundayList); //pass the object reference to another activity
+        startActivity(editMealPlan);
+        */
+        //ArrayList<Object> object = new ArrayList<Object>();
+        Intent intent = new Intent(this, EditMealPlan.class);
+        Bundle args = new Bundle();
+        args.putSerializable("ARRAYLIST",(Serializable)sundayList);
+        intent.putExtra("BUNDLE",args);
+        startActivity(intent);
+
     }
 }
