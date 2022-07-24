@@ -4,13 +4,16 @@ package comp3350.littlechef.presentation;
 import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,8 +39,15 @@ import comp3350.littlechef.R;
 public class ReadRateRecipeAcceptanceTest {
 
     @Rule
-    public ActivityScenarioRule<HomeActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(HomeActivity.class);
+    public ActivityScenarioRule<HomeActivity> homeActivity = new ActivityScenarioRule<>(HomeActivity.class);
+
+    @Test
+    public void testHomeScreen()
+    {
+        onView(withText("Recipes")).check(matches(isDisplayed()));
+        onView(withText("Add Recipe")).check(matches(isDisplayed()));
+        onView(withText("Meal Plans")).check(matches(isDisplayed()));
+    }
 
     @Test
     public void readRateRecipeAcceptanceTest() {
