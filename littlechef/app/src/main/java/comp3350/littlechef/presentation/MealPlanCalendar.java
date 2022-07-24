@@ -39,11 +39,11 @@ public class MealPlanCalendar extends AppCompatActivity
     private ArrayList allDaysList;
     private ArrayList<Recipe> sundayList;
     private ArrayList<Recipe> mondayList;
-    private ArrayList tuesdayList;
-    private ArrayList wednesdayList;
-    private ArrayList thursdayList;
-    private ArrayList fridayList;
-    private ArrayList saturdayList;
+    private ArrayList<Recipe> tuesdayList;
+    private ArrayList<Recipe> wednesdayList;
+    private ArrayList<Recipe> thursdayList;
+    private ArrayList<Recipe> fridayList;
+    private ArrayList<Recipe> saturdayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
