@@ -105,10 +105,10 @@ public class DataAccessObject implements DataAccess
         {
             values = "'" + recipe.getName().replace("'","''")
                     + "'";
-            cmd = "INSERT INTO RECIPES " + "(NAME)" + " VALUES (" + values + ")";
+            cmd = "INSERT INTO RECIPES " + "(NAME)" + " VALUES (" + values + ")" + "\n";
             updateCount = statement.executeUpdate(cmd);
             result = checkWarning(statement, updateCount);
-            cmd = "CALL IDENTITY()";
+            cmd = "CALL IDENTITY()" + "\n";
             resultSet = statement.executeQuery(cmd);
             resultSet.next();
             recipeID = resultSet.getInt(1);
@@ -259,7 +259,7 @@ public class DataAccessObject implements DataAccess
 
         try
         {
-            cmd = "SELECT * FROM RECIPES";
+            cmd = "SELECT * FROM RECIPES" + "\n";
             resultSet = statement.executeQuery(cmd);
         }
         catch (Exception e)
@@ -274,26 +274,26 @@ public class DataAccessObject implements DataAccess
                 myName = resultSet.getString("NAME");
                 recipe = new Recipe(Integer.parseInt(myID));
                 recipe.setName(myName);
-                cmd2 = "SELECT * FROM INGREDIENTS WHERE RECIPEID=" + myID;
+                cmd2 = "SELECT * FROM INGREDIENTS WHERE RECIPEID=" + myID + "\n";
                 resultSet2 = statement.executeQuery(cmd2);
                 while(resultSet2.next())
                 {
                     Ingredient ing = new Ingredient(resultSet2.getString("NAME"),Unit.valueOf(resultSet2.getString("UNIT")),resultSet2.getDouble("AMOUNT"));
                     recipe.addIngredient(ing);
                 }
-                cmd2 = "SELECT * FROM INSTRUCTIONS WHERE RECIPEID=" + myID;
+                cmd2 = "SELECT * FROM INSTRUCTIONS WHERE RECIPEID=" + myID + "\n";
                 resultSet2 = statement.executeQuery(cmd2);
                 while(resultSet2.next())
                 {
                     recipe.addInstructions(resultSet2.getString("INSTRUCTION"), resultSet2.getString("SUBINSTRUCTION"));
                 }
-                cmd2 = "SELECT * FROM DIFFICULTYRATINGS WHERE RECIPEID=" + myID;
+                cmd2 = "SELECT * FROM DIFFICULTYRATINGS WHERE RECIPEID=" + myID + "\n";
                 resultSet2 = statement.executeQuery(cmd2);
                 while(resultSet2.next())
                 {
                     recipe.addDifficultyRating(resultSet2.getDouble("RATING"));
                 }
-                cmd2 = "SELECT * FROM TASTERATINGS WHERE RECIPEID=" + myID;
+                cmd2 = "SELECT * FROM TASTERATINGS WHERE RECIPEID=" + myID + "\n";
                 resultSet2 = statement.executeQuery(cmd2);
                 while(resultSet2.next())
                 {
@@ -325,7 +325,7 @@ public class DataAccessObject implements DataAccess
         recipes = null;
         try
         {
-            cmd = "SELECT * FROM RECIPES WHERE RECIPEID=" + newRecipe.getId();
+            cmd = "SELECT * FROM RECIPES WHERE RECIPEID=" + newRecipe.getId() + "\n";
             resultSet = statement.executeQuery(cmd);
             // ResultSetMetaData md2 = rs3.getMetaData();
             recipes = new ArrayList<Recipe>();
@@ -334,32 +334,32 @@ public class DataAccessObject implements DataAccess
                 myID = resultSet.getString("RecipeID");
                 recipe = new Recipe(Integer.parseInt(myID));
                 recipe.setName(resultSet.getString("Name"));
-                cmd2 = "SELECT * FROM INGREDIENTS WHERE RECIPEID=" + myID;
+                cmd2 = "SELECT * FROM INGREDIENTS WHERE RECIPEID=" + myID + "\n";
                 resultSet2 = statement.executeQuery(cmd2);
                 while(resultSet2.next())
                 {
                     Ingredient ing = new Ingredient(resultSet2.getString("NAME"),Unit.valueOf(resultSet2.getString("UNIT")),resultSet2.getDouble("AMOUNT"));
                     recipe.addIngredient(ing);
                 }
-                cmd2 = "SELECT * FROM INSTRUCTIONS WHERE RECIPEID=" + myID;
+                cmd2 = "SELECT * FROM INSTRUCTIONS WHERE RECIPEID=" + myID + "\n";
                 resultSet2 = statement.executeQuery(cmd2);
                 while(resultSet2.next())
                 {
                     recipe.addInstructions(resultSet2.getString("INSTRUCTION"), resultSet2.getString("SUBINSTRUCTION"));
                 }
-                cmd2 = "SELECT * FROM DIFFICULTYRATINGS WHERE RECIPEID=" + myID;
+                cmd2 = "SELECT * FROM DIFFICULTYRATINGS WHERE RECIPEID=" + myID + "\n";
                 resultSet2 = statement.executeQuery(cmd2);
                 while(resultSet2.next())
                 {
                     recipe.addDifficultyRating(resultSet2.getDouble("RATING"));
                 }
-                cmd2 = "SELECT * FROM TASTERATINGS WHERE RECIPEID=" + myID;
+                cmd2 = "SELECT * FROM TASTERATINGS WHERE RECIPEID=" + myID + "\n";
                 resultSet2 = statement.executeQuery(cmd2);
                 while(resultSet2.next())
                 {
                     recipe.addTasteRating(resultSet2.getDouble("RATING"));
                 }
-                cmd2 = "SELECT * FROM COOKINGTIMES WHERE RECIPEID=" + myID;
+                cmd2 = "SELECT * FROM COOKINGTIMES WHERE RECIPEID=" + myID + "\n";
                 resultSet2 = statement.executeQuery(cmd2);
                 while(resultSet2.next())
                 {

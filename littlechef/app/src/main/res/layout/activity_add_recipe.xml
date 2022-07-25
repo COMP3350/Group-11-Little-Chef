@@ -23,10 +23,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:background="@drawable/round_button"
-            android:backgroundTintMode="@color/white"
-            android:text="X"
+            android:text="@string/x_sign"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:textSize="30sp"
+            android:theme="@style/buttonWhiteTheme" />
 
     </LinearLayout>
 

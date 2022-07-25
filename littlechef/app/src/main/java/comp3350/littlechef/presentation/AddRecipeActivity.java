@@ -173,6 +173,7 @@ public class AddRecipeActivity extends AppCompatActivity
         Unit unit = checkUnit();
         Ingredient newIngredient = new Ingredient(nameIngred, unit, amount);
         result = validateIngredient(newIngredient);
+
         if(result == null)
         {
             selectedRecipe.addIngredient(new Ingredient(nameIngred, unit, amount));
