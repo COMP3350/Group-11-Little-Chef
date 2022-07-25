@@ -84,8 +84,27 @@ public class Recipe implements Serializable
 
     public void addInstructions(String instruction, String subInstruction)
     {
-        if(!instruction.equals(subInstruction)) {
-            instructions.add(new String[]{instruction, subInstruction});
+        if(instruction != null && subInstruction != null)
+        {
+            if (!instruction.equals(subInstruction))
+            {
+                instructions.add(new String[]{instruction, subInstruction});
+            }
+        }
+    }
+
+    public void setInstructionAtIndex(int index, String newInstruction, String newSubInstruction)
+    {
+        String[] instruction;
+
+        if(newInstruction != null && newSubInstruction != null && index >= 0)
+        {
+            if(!newInstruction.equals(newSubInstruction))
+            {
+                instruction = instructions.get(index);
+                instruction[0] = newInstruction;
+                instruction[1] = newSubInstruction;
+            }
         }
     }
 

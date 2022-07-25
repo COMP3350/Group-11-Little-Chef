@@ -3,7 +3,6 @@ package comp3350.littlechef.presentation;
 import androidx.appcompat.app.AppCompatActivity;
 import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
-import comp3350.littlechef.business.ScaleRecipe;
 import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
 import comp3350.littlechef.objects.Unit;
@@ -21,7 +20,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -36,14 +34,11 @@ public class EditRecipeActivity extends AppCompatActivity
 {
     private Recipe selectedRecipe;
     private ArrayAdapter<Ingredient> ingredientsArrayAdapter;
-    private AccessRecipes accessRecipes;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_recipe);
-        accessRecipes = new AccessRecipes();
 
         final ListView listView = (ListView) findViewById(R.id.ingredients_list_edit);
 
@@ -115,10 +110,25 @@ public class EditRecipeActivity extends AppCompatActivity
 
     public void nextClicked(View view)
     {
-        Intent EditInstructionsActivity = new Intent(this, EditInstructionsActivity.class);
-        EditInstructionsActivity.putExtra("id", selectedRecipe); // pass the object reference to another activity
-        startActivity(EditInstructionsActivity);
-        finish();
+
+        String result;
+        result = validateRecipeData();
+        if (result == null)
+        {
+            EditText editName = (EditText)findViewById(R.id.recipe_name_edit);
+            selectedRecipe.setName(editName.getText().toString());
+
+            Intent EditInstructionsActivity = new Intent(this, EditInstructionsActivity.class);
+            EditInstructionsActivity.putExtra("id", selectedRecipe); // pass the object reference to another activity
+            startActivity(EditInstructionsActivity);
+            finish();
+
+        }
+
+        else
+        {
+            Messages.warning(this, result);
+        }
     }
 
 

@@ -43,7 +43,19 @@
         android:layout_marginStart="150dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/round_button"
-        android:text="Save"
+        android:text="@string/save_changes"
+        android:textColor="@color/black"
+        android:textSize="15sp"/>
+
+    <Button
+        android:id="@+id/delete_dialog_button"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/round_button"
+        android:text="@string/delete"
         android:textColor="@color/black"
         android:textSize="15sp"/>
 
@@ -67,7 +79,7 @@
         android:layout_height="wrap_content"
         android:hint="Instruction details">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/instructionsSteps"
+            android:id="@+id/sub_instruction"
             android:layout_width="match_parent"
             android:layout_height="600dp"
             android:inputType="textMultiLine"
@@ -75,15 +87,5 @@
             android:gravity="top" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/finishAddingInstruction"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Finish"
-        android:layout_marginTop="25dp"
-        android:textSize="15sp"
-        android:layout_marginStart="190dp"
-        android:background="@drawable/round_button"
-        android:textColor="@color/black"/>
 </LinearLayout>
 
