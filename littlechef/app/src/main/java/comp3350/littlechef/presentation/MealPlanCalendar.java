@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
+import comp3350.littlechef.business.MakeByType;
 import comp3350.littlechef.objects.Recipe;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -16,6 +18,7 @@ import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -75,9 +78,21 @@ public class MealPlanCalendar extends AppCompatActivity
         };
         listView.setAdapter(recipeArrayAdapter);
         //listview done
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                Recipe selectedRecipe = (Recipe) listView.getItemAtPosition(position);
+                Intent detailedRecipe = new Intent(MealPlanCalendar.this, DetailedRecipeActivity.class);
+                detailedRecipe.putExtra("id", selectedRecipe); //pass the object reference to another activity
+                startActivity(detailedRecipe);
+            }
+        });
 
     }
 
+    //TODO: make this a case statement
     //creates list based on values
     private void createList(String type)
     {

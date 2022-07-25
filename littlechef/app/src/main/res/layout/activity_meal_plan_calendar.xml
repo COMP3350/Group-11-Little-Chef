@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.MealPlanCalendar">
+    android:orientation="vertical"
+    tools:context="presentation.MealPlanCalendar">
+
 
     <TextView
         android:id="@+id/weekOfTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Week of [ ]"
+        android:text="Try these recipes!"
         android:textColor="@color/black"
         android:textSize="35sp" />
 
+    <!--
     <Button
-        android:id="@+id/editMealPlanButton"
+        android:id="@+id/generateNewButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit"
-        android:layout_marginLeft="500dp"
-        android:textColor="@color/black"/>
-
+        android:layout_marginLeft="400dp"
+        android:text="Generate new "
+        android:textColor="@color/black" />
+    -->
     <ListView
         android:id="@+id/recipe_meal_suggestion"
         android:layout_width="fill_parent"
@@ -32,4 +35,5 @@
         android:layout_marginEnd="50dp"
         android:layout_marginRight="40dp"
         android:layout_marginBottom="50dp" />
-</LinearLayout>
+
+</RelativeLayout>
