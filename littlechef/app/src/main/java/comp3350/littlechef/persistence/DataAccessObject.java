@@ -1,18 +1,20 @@
 package comp3350.littlechef.persistence;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import java.sql.*;
 import java.util.*;
 
 import comp3350.littlechef.objects.Ingredient;
+import comp3350.littlechef.objects.MealPlan;
 import comp3350.littlechef.objects.Recipe;
 import comp3350.littlechef.objects.Unit;
 
 public class DataAccessObject implements DataAccess
 {
 
-    private String cmd, cmd2;
+    private String cmd, cmd2, cmd3;
     private int updateCount;
     private String result;
     private static String EOF = "  ";
@@ -21,11 +23,12 @@ public class DataAccessObject implements DataAccess
     private String dbName;
 
     private Connection connection;
-    private ResultSet resultSet, resultSet2;
+    private ResultSet resultSet, resultSet2, resultSet3;
     private String dbType;
     private Statement statement;
 
     private ArrayList<Recipe> recipes;
+    private ArrayList<MealPlan> mealplans;
     private boolean success;
 
     public DataAccessObject(String dbName)
@@ -378,6 +381,63 @@ public class DataAccessObject implements DataAccess
         }
         return result;
     }//end delRecipe
+
+    public String insertMealPlan(MealPlan plan)
+    {
+
+        String values = null;
+        result = null;
+        ArrayList<Recipe> recipeList = plan.getList();
+        try
+        {
+            for(int i = 0; i < recipeList.size(); i++)
+            {
+                values = "'" + plan.getDay().replace("'","''")
+                        + "'" + plan.getList();
+            }
+            cmd = "INSERT INTO MEALPLANS " + "(DAY, RECIPEID)" + " VALUES (" + values + ")";
+            updateCount = statement.executeUpdate(cmd);
+            result = checkWarning(statement, updateCount);
+
+        }
+        catch (Exception e)
+        {
+            result = processSQLError(e);
+        }
+        return result;
+    }
+
+    public ArrayList<MealPlan> getMealPlan(MealPlan newMealplan)
+    {
+        MealPlan mealplan;
+        Recipe recipe;
+
+        String myMealPlanID, myRecipeID;
+        String day;
+
+        mealplans = new ArrayList<MealPlan>();
+        try
+        {
+            cmd = "SELECT * FROM MEALPLANS WHERE DAY=" + newMealplan.getDay() + " JOIN RECIPES ON RECIPES.RECIPEID = MEALPLANS.RECIPEID\n";
+            resultSet = statement.executeQuery(cmd);
+            while (resultSet.next())
+            {
+                mealplan = new MealPlan();
+
+                recipe = new Recipe(resultSet.getInt("RECIPEID"));
+                recipe.setName(resultSet.getString("NAME"));
+                mealplan.setDay(resultSet.getString("DAY"));
+                mealplan.addRecipe(getRecipeRandom(recipe).get(0));
+                mealplans.add(mealplan);
+            }
+            resultSet.close();
+        }
+        catch (Exception e)
+        {
+            processSQLError(e);
+        }
+        return mealplans;
+    }
 
     public String resetDatabase()
     {

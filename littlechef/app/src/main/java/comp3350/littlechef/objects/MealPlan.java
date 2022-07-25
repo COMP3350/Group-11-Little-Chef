@@ -8,15 +8,8 @@ import comp3350.littlechef.business.AccessRecipes;
 public class MealPlan implements Serializable
 {
 
-    private ArrayList allDaysList;
-
-    private ArrayList<Recipe> sundayList;
-    private ArrayList<Recipe> mondayList;
-    private ArrayList<Recipe> tuesdayList;
-    private ArrayList<Recipe> wednesdayList;
-    private ArrayList<Recipe> thursdayList;
-    private ArrayList<Recipe> fridayList;
-    private ArrayList<Recipe> saturdayList;
+    private ArrayList<Recipe> dayList;
+    String day;
 
     //for testing add random recipes
     private AccessRecipes accessRecipes;
@@ -26,38 +19,46 @@ public class MealPlan implements Serializable
     //initiaize all instructions
     public MealPlan()
     {
-        allDaysList = new ArrayList();
-        sundayList = new ArrayList();
-        mondayList = new ArrayList();
-        tuesdayList = new ArrayList();
-        wednesdayList = new ArrayList();
-        thursdayList = new ArrayList();
-        fridayList = new ArrayList();
-        saturdayList = new ArrayList();
+        dayList = new ArrayList();
+        day = "[this day]";
 
         //TO TEST ADD SOME RANDOM RECIPES TO THE LISTS*****************
         accessRecipes = new AccessRecipes();
         recipeList = new ArrayList<Recipe>();
         accessRecipes.getRecipes(recipeList);
 
-        sundayList.add(recipeList.get(0));
-        sundayList.add(recipeList.get(1));
-        mondayList.add(recipeList.get(1));
-        tuesdayList.add(recipeList.get(2));
-        wednesdayList.add(recipeList.get(0));
-        thursdayList.add(recipeList.get(1));
-        fridayList.add(recipeList.get(2));
-        saturdayList.add(recipeList.get(0));
+        dayList.add(recipeList.get(0));
+        dayList.add(recipeList.get(1));
         //END TEST CODE*************************************
     }
 
+    public String getDay()
+    {
+        return this.day;
+    }
+
+    public void setDay(String day)
+    {
+        this.day = day;
+    }
+
+    public ArrayList<Recipe> getList()
+    {
+        return dayList;
+    }
+
+    public void addRecipe(Recipe recipe)
+    {
+        recipeList.add(recipe);
+    }
+
+/*
     public void removeFrom(String day, int index)
     {
         if(day.equals("Sunday") && !sundayList.isEmpty())
         {
             sundayList.remove(index);
         }
-
     }
     public void addTo(String day, Recipe recipe)
     {
@@ -65,33 +66,13 @@ public class MealPlan implements Serializable
         {
             sundayList.add(recipe);
         }
-
     }
 
     public int sizeSunday()
     {
         return sundayList.size();
     }
+    */
 
-    //combine all lists into one list with day names, for listview
-    public ArrayList combineLists()
-    {
-        allDaysList = new ArrayList();
-        allDaysList.add("Sunday");
-        if(sundayList.size() != 0)
-            allDaysList.addAll(sundayList);
-        allDaysList.add("Monday");
-        //newList.addAll(mondayList);
-        //newList.add("Tuesday");
-        //newList.addAll(tuesdayList);
-        //newList.add("Wednesday");
-        //newList.addAll(wednesdayList);
-        //newList.add("Thursday");
-        //newList.addAll(thursdayList);
-        //newList.add("Friday");
-        //newList.addAll(fridayList);
-        //newList.add("Saturday");
-        //newList.addAll(saturdayList);
-        return allDaysList;
-    }
+
 }

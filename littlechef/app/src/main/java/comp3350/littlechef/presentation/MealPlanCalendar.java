@@ -29,7 +29,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-//TODO: (Currently working on): remove an object
 
 public class MealPlanCalendar extends AppCompatActivity
 {
@@ -39,15 +38,13 @@ public class MealPlanCalendar extends AppCompatActivity
     private Recipe recipe;
     private MealPlan mealPlan;
 
-    private ArrayList allDaysList; //list printing to listview
+    private ArrayList dayList; //list printing to listview
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal_plan);
-
-        setTime();
 
         accessRecipes = new AccessRecipes();
         recipeList = new ArrayList<Recipe>();
@@ -58,43 +55,36 @@ public class MealPlanCalendar extends AppCompatActivity
             Messages.fatalError(this, result);
         }
 
+
+
+
         //initialize the meal plan
         mealPlan = new MealPlan();
-        allDaysList = mealPlan.combineLists();
-        Toast.makeText(MealPlanCalendar.this, " "+mealPlan.sizeSunday(), Toast.LENGTH_SHORT).show();
+        dayList = mealPlan.getList();
+        setTime();
+
+
+
+
 
         final ListView listView = (ListView) findViewById(R.id.all_list_view);
 
-        recipeArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, allDaysList)
+        recipeArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, dayList)
         {
             @Override
             public View getView(int position, View convertView, ViewGroup parent)
             {
                 //if its a recipe
-                if(getItem(position) instanceof Recipe)
+                recipe = (Recipe) getItem(position);
+                if (convertView == null)
                 {
-                    recipe = (Recipe) getItem(position);
-                    if (convertView == null)
-                    {
-                        convertView = LayoutInflater.from(getContext()).inflate(R.layout.recipe_card, parent, false);
-                    }
-
-                    setValues(convertView);
-
-                    //return convertView;
+                    convertView = LayoutInflater.from(getContext()).inflate(R.layout.recipe_card, parent, false);
                 }
-                else
-                {
-                    if (convertView == null)
-                    {
-                        convertView = LayoutInflater.from(getContext()).inflate(R.layout.day_card, parent, false);
-                    }
-                    setValuesDay(convertView, getItem(position).toString());
-                    //return convertView;
-                }
+
+                setValues(convertView);
                 return convertView;
-
-            }};//adapter end
+            }
+        };//adapter end
         listView.setAdapter(recipeArrayAdapter);
 
         //list view clicker
@@ -114,9 +104,8 @@ public class MealPlanCalendar extends AppCompatActivity
            @Override
             public void onClick(View view)
             {
-                allDaysList.remove(2);
+                dayList.remove(0);
                 recipeArrayAdapter.notifyDataSetChanged();
-
             }
         });
 
@@ -125,21 +114,19 @@ public class MealPlanCalendar extends AppCompatActivity
     //sets above bar week time
     private void setTime()
     {
-        String pattern = "MMMM dd yyyy";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        String date = simpleDateFormat.format(new Date());
+        //String pattern = "MMMM dd yyyy";
+        //SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        //String date = simpleDateFormat.format(new Date());
 
         TextView textView = findViewById(R.id.weekOfTV);
-        textView.setText("Week of "+date);
+        textView.setText("Day of "+mealPlan.getDay());
     }
 
     //set days value
     private void setValuesDay(View convertView, String day)
     {
-
         TextView name = (TextView) convertView.findViewById(R.id.day_name);
         name.setText(day);
-
     }
 
     private void setValues(View convertView)
