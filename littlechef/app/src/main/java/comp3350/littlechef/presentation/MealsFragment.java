@@ -71,7 +71,8 @@ public class MealsFragment extends Fragment
             @Override
             public void onClick(View view)
             {
-                Messages.warning(getActivity(), "Implement");
+                String type = "ease";
+                startActivity(type);
             }
         });
         savingTimeButton.setOnClickListener(new View.OnClickListener()
@@ -79,7 +80,8 @@ public class MealsFragment extends Fragment
             @Override
             public void onClick(View view)
             {
-                Messages.warning(getActivity(), "Implement");
+                String type = "savingTime";
+                startActivity(type);
             }
         });
         tasteButton.setOnClickListener(new View.OnClickListener()
@@ -87,7 +89,8 @@ public class MealsFragment extends Fragment
             @Override
             public void onClick(View view)
             {
-                Messages.warning(getActivity(), "Implement");
+                String type = "taste";
+                startActivity(type);
             }
         });
         surpriseMeButton.setOnClickListener(new View.OnClickListener()

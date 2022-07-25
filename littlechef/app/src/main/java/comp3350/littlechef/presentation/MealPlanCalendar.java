@@ -35,7 +35,6 @@ public class MealPlanCalendar extends AppCompatActivity
     private ArrayList<Recipe> recipeList;
     private ArrayAdapter<Recipe> recipeArrayAdapter;
     private Recipe recipe;
-    private Random randomGenerator;
 
     private ArrayList<Recipe> displayList;
 
