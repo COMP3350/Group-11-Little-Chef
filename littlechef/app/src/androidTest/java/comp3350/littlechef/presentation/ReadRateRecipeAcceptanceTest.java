@@ -12,12 +12,14 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
+import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.widget.ListView;
 
 import androidx.test.espresso.DataInteraction;
 import androidx.test.espresso.ViewInteraction;
@@ -36,7 +38,8 @@ import comp3350.littlechef.R;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class ReadRateRecipeAcceptanceTest {
+public class ReadRateRecipeAcceptanceTest
+{
 
     @Rule
     public ActivityScenarioRule<HomeActivity> homeActivity = new ActivityScenarioRule<>(HomeActivity.class);
@@ -44,119 +47,69 @@ public class ReadRateRecipeAcceptanceTest {
     @Test
     public void testHomeScreen()
     {
-        onView(withText("Recipes")).check(matches(isDisplayed()));
-        onView(withText("Add Recipe")).check(matches(isDisplayed()));
-        onView(withText("Meal Plans")).check(matches(isDisplayed()));
+        //check that all the parts of home screen are displayed
+        onView(withId(R.id.bottomNavigationView)).check(matches(isDisplayed()));
+        onView(withId(R.id.recipes)).check(matches(isDisplayed()));
+        onView(withId(R.id.add)).check(matches(isDisplayed()));
+        onView(withId(R.id.meals)).check(matches(isDisplayed()));
+
+        onView(withId(R.id.add)).perform(click());
+        onView(withId(R.id.recipes)).perform(click());
+        //TODO add a click on the meal plan when it is finished
+
+        //TODO figure our how to check textviews under specific positions in the listview
+
+
+
+
     }
 
     @Test
-    public void readRateRecipeAcceptanceTest() {
-        DataInteraction relativeLayout = onData(anything())
-                .inAdapterView(allOf(withId(R.id.recipe_list_view),
-                        childAtPosition(
-                                withClassName(is("android.widget.FrameLayout")),
-                                0)))
-                .atPosition(0);
-        relativeLayout.perform(click());
+    public void testReadRateRecipe()
+    {
+        onView(withText("Guacamole")).check(matches(isDisplayed())).perform(click());
 
-        ViewInteraction materialButton = onView(
-                allOf(withId(R.id.start_cooking), withText("Instructions"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                4),
-                        isDisplayed()));
-        materialButton.perform(click());
+        //check the recipe info
+        onView(withId(R.id.recipe_name)).check(matches(withText("Guacamole")));
+        onView(withId(R.id.estimated_time)).check(matches(withText("Time: Not cooked")));
+        onView(withId(R.id.difficulty)).check(matches(withText("Difficulty: -")));
+        onView(withId(R.id.taste)).check(matches(withText("Taste: -")));
+        onView(withId(R.id.rating)).check(matches(withText("-/5")));
 
-        ViewInteraction materialButton2 = onView(
-                allOf(withId(R.id.start_stop_timer), withText("START"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.LinearLayout")),
-                                        0),
-                                1),
-                        isDisplayed()));
-        materialButton2.perform(click());
+        //check that buttons and textViews exist
+        onView(withId(R.id.edit_recipe)).check(matches(isDisplayed()));
+        onView(withId(R.id.delete_recipe)).check(matches(isDisplayed()));
+        onView(withId(R.id.serving_num)).check(matches(isDisplayed()));
+        onView(withText("Ingredients")).check(matches(isDisplayed()));
+        //TODO check all the ingredients
 
-        ViewInteraction materialButton3 = onView(
-                allOf(withId(R.id.start_stop_timer), withText("STOP"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.LinearLayout")),
-                                        0),
-                                1),
-                        isDisplayed()));
-        materialButton3.perform(click());
 
-        ViewInteraction materialButton4 = onView(
-                allOf(withId(R.id.finish_cooking_button), withText("Finish"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.LinearLayout")),
-                                        0),
-                                2),
-                        isDisplayed()));
-        materialButton4.perform(click());
+        onView(withId(R.id.start_cooking)).check(matches(isDisplayed())).perform(click());
+        onView(withText("Instructions")).check(matches(isDisplayed()));
+        //todo check all the instructions
 
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-        try {
-            Thread.sleep(1500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        onView(withId(R.id.timer_text)).check(matches(withText("00:00:00")));
+        onView(withId(R.id.reset_timer)).check(matches(isDisplayed()));
+        onView(withId(R.id.finish_cooking_button)).check(matches(isDisplayed())).check(matches(not(isEnabled())));
 
-        ViewInteraction materialRadioButton = onView(
-                allOf(withId(R.id.difficulty_radio_3), withText("3"),
-                        childAtPosition(
-                                allOf(withId(R.id.difficulty_radio_group),
-                                        childAtPosition(
-                                                withClassName(is("android.widget.RelativeLayout")),
-                                                6)),
-                                2),
-                        isDisplayed()));
-        materialRadioButton.perform(click());
+        onView(withId(R.id.start_stop_timer)).check(matches(withText("START"))).perform(click());
+        onView(withId(R.id.finish_cooking_button)).check(matches(isDisplayed())).check(matches(not(isEnabled())));
+        try {Thread.sleep(5000);}
+        catch (Exception e) {}
+        onView(withId(R.id.start_stop_timer)).check(matches(withText("STOP"))).perform(click());
+        onView(withId(R.id.finish_cooking_button)).check(matches(isDisplayed())).check(matches(isEnabled())).perform(click());
 
-        ViewInteraction materialRadioButton2 = onView(
-                allOf(withId(R.id.taste_radio_2), withText("2"),
-                        childAtPosition(
-                                allOf(withId(R.id.taste_radio_group),
-                                        childAtPosition(
-                                                withClassName(is("android.widget.RelativeLayout")),
-                                                7)),
-                                1),
-                        isDisplayed()));
-        materialRadioButton2.perform(click());
+        //WAIT FOR A THANK YOU WINDOW TO PASS
+        try {Thread.sleep(1500);}
+        catch (Exception e) {}
 
-        ViewInteraction materialButton5 = onView(
-                allOf(withId(R.id.submit_rating), withText("Submit"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                8),
-                        isDisplayed()));
-        materialButton5.perform(click());
-    }
+        //TODO CHECK FOR ALL THE GUI ELEMENTS
+        onView(withId(R.id.difficulty_radio_3)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.taste_radio_5)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.submit_rating)).check(matches(isDisplayed())).perform(click());
 
-    private static Matcher<View> childAtPosition(
-            final Matcher<View> parentMatcher, final int position) {
 
-        return new TypeSafeMatcher<View>() {
-            @Override
-            public void describeTo(Description description) {
-                description.appendText("Child at position " + position + " in parent ");
-                parentMatcher.describeTo(description);
-            }
 
-            @Override
-            public boolean matchesSafely(View view) {
-                ViewParent parent = view.getParent();
-                return parent instanceof ViewGroup && parentMatcher.matches(parent)
-                        && view.equals(((ViewGroup) parent).getChildAt(position));
-            }
-        };
+
     }
 }
