@@ -107,7 +107,6 @@ public class RecipeInstructionActivity extends AppCompatActivity
         {
             timerStarted = true;
             changeStartButton(R.string.stop, R.color.red);
-
             startTimer();
         }
 
@@ -197,7 +196,7 @@ public class RecipeInstructionActivity extends AppCompatActivity
             }
         };
         //fixed rate goes by 1000 milliseconds which is 1 second, so for each run execution - passes 1 second of time
-        timer.scheduleAtFixedRate(timerTask, 0 , 1000);
+        timer.scheduleAtFixedRate(timerTask, 1000 , 1000);
     }
 
     private void changeStartButton(int textOnButton, int color)

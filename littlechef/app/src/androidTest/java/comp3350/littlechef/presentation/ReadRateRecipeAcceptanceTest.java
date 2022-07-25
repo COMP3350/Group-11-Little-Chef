@@ -81,12 +81,10 @@ public class ReadRateRecipeAcceptanceTest
         onView(withId(R.id.delete_recipe)).check(matches(isDisplayed()));
         onView(withId(R.id.serving_num)).check(matches(isDisplayed()));
         onView(withText("Ingredients")).check(matches(isDisplayed()));
-        //TODO check all the ingredients
 
 
         onView(withId(R.id.start_cooking)).check(matches(isDisplayed())).perform(click());
         onView(withText("Instructions")).check(matches(isDisplayed()));
-        //todo check all the instructions
 
         onView(withId(R.id.timer_text)).check(matches(withText("00:00:00")));
         onView(withId(R.id.reset_timer)).check(matches(isDisplayed()));
@@ -104,10 +102,16 @@ public class ReadRateRecipeAcceptanceTest
         catch (Exception e) {}
 
         //TODO CHECK FOR ALL THE GUI ELEMENTS
+        //check that time value changed
+        onView(withId(R.id.estimated_time_rating_activity)).check(matches(withText("Time: 00h 00m 05s")));
         onView(withId(R.id.difficulty_radio_3)).check(matches(isDisplayed())).perform(click());
         onView(withId(R.id.taste_radio_5)).check(matches(isDisplayed())).perform(click());
         onView(withId(R.id.submit_rating)).check(matches(isDisplayed())).perform(click());
 
+        //check that difficulty, test and overall rating changed
+        onView(withText("Difficulty: 3.00")).check(matches(isDisplayed()));
+        onView(withText("Taste: 5.00")).check(matches(isDisplayed()));
+        onView(withText("4.00/5")).check(matches(isDisplayed()));
 
 
 
