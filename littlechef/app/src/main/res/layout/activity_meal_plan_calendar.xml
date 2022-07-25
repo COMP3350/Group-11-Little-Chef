@@ -1,34 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="presentation.MealPlanCalendar">
-
+    tools:context="presentation.MealPlanCalendar"
+    android:background="@color/header_footer_background">
 
     <TextView
         android:id="@+id/weekOfTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Try these recipes!"
-        android:textColor="@color/black"
-        android:textSize="35sp" />
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:textSize="30sp" />
 
-    <!--
-    <Button
-        android:id="@+id/generateNewButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="400dp"
-        android:text="Generate new "
-        android:textColor="@color/black" />
-    -->
     <ListView
         android:id="@+id/recipe_meal_suggestion"
         android:layout_width="fill_parent"
-        android:layout_height="match_parent"
+        android:layout_height="fill_parent"
         android:layout_marginStart="50dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="50dp"
@@ -36,4 +27,4 @@
         android:layout_marginRight="40dp"
         android:layout_marginBottom="50dp" />
 
-</RelativeLayout>
+</LinearLayout>
