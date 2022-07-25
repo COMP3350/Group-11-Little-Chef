@@ -51,34 +51,80 @@ public class MealsFragment extends Fragment
         //inflate view
         View view = inflater.inflate(R.layout.fragment_meals, container, false);
 
-        Button supriseMeButton = (Button) view.findViewById(R.id.supriseMeButton);
+        Button challengeButton = (Button) view.findViewById(R.id.challengeButton);
+        Button easeButton = (Button) view.findViewById(R.id.easeButton);
+        Button savingTimeButton = (Button) view.findViewById(R.id.savingTimeButton);
+        Button tasteButton = (Button) view.findViewById(R.id.tasteButton);
+        Button surpriseMeButton = (Button) view.findViewById(R.id.supriseMeButton);
 
-        //button listener for add recipe
-        supriseMeButton.setOnClickListener(new View.OnClickListener()
+        challengeButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                supriseMeClicked();
+                challengeButtonClicked();
             }
         });
+        easeButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                easeButtonClicked();
+            }
+        });
+        savingTimeButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                savingTimeButtonClicked();
+            }
+        });
+        tasteButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                tasteButtonClicked();
+            }
+        });
+        surpriseMeButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                surpriseMeClicked();
+            }
+        });
+
+
 
         return view;
 
     }
-
-    private void supriseMeClicked()
+    private void challengeButtonClicked()
     {
-        String type = "suprise";
-        Intent intent = new Intent(getActivity(), MealPlanCalendar.class);
-        intent.putExtra("type", type);
-        startActivity(intent);
+        //Messages.warning(getActivity(), "Implement");
     }
-
-    //to edit a meal plan
-    public void editPlanOnClick()
+    private void easeButtonClicked()
+    {
+        Messages.warning(getActivity(), "Implement");
+    }
+    private void savingTimeButtonClicked()
+    {
+        Messages.warning(getActivity(), "Implement");
+    }
+    private void tasteButtonClicked()
     {
         Messages.warning(getActivity(), "Implement");
     }
 
+    private void surpriseMeClicked()
+    {
+        String type = "surprise";
+        Intent intent = new Intent(getActivity(), MealPlanCalendar.class);
+        intent.putExtra("type", type);
+        startActivity(intent);
+    }
 }

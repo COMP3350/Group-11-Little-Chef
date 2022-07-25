@@ -7,6 +7,17 @@
     android:orientation="vertical"
     tools:context=".presentation.MealsFragment">
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Can't decide what to cook? Let us Help." />
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select what matters to you most today." />
+
     <Button
         android:id="@+id/challengeButton"
         android:layout_width="250dp"

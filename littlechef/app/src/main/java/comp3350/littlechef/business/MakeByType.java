@@ -7,15 +7,12 @@ import comp3350.littlechef.objects.Recipe;
 
 public class MakeByType
 {
-
-
     //TODO: make this a case statement
     //creates list based on values
     public static ArrayList<Recipe> createList(String type, ArrayList<Recipe> recipeList)
     {
         ArrayList<Recipe> displayList = new ArrayList<Recipe>();
-
-        if(type.equals("suprise"))
+        if(type.equals("surprise"))
         {
             Random random = new Random();
             int listSize = recipeList.size();
@@ -23,6 +20,10 @@ public class MakeByType
             displayList.add( recipeList.get(random.nextInt(listSize)));
             displayList.add( recipeList.get(random.nextInt(listSize)));
             displayList.add( recipeList.get(random.nextInt(listSize)));
+
+        }
+        else if(type.equals("challenge"))
+        {
 
         }
         return displayList;

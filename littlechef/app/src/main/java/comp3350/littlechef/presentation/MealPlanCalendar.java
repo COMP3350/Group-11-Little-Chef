@@ -90,24 +90,6 @@ public class MealPlanCalendar extends AppCompatActivity
 
     }
 
-    //TODO: make this a case statement
-    //creates list based on values
-    private void createList(String type)
-    {
-        displayList = new ArrayList<Recipe>();
-
-        if(type.equals("suprise"))
-        {
-            Random random = new Random();
-            int listSize = recipeList.size();
-            //add three random recipes to display list
-            displayList.add( recipeList.get(random.nextInt(listSize)));
-            displayList.add( recipeList.get(random.nextInt(listSize)));
-            displayList.add( recipeList.get(random.nextInt(listSize)));
-
-        }
-    }
-
     private void setValues(View convertView)
     {
         String difficultyRating = recipe.getDifficultyRating();
@@ -129,5 +111,4 @@ public class MealPlanCalendar extends AppCompatActivity
         taste.setText(tasteRating);
         rating.setText(recipe.getRatingString());
     }
-
 }
