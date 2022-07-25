@@ -1,14 +1,17 @@
 package comp3350.littlechef.presentation;
 
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.business.MakeByType;
+import comp3350.littlechef.business.TimeRecipe;
 import comp3350.littlechef.objects.Recipe;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -57,6 +60,10 @@ public class MealPlanCalendar extends AppCompatActivity
 
         //create arraylist with type
         displayList = MakeByType.createList(type, recipeList);
+        //if the displayList returns empty send warning that nothing to display
+        if(displayList.isEmpty())
+            emptyList();
+
 
         final ListView listView = (ListView) findViewById(R.id.recipe_meal_suggestion);
         recipeArrayAdapter = new ArrayAdapter<Recipe>(this, android.R.layout.simple_list_item_1, displayList)
@@ -82,6 +89,7 @@ public class MealPlanCalendar extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
                 Recipe selectedRecipe = (Recipe) listView.getItemAtPosition(position);
+                //Toast.makeText(MealPlanCalendar.this, selectedRecipe.getDifficultyRating(), Toast.LENGTH_SHORT).show();
                 Intent detailedRecipe = new Intent(MealPlanCalendar.this, DetailedRecipeActivity.class);
                 detailedRecipe.putExtra("id", selectedRecipe); //pass the object reference to another activity
                 startActivity(detailedRecipe);
@@ -110,5 +118,21 @@ public class MealPlanCalendar extends AppCompatActivity
         difficulty.setText(difficultyRating);
         taste.setText(tasteRating);
         rating.setText(recipe.getRatingString());
+    }
+    public void emptyList()
+    {
+        AlertDialog.Builder resetAlert = new AlertDialog.Builder(this);
+        resetAlert.setTitle("No results.");
+        resetAlert.setMessage("No recipes were found with selected preference.");
+
+        resetAlert.setPositiveButton("OK", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                finish();
+            }
+        });
+        resetAlert.show();
     }
 }

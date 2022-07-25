@@ -152,6 +152,11 @@ public class Recipe implements Serializable
 
         return result;
     }
+    public double getDifficultyRatingDouble()
+    {
+        return calcAverage(difficultyRatings);
+    }
+
 
     public void addDifficultyRating(double rating)
     {

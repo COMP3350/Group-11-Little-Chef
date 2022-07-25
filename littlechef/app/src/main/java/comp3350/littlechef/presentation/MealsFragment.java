@@ -62,7 +62,8 @@ public class MealsFragment extends Fragment
             @Override
             public void onClick(View view)
             {
-                challengeButtonClicked();
+                String type = "challenge";
+                startActivity(type);
             }
         });
         easeButton.setOnClickListener(new View.OnClickListener()
@@ -70,7 +71,7 @@ public class MealsFragment extends Fragment
             @Override
             public void onClick(View view)
             {
-                easeButtonClicked();
+                Messages.warning(getActivity(), "Implement");
             }
         });
         savingTimeButton.setOnClickListener(new View.OnClickListener()
@@ -78,7 +79,7 @@ public class MealsFragment extends Fragment
             @Override
             public void onClick(View view)
             {
-                savingTimeButtonClicked();
+                Messages.warning(getActivity(), "Implement");
             }
         });
         tasteButton.setOnClickListener(new View.OnClickListener()
@@ -86,7 +87,7 @@ public class MealsFragment extends Fragment
             @Override
             public void onClick(View view)
             {
-                tasteButtonClicked();
+                Messages.warning(getActivity(), "Implement");
             }
         });
         surpriseMeButton.setOnClickListener(new View.OnClickListener()
@@ -94,7 +95,8 @@ public class MealsFragment extends Fragment
             @Override
             public void onClick(View view)
             {
-                surpriseMeClicked();
+                String type = "surprise";
+                startActivity(type);
             }
         });
 
@@ -103,26 +105,8 @@ public class MealsFragment extends Fragment
         return view;
 
     }
-    private void challengeButtonClicked()
+    private void startActivity(String type)
     {
-        //Messages.warning(getActivity(), "Implement");
-    }
-    private void easeButtonClicked()
-    {
-        Messages.warning(getActivity(), "Implement");
-    }
-    private void savingTimeButtonClicked()
-    {
-        Messages.warning(getActivity(), "Implement");
-    }
-    private void tasteButtonClicked()
-    {
-        Messages.warning(getActivity(), "Implement");
-    }
-
-    private void surpriseMeClicked()
-    {
-        String type = "surprise";
         Intent intent = new Intent(getActivity(), MealPlanCalendar.class);
         intent.putExtra("type", type);
         startActivity(intent);

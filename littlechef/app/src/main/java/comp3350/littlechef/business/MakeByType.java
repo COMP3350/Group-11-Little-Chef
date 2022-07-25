@@ -12,19 +12,35 @@ public class MakeByType
     public static ArrayList<Recipe> createList(String type, ArrayList<Recipe> recipeList)
     {
         ArrayList<Recipe> displayList = new ArrayList<Recipe>();
+        Random random = new Random();
+        int randomIndex;
+        int listSize;
         if(type.equals("surprise"))
         {
-            Random random = new Random();
-            int listSize = recipeList.size();
-            //add three random recipes to display list
-            displayList.add( recipeList.get(random.nextInt(listSize)));
-            displayList.add( recipeList.get(random.nextInt(listSize)));
-            displayList.add( recipeList.get(random.nextInt(listSize)));
-
+            //TODO: or until no more left
+            for(int i = 0; i < 3; i++)
+            {
+                listSize = recipeList.size(); //set recipe list size
+                randomIndex = random.nextInt(listSize); //get random index with recipe list size
+                displayList.add(recipeList.get(randomIndex));
+                recipeList.remove(randomIndex); //remove from consideration (don't want the same recipe twice)
+            }
         }
-        else if(type.equals("challenge"))
+        else if(type.equals("challenge")) //recipe difficulty of 5.00
         {
-
+            //TODO: or until no more left
+            //until we get three recipes or until recipe list is empty
+            while(recipeList.size() > 0)
+            {
+                listSize = recipeList.size(); //set recipe list size
+                randomIndex = random.nextInt(listSize); //get random index with recipe list sizes
+                Recipe recipe = recipeList.get(randomIndex);
+                if(recipe.getDifficultyRatingDouble() == 5.0)
+                {
+                    displayList.add(recipe);
+                }
+                recipeList.remove(randomIndex); //remove recipe from further consideration
+            }
         }
         return displayList;
     }
