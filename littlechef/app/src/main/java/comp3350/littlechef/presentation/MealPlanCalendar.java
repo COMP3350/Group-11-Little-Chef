@@ -56,9 +56,7 @@ public class MealPlanCalendar extends AppCompatActivity
         String type = bundle.getString("type");
 
         //create arraylist with type
-        createList(type);
-
-        //Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
+        displayList = MakeByType.createList(type, recipeList);
 
         final ListView listView = (ListView) findViewById(R.id.recipe_meal_suggestion);
         recipeArrayAdapter = new ArrayAdapter<Recipe>(this, android.R.layout.simple_list_item_1, displayList)
@@ -77,7 +75,7 @@ public class MealPlanCalendar extends AppCompatActivity
             }
         };
         listView.setAdapter(recipeArrayAdapter);
-        //listview done
+        //if clicked send to detailed recipe to start cooking
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
