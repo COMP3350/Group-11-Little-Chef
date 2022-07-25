@@ -4,7 +4,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import comp3350.littlechef.objects.Recipe;
-import comp3350.littlechef.presentation.Messages;
+
+// CLASS: MakeByType.java
+//
+//
+// REMARKS: This class will return an arraylist of recipes corresponding to the type, given a recipe list
+//
+//-----------------------------------------
 
 public class MakeByType
 {

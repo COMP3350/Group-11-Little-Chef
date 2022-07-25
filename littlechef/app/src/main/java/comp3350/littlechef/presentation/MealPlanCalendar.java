@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.business.MakeByType;
-import comp3350.littlechef.business.TimeRecipe;
 import comp3350.littlechef.objects.Recipe;
 
 import android.content.DialogInterface;
@@ -25,9 +24,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import java.util.ArrayList;
-import java.util.Random;
+
+// CLASS: MealPlanCalendar.java
+//
+//
+// REMARKS: This class will call and display a list of selected types
+//
+//-----------------------------------------
 
 public class MealPlanCalendar extends AppCompatActivity
 {
@@ -63,7 +67,6 @@ public class MealPlanCalendar extends AppCompatActivity
         if(displayList.isEmpty())
             emptyList();
 
-
         final ListView listView = (ListView) findViewById(R.id.recipe_meal_suggestion);
         recipeArrayAdapter = new ArrayAdapter<Recipe>(this, android.R.layout.simple_list_item_1, displayList)
         {
@@ -88,7 +91,6 @@ public class MealPlanCalendar extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
                 Recipe selectedRecipe = (Recipe) listView.getItemAtPosition(position);
-                //Toast.makeText(MealPlanCalendar.this, selectedRecipe.getDifficultyRating(), Toast.LENGTH_SHORT).show();
                 Intent detailedRecipe = new Intent(MealPlanCalendar.this, DetailedRecipeActivity.class);
                 detailedRecipe.putExtra("id", selectedRecipe); //pass the object reference to another activity
                 startActivity(detailedRecipe);
