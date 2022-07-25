@@ -51,20 +51,28 @@ public class MealsFragment extends Fragment
         //inflate view
         View view = inflater.inflate(R.layout.fragment_meals, container, false);
 
-        Button goToMealPlanButton= (Button) view.findViewById(R.id.goToMealCalendar);
+        Button supriseMeButton = (Button) view.findViewById(R.id.supriseMeButton);
+
         //button listener for add recipe
-        goToMealPlanButton.setOnClickListener(new View.OnClickListener()
+        supriseMeButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                Intent MealPlanCalendar = new Intent(getActivity(), MealPlanCalendar.class);
-                startActivity(MealPlanCalendar);
+                supriseMeClicked();
             }
         });
 
         return view;
 
+    }
+
+    private void supriseMeClicked()
+    {
+        String type = "suprise";
+        Intent intent = new Intent(getActivity(), MealPlanCalendar.class);
+        intent.putExtra("type", type);
+        startActivity(intent);
     }
 
     //to edit a meal plan

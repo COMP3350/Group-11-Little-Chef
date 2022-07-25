@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,13 +8,49 @@
     tools:context=".presentation.MealsFragment">
 
     <Button
-        android:id="@+id/goToMealCalendar"
-        android:layout_width="200dp"
+        android:id="@+id/challengeButton"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:text="Go To "
+        android:layout_marginStart="180dp"
+        android:text="A challenge "
         android:textColor="@color/black"
-        android:textSize="15sp"/>
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/easeButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:text="Ease"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/savingTimeButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:text="Saving time"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/tasteButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:text="Taste"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/supriseMeButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:text="Suprise me"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
 
 
 </LinearLayout>

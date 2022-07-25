@@ -1,115 +1,120 @@
 package comp3350.littlechef.presentation;
 
-import androidx.annotation.RequiresApi;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
 
 import comp3350.littlechef.R;
+import comp3350.littlechef.business.AccessRecipes;
+import comp3350.littlechef.objects.Recipe;
 
-import android.os.Build;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.time.LocalDate;
-import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Random;
 
-public class MealPlanCalendar extends AppCompatActivity implements CalendarAdapter.OnItemListener
+public class MealPlanCalendar extends AppCompatActivity
 {
-    private TextView monthYearText;
-    private RecyclerView calendarRecyclerView;
-    private LocalDate selectedDate;
+    private AccessRecipes accessRecipes;
+    private ArrayList<Recipe> recipeList;
+    private ArrayAdapter<Recipe> recipeArrayAdapter;
+    private Recipe recipe;
+    private Random randomGenerator;
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+    private ArrayList<Recipe> displayList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal_plan_calendar);
 
-        initWidgets();
-        selectedDate = LocalDate.now();
-        setMonthView();
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private void setMonthView()
-    {
-        monthYearText.setText(monthYearFromDate(selectedDate));
-        ArrayList<String> daysInMonth = daysInMonthArray(selectedDate);
-
-        CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, this );
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
-        calendarRecyclerView.setLayoutManager(layoutManager);
-        calendarRecyclerView.setAdapter(calendarAdapter);
-
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private ArrayList<String> daysInMonthArray(LocalDate date)
-    {
-        ArrayList<String> daysInMonthArray = new ArrayList<>();
-        YearMonth yearMonth = YearMonth.from(date);
-
-        int daysInMonth = yearMonth.lengthOfMonth();
-
-        LocalDate firstOfMonth = selectedDate.withDayOfMonth(1);
-        int dayOfWeek = firstOfMonth.getDayOfWeek().getValue();
-
-        for(int i = 1; i <= 42; i++)
+        //access database
+        accessRecipes = new AccessRecipes();
+        recipeList = new ArrayList<Recipe>();
+        String result = accessRecipes.getRecipes(recipeList);
+        if(result != null)
         {
-            if(i <= dayOfWeek || i > daysInMonth + dayOfWeek)
-            {
-                daysInMonthArray.add("");
-            }
-            else
-            {
-                daysInMonthArray.add(String.valueOf(i-dayOfWeek));
-            }
+            Messages.fatalError(this, result);
         }
-        return daysInMonthArray;
-    }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private String monthYearFromDate(LocalDate date)
-    {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy");
-        return date.format(formatter);
-    }
+        //retrieve type from previous view
+        Bundle bundle = getIntent().getExtras();
+        String type = bundle.getString("type");
 
-    private void initWidgets()
-    {
-        calendarRecyclerView = findViewById(R.id.calendarRecyclerView); //view.      change from main
-        monthYearText = findViewById(R.id.monthYearTV);
-    }
+        //create arraylist with type
+        createList(type);
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void previousMonthAction(View view)
-    {
-        selectedDate = selectedDate.minusMonths(1);
-        setMonthView();
-    }
+        //Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void nextMonthAction(View view)
-    {
-        selectedDate = selectedDate.plusMonths(1);
-        setMonthView();
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    @Override
-    public void onItemClick(int position, String dayText)
-    {
-        if(!dayText.equals(""))
+        final ListView listView = (ListView) findViewById(R.id.recipe_meal_suggestion);
+        recipeArrayAdapter = new ArrayAdapter<Recipe>(this, android.R.layout.simple_list_item_1, displayList)
         {
-            String message = "Selected Date "+dayText+ " " +monthYearFromDate(selectedDate);
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent)
+            {
+                recipe = getItem(position);
+                if(convertView == null)
+                {
+                    convertView = LayoutInflater.from(getContext()).inflate(R.layout.recipe_card,parent, false);
+                }
+                setValues(convertView);
+
+                return convertView;
+            }
+        };
+        listView.setAdapter(recipeArrayAdapter);
+        //listview done
+
+    }
+
+    //creates list based on values
+    private void createList(String type)
+    {
+        displayList = new ArrayList<Recipe>();
+
+        if(type.equals("suprise"))
+        {
+            Random random = new Random();
+            int listSize = recipeList.size();
+            //add three random recipes to display list
+            displayList.add( recipeList.get(random.nextInt(listSize)));
+            displayList.add( recipeList.get(random.nextInt(listSize)));
+            displayList.add( recipeList.get(random.nextInt(listSize)));
+
         }
+    }
+
+    private void setValues(View convertView)
+    {
+        String difficultyRating = recipe.getDifficultyRating();
+        String tasteRating = recipe.getTasteRating();
+
+        TextView name = (TextView) convertView.findViewById(R.id.recipe_name);
+        TextView estimatedTime = (TextView) convertView.findViewById(R.id.estimated_time);
+        TextView difficulty = (TextView) convertView.findViewById(R.id.difficulty);
+        TextView taste = (TextView) convertView.findViewById(R.id.taste);
+        TextView rating = (TextView) convertView.findViewById(R.id.rating);
+
+        SpannableString recipeNameFormatted = new SpannableString(recipe.getName());
+        recipeNameFormatted.setSpan(new UnderlineSpan(), 0, recipeNameFormatted.length(), 0);
+        recipeNameFormatted.setSpan(new StyleSpan(Typeface.BOLD), 0, recipeNameFormatted.length(), 0);
+
+        name.setText(recipeNameFormatted);
+        estimatedTime.setText(recipe.getAverageCookingTime());
+        difficulty.setText(difficultyRating);
+        taste.setText(tasteRating);
+        rating.setText(recipe.getRatingString());
     }
 
 }
