@@ -57,6 +57,7 @@ public class RateRecipyActivity extends AppCompatActivity
         selectedRecipe.addTasteRating(tasteRating);
         selectedRecipe.addDifficultyRating(difficultyRating);
         result = accessRecipes.updateRecipe(selectedRecipe);
+
         if (result == null)
         {
             finish();
@@ -65,7 +66,6 @@ public class RateRecipyActivity extends AppCompatActivity
 //            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //            startActivity(i);
         }
-
         else
         {
             Messages.fatalError(this, result);

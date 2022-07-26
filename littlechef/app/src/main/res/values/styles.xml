@@ -41,5 +41,9 @@
         <item name="colorPrimary">@color/pastel_green</item>
     </style>
 
+    <style name="buttonWhiteTheme" parent="Base.Widget.AppCompat.Button.Colored">
+        <item name="colorPrimary">@color/white</item>
+    </style>
+
 
 </resources>

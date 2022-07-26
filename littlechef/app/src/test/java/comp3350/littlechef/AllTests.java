@@ -3,10 +3,11 @@ package comp3350.littlechef;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
 import comp3350.littlechef.business.AccessRecipesTest;
-import comp3350.littlechef.business.TimeRecipeTest;
 import comp3350.littlechef.business.DecimalFractionConversionTest;
 import comp3350.littlechef.business.ScaleRecipeTest;
+import comp3350.littlechef.business.TimeRecipeTest;
 import comp3350.littlechef.objects.IngredientTest;
 import comp3350.littlechef.objects.RecipeTest;
 import comp3350.littlechef.persistence.DataAccessTest;

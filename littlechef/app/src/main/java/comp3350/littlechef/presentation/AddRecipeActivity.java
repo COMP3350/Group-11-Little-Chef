@@ -53,13 +53,16 @@ public class AddRecipeActivity extends AppCompatActivity
         Intent previousIntent = getIntent();
         selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id");
 
-        TextView workingRecipeName= (TextView) findViewById(R.id.workingRecipeName);
-        workingRecipeName.setText("Add Ingredients and steps to "+selectedRecipe.getName());
+       // TextView workingRecipeName= (TextView) findViewById(R.id.workingRecipeName);
+       // workingRecipeName.setText("Add Ingredients and steps to "+selectedRecipe.getName());
+
         Button addIngredientButton= (Button) findViewById(R.id.addIngredientButton);
         Button addInstructionButton= (Button) findViewById(R.id.addInstructionButton);
         Button finishAddingButton= (Button) findViewById(R.id.finishAdding);
+        Button cancelButton= (Button) findViewById(R.id.cancelButton);
 
         //Get input from text fields
+        ingredientInputName = (EditText) findViewById(R.id.ingredientName);
         ingredientInputName = (EditText) findViewById(R.id.ingredientName);
         ingredientInputAmount = (EditText) findViewById(R.id.ingredientAmount);
         instructionInput = (EditText) findViewById(R.id.instruction);
@@ -103,61 +106,52 @@ public class AddRecipeActivity extends AppCompatActivity
             }
         });
 
-        //button listener for adding an instruction to a recipe
+
+        //button to cancel and delete working recipe
+        cancelButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                deleteRecipe();
+            }
+        });
+
+        //button to start adding instructions to the recipe
         addInstructionButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
                 addInstruction();
-                //clear fields
-                instructionInput.getText().clear();
-                instructionInputSteps.getText().clear();
             }
         });
 
-        //button to go back to the main activity when finish
-        finishAddingButton.setOnClickListener(new View.OnClickListener()
+
+    }
+
+    private void deleteRecipe()
+    {
+        String result;
+        AccessRecipes accessRecipes = new AccessRecipes();
+        result = accessRecipes.deleteRecipe(selectedRecipe);
+        if (result == null)
         {
-            @Override
-            public void onClick(View view)
-            {
-                // a way of coming back to the home activity -> recreates the home activity and therefore recipes are default
-                finish();
-
-            }
-        });
+            finish();
+        }
+        else
+        {
+            Messages.fatalError(this, result);
+        }
     }
 
     //add instruction
     private void addInstruction()
     {
-        String result;
-
-        //get text from boxes
-        instruction = instructionInput.getText().toString();
-        instructionSteps = instructionInputSteps.getText().toString();
-
-        result = validateInstruction(instruction + instructionSteps);
-        if(result == null)
-        {
-            selectedRecipe.addInstructions(instruction, instructionSteps);
-
-            result = accessRecipes.updateRecipe(selectedRecipe);
-
-            if (result != null)
-            {
-                Messages.fatalError(this, result);
-            }
-            else
-            {
-                Toast.makeText(this, "Added instruction to " + selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
-            }
-        }
-        else
-        {
-            Messages.warning(this, result);
-        }
+        Intent addInstructionActivity = new Intent(this, AddInstructionActivity.class);
+        addInstructionActivity.putExtra("id", selectedRecipe); //pass the object reference to another activity
+        startActivity(addInstructionActivity);
+        finish();
     }
 
     //add ingredients
@@ -179,6 +173,7 @@ public class AddRecipeActivity extends AppCompatActivity
         Unit unit = checkUnit();
         Ingredient newIngredient = new Ingredient(nameIngred, unit, amount);
         result = validateIngredient(newIngredient);
+
         if(result == null)
         {
             selectedRecipe.addIngredient(new Ingredient(nameIngred, unit, amount));
@@ -233,29 +228,26 @@ public class AddRecipeActivity extends AppCompatActivity
     //validate if proper ingredient
     private String validateIngredient(Ingredient ingredient)
     {
-        if (ingredient.getName().length() == 0)
+        String result = null;
+
+        if(ingredient == null)
         {
-            return "Ingredient name required";
+            result = "Ingredient cannot be null";
+        }
+        else
+        {
+            if (ingredient.getName().trim().length() == 0) {
+                result = "Ingredient name required";
+            }
+
+            if (ingredient.getAmount() <= 0) {
+                result = "Ingredient amount must be greater then 0!";
+            }
         }
 
-        if( ingredient.getAmount() <= 0 )
-        {
-            return "Ingredient amount must be greater then 0!";
-        }
-
-        return null;
+        return result;
     }
 
-    //validate if proper instruction
-    private String validateInstruction(String string)
-    {
-        if (string.length() == 0)
-        {
-            return "Instructions Input required";
-        }
-
-        return null;
-    }
 
 
 }

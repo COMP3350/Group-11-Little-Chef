@@ -94,6 +94,7 @@ public class AddFragment extends Fragment
             if (result == null)
             {
                 insertRecipe(newRecipe);
+
             }
             else
             {

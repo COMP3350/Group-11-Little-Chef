@@ -6,15 +6,22 @@ import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.business.ScaleRecipe;
 import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
+import comp3350.littlechef.objects.Unit;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.SpannableString;
+import android.text.TextWatcher;
 import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -30,7 +37,6 @@ public class EditRecipeActivity extends AppCompatActivity
     private Recipe selectedRecipe;
     private ArrayAdapter<Ingredient> ingredientsArrayAdapter;
     private AccessRecipes accessRecipes;
-    private Spinner servingNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,13 +46,6 @@ public class EditRecipeActivity extends AppCompatActivity
         accessRecipes = new AccessRecipes();
 
         final ListView listView = (ListView) findViewById(R.id.ingredients_list_edit);
-
-//        //setting up drop down menu for choosing serving
-//        ArrayAdapter<String> servingSizeAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, getResources().getStringArray(R.array.serving_sizes));
-//        servingNum = (Spinner) findViewById(R.id.serving_num);
-//        servingSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        servingNum.setAdapter(servingSizeAdapter);
-
 
         //get the selected recipe that was clicked from previous activity
         Intent previousIntent = getIntent();
@@ -65,8 +64,10 @@ public class EditRecipeActivity extends AppCompatActivity
                 TextView ingredientName = (TextView) convertView.findViewById(R.id.ingredient);
                 TextView measurement = (TextView) convertView.findViewById(R.id.measurement);
 
+                SpannableString ingrName = new SpannableString(ingredient.getName());
+                ingrName.setSpan(new UnderlineSpan(), 0, ingrName .length(), 0);
 
-                ingredientName.setText(ingredient.getName());
+                ingredientName.setText(ingrName);
                 measurement.setText(ingredient.getDisplayMeasurement());
 
                 return convertView;
@@ -74,12 +75,24 @@ public class EditRecipeActivity extends AppCompatActivity
         };
 
 
+
         listView.setAdapter(ingredientsArrayAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                Ingredient selectedIngredient = (Ingredient) listView.getItemAtPosition(position);
+                showEditIngrWindow(selectedIngredient, false);
+
+            }
+        });
 
         setValues();
     }
 
-    public void saveClicked(View view)
+    public void nextClicked(View view)
     {
         String result;
         EditText editName = (EditText)findViewById(R.id.recipe_name_edit);
@@ -107,6 +120,134 @@ public class EditRecipeActivity extends AppCompatActivity
     }
 
 
+    public void addEditClicked(View view)
+    {
+        showEditIngrWindow(new Ingredient("", Unit.QUANTITY,0), true);
+    }
+
+    private void showEditIngrWindow(Ingredient ingredient, boolean newRecipe)
+    {
+        final Dialog editIngredientWindow = new Dialog(EditRecipeActivity.this);
+
+        //no need for title
+        editIngredientWindow.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        //make it disappear if user click outside of the window
+        editIngredientWindow.setCancelable(true);
+
+        //set the layout
+        editIngredientWindow.setContentView(R.layout.edit_ingredient_window);
+
+        final EditText ingrNameField = (EditText) (editIngredientWindow).findViewById(R.id.editIngredient);
+        final EditText ingrAmountField = (EditText) (editIngredientWindow).findViewById(R.id.editAmount);
+        final Spinner unitField = (Spinner) (editIngredientWindow).findViewById(R.id.editIngredientUnit);
+        final Button saveEdit = (Button) (editIngredientWindow).findViewById(R.id.save_dialog_box);
+        final Button cancelEdit = (Button) (editIngredientWindow).findViewById(R.id.cancel_dialog_box);
+        final Button deleteIngr = (Button) (editIngredientWindow).findViewById(R.id.delete_dialog_box);
+
+
+        //set the spinner with units
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.units, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        unitField.setAdapter(adapter);
+
+        //set the ingredients unit in the spinner
+
+        unitField.setSelection(adapter.getPosition(ingredient.getUnit()));
+
+
+
+        //set up the buttons
+        cancelEdit.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                if(editIngredientWindow.isShowing())
+                {
+                    editIngredientWindow.dismiss();
+                }
+            }
+        });
+
+        deleteIngr.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                ArrayList<Ingredient> recipeIngredients = selectedRecipe.getIngredients();
+                int ingrIndex = recipeIngredients.indexOf(ingredient);
+                if(ingrIndex > -1)
+                {
+                    recipeIngredients.remove(ingrIndex);
+                    ingredientsArrayAdapter.notifyDataSetChanged();
+                    editIngredientWindow.dismiss();
+
+                }
+            }
+        });
+
+        saveEdit.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+
+                ingredient.setName(ingrNameField.getText().toString());
+                ingredient.setAmount(Double.parseDouble(ingrAmountField.getText().toString()));
+                ingredient.setUnit(unitField.getSelectedItem().toString());
+
+                if(newRecipe)
+                {
+                    selectedRecipe.getIngredients().add(0,ingredient);
+                }
+
+                ingredientsArrayAdapter.notifyDataSetChanged();
+                editIngredientWindow.dismiss();
+            }
+        });
+
+        //set up the editText listeners
+        ingrNameField.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s)
+            {
+                saveEdit.setEnabled( (ingrNameField.getText().toString().trim().length() > 0) && (ingrAmountField.getText().toString().length() > 0)) ;
+            }
+        });
+
+        ingrAmountField.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s)
+            {
+                saveEdit.setEnabled( (ingrNameField.getText().toString().trim().length() > 0) && (ingrAmountField.getText().toString().length() > 0));
+            }
+        });
+
+        ingrNameField.setText(ingredient.getName());
+        ingrAmountField.setText(Double.toString(ingredient.getAmount()));
+
+        if(newRecipe)
+        {
+            deleteIngr.setVisibility(View.GONE);
+        }
+
+        editIngredientWindow.show();
+    }
+
+
     //to set values in the detailed_recipe_view
     private void setValues()
     {
@@ -131,14 +272,13 @@ public class EditRecipeActivity extends AppCompatActivity
         taste.setText(tasteRating);
         rating.setText(selectedRecipe.getRatingString());
 
-
     }
 
 
     private String validateRecipeData()
     {
         EditText editName = (EditText)findViewById(R.id.recipe_name_edit);
-        if(editName.getText().length() == 0)
+        if(editName.getText().toString().trim().length() == 0)
         {
             return "Recipe name required";
         }

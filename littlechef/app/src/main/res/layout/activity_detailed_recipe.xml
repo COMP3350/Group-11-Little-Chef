@@ -19,6 +19,14 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+
+            android:maxEms="16"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
             android:text="@string/recipe_card_name_placeholder"
             android:textColor="@color/black"
             android:textSize="25sp" />
