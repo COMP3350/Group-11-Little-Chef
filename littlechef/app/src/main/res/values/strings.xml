@@ -33,6 +33,7 @@
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
     <string name="save">Save</string>
+    <string name="save_changes">Save changes</string>
     <string name="one_serving_edit">1 Serving</string>
     <string name="cancel">cancel</string>
     <string name="amount">Amount</string>

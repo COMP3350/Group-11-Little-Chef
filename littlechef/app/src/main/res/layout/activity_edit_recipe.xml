@@ -95,7 +95,7 @@
         android:divider="@null" />
 
     <Button
-        android:id="@+id/serving_num_edit"
+        android:id="@+id/add_ingredient_button"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -103,7 +103,6 @@
         android:layout_marginTop="9dp"
         android:layout_toEndOf="@+id/text_ingredients"
         android:gravity="center"
-        android:onClick="addEditClicked"
         android:text="@string/plus_sign"
         android:textColor="@color/pastel_green"
         android:textSize="35sp"
@@ -111,13 +110,12 @@
         android:theme="@style/buttonWhiteTheme" />
 
     <Button
-        android:id="@+id/save_edit"
+        android:id="@+id/next_button"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_below="@+id/ingredients_list_edit"
         android:layout_centerHorizontal="true"
         android:background="@drawable/round_button"
-        android:onClick="nextClicked"
         android:text="@string/next"
         android:textColor="@color/black"
         android:textSize="25sp"
