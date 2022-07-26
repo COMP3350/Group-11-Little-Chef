@@ -3,7 +3,9 @@ package comp3350.littlechef.presentation;
 
 import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
@@ -112,6 +114,53 @@ public class ReadRateRecipeAcceptanceTest
         onView(withText("Difficulty: 3.00")).check(matches(isDisplayed()));
         onView(withText("Taste: 5.00")).check(matches(isDisplayed()));
         onView(withText("4.00/5")).check(matches(isDisplayed()));
+
+        onView(withText("Guacamole")).check(matches(isDisplayed())).perform(click());
+
+        //check updated recipe info
+        onView(withId(R.id.estimated_time)).check(matches(withText("Time: 00h 00m 05s")));
+        onView(withId(R.id.difficulty)).check(matches(withText("Difficulty: 3.00")));
+        onView(withId(R.id.taste)).check(matches(withText("Taste: 5.00")));
+        onView(withId(R.id.rating)).check(matches(withText("4.00/5")));
+
+        onView(withId(R.id.edit_recipe)).check(matches(isDisplayed())).perform(click());
+
+        //check updated recipe info in the edit activity
+        onView(withId(R.id.estimated_time_edit)).check(matches(withText("Time: 00h 00m 05s")));
+        onView(withId(R.id.difficulty_edit)).check(matches(withText("Difficulty: 3.00")));
+        onView(withId(R.id.taste_edit)).check(matches(withText("Taste: 5.00")));
+        onView(withId(R.id.rating_edit)).check(matches(withText("4.00/5")));
+        onView(withId(R.id.recipe_name_edit)).check(matches(withText("Guacamole")));
+
+        //Change Guacamole name "Mum's favourite Guacamole"
+        onView(withId(R.id.recipe_name_edit)).perform(clearText(), typeText("Mum's favourite Guacamole"));
+
+        ;
+
+        //change the first ingredient which is "Ripe Avocados" to "Big Sweet Ripe Avocados" and to quantity 4
+        onView(withText("Ripe avocados")).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.editIngredient)).perform(clearText());
+        //check that save button is disabled after clearing
+        onView(withId(R.id.save_dialog_box)).check(matches(isDisplayed())).check(matches(not(isEnabled())));
+
+        onView(withId(R.id.editAmount)).perform(clearText());
+
+        //check that save button is disabled after clearing
+        onView(withId(R.id.save_dialog_box)).check(matches(isDisplayed())).check(matches(not(isEnabled())));
+
+        onView(withId(R.id.editAmount)).perform(typeText("4"));
+        onView(withId(R.id.editIngredient)).perform(typeText("Big Sweet Ripe Avocados"));
+        //TODO make it edit the spinner/unit
+
+        onView(withId(R.id.save_dialog_box)).check(matches(isDisplayed())).check(matches(isEnabled())).perform(click());
+
+        //delete ingredient "Kosher salt"
+        onView(withText("Kosher salt")).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.delete_dialog_box)).check(matches(isDisplayed())).check(matches(isEnabled())).perform(click());
+
+        //add ingredient
+
+
 
 
 
