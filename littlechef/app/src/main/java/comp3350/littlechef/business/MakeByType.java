@@ -14,7 +14,6 @@ import comp3350.littlechef.objects.Recipe;
 
 public class MakeByType
 {
-    //TODO: make this a case statement?
     //displays how many recipes it will display from main list with required type
     private static final int MAX_SHOWING = 3;
     private static final int TIME_SAVING = 10; //for the time savings show recipes under 10 minutes to make
@@ -27,6 +26,7 @@ public class MakeByType
         Random random = new Random();
         int randomIndex;
         int listSize;
+
         if(type.equals("surprise"))
         {
             while(displayList.size() < MAX_SHOWING && recipeList.size() > 0 )
