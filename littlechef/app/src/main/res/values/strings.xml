@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Little Chef</string>
     <string name="recipes_button">Recipes</string>
-    <string name="meal_plan_button">Meal Plans</string>
+    <string name="suggest_recipes_button">Suggest Recipes</string>
     <string name="add_recipe_button">Add Recipe</string>
     <string name="recipe_card_name_placeholder">Recipe Name</string>
     <string name="time">Estimated Time:</string>

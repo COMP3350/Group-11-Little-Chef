@@ -30,9 +30,9 @@ public class HomeActivity extends AppCompatActivity
 {
     //initialize the fragments
     private BottomNavigationView bottomNavigationView;
-    private ViewFragment viewFragment;
+    private ViewRecipesFragment viewRecipesFragment;
     private AddNewRecipeFragment addFragment;
-    private MealsFragment mealsFragment;
+    private SuggestRecipeFragment suggestRecipeFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -48,10 +48,10 @@ public class HomeActivity extends AppCompatActivity
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         //create all the fragments
-        viewFragment = new ViewFragment();
+        viewRecipesFragment = new ViewRecipesFragment();
         addFragment = new AddNewRecipeFragment();
-        mealsFragment = new MealsFragment();
-        replaceFragment(viewFragment); //set view fragment on start
+        suggestRecipeFragment = new SuggestRecipeFragment();
+        replaceFragment(viewRecipesFragment); //set view fragment on start
 
         //set up bottom navigation listener
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener()
@@ -62,8 +62,8 @@ public class HomeActivity extends AppCompatActivity
                 switch (item.getItemId())
                 {
                     case R.id.recipes:
-                        viewFragment = new ViewFragment();
-                        replaceFragment(viewFragment);
+                        viewRecipesFragment = new ViewRecipesFragment();
+                        replaceFragment(viewRecipesFragment);
                         return true;
 
                     case R.id.add:
@@ -72,8 +72,8 @@ public class HomeActivity extends AppCompatActivity
                         return true;
 
                     case R.id.meals:
-                        mealsFragment = new MealsFragment();
-                        replaceFragment(mealsFragment);
+                        suggestRecipeFragment = new SuggestRecipeFragment();
+                        replaceFragment(suggestRecipeFragment);
                         return true;
                 }
                 return false;

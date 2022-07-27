@@ -49,7 +49,7 @@ public class AddNewRecipeFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_add, container, false);
+        View view = inflater.inflate(R.layout.fragment_add_new_recipe, container, false);
 
         Button addRecipeButton= (Button) view.findViewById(R.id.addRecipeButton);
 

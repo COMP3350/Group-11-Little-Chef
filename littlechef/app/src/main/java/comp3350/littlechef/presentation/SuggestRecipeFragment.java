@@ -10,16 +10,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import comp3350.littlechef.R;
 
-// CLASS: MealsFragment.java
+// CLASS: SuggestRecipeFragment.java
 //
 //
 // REMARKS: This class will start an activity based on the type selected
 //
 //-----------------------------------------
-public class MealsFragment extends Fragment
+public class SuggestRecipeFragment extends Fragment
 {
 
-    public MealsFragment() {
+    public SuggestRecipeFragment() {
         // Required empty public constructor
     }
 
@@ -30,7 +30,7 @@ public class MealsFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         //inflate view
-        View view = inflater.inflate(R.layout.fragment_meals, container, false);
+        View view = inflater.inflate(R.layout.fragment_suggest_recipes, container, false);
 
         Button challengeButton = (Button) view.findViewById(R.id.challengeButton);
         Button easeButton = (Button) view.findViewById(R.id.easeButton);

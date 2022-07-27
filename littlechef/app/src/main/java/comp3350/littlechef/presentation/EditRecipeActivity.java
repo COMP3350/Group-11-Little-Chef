@@ -297,5 +297,5 @@ public class EditRecipeActivity extends AppCompatActivity
         return null;
     }
 
-    
+
 }

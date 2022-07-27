@@ -9,7 +9,7 @@
         android:icon="@drawable/add_recipe"
         android:id="@+id/add"/>
 
-    <item android:title="@string/meal_plan_button"
-        android:icon="@drawable/view_meal_plan"
+    <item android:title="@string/suggest_recipes_button"
+        android:icon="@drawable/suggest_recipe"
         android:id="@+id/meals"/>
 </menu>

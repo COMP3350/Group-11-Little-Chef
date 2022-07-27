@@ -22,14 +22,14 @@ import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.objects.Recipe;
 
-public class ViewFragment extends Fragment
+public class ViewRecipesFragment extends Fragment
 {
     private AccessRecipes accessRecipes;
     private ArrayList<Recipe> recipeList;
     private ArrayAdapter<Recipe> recipeArrayAdapter;
     private Recipe recipe;
 
-    public ViewFragment()
+    public ViewRecipesFragment()
     {
         // Required empty public constructor
     }

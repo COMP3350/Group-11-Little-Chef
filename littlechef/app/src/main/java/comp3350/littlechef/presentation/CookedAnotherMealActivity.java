@@ -33,7 +33,7 @@ public class CookedAnotherMealActivity extends AppCompatActivity
                 startActivity(rateRecipyActivity);
                 finish();
             }
-        }, 1500);
+        }, 3000);
 
     }
 }
