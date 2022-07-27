@@ -16,15 +16,14 @@ import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.objects.Recipe;
 
 
-
-// CLASS: AddFragment.java
+// CLASS: AddNewRecipeFragment.java
 //
 //
 // REMARKS: This class creates the add recipe fragment, where you can add recipes
 //          You can then click on the recipe to add individual ingredients and instructions.
 //
 //-----------------------------------------
-public class AddFragment extends Fragment
+public class AddNewRecipeFragment extends Fragment
 {
     String name; //recipe name
 
@@ -33,7 +32,7 @@ public class AddFragment extends Fragment
     private AccessRecipes accessRecipes;
     private ArrayList<Recipe> recipeList;
 
-    public AddFragment()
+    public AddNewRecipeFragment()
     {
         // Required empty public constructor
     }
@@ -174,6 +173,7 @@ public class AddFragment extends Fragment
 
         return null;
     }
+
     //returns true if recipe already in list
     private boolean checkDuplicates(Recipe recipe)
     {

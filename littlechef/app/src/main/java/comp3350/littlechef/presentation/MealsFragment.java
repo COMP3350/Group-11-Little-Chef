@@ -89,7 +89,7 @@ public class MealsFragment extends Fragment
     }
     private void startActivity(String type)
     {
-        Intent intent = new Intent(getActivity(), MealPlanCalendar.class);
+        Intent intent = new Intent(getActivity(), SuggestRecipesActivity.class);
         intent.putExtra("type", type);
         startActivity(intent);
     }

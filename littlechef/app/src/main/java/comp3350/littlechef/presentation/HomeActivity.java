@@ -6,13 +6,11 @@ import comp3350.littlechef.application.Main;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.app.Fragment;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -33,7 +31,7 @@ public class HomeActivity extends AppCompatActivity
     //initialize the fragments
     private BottomNavigationView bottomNavigationView;
     private ViewFragment viewFragment;
-    private AddFragment addFragment;
+    private AddNewRecipeFragment addFragment;
     private MealsFragment mealsFragment;
 
     @Override
@@ -51,7 +49,7 @@ public class HomeActivity extends AppCompatActivity
 
         //create all the fragments
         viewFragment = new ViewFragment();
-        addFragment = new AddFragment();
+        addFragment = new AddNewRecipeFragment();
         mealsFragment = new MealsFragment();
         replaceFragment(viewFragment); //set view fragment on start
 
@@ -69,7 +67,7 @@ public class HomeActivity extends AppCompatActivity
                         return true;
 
                     case R.id.add:
-                        addFragment = new AddFragment();
+                        addFragment = new AddNewRecipeFragment();
                         replaceFragment(addFragment);
                         return true;
 

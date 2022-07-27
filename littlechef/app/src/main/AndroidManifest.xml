@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".presentation.MealPlanCalendar"
+            android:name=".presentation.SuggestRecipesActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.AddInstructionActivity"

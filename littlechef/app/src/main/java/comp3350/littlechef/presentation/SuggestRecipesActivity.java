@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
-import comp3350.littlechef.business.MakeByType;
+import comp3350.littlechef.business.FilteredRecipes;
 import comp3350.littlechef.objects.Recipe;
 
 import android.content.DialogInterface;
@@ -26,15 +26,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 import java.util.ArrayList;
 
-// CLASS: MealPlanCalendar.java
+// CLASS: SuggestRecipesActivity.java
 //
 //
 // REMARKS: This class will call and display a list of selected types
 //
 //-----------------------------------------
 
-public class MealPlanCalendar extends AppCompatActivity
+public class SuggestRecipesActivity extends AppCompatActivity
 {
+    private static final int MAX_SHOWING = 3;
+
     private AccessRecipes accessRecipes;
     private ArrayList<Recipe> recipeList;
     private ArrayAdapter<Recipe> recipeArrayAdapter;
@@ -46,7 +48,7 @@ public class MealPlanCalendar extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_meal_plan_calendar);
+        setContentView(R.layout.activity_recipe_suggestions);
 
         //access database
         accessRecipes = new AccessRecipes();
@@ -62,7 +64,7 @@ public class MealPlanCalendar extends AppCompatActivity
         String type = bundle.getString("type");
 
         //create arraylist with type
-        displayList = MakeByType.createList(type, recipeList);
+        displayList = FilteredRecipes.getListofRecipesByType(type, MAX_SHOWING, recipeList);
         //if the displayList returns empty send warning that nothing to display
         if(displayList.isEmpty())
             emptyList();
@@ -91,7 +93,7 @@ public class MealPlanCalendar extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
                 Recipe selectedRecipe = (Recipe) listView.getItemAtPosition(position);
-                Intent detailedRecipe = new Intent(MealPlanCalendar.this, DetailedRecipeActivity.class);
+                Intent detailedRecipe = new Intent(SuggestRecipesActivity.this, DetailedRecipeActivity.class);
                 detailedRecipe.putExtra("id", selectedRecipe); //pass the object reference to another activity
                 startActivity(detailedRecipe);
             }

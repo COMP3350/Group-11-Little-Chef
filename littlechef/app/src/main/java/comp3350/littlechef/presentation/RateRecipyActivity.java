@@ -26,7 +26,7 @@ public class RateRecipyActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rate_recipy);
+        setContentView(R.layout.activity_rate_recipe);
 
         accessRecipes = new AccessRecipes();
 
