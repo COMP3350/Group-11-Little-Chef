@@ -267,4 +267,17 @@ public class ReadRateRecipeAcceptanceTest
 
 
     }
+
+    @Test
+    public void testInvalidCases() //Trying to add empty string recipe name, trying to same ingredients
+    {
+
+    }
+
+    @Test
+    public void testEdgeCases() //adding same named recipe, adding long recipe names, adding long ingredient names
+    {
+
+    }
+
 }
