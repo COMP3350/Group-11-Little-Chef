@@ -2,9 +2,11 @@ package comp3350.littlechef.presentation;
 
 import comp3350.littlechef.R;
 import comp3350.littlechef.application.Main;
+import comp3350.littlechef.application.Services;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.Service;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Bundle;
@@ -79,15 +81,20 @@ public class HomeActivity extends AppCompatActivity
                 return false;
             }
         });
+    }
 
-
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        Services.getDataAccess(Main.dbName).close();
+        Services.getDataAccess(Main.dbName).open(Main.getDBPathName());
     }
 
     @Override
     protected void onDestroy()
     {
         super.onDestroy();
-
         Main.shutDown();
     }
 
