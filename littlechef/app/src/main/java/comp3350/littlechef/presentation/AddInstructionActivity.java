@@ -42,9 +42,9 @@ public class AddInstructionActivity extends AppCompatActivity
         selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id");
 
         //Toast.makeText(this, "Add to " + selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
-        Button finishAdding= (Button) findViewById(R.id.cancel_button);
+        Button finishAdding= (Button) findViewById(R.id.finishAdding);
         Button addInstructionButton= (Button) findViewById(R.id.addInstructionButton);
-        Button cancelButton= (Button) findViewById(R.id.cancelButton);
+        Button cancelButton = (Button) findViewById(R.id.cancel_button);
 
         instructionInput = (EditText) findViewById(R.id.instruction);
         instructionInputSteps = (EditText) findViewById(R.id.instructionsSteps);

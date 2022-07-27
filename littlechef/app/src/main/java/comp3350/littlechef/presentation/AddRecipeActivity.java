@@ -197,32 +197,7 @@ public class AddRecipeActivity extends AppCompatActivity
     //this just checks the unit input and assigns it
     private Unit checkUnit()
     {
-        if( unitString.equals("PINCH") )
-            return Unit.PINCH;
-        else if( unitString.equals("TSP") )
-            return Unit.TSP;
-        else if( unitString.equals("TBSP") )
-            return Unit.TBSP;
-        else if( unitString.equals("CUP") )
-            return Unit.CUP;
-        else if( unitString.equals("ML") )
-            return Unit.ML;
-        else if( unitString.equals("L") )
-            return Unit.L;
-        else if( unitString.equals("MG") )
-            return Unit.MG;
-        else if( unitString.equals("G") )
-            return Unit.G;
-        else if( unitString.equals("KG") )
-            return Unit.KG;
-        else if( unitString.equals("MM") )
-            return Unit.MM;
-        else if( unitString.equals("CM") )
-            return Unit.CM;
-        else if( unitString.equals("M") )
-            return Unit.M;
-        else
-            return null;
+        return Unit.valueOf(unitString.toUpperCase());
     }
 
     //validate if proper ingredient

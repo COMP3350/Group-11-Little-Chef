@@ -18,7 +18,8 @@ import comp3350.littlechef.objects.Recipe;
 import comp3350.littlechef.persistence.DataAccessStub;
 
 
-public class BusinessPersistenceSeamTest extends TestCase {
+public class BusinessPersistenceSeamTest extends TestCase
+{
 
     private static String DB_NAME = Main.dbName;
     private AccessRecipes accessRecipes;

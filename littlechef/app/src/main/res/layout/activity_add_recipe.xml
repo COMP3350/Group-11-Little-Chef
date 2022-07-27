@@ -71,6 +71,7 @@
                     android:layout_marginBottom="50dp"
                     android:digits="0123456789.,"
                     android:ems="10"
+                    android:maxLines="1"
                     android:hint="Ingredient amount (1 serving)"
                     android:inputType="numberDecimal" />
 
@@ -78,7 +79,7 @@
                     android:id="@+id/spinnerUnit"
                     android:layout_width="100dp"
                     android:layout_height="48dp"
-                    android:layout_marginStart="25dp"></Spinner>
+                    android:layout_marginStart="25dp"/>
 
             </LinearLayout>
 
