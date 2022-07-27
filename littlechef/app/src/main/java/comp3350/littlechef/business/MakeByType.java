@@ -27,6 +27,7 @@ public class MakeByType
         int randomIndex;
         int listSize;
 
+
         if(type.equals("surprise"))
         {
             while(displayList.size() < MAX_SHOWING && recipeList.size() > 0 )
