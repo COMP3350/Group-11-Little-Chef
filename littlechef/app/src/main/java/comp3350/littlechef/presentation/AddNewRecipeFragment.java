@@ -136,17 +136,7 @@ public class AddNewRecipeFragment extends Fragment
 
         return null;
     }
-    //Validate the recipe
-    private String validateRecipeName(Recipe recipeAdd)
-    {
-        //check through all recipes for duplicates
-        if (checkDuplicates(recipeAdd))
-        {
-            return "Recipe name required";
-        }
 
-        return null;
-    }
 
     private String validateRecipeName(Recipe recipeAdd)
     {
