@@ -35,9 +35,6 @@ public class addIngredientActivity extends AppCompatActivity
     private EditText ingredientInputName;
     private EditText ingredientInputAmount;
 
-
-    private AccessRecipes accessRecipes;
-
     private Spinner spinner;
     private ArrayAdapter<CharSequence> adapter;
 
@@ -57,8 +54,6 @@ public class addIngredientActivity extends AppCompatActivity
         //Get input from text fields
         ingredientInputName = findViewById(R.id.new_ingredient_name);
         ingredientInputAmount = findViewById(R.id.new_ingredient_amount);
-
-        accessRecipes = new AccessRecipes();
 
         //for the spinner
         spinner = findViewById(R.id.spinnerUnit);
@@ -89,26 +84,10 @@ public class addIngredientActivity extends AppCompatActivity
             ingredientInputAmount.getText().clear();
         });
 
-        cancelButton.setOnClickListener(view -> deleteRecipe());
+        cancelButton.setOnClickListener(view -> finish());
 
         saveAllIngredientsButton.setOnClickListener(view -> addInstruction());
 
-    }
-
-    private void deleteRecipe()
-    {
-        String result;
-        AccessRecipes accessRecipes = new AccessRecipes();
-        result = accessRecipes.deleteRecipe(selectedRecipe);
-
-        if (result == null)
-        {
-            finish();
-        }
-        else
-        {
-            Messages.fatalError(this, result);
-        }
     }
 
     private void addInstruction()
@@ -143,17 +122,7 @@ public class addIngredientActivity extends AppCompatActivity
         if(result == null)
         {
             selectedRecipe.addIngredient(new Ingredient(nameIngred, unit, amount));
-
-            result = accessRecipes.updateRecipe(selectedRecipe);
-
-            if (result != null)
-            {
-                Messages.fatalError(this, result);
-            }
-            else
-            {
                 Toast.makeText(this, "Added " + nameIngred + " to " + selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
-            }
         }
         else
         {

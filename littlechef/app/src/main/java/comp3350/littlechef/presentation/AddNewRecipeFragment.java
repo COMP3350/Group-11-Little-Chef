@@ -80,8 +80,7 @@ public class AddNewRecipeFragment extends Fragment
 
             if (result == null)
             {
-                insertRecipe(newRecipe);
-
+                launchAddActivity(newRecipe);
             }
             else
             {
@@ -90,7 +89,7 @@ public class AddNewRecipeFragment extends Fragment
                 resetAlert.setMessage("Do you want to add anyway?");
 
                 resetAlert.setPositiveButton("Continue", (dialog, which) -> {
-                    insertRecipe(newRecipe);
+                    launchAddActivity(newRecipe);
                 });
 
                 resetAlert.setNeutralButton("Cancel", (dialog, which) -> {
@@ -105,21 +104,6 @@ public class AddNewRecipeFragment extends Fragment
             Messages.warning(getActivity(), result);
         }
 
-    }
-    private void insertRecipe(Recipe newRecipe)
-    {
-        String result;
-
-        result = accessRecipes.insertRecipe(newRecipe);
-
-        if (result == null)
-        {
-            launchAddActivity(newRecipe);
-        }
-        else
-        {
-            Messages.fatalError(getActivity(), result);
-        }
     }
 
     private void launchAddActivity(Recipe newRecipe)
