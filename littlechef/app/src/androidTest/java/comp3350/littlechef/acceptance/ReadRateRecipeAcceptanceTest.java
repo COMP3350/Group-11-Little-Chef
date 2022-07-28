@@ -719,6 +719,24 @@ public class ReadRateRecipeAcceptanceTest
 
         onView(withText("Mum's favourite Guacamole")).check(doesNotExist()); //check recipes are not there
 
+
+        //delete the changed Chicken Wrap
+        onView(ViewMatchers.withId(R.id.recipe_list_view)).perform(ViewActions.swipeDown());
+        onView(withText("A New Chicken Wrap")).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.delete_recipe)).check(matches(isDisplayed())).perform(click());
+        onView(withText("YES")).check(matches(isDisplayed())).perform(click());
+
+        onView(withText("A New Chicken Wrap")).check(doesNotExist()); //check recipes are not there
+
+        //delete the changed Grilled Halloumi Salad
+        onView(ViewMatchers.withId(R.id.recipe_list_view)).perform(ViewActions.swipeUp());
+        onView(withText("A New Grilled Halloumi Salad")).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.delete_recipe)).check(matches(isDisplayed())).perform(click());
+        onView(withText("YES")).check(matches(isDisplayed())).perform(click());
+
+        onView(withText("A New Grilled Halloumi Salad")).check(doesNotExist()); //check recipes are not there
+
+
         //add the default recipes
         onView(withId(R.id.add)).perform(click());
         onView(withId(R.id.nameInput)).check(matches(isDisplayed())).perform(typeText("Guacamole"));
@@ -796,6 +814,168 @@ public class ReadRateRecipeAcceptanceTest
         //save the recipe
         onView(withId(R.id.finishAdding)).check(matches(isDisplayed())).perform(click());
 
+        /********/
+        //add the default recipes Chicken Wrap
+        onView(withId(R.id.add)).perform(click());
+        onView(withId(R.id.nameInput)).check(matches(isDisplayed())).perform(typeText("Chicken Wrap"));
+        onView(withId(R.id.addRecipeButton)).check(matches(isDisplayed())).perform(click());
+
+        //add ingredients
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Grilled Chicken Breasts copped"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("2.0"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("CUP"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Ranch Dressing"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("0.25"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("CUP"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Mozzarella Cheese"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("0.5"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("CUP"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Cilantro"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("0.25"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("CUP"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("8 inch tortillas"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("4.0"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("ML"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+
+
+        onView(withId(R.id.save_all_ingredients)).check(matches(isDisplayed())).perform(click());
+
+        //add instructions
+        onView(withId(R.id.instruction)).check(matches(isDisplayed())).perform(typeText("Lay tortillas on a clean flat surface. Place about 1/2 cup chicken, 1 tablespoon ranch, 2 tablespoons of cheese, and 1 tablespoon of minced cilantro on each tortilla. Fold tightly to form a burrito shape. "));
+        Espresso.closeSoftKeyboard();
+
+        onView(withId(R.id.addInstructionButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.instruction)).check(matches(isDisplayed())).perform(typeText("Heat a heavy-duty pan or grill to medium heat. Coat with a light layer or oil or cooking spray and cook wraps for 1-2 minutes on each side or until the tortilla is crispy and golden. Remove from heat, slice in half and serve immediately."));
+        Espresso.closeSoftKeyboard();
+
+        onView(withId(R.id.addInstructionButton)).check(matches(isDisplayed())).perform(click());
+
+        //save the recipe
+        onView(withId(R.id.finishAdding)).check(matches(isDisplayed())).perform(click());
+
+        //add the default recipes Grilled Halloumi Salad
+        onView(withId(R.id.add)).perform(click());
+        onView(withId(R.id.nameInput)).check(matches(isDisplayed())).perform(typeText("Grilled Halloumi Salad"));
+        onView(withId(R.id.addRecipeButton)).check(matches(isDisplayed())).perform(click());
+
+        //add ingredients
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Halloumi Cheese, sliced into 1/4 inch thick slices"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("250"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("G"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Packed Spring Greens"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("2.0"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("CUP"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Chopped Cucumber"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("1.0"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("CUP"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Chopped Pineapple"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("1.50"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("CUP"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Red Onion, thinly sliced"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("0.2"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("QUANTITY"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Toasted Almonds"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("0.25"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("CUP"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Olive Oil"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("3.0"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("TBSP"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Lemon Juice"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("0.25"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("CUP"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Cayenne Pepper"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("0.25"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("TSP"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Salt"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("0.5"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("TSP"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+
+
+        onView(withId(R.id.save_all_ingredients)).check(matches(isDisplayed())).perform(click());
+
+        //add instructions
+        onView(withId(R.id.instruction)).check(matches(isDisplayed())).perform(typeText("Cook the farro."));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.instructionsSteps)).check(matches(isDisplayed())).perform(typeText("Cook the farro in 3 cups of water or vegetable stock according to these instructions until it is chewy and tender. (Cooking time will vary depending on what type of farro you use.) Drain the farro in a fine-mesh strainer and add it to a large mixing bowl."));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.addInstructionButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.instruction)).check(matches(isDisplayed())).perform(typeText("Make the dressing."));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.instructionsSteps)).check(matches(isDisplayed())).perform(typeText("Meanwhile, whisk all ingredients together in a small bowl (or shake in a covered mason jar) until completely combined. Set aside until ready to use."));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.addInstructionButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.instruction)).check(matches(isDisplayed())).perform(typeText("Pan-grill the halloumi."));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.instructionsSteps)).check(matches(isDisplayed())).perform(typeText("Meanwhile, heat the olive oil in a large grill pan or saute pan over high heat. Add however many halloumi strips that you can fit in an even layer, then cook for about 30 seconds per side or until the cheese is lightly browned. Transfer the halloumi to the large mixing bowl with the farro, then repeat with the remaining strips until all of the halloumi has been cooked."));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.addInstructionButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.instruction)).check(matches(isDisplayed())).perform(typeText("Toss the salad."));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.instructionsSteps)).check(matches(isDisplayed())).perform(typeText("Add the remaining ingredients (arugula, cucumber, red onion, mint, Kalamata olives and pine nuts) to the large mixing bowl. Drizzle evenly with the dressing, and then toss until the salad is completely combined."));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.addInstructionButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.instruction)).check(matches(isDisplayed())).perform(typeText("Season."));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.instructionsSteps)).check(matches(isDisplayed())).perform(typeText("Taste and season the salad with extra salt, black pepper and/or lemon juice, if needed."));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.addInstructionButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.instruction)).check(matches(isDisplayed())).perform(typeText("Serve."));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.instructionsSteps)).check(matches(isDisplayed())).perform(typeText("Serve immediately and enjoy!"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.addInstructionButton)).check(matches(isDisplayed())).perform(click());
+
+        //save the recipe
+        onView(withId(R.id.finishAdding)).check(matches(isDisplayed())).perform(click());
 
 
     }
