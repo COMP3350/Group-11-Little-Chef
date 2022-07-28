@@ -10,27 +10,15 @@ import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
-import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
-import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withSpinnerText;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.hasToString;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.startsWith;
-
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.widget.ListView;
-
-import androidx.test.espresso.DataInteraction;
 import androidx.test.espresso.Espresso;
-import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.matcher.RootMatchers;
 import androidx.test.espresso.matcher.ViewMatchers;
@@ -38,9 +26,6 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -50,31 +35,11 @@ import comp3350.littlechef.presentation.HomeActivity;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class ReadRateRecipeAcceptanceTest
+public class ReadRateAddRecipeAcceptanceTest
 {
 
     @Rule
     public ActivityScenarioRule<HomeActivity> homeActivity = new ActivityScenarioRule<>(HomeActivity.class);
-
-    @Test
-    public void testHomeScreen()
-    {
-        //check that all the parts of home screen are displayed
-        onView(withId(R.id.bottomNavigationView)).check(matches(isDisplayed()));
-        onView(withId(R.id.recipes)).check(matches(isDisplayed()));
-        onView(withId(R.id.add)).check(matches(isDisplayed()));
-        onView(withId(R.id.meals)).check(matches(isDisplayed()));
-
-        onView(withId(R.id.add)).perform(click());
-        onView(withId(R.id.recipes)).perform(click());
-        //TODO add a click on the meal plan when it is finished
-
-        //TODO figure our how to check textviews under specific positions in the listview
-
-
-
-
-    }
 
     //typical cases that average user would follow, typical cooking, rating, edit, delete and add activities
     @Test
@@ -580,7 +545,7 @@ public class ReadRateRecipeAcceptanceTest
          Thread.sleep(1500);
          } catch (Exception e) {}
          //check that time value changed
-         onView(withId(R.id.estimated_time_rating_activity)).check(matches(withText("Time: 00h 00m 03s")));
+         onView(withId(R.id.estimated_time_rating_activity)).check(matches(withText("Time: 00h 00m 04s")));
          onView(withId(R.id.difficulty_radio_1)).check(matches(isDisplayed())).perform(click());
          onView(withId(R.id.taste_radio_5)).check(matches(isDisplayed())).perform(click());
          onView(withId(R.id.submit_rating)).check(matches(isDisplayed())).perform(click());
@@ -814,7 +779,6 @@ public class ReadRateRecipeAcceptanceTest
         //save the recipe
         onView(withId(R.id.finishAdding)).check(matches(isDisplayed())).perform(click());
 
-        /********/
         //add the default recipes Chicken Wrap
         onView(withId(R.id.add)).perform(click());
         onView(withId(R.id.nameInput)).check(matches(isDisplayed())).perform(typeText("Chicken Wrap"));
