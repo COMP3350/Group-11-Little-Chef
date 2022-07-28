@@ -945,13 +945,42 @@ public class ReadRateEditAddRecipeAcceptanceTest
     }
 
     @Test
-    public void testInvalidCases() //Trying to add empty string recipe name, trying to same ingredients
+    public void testInvalidCases() //Trying to add empty string recipe name, trying to add same ingredients
     {
+        //test adding empty string recipe
+        onView(withId(R.id.add)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.nameInput)).check(matches(isDisplayed())).perform(typeText("")); //empty
+        onView(withId(R.id.addRecipeButton)).check(matches(isDisplayed())).perform(click());
+        //TODO check error message
+        //TODO click back
+        onView(withId(R.id.nameInput)).check(matches(isDisplayed())).perform(typeText(" "));// single space
+        onView(withId(R.id.addRecipeButton)).check(matches(isDisplayed())).perform(click());
+        //TODO check error message
+        //TODO click back
+        onView(withId(R.id.nameInput)).check(matches(isDisplayed())).perform(typeText("                    ")); //many spaces
+        onView(withId(R.id.addRecipeButton)).check(matches(isDisplayed())).perform(click());
+        //TODO check error message
+        //TODO click back
+
+        onView(withId(R.id.nameInput)).check(matches(isDisplayed())).perform(typeText("1111111"));
+        onView(withId(R.id.addRecipeButton)).check(matches(isDisplayed())).perform(click());
+
+        //add an ingredient
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Large eggs"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("2.0"));
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+
+        //try to add the same ingredient
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Large eggs"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("2.0"));
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+        //TODO check error message
+        //TODO click back
 
     }
 
     @Test
-    public void testEdgeCases() //adding same named recipe, adding long recipe names, adding long ingredient names
+    public void testEdgeCases() //adding same named recipe, adding long recipe names, adding long ingredient names, ingredient name with many spaces
     {
 
     }
