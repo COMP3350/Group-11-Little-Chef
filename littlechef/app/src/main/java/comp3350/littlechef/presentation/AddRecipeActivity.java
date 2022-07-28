@@ -229,7 +229,7 @@ public class AddRecipeActivity extends AppCompatActivity
         return result;
     }
 
-    //checks if duplicate ingredient, is this logic
+    //checks if duplicate ingredient
     private boolean checkDuplicateIngredient(Ingredient ingredient)
     {
         boolean result = false;
