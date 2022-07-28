@@ -14,22 +14,29 @@
 - application.Services.java
 - business.AccessRecipes.java
 - business.DecimalFractionConversion.java
+- business.FilteredRecipes.java
 - business.ScaleRecipe.java
 - business.TimeRecipe.java
 - objects.Ingredient.java
 - objects.Recipe.java
+- objects.Unit.java
+- objects.UnitType.java
 - persistence.DataAccess.java
 - persistence.DataAccessObject.java
-- presentation.AddFragment.java
-- presentation.AddRecipeActivity.java
+- presentation.AddIngredientActivity.java
+- presentation.AddInstructionActivity.java
+- presentation.AddNewRecipeFragment.java
 - presentation.CookedAnotherMealActivity.java
 - presentation.DetailedRecipeActivity.java
+- presentation.EditInstructionsActivity.java
+- presentation.EditRecipeActivity.java
 - presentation.HomeActivity.java
 - presentation.Messages.java
-- presentation.RateRecipyActivity.java
+- presentation.RateRecipeActivity.java
 - presentation.RecipeInstructionActivity.java
-- presentation.ViewFragment.java 
-
+- presentation.SuggestRecipeFragment.java
+- presentation.SuggestRecipesActivity.java
+- presentation.ViewRecipesFragment.java
 
 ### URL TO GIT REPO
 An invite link has been sent to username: Braico
@@ -48,13 +55,12 @@ An invite link has been sent to username: Braico
 - Wen’s activity log
 - Design Decisions and Rationale
 
-### Big and Detailed User Stories
-**Filename**: Big and Detailed User Stories.pdf. 
+### Retrospective Activity 
+**Filename**: Retrospective Activity.txt  
 **Location**: saved in the private repository along with the project.
 
 ### Big Picture Overview
-Little Chef can currently be used as a digital recipe book and timer. 
-The app will show a list of all the recipes on the homepage. You can also see each recipe's estimated cooking time, taste rating, and difficulty rating. Users can also add their recipes to the collection by filling out a form. You can select any recipe from the home screen to view its ingredients and instructions. When considering the ingredients, you can adjust the serving size, and Little Chef will update the ingredient quantities for you. Once you start cooking a given recipe, you can use the timer function to track how long that meal took to prepare. The app will use this metric to update the estimated cook time for the recipe. Once the meal is made, a user will rate the meal. Little Chef will use this rating to calculate the recipe's overall rating, which will be used to recommend recipes in the future iteration. 
+Little chef is a digital recipe book that will also recommend recipes based on your preferences. The Recipe Screen lists all the saved recipes and additional details (the recipe rating, estimated cooking time, and cooking difficulty). You can select a recipe to view the recipe's ingredients and instructions. You can adjust the serving size, and the Little Chef will update the ingredient quantities for you. Once you start cooking a given recipe, you can use the timer function to track how long that meal took to prepare. The app will use this metric to update the estimated cook time for the recipe. Once the meal is made, a user will rate the meal. Little Chef will use this rating to calculate the recipe's overall rating, which is used in the recipe suggestion screen. In the ‘suggest a recipe’ screen, you can click a button based on your preferences, and Little Chef will recommend recipes that fit the given criteria. 
 
 ### Overview of the features
 
@@ -85,14 +91,17 @@ The app will show a list of all the recipes on the homepage. You can also see ea
 7. Add Recipe
 **Overview**: The Add Recipe screen allows users to add their recipes to the collection. It guides the user through each step. To start, the user will name their recipe. Then they will add all the ingredients and steps for the recipe. When the user first clicks add recipe it will add the recipe to the list, and every time the user clicks add instructions and add ingredient it will automatically add them to that recipe, when the user is done they can simply go back and the recipe with all the added ingredients and instructions will be there.
 
-**Note**: the functional bottom navigation menu has three buttons: "Recipes," "Add Recipe," and "Meal Plans." You can use only two of the buttons("Recipes," "Add Recipe") to switch between activities. "Meal Plans" will be implemented in the future iteration, and for now, if pressed, it notifies the user that it is a work in progress. All three buttons, however, are needed now to show the functionality of the navigation menu. In future iterations, "Meal Plans" will allow the scheduling of created recipes.
+8. Edit a Recipe
+**Overview**: Once the user is on the detailed recipe view, they can click on the 'edit' icon to start editing it. On the edit recipe screen, the user can change the name of the recipe to a new valid name. They can then click on the next button which will take them to the edit instructions page. Here they can add, edit, or delete ingredients. Finally, they can add, edit, or delete the instructions. When the user is done they can click the save button to finish saving the changes. 
+
+9. Suggest a Recipe
+**Overview**: The Suggest a Recipe screen has 5 buttons each representing what they care about: a challenge, ease, saving time, taste, and surprise. The user can click the challenge button if they would like to get some recipes that were rated as most difficult by them. They can click the ease button if they would like the recipes that have the lowest difficulty rating. They can click saving time if they want recipes with the lowest estimated cooking time. They can click taste if they want recipes with the highest taste rating, and click the surprise button for a random recipe.
 
 ### Major changes
-Our group made no significant changes to the code's structure or system's behaviour. All the changes made were the system's extensions in Iteration 1 in terms of functionality and addition of the real DataBase.
+Our group made no significant changes to the code's structure or system's behaviour. All the changes made were the system's extensions in Iteration 2 in terms of functionality and addition of the real DataBase.
 
 ### Outstanding issues or bugs:
-- A recipe is moved to the end of the list of recipes if the estimated recipe time is updated or the recipe is rated. This is because updates are implemented as reinsertion in our Database. We will fix this issue in the next iteration by implementing the database update functionality to update rather than reinsert a recipe.
-- You cannot cancel adding a recipe. Once you press the add recipe button, a recipe will be created with whatever information you enter. We will fix this issue in the next iteration by adding an exit button. The recipe will not be added if the user goes back to the previous page. The recipe will only be added is the user presses the 'submit recipe' button. 
+We have no outstanding issues or bugs that we know of.
 
 ### This App was tested on the following devices:
 1.  	- Android Systems: Android 6.0 Google APIs|x86 (Marshmallow)

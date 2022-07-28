@@ -1,0 +1,19 @@
+Group 11: Retrospective Activity 
+
+What can we improve?
+Our group's problem from iteration one to iteration two was that we did not have a formal group review. 
+Only one team member was assigned to do the review for each iteration. Those single team members were not checking every detail due to time constraints (we finished the code very close to each iteration deadline). 
+As a result, the single reviewer did not spot many issues our team could have spotted together. 
+The impact of the lack of review was not as critical for iteration one because our code was not as lengthy or complex. 
+However, some unnoticed issues from iteration one carried over to the next. 
+The insufficiency of group review majorly affected our marks for iteration two, where we got only 3/7 marks for the code implementation. 
+As well, the markers spotted some other issues in the testing part. Most of those issues were trivial and would have been easily spotted provided that at least three team members reviewed the code. 
+
+How can this be improved in this iteration?
+We will have a formal group review at the end. We will go through all of the code in detail during the review. We will share our thoughts and suggestions on how we can improve the code. This should be sufficient to find all uncommented, redundant and duplicated code. We will also spot any bad design smells, such as lengthy if-else statements.
+
+How will success be evaluated at the end of the iteration?
+The immediate measurement of our success will be if at least three team members (more than half) review the code thoroughly and fix at least five issues. 
+Another significant measure of our success will be our feedback for iteration three. We will consider the solution from our retrospective activity a success if both of the following are true:
+Our iteration three marks for the code implementation portion are at least 5/7.
+The feedback does not mention uncommented code or obvious design issues (lengthy if-else statements, duplicate code, bad variable names, spelling mistakes, unused imports…).

@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+// kajalchecked
+
 // CLASS: AddInstructionActivity.java
 // REMARKS: This class adds capability for the user to add instructions
 //          to a newly created recipe.
@@ -44,7 +46,7 @@ public class AddInstructionActivity extends AppCompatActivity
 
         accessRecipes = new AccessRecipes();
 
-        finishAdding.setOnClickListener(view -> finish());
+        finishAdding.setOnClickListener(view -> saveRecipe());
 
         addInstructionButton.setOnClickListener(view -> {
             addInstruction();
@@ -52,8 +54,28 @@ public class AddInstructionActivity extends AppCompatActivity
             instructionInputSteps.getText().clear();
         });
 
-        cancelButton.setOnClickListener(view -> deleteRecipe());
+        cancelButton.setOnClickListener(view -> finish());
 
+    }
+
+    //insert into database
+    private void saveRecipe()
+    {
+        String result;
+
+        result = accessRecipes.insertRecipe(selectedRecipe);
+
+        if(result == null)
+        {
+            Toast.makeText(this, selectedRecipe.getName()+" added!", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        else
+        {
+            Messages.fatalError(this, result);
+        }
+
+        finish();
     }
 
     private void addInstruction()
@@ -69,8 +91,6 @@ public class AddInstructionActivity extends AppCompatActivity
         {
             selectedRecipe.addInstructions(instruction, instructionSteps);
 
-            result = accessRecipes.updateRecipe(selectedRecipe);
-
             if (result != null)
             {
                 Messages.fatalError(this, result);
@@ -85,21 +105,6 @@ public class AddInstructionActivity extends AppCompatActivity
             Messages.warning(this, result);
         }
 
-    }
-
-    private void deleteRecipe()
-    {
-        String result;
-        AccessRecipes accessRecipes = new AccessRecipes();
-        result = accessRecipes.deleteRecipe(selectedRecipe);
-        if (result == null)
-        {
-            finish();
-        }
-        else
-        {
-            Messages.fatalError(this, result);
-        }
     }
 
     private String validateInstruction(String instruction, String instructionSteps)

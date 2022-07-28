@@ -14,6 +14,8 @@ import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.objects.Recipe;
 
+// kajal: done
+
 // CLASS: AddNewRecipeFragment.java
 // REMARKS: This class creates the add recipe fragment, where you can add recipes
 //          You can then click on the recipe to add individual ingredients and instructions.
@@ -78,8 +80,7 @@ public class AddNewRecipeFragment extends Fragment
 
             if (result == null)
             {
-                insertRecipe(newRecipe);
-
+                launchAddActivity(newRecipe);
             }
             else
             {
@@ -88,7 +89,7 @@ public class AddNewRecipeFragment extends Fragment
                 resetAlert.setMessage("Do you want to add anyway?");
 
                 resetAlert.setPositiveButton("Continue", (dialog, which) -> {
-                    insertRecipe(newRecipe);
+                    launchAddActivity(newRecipe);
                 });
 
                 resetAlert.setNeutralButton("Cancel", (dialog, which) -> {
@@ -104,21 +105,6 @@ public class AddNewRecipeFragment extends Fragment
         }
 
     }
-    private void insertRecipe(Recipe newRecipe)
-    {
-        String result;
-
-        result = accessRecipes.insertRecipe(newRecipe);
-
-        if (result == null)
-        {
-            launchAddActivity(newRecipe);
-        }
-        else
-        {
-            Messages.fatalError(getActivity(), result);
-        }
-    }
 
     private void launchAddActivity(Recipe newRecipe)
     {
@@ -131,12 +117,13 @@ public class AddNewRecipeFragment extends Fragment
 
     private String checkEmpty(EditText editText)
     {
-        if(editText.getText().toString().trim().equals(""))
+        if(editText.getText().toString().equals(""))
+        {
             return "Recipe name required";
+        }
 
         return null;
     }
-
 
     private String validateRecipeName(Recipe recipeAdd)
     {
