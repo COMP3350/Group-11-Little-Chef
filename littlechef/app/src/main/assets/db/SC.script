@@ -48,7 +48,7 @@ INSERT INTO INGREDIENTS VALUES (28, 2, 'Can Red Kidney, drained and rinsed', 1.0
 INSERT INTO INGREDIENTS VALUES (29, 2, 'Can of Tomato Sauce', 1.0, 'DEFAULT', 'QUANTITY')
 INSERT INTO RECIPES VALUES (3,'Chicken Wrap')
 
-INSERT INTO INSTRUCTIONS VALUES(7, 'Lay tortillas on a clean flat surface. Place about 1/2 cup chicken, 1 tablespoon ranch, 2 tablespoons of cheese, and 1 tablespoon of minced cilantro on each tortilla. Fold tightly to form a burrito shape. ', '', 3)
+INSERT INTO INSTRUCTIONS VALUES(7, 'Lay tortillas on a clean flat surface. Place about 1/2 cup chicken, 1 tablespoon ranch, 2 tablespoons of cheese, and 1 tablespoon of minced cilantro on each tortilla. Fold tightly to form a burrito shape.', '', 3)
 INSERT INTO INSTRUCTIONS VALUES(8, 'Heat a heavy-duty pan or grill to medium heat. Coat with a light layer or oil or cooking spray and cook wraps for 1-2 minutes on each side or until the tortilla is crispy and golden. Remove from heat, slice in half and serve immediately.', '', 3)
 INSERT INTO INGREDIENTS VALUES (30, 3, 'Grilled Chicken Breasts copped', 2.0, 'VOLUME', 'CUP')
 INSERT INTO INGREDIENTS VALUES (31, 3, 'Ranch Dressing', 0.25, 'VOLUME', 'CUP')
@@ -154,7 +154,7 @@ INSERT INTO INSTRUCTIONS VALUES(51, 'Pan-grill the halloumi.', 'Meanwhile, heat 
 INSERT INTO INSTRUCTIONS VALUES(52, 'Toss the salad.', 'Add the remaining ingredients (arugula, cucumber, red onion, mint, Kalamata olives and pine nuts) to the large mixing bowl. Drizzle evenly with the dressing, and then toss until the salad is completely combined.', 8)
 INSERT INTO INSTRUCTIONS VALUES(53, 'Season.', 'Taste and season the salad with extra salt, black pepper and/or lemon juice, if needed.', 8)
 INSERT INTO INSTRUCTIONS VALUES(54, 'Serve.', 'Serve immediately and enjoy!', 8)
-INSERT INTO INGREDIENTS VALUES (78, 8, 'Halloumi Cheese, sliced into ¼ inch thick slices', 250.0, 'WEIGHT', 'G')
+INSERT INTO INGREDIENTS VALUES (78, 8, 'Halloumi Cheese, sliced into 1/4 inch thick slices', 250.0, 'WEIGHT', 'G')
 INSERT INTO INGREDIENTS VALUES (79, 8, 'Packed Spring Greens', 2.0, 'VOLUME', 'CUP')
 INSERT INTO INGREDIENTS VALUES (80, 8, 'Chopped Cucumber', 1.0, 'VOLUME', 'CUP')
 INSERT INTO INGREDIENTS VALUES (81, 8, 'Chopped Pineapple', 1.5, 'VOLUME', 'CUP')
