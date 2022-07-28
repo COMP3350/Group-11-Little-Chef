@@ -40,6 +40,7 @@ public class AccessRecipes
         if (recipes == null)
         {
             recipes = new ArrayList<Recipe>();
+            dataAccess.getRecipeSequential(recipes);
             currentRecipe = 0;
         }
 

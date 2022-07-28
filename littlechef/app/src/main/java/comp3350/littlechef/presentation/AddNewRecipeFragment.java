@@ -1,7 +1,6 @@
 package comp3350.littlechef.presentation;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -15,19 +14,14 @@ import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.objects.Recipe;
 
-
 // CLASS: AddNewRecipeFragment.java
-//
-//
 // REMARKS: This class creates the add recipe fragment, where you can add recipes
 //          You can then click on the recipe to add individual ingredients and instructions.
-//
-//-----------------------------------------
+//-----------------------------------------------------------------------
 public class AddNewRecipeFragment extends Fragment
 {
-    String name; //recipe name
-
-    EditText recipeInput;
+    private String recipeName;
+    private EditText recipeInput;
 
     private AccessRecipes accessRecipes;
     private ArrayList<Recipe> recipeList;
@@ -43,53 +37,45 @@ public class AddNewRecipeFragment extends Fragment
         super.onCreate(savedInstanceState);
     }
 
-    //User creates recipe name
-    //then user
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
+        String result;
         View view = inflater.inflate(R.layout.fragment_add_new_recipe, container, false);
 
-        Button addRecipeButton= (Button) view.findViewById(R.id.addRecipeButton);
+        Button addRecipeButton= view.findViewById(R.id.add_new_recipe_button);
 
-        //Get input from text fields
-        recipeInput = (EditText) view.findViewById(R.id.nameInput);
+        // Get input from text fields
+        recipeInput = view.findViewById(R.id.new_recipe_name_input);
 
-        //THIS ADDS A SMALL LIST VIEW TO ADD RECIPES
+        // This adds a small list view to add recipes
         accessRecipes = new AccessRecipes();
         recipeList = new ArrayList<Recipe>();
-        String result = accessRecipes.getRecipes(recipeList);
+        result = accessRecipes.getRecipes(recipeList);
+
         if(result != null)
         {
             Messages.fatalError(getActivity(), result);
         }
 
+        addRecipeButton.setOnClickListener(view1 -> addRecipeClick());
 
-        //button listener for add recipe
-        addRecipeButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                addRecipeClick();
-            }
-        });//END LISTVIEW
         return view;
 
-    }//end onclickview
+    }
 
-    //when the add recipe button is clicked do this
     private void addRecipeClick()
     {
-        //create recipe only with name
-        name = recipeInput.getText().toString();
+        recipeName = recipeInput.getText().toString();
         String result;
+
         result = checkEmpty(recipeInput);
+
         if(result == null)
         {
-            Recipe newRecipe = new Recipe(name );
-            result = validateRecipeName(newRecipe);//checks if already exists
+            Recipe newRecipe = new Recipe(recipeName);
+            result = validateRecipeName(newRecipe);
+
             if (result == null)
             {
                 insertRecipe(newRecipe);
@@ -101,24 +87,12 @@ public class AddNewRecipeFragment extends Fragment
                 resetAlert.setTitle("Duplicate Recipe Name");
                 resetAlert.setMessage("Do you want to add anyway?");
 
-                resetAlert.setPositiveButton("Continue", new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        insertRecipe(newRecipe);
-                        //then just clear the box once insert is called
-
-                    }
+                resetAlert.setPositiveButton("Continue", (dialog, which) -> {
+                    insertRecipe(newRecipe);
                 });
 
-                resetAlert.setNeutralButton("Cancel", new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        //do nothing
-                    }
+                resetAlert.setNeutralButton("Cancel", (dialog, which) -> {
+                    //do nothing
                 });
 
                 resetAlert.show();
@@ -133,11 +107,11 @@ public class AddNewRecipeFragment extends Fragment
     private void insertRecipe(Recipe newRecipe)
     {
         String result;
+
         result = accessRecipes.insertRecipe(newRecipe);
+
         if (result == null)
         {
-
-            //launch new activity to add instructions/ingredients
             launchAddActivity(newRecipe);
         }
         else
@@ -149,8 +123,8 @@ public class AddNewRecipeFragment extends Fragment
     private void launchAddActivity(Recipe newRecipe)
     {
         recipeInput.getText().clear();
-        Intent addRecipeActivity = new Intent(getActivity(), AddRecipeActivity.class);
-        addRecipeActivity.putExtra("id", newRecipe); //pass the object reference to another activity
+        Intent addRecipeActivity = new Intent(getActivity(), addIngredientActivity.class);
+        addRecipeActivity.putExtra("id", newRecipe);
         startActivity(addRecipeActivity);
     }
 
@@ -158,23 +132,25 @@ public class AddNewRecipeFragment extends Fragment
     private String checkEmpty(EditText editText)
     {
         if(editText.getText().toString().equals(""))
-            return "Recipe name required";
-
-        return null;
-    }
-    //Validate the recipe
-    private String validateRecipeName(Recipe recipeAdd)
-    {
-        //check through all recipes for duplicats
-        if (checkDuplicates(recipeAdd))
         {
-            return recipeAdd.getName() + " already exists.";
+            return "Recipe name required";
         }
 
         return null;
     }
 
-    //returns true if recipe already in list
+    private String validateRecipeName(Recipe recipeAdd)
+    {
+        String result = null;
+
+        if (checkDuplicates(recipeAdd))
+        {
+            result = recipeAdd.getName() + " already exists.";
+        }
+
+        return result;
+    }
+
     private boolean checkDuplicates(Recipe recipe)
     {
         boolean check = false;

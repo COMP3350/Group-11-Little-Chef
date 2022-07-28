@@ -19,20 +19,15 @@ public class CookedAnotherMealActivity extends AppCompatActivity
 
         //set a delay of 5 seconds
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                Intent rateRecipyActivity = new Intent(CookedAnotherMealActivity.this, RateRecipyActivity.class);
-                Intent previousIntent = getIntent();
+        handler.postDelayed(() -> {
+            Intent rateRecipyActivity = new Intent(CookedAnotherMealActivity.this, RateRecipeActivity.class);
+            Intent previousIntent = getIntent();
 
-                Recipe selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id"); // will never return null, since some recipe was clicked in prev activity
+            Recipe selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id"); // will never return null, since some recipe was clicked in prev activity
 
-                rateRecipyActivity.putExtra("id", selectedRecipe); //pass the object reference to another activity
-                startActivity(rateRecipyActivity);
-                finish();
-            }
+            rateRecipyActivity.putExtra("id", selectedRecipe); //pass the object reference to another activity
+            startActivity(rateRecipyActivity);
+            finish();
         }, 1500);
 
     }

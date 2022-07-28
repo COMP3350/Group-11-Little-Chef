@@ -12,7 +12,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-public class RateRecipyActivity extends AppCompatActivity
+public class RateRecipeActivity extends AppCompatActivity
 {
     private Recipe selectedRecipe;
     private RadioGroup difficultyRadioGroup;

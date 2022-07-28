@@ -3,10 +3,7 @@ package comp3350.littlechef.presentation;
 import androidx.appcompat.app.AppCompatActivity;
 import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
-import comp3350.littlechef.business.ScaleRecipe;
-import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
-import comp3350.littlechef.objects.Unit;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -16,18 +13,15 @@ import android.text.Editable;
 import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.text.style.StyleSpan;
-import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -52,7 +46,7 @@ public class EditInstructionsActivity extends AppCompatActivity
         final ListView listView = (ListView) findViewById(R.id.instruction_list_edit_view);
         Button saveButton = (Button) findViewById(R.id.save_button);
         Button addInstructionButton = (Button) findViewById(R.id.add_button);
-        Button cancelButton= (Button) findViewById(R.id.cancel_button);
+        Button cancelButton= (Button) findViewById(R.id.cancel_adding_instructions_button);
 
         //button listener for adding an instruction to a recipe
         addInstructionButton.setOnClickListener(new View.OnClickListener()

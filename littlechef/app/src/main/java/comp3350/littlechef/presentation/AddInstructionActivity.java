@@ -6,23 +6,23 @@ import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.objects.Recipe;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-// CLASS: UnitType.java
-// REMARKS: This class is to create the unit types depending on ingredient.
-//-----------------------------------------
+// CLASS: AddInstructionActivity.java
+// REMARKS: This class adds capability for the user to add instructions
+//          to a newly created recipe.
+//-----------------------------------------------------------------------
 public class AddInstructionActivity extends AppCompatActivity
 {
-    Recipe selectedRecipe;
+    private Recipe selectedRecipe;
 
-    String instruction;
-    String instructionSteps;
+    private String instruction;
+    private String instructionSteps;
 
-    EditText instructionInput;
-    EditText instructionInputSteps;
+    private EditText instructionInput;
+    private EditText instructionInputSteps;
 
     private AccessRecipes accessRecipes;
 
@@ -35,59 +35,31 @@ public class AddInstructionActivity extends AppCompatActivity
         Intent previousIntent = getIntent();
         selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id");
 
-        //Toast.makeText(this, "Add to " + selectedRecipe.getName(), Toast.LENGTH_SHORT).show();
-        Button finishAdding= (Button) findViewById(R.id.finishAdding);
-        Button addInstructionButton= (Button) findViewById(R.id.addInstructionButton);
-        Button cancelButton = (Button) findViewById(R.id.cancel_button);
+        Button finishAdding = findViewById(R.id.all_instructions_added_button);
+        Button addInstructionButton = findViewById(R.id.add_new_instruction_button);
+        Button cancelButton = findViewById(R.id.cancel_adding_instructions_button);
 
-        instructionInput = (EditText) findViewById(R.id.instruction);
-        instructionInputSteps = (EditText) findViewById(R.id.instructionsSteps);
+        instructionInput = findViewById(R.id.instruction);
+        instructionInputSteps = findViewById(R.id.instruction_steps);
 
-        //for db
         accessRecipes = new AccessRecipes();
 
-        //button to go back to the main add recipe screen when done
-        finishAdding.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                finish();
-            }
+        finishAdding.setOnClickListener(view -> finish());
+
+        addInstructionButton.setOnClickListener(view -> {
+            addInstruction();
+            instructionInput.getText().clear();
+            instructionInputSteps.getText().clear();
         });
 
-        //button listener for adding an instruction to a recipe
-        addInstructionButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                addInstruction();
-                //clear fields
-                instructionInput.getText().clear();
-                instructionInputSteps.getText().clear();
-            }
-        });
+        cancelButton.setOnClickListener(view -> deleteRecipe());
 
-        //button to cancel and delete working recipe
-        cancelButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                deleteRecipe();
-            }
-        });
+    }
 
-    }//finish oCreate
-
-
-    //add instruction
     private void addInstruction()
     {
         String result;
 
-        //get text from boxes
         instruction = instructionInput.getText().toString().trim();
         instructionSteps = instructionInputSteps.getText().toString().trim();
 
@@ -130,7 +102,6 @@ public class AddInstructionActivity extends AppCompatActivity
         }
     }
 
-    //validate if proper instruction
     private String validateInstruction(String instruction, String instructionSteps)
     {
         String result = null;
