@@ -18,62 +18,48 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-
-// CLASS: AddRecipeActivity.java
-//
-//
+// CLASS: AddIngredientActivity.java
 // REMARKS: This class is clicked on by addFragment, where you can add ingredients and instructions
-//            to a certain recipe
-//
+//            to a certain recipe.
 //-----------------------------------------
-
-public class AddRecipeActivity extends AppCompatActivity
+public class AddIngredientActivity extends AppCompatActivity
 {
-    Recipe selectedRecipe;
+    private Recipe selectedRecipe;
 
-    String nameIngred,amountIngred,instruction, instructionSteps;
+    private String nameIngred;
+    private String amountIngred;
+    private  String unitString;
 
-    EditText ingredientInputName;
-    EditText ingredientInputAmount;
-    EditText instructionInput;
-    EditText instructionInputSteps;
+    private EditText ingredientInputName;
+    private EditText ingredientInputAmount;
+
 
     private AccessRecipes accessRecipes;
 
-    Spinner spinner;
-    ArrayAdapter<CharSequence> adapter;
-
-    String unitString;
+    private Spinner spinner;
+    private ArrayAdapter<CharSequence> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_recipe);
+        setContentView(R.layout.activity_add_ingredients);
 
         Intent previousIntent = getIntent();
         selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id");
 
-       // TextView workingRecipeName= (TextView) findViewById(R.id.workingRecipeName);
-       // workingRecipeName.setText("Add Ingredients and steps to "+selectedRecipe.getName());
-
-        Button addIngredientButton= (Button) findViewById(R.id.addIngredientButton);
-        Button saveAllIngredientsButton= (Button) findViewById(R.id.save_all_ingredients);
-        Button finishAddingButton= (Button) findViewById(R.id.finishAdding);
-        Button cancelButton= (Button) findViewById(R.id.cancelButton);
+        Button addIngredientButton = findViewById(R.id.add_new_ingredient_button);
+        Button saveAllIngredientsButton = findViewById(R.id.save_all_ingredients_button);
+        Button cancelButton= findViewById(R.id.cancel_adding_ingredient_button);
 
         //Get input from text fields
-        ingredientInputName = (EditText) findViewById(R.id.ingredientName);
-        ingredientInputName = (EditText) findViewById(R.id.ingredientName);
-        ingredientInputAmount = (EditText) findViewById(R.id.ingredientAmount);
-        instructionInput = (EditText) findViewById(R.id.instruction);
-        instructionInputSteps = (EditText) findViewById(R.id.instructionsSteps);
+        ingredientInputName = findViewById(R.id.new_ingredient_name);
+        ingredientInputAmount = findViewById(R.id.new_ingredient_amount);
 
-        //for db
         accessRecipes = new AccessRecipes();
 
         //for the spinner
-        spinner = (Spinner) findViewById(R.id.spinnerUnit);
+        spinner = findViewById(R.id.spinnerUnit);
         adapter = ArrayAdapter.createFromResource(this, R.array.units, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -83,51 +69,27 @@ public class AddRecipeActivity extends AppCompatActivity
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                //set unit to what ever is set
                 unitString = parent.getItemAtPosition(position).toString();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent)
             {
-                //keep empty
+                // keep empty
             }
         });
 
-        //button listener for adding an ingredient to a recipe
-        addIngredientButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                addIngredients();
-                //clear fields
-                ingredientInputName.getText().clear();
-                ingredientInputAmount.getText().clear();
-            }
+        addIngredientButton.setOnClickListener(view -> {
+            addIngredients();
+
+            //clear fields
+            ingredientInputName.getText().clear();
+            ingredientInputAmount.getText().clear();
         });
 
+        cancelButton.setOnClickListener(view -> deleteRecipe());
 
-        //button to cancel and delete working recipe
-        cancelButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                deleteRecipe();
-            }
-        });
-
-        //button to start adding instructions to the recipe
-        saveAllIngredientsButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                addInstruction();
-            }
-        });
-
+        saveAllIngredientsButton.setOnClickListener(view -> addInstruction());
 
     }
 
@@ -136,6 +98,7 @@ public class AddRecipeActivity extends AppCompatActivity
         String result;
         AccessRecipes accessRecipes = new AccessRecipes();
         result = accessRecipes.deleteRecipe(selectedRecipe);
+
         if (result == null)
         {
             finish();
@@ -146,7 +109,6 @@ public class AddRecipeActivity extends AppCompatActivity
         }
     }
 
-    //add instruction
     private void addInstruction()
     {
         Intent addInstructionActivity = new Intent(this, AddInstructionActivity.class);
@@ -155,14 +117,15 @@ public class AddRecipeActivity extends AppCompatActivity
         finish();
     }
 
-    //add ingredients
     private void addIngredients()
     {
         String result;
+        double amount;
+
         nameIngred = ingredientInputName.getText().toString();
         amountIngred = ingredientInputAmount.getText().toString();
-        double amount;
-         try
+
+        try
         {
             amount = Double.parseDouble(amountIngred);
         }
@@ -180,6 +143,7 @@ public class AddRecipeActivity extends AppCompatActivity
             selectedRecipe.addIngredient(new Ingredient(nameIngred, unit, amount));
 
             result = accessRecipes.updateRecipe(selectedRecipe);
+
             if (result != null)
             {
                 Messages.fatalError(this, result);
@@ -195,13 +159,13 @@ public class AddRecipeActivity extends AppCompatActivity
         }
 
     }
+
     //this just checks the unit input and assigns it
     private Unit checkUnit()
     {
         return Unit.valueOf(unitString.toUpperCase());
     }
 
-    //validate if proper ingredient
     private String validateIngredient(Ingredient ingredient)
     {
         String result = null;
@@ -228,7 +192,6 @@ public class AddRecipeActivity extends AppCompatActivity
         return result;
     }
 
-    //checks if duplicate ingredient
     private boolean checkDuplicateIngredient(Ingredient ingredient)
     {
         boolean result = false;
@@ -243,7 +206,5 @@ public class AddRecipeActivity extends AppCompatActivity
 
         return result;
     }
-
-
 
 }

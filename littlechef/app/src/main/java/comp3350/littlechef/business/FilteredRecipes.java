@@ -10,7 +10,7 @@ import comp3350.littlechef.objects.Recipe;
 //-----------------------------------------
 public class FilteredRecipes
 {
-    private static final int MAX_COOKING_TIME = 10;
+    private static final int MAX_COOKING_TIME = 15;
     private static final double LOWEST_ACCEPTABLE_RATING = 4.5;
 
     private static int listSize;
@@ -113,9 +113,14 @@ public class FilteredRecipes
                     //if not cooked then get the double
                     String[] split = getAvg.split(" ");
                     String minutes = split[2];
+                    String hours = split[1];
+                    System.out.println("HELLO:  "+split[1]);
                     minutes = minutes.substring(0, minutes.length() - 1);
+                    hours = hours.substring(0, hours.length() - 1);
                     double minutesDouble = Double.parseDouble(minutes);
-                    if(minutesDouble <= MAX_COOKING_TIME)
+                    double hoursDouble = Double.parseDouble(hours);
+                    System.out.println("HELLO:  "+hoursDouble);
+                    if(minutesDouble <= MAX_COOKING_TIME && hoursDouble == 0.0)
                         returnList.add(recipe);
                 }
                 catch(Exception e)

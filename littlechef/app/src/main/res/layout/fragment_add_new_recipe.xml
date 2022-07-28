@@ -18,7 +18,7 @@
         android:windowSoftInputMode="adjustResize" />
 
     <EditText
-        android:id="@+id/nameInput"
+        android:id="@+id/new_recipe_name_input"
         android:layout_width="350dp"
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
         android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/addRecipeButton"
+        android:id="@+id/add_new_recipe_button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

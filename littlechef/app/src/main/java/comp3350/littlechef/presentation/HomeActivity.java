@@ -6,31 +6,24 @@ import comp3350.littlechef.application.Services;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.app.Service;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.app.Fragment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-// CLASS: HomeActivity.java
-//
-//
-// REMARKS: This class creates the home screen.
-//
-//-----------------------------------------
 
+// CLASS: HomeActivity.java
+// REMARKS: This class creates the home screen.
+//-----------------------------------------
 public class HomeActivity extends AppCompatActivity
 {
-    //initialize the fragments
     private BottomNavigationView bottomNavigationView;
     private ViewRecipesFragment viewRecipesFragment;
     private AddNewRecipeFragment addFragment;
@@ -42,9 +35,7 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         copyDatabaseToDevice();
-
         Main.startUp();
-
         setContentView(R.layout.activity_home);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -56,30 +47,25 @@ public class HomeActivity extends AppCompatActivity
         replaceFragment(viewRecipesFragment); //set view fragment on start
 
         //set up bottom navigation listener
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener()
-        {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item)
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            switch (item.getItemId())
             {
-                switch (item.getItemId())
-                {
-                    case R.id.recipes:
-                        viewRecipesFragment = new ViewRecipesFragment();
-                        replaceFragment(viewRecipesFragment);
-                        return true;
+                case R.id.recipes:
+                    viewRecipesFragment = new ViewRecipesFragment();
+                    replaceFragment(viewRecipesFragment);
+                    return true;
 
-                    case R.id.add:
-                        addFragment = new AddNewRecipeFragment();
-                        replaceFragment(addFragment);
-                        return true;
+                case R.id.add:
+                    addFragment = new AddNewRecipeFragment();
+                    replaceFragment(addFragment);
+                    return true;
 
-                    case R.id.meals:
-                        suggestRecipeFragment = new SuggestRecipeFragment();
-                        replaceFragment(suggestRecipeFragment);
-                        return true;
-                }
-                return false;
+                case R.id.meals:
+                    suggestRecipeFragment = new SuggestRecipeFragment();
+                    replaceFragment(suggestRecipeFragment);
+                    return true;
             }
+            return false;
         });
     }
 
@@ -117,7 +103,6 @@ public class HomeActivity extends AppCompatActivity
 
         try
         {
-
             assetNames = assetManager.list(DB_PATH);
             for (int i = 0; i < assetNames.length; i++)
             {
@@ -125,7 +110,6 @@ public class HomeActivity extends AppCompatActivity
             }
 
             copyAssetsToDirectory(assetNames, dataDirectory);
-
             Main.setDBPathName(dataDirectory.toString() + "/" + Main.dbName);
 
         }

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.SpannableString;
-import android.text.method.ScrollingMovementMethod;
 import android.text.style.StyleSpan;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -28,12 +27,8 @@ import comp3350.littlechef.objects.Recipe;
 import comp3350.littlechef.business.ScaleRecipe;
 
 // CLASS: DetailedRecipeActivity.java
-//
-//
 // REMARKS: This class creates the view for the ingredients list for a recipe.
-//
-//-----------------------------------------
-
+//------------------------------------------------------------------------------
 public class DetailedRecipeActivity extends AppCompatActivity
 {
     private Recipe selectedRecipe;
@@ -52,10 +47,9 @@ public class DetailedRecipeActivity extends AppCompatActivity
 
         //setting up drop down menu for choosing serving
         ArrayAdapter<String> servingSizeAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, getResources().getStringArray(R.array.serving_sizes));
-        servingNum = (Spinner) findViewById(R.id.serving_num);
+        servingNum = findViewById(R.id.serving_num);
         servingSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         servingNum.setAdapter(servingSizeAdapter);
-
 
         //get the selected recipe that was clicked from previous activity
         Intent previousIntent = getIntent();
@@ -71,9 +65,9 @@ public class DetailedRecipeActivity extends AppCompatActivity
                 {
                     convertView = LayoutInflater.from(getContext()).inflate(R.layout.ingredient_card,parent, false);
                 }
-                TextView ingredientName = (TextView) convertView.findViewById(R.id.ingredient);
-                TextView measurement = (TextView) convertView.findViewById(R.id.measurement);
 
+                TextView ingredientName = convertView.findViewById(R.id.ingredient);
+                TextView measurement = convertView.findViewById(R.id.measurement);
 
                 ingredientName.setText(ingredient.getName());
                 measurement.setText(ingredient.getDisplayMeasurement());
@@ -85,17 +79,12 @@ public class DetailedRecipeActivity extends AppCompatActivity
 
         listView.setAdapter(ingredientsArrayAdapter);
 
-        startCookingButton = (Button) findViewById(R.id.start_cooking);
-        startCookingButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Intent readInstruction= new Intent(DetailedRecipeActivity.this, RecipeInstructionActivity.class);
-                readInstruction.putExtra("id", selectedRecipe); //pass the object reference to another activity
-                startActivity(readInstruction);
-                finish(); //finish detailed recipe activity after reading instruction(cooking) is done
-            }
+        startCookingButton = findViewById(R.id.start_cooking);
+        startCookingButton.setOnClickListener(view -> {
+            Intent readInstruction= new Intent(DetailedRecipeActivity.this, RecipeInstructionActivity.class);
+            readInstruction.putExtra("id", selectedRecipe); //pass the object reference to another activity
+            startActivity(readInstruction);
+            finish(); //finish detailed recipe activity after reading instruction(cooking) is done
         });
 
         servingNum.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()

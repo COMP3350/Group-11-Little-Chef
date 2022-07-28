@@ -26,6 +26,9 @@ import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
 
+// CLASS: RecipeInstructionActivity.java
+// REMARKS: This class show the instructins for a recipe.
+//-----------------------------------------
 public class RecipeInstructionActivity extends AppCompatActivity
 {
     private AccessRecipes accessRecipes;
@@ -49,9 +52,9 @@ public class RecipeInstructionActivity extends AppCompatActivity
         accessRecipes = new AccessRecipes();
 
         //getting timer variables up
-        timerText  = (TextView) findViewById(R.id.timer_text);
-        stopStartButton = (Button) findViewById(R.id.start_stop_timer);
-        finishButton = (Button) findViewById(R.id.finish_cooking_button);
+        timerText  = findViewById(R.id.timer_text);
+        stopStartButton = findViewById(R.id.start_stop_timer);
+        finishButton = findViewById(R.id.finish_cooking_button);
 
         timerStarted = false;
         time = 0;
@@ -62,7 +65,7 @@ public class RecipeInstructionActivity extends AppCompatActivity
         Intent previousIntent = getIntent();
         selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id"); // will never return null, since some recipe was clicked in prev activity
 
-        final ListView listView = (ListView) findViewById(R.id.instruction_list_view);
+        final ListView listView = findViewById(R.id.instruction_list_view);
 
         ArrayAdapter<String[]> instructionsArrayAdapter = new ArrayAdapter<String[]>(this,android.R.layout.simple_list_item_1, selectedRecipe.getInstructions())
         {
@@ -87,9 +90,9 @@ public class RecipeInstructionActivity extends AppCompatActivity
                 mainInstructionBold = new SpannableString(instruction[0]);
                 mainInstructionBold.setSpan(new StyleSpan(Typeface.BOLD), 0, mainInstructionBold.length(), 0);
 
-                TextView mainInstruction = (TextView) convertView.findViewById(R.id.instruction);
-                TextView subInstruction = (TextView) convertView.findViewById(R.id.sub_instruction);
-                TextView numberOfInstruction = (TextView) convertView.findViewById(R.id.instruction_number);
+                TextView mainInstruction = convertView.findViewById(R.id.instruction);
+                TextView subInstruction = convertView.findViewById(R.id.sub_instruction);
+                TextView numberOfInstruction = convertView.findViewById(R.id.instruction_number);
 
                 mainInstruction.setText(mainInstructionBold);
                 subInstruction.setText(instruction[1]);
@@ -120,38 +123,26 @@ public class RecipeInstructionActivity extends AppCompatActivity
         }
     }
 
-
-
     public void resetClicked(View view)
     {
         AlertDialog.Builder resetAlert = new AlertDialog.Builder(this);
         resetAlert.setTitle("Reset Timer");
         resetAlert.setMessage("Are you sure you want to reset the timer?");
 
-        resetAlert.setPositiveButton("Reset", new DialogInterface.OnClickListener()
-        {
-            @Override
-            public void onClick(DialogInterface dialog, int which)
+        resetAlert.setPositiveButton("Reset", (dialog, which) -> {
+            if(timerTask != null)
             {
-                if(timerTask != null)
-                {
-                    timerTask.cancel();
-                    time = 0;
-                    timerStarted = false;
-                    finishButton.setEnabled(false); //user has pressed reset, cannot finish until started and stopped cooking
-                    timerText.setText(TimeRecipe.timerTimeFormat(0,0,0));
-                    changeStartButton(R.string.start, R.color.dark_green);
-                }
+                timerTask.cancel();
+                time = 0;
+                timerStarted = false;
+                finishButton.setEnabled(false); //user has pressed reset, cannot finish until started and stopped cooking
+                timerText.setText(TimeRecipe.timerTimeFormat(0,0,0));
+                changeStartButton(R.string.start, R.color.dark_green);
             }
         });
 
-        resetAlert.setNeutralButton("Cancel", new DialogInterface.OnClickListener()
-        {
-            @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
-                //do nothing
-            }
+        resetAlert.setNeutralButton("Cancel", (dialog, which) -> {
+            //do nothing
         });
 
         resetAlert.show();
@@ -184,18 +175,13 @@ public class RecipeInstructionActivity extends AppCompatActivity
             @Override
             public void run()
             {
-                runOnUiThread(new Runnable()
-                {
-                    @Override
-                    public void run()
-                    {
-                        time++;
-                        timerText.setText(TimeRecipe.totalSecondsToString(time, false));
-                    }
+                runOnUiThread(() -> {
+                    time++;
+                    timerText.setText(TimeRecipe.totalSecondsToString(time, false));
                 });
             }
         };
-        //fixed rate goes by 1000 milliseconds which is 1 second, so for each run execution - passes 1 second of time
+
         timer.scheduleAtFixedRate(timerTask, 1000 , 1000);
     }
 

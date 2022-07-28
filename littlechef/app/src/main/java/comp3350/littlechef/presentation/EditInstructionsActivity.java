@@ -3,10 +3,7 @@ package comp3350.littlechef.presentation;
 import androidx.appcompat.app.AppCompatActivity;
 import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
-import comp3350.littlechef.business.ScaleRecipe;
-import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
-import comp3350.littlechef.objects.Unit;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -16,22 +13,21 @@ import android.text.Editable;
 import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.text.style.StyleSpan;
-import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Adapter;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
+// CLASS: EditInstructionsActivity.java
+// REMARKS: This class is so the user can edit the instructions of a recipe.
+//------------------------------------------------------------------------------
 public class EditInstructionsActivity extends AppCompatActivity
 {
     private Recipe selectedRecipe;
@@ -49,31 +45,17 @@ public class EditInstructionsActivity extends AppCompatActivity
         Intent previousIntent = getIntent();
         selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id"); // will never return null, since some recipe was clicked in prev activity
 
-        final ListView listView = (ListView) findViewById(R.id.instruction_list_edit_view);
-        Button saveButton = (Button) findViewById(R.id.save_button);
-        Button addInstructionButton = (Button) findViewById(R.id.add_button);
-        Button cancelButton= (Button) findViewById(R.id.cancel_button);
+        final ListView listView = findViewById(R.id.instruction_list_edit_view);
+        Button saveButton = findViewById(R.id.save_button);
+        Button addInstructionButton = findViewById(R.id.add_button);
+        Button cancelButton= findViewById(R.id.cancel_adding_instructions_button);
 
         //button listener for adding an instruction to a recipe
-        addInstructionButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                // show the pop-up to add a new instruction
-                addEditClicked(view);
-            }
+        addInstructionButton.setOnClickListener(view -> {
+            addEditClicked(view);
         });
 
-        // button to cancel edits
-        cancelButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                finish();
-            }
-        });
+        cancelButton.setOnClickListener(view -> finish());
 
 
         InstructionsArrayAdapter = new ArrayAdapter<String[]>(this,android.R.layout.simple_list_item_1, selectedRecipe.getInstructions())
@@ -114,14 +96,9 @@ public class EditInstructionsActivity extends AppCompatActivity
 
         listView.setAdapter(InstructionsArrayAdapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
-                String[] selectedInstruction =  (String[]) listView.getItemAtPosition(position);
-                showEditInstructionWindow(selectedInstruction, false);
-            }
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            String[] selectedInstruction =  (String[]) listView.getItemAtPosition(position);
+            showEditInstructionWindow(selectedInstruction, false);
         });
 
     }//end
@@ -145,60 +122,45 @@ public class EditInstructionsActivity extends AppCompatActivity
         //set the layout
         editInstructionWindow.setContentView(R.layout.edit_instruction_window);
 
-        final EditText instructionField = (EditText) (editInstructionWindow).findViewById(R.id.instruction);
-        final EditText subInstructionField = (EditText) (editInstructionWindow).findViewById(R.id.sub_instruction);
-        final Button saveEdit = (Button) (editInstructionWindow).findViewById(R.id.save_dialog_button);
-        final Button cancelEdit = (Button) (editInstructionWindow).findViewById(R.id.cancel_dialog_button);
-        final Button deleteInstruction = (Button) (editInstructionWindow).findViewById(R.id.delete_dialog_button);
+        final EditText instructionField = (editInstructionWindow).findViewById(R.id.instruction);
+        final EditText subInstructionField = (editInstructionWindow).findViewById(R.id.sub_instruction);
+        final Button saveEdit = (editInstructionWindow).findViewById(R.id.save_dialog_button);
+        final Button cancelEdit = (editInstructionWindow).findViewById(R.id.cancel_dialog_button);
+        final Button deleteInstruction = (editInstructionWindow).findViewById(R.id.delete_dialog_button);
 
         //set up the buttons
-        cancelEdit.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
+        cancelEdit.setOnClickListener(v -> {
+            if(editInstructionWindow.isShowing())
             {
-                if(editInstructionWindow.isShowing())
-                {
-                    editInstructionWindow.dismiss();
-                }
-            }
-        });
-
-        deleteInstruction.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                ArrayList<String[]> recipeInstructions = selectedRecipe.getInstructions();
-                int instructionIndex = recipeInstructions.indexOf(instruction);
-
-                if(instructionIndex > -1)
-                {
-                    recipeInstructions.remove(instructionIndex);
-                    InstructionsArrayAdapter.notifyDataSetChanged();
-                    editInstructionWindow.dismiss();
-
-                }
-            }
-        });
-
-        saveEdit.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                // update
-                instruction[0] = instructionField.getText().toString();
-                instruction[1] = subInstructionField.getText().toString();
-
-                if(newRecipe)
-                {
-                    selectedRecipe.addInstructions(instruction[0], instruction[1]);
-                }
-
-                InstructionsArrayAdapter.notifyDataSetChanged();
                 editInstructionWindow.dismiss();
             }
+        });
+
+        deleteInstruction.setOnClickListener(v -> {
+            ArrayList<String[]> recipeInstructions = selectedRecipe.getInstructions();
+            int instructionIndex = recipeInstructions.indexOf(instruction);
+
+            if(instructionIndex > -1)
+            {
+                recipeInstructions.remove(instructionIndex);
+                InstructionsArrayAdapter.notifyDataSetChanged();
+                editInstructionWindow.dismiss();
+
+            }
+        });
+
+        saveEdit.setOnClickListener(v -> {
+            // update
+            instruction[0] = instructionField.getText().toString();
+            instruction[1] = subInstructionField.getText().toString();
+
+            if(newRecipe)
+            {
+                selectedRecipe.addInstructions(instruction[0], instruction[1]);
+            }
+
+            InstructionsArrayAdapter.notifyDataSetChanged();
+            editInstructionWindow.dismiss();
         });
 
         //set up the editText listeners
@@ -240,7 +202,6 @@ public class EditInstructionsActivity extends AppCompatActivity
         }
 
         editInstructionWindow.show();
-        
 
     }
 
@@ -248,9 +209,11 @@ public class EditInstructionsActivity extends AppCompatActivity
     {
         String result;
         result = validateRecipeData();
+
         if (result == null)
         {
             result = accessRecipes.updateRecipe(selectedRecipe);
+
             if (result == null)
             {
                 finish();
@@ -259,8 +222,8 @@ public class EditInstructionsActivity extends AppCompatActivity
             {
                 Messages.fatalError(this, result);
             }
-        }
 
+        }
         else
         {
             Messages.warning(this, result);
