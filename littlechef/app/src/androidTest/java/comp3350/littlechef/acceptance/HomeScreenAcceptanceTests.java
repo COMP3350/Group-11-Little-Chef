@@ -34,11 +34,10 @@ public class HomeScreenAcceptanceTests
         onView(withId(R.id.add)).check(matches(isDisplayed()));
         onView(withId(R.id.meals)).check(matches(isDisplayed()));
 
+        //check if bottom nav bar is functional and buttons are pressable
         onView(withId(R.id.add)).perform(click());
+        onView(withId(R.id.meals)).perform(click());
         onView(withId(R.id.recipes)).perform(click());
-        //TODO add a click on the meal plan when it is finished
-
-        //TODO figure our how to check textviews under specific positions in the listview
     }
 
 }
