@@ -55,8 +55,8 @@ An invite link has been sent to username: Braico
 - Wen’s activity log
 - Design Decisions and Rationale
 
-### Big and Detailed User Stories
-**Filename**: Big and Detailed User Stories.pdf. 
+### Retrospective Activity 
+**Filename**: Retrospective Activity  
 **Location**: saved in the private repository along with the project.
 
 ### Big Picture Overview
