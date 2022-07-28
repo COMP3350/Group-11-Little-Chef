@@ -1,5 +1,5 @@
 GROUP 11 LOG
-Last updated July 12, 2022.
+Last updated July 28, 2022.
 
 ---
 ---
@@ -64,6 +64,23 @@ July 12, 2022
 In attendance: Brad, Denys, Dylan, Kajal, Wen
 -What we did: Finalized the submission.
 
+July 12, 2022
+In attendance: Brad, Denys, Dylan, Kajal, Wen
+-What we did: Review iteration 2, complete a retrospective activity as a team, read and discuss iteration 3 requirement, create and assign iteration 3 tasks to group members, set up deadlines and next meeting date.
+
+July 19, 2022 
+In attendance: Brad, Denys, Dylan, Kajal, Wen
+-What we did: check iteration 3 developer tasks progress: done, work in processing and to do, create new tasks(tests) and assign tasks to group members, set up deadlines and next meeting date.
+
+
+July 21, 2022
+In attendance: Brad, Denys, Dylan, Kajal, Wen
+-What we did:check iteration 3 developer tasks progress, discuss the problems raised while developing, try to find solutions, debug together and peer coding, create new tasks and assign tasks to group members, set up deadlines and next meeting date (Sunday).
+
+July 28, 2022
+In attendance: Brad, Denys, Dylan, Kajal, Wen
+-What we did: Code review and final hand in. Went through the project hand in and made sure everything was ready for iteration 3. (Thursday).
+
 
 ---
 ---
@@ -121,6 +138,25 @@ In attendance: Brad, Denys, Dylan, Kajal, Wen
 - (test the DBService; Kajal and Denys; iteration 2; 2 days; July 11)✓
 - (test DBaccess; Kajal and Denys; iteration 2; 2 days; July 11)✓
 
+>> Iteration 3
+(Title; [Assigned To]; Iteration #; estimated time; priority; date finished;)
+- (Fix github repo package structure; Kajal; iteration 3; 30m; low)✓
+- (Write the iteration 3 retrospective; Kajal; iteration 3; 1h; low)✓
+- (Make sure the recently updated recipe stays at the top; Dylan, Denys; iteration 3; 5d; high)
+- (Be able to cancel adding a recipe; Brad, Kajal; iteration 3; 5d; high) ✓
+- (Make a delete recipe button (GUI); Denys; iteration 3; 1d; high)✓
+- (Prototype for the make a meal plan screen; Kajal, Wen; iteration 3; 1d; high)✓
+- (Make the xml files for the Meal Plan Screen; Brad, Denys, Wen; iteration 3; 1d; high)✓
+- (Show a calendar view; Brad, Denys, Wen; iteration 3; 1d; high)
+- (Link recipes to specific dates; Brad, Denys, Wen; iteration 3; 1d; high)
+- (Make recipes show up on the GUI; Brad, Denys, Wen; iteration 3; 1d; high)
+- (Make recipes clickable in the mail plan screen; Brad, Denys, Wen; iteration 3; 1d; medium)✓
+- (Create a prototype for editing recipe; Kajal, Wen; iteration 3; 1d; high)✓
+- (Create an activity for editing recipe; Kajal and Denys; iteration 3; 4 days; high)✓
+- (Favorite Recipe; low)
+- (Update the real DB so it passes all the tests; low)
+- (Create an activity for selecting desired recipe type then displaying suggestions; Brad; iteration 3; 1d; high)
+- (Create logic for sorting by type; Brad, Kajal; iteration 3; 1d; high
 
 ---
 ---
@@ -157,10 +193,20 @@ In attendance: Brad, Denys, Dylan, Kajal, Wen
 - (finished big picture overview ;15 mins, July 11, 2022)
 - (Merged add recipe fixed merging issues ;1.5 hours, July 11, 2022)
 - (removed some unfinished functionality,wrote overview for addRecipe ;2 hours, July 11, 2022)
-- (bug fixes, added dialog box when duplicate recipe; 2.5 hours, July 12, 2022)
+- (bug fixes, added dialog box when duplicate recipe, added finish button; 3.5 hours, July 12, 2022)
 
-
-
+>>Iteration 3
+- (Added button and new activity for instructions; 30mins; July 18)
+- (Peer coded the capability be able to cancel adding a recipe with Kajal; 1h; July 19)
+- (added meal planner fragment,worked on listview layout for meal plan, Attempted to get adapterview to work; 3.5h; July 20)
+- (implementing calendar view, calendar view not working with version tried another view, worked on main GUI having listviews for each day, trying to get scrollable working, got scrollable working with multiple listviews ; 6hrs; July 22)
+- (Helped Kajal with add recipe; 1hr; July 23)
+- (combined all arraylists into one, worked on gui, helped kajal with edit instructions, got current date, created multiple day lists displayed, started working on edit meal plan, got listviews to work with day; 4hr; July 23  )
+- (worked on meal plan with group, started new meal plan design finished challenge, surprise, and ease; 8hr; July 24 - 25 )
+- (added max display recipes for each type, added needed getters to recipe object, saving time calculation hard, finished implementation, code cleanup, improved design, added unit tests for MakeByType ;3.5hr; July 25)
+- (made some tests for FilterRecipe, made it so no duplicate ingredients in add recipe ;1hr; July 26)
+- (did some code fixes ;30mins; July 27)
+- (helped group prepare handin and last minute fixes ;1Hours; July 28)
 ---
 ---
 
@@ -224,7 +270,25 @@ In attendance: Brad, Denys, Dylan, Kajal, Wen
 -(more GUI and functionality testing, polishing and fixing found mistakes and inconsistencies; 40 mins, Tuesday,July 12, 2022)
 -(Added outstanding issues and major changes sections to the readme; 20 mins, Tuesday,July 12, 2022)
 -(Final Review of the code, polishing of code; 1,5 hrs, Tuesday, July 12, 2022)
-- (Fixing DB's ability to put default recipes on the first startup; 4 hrs, Tuesday, July 12, 2022)
+
+>>Iteration 3
+-(Review retrospective activity document, proofreading; 10 min, Friday, July 15, 2022)
+-(Created delete button for recipes; 30 min, Friday, July 15, 2022)
+-(Created the edit button and small changes to GUI; 1hr, Monday, July 18, 2022)
+-(Created editing and saving feature for edit recipe activity, started working on editing/deleting ingredients; 1hr, Tuesday, July 19, 2022)
+-(Worked with Dylan on figuring out an update/delete bug in our DB implementation; 1hr, Tuesday, July 19, 2022)
+-(Created edit_recipe window and gave it some functionality; 3.5hrs, Wednesday, July 20, 2022)
+-(Finished edit recipe-ingredients ; 4.5 hrs,Thursday, July 21, 2022)
+-(worked with Kajal on edit recipe-instructions ; 1 hrs,Sunday, July 24, 2022)
+-(Learned how to use Espresso, reviewed sample project’s acceptance tests and started writing the acceptance tests ; 5 hrs,Sunday, July 24, 2022)
+-(worked on acceptance tests ; 1 hr, Monday, July 25, 2022)
+-(worked more on acceptance tests, finished typical cases acceptance test for cook, rate, edit recipe(ingredients, instructions), delete recipe user stories ; 3 hrs, Tuesday, July 26, 2022)
+-(Added my thoughts and expanded the retrospective activity; 30 mins, Wednesday, July 27, 2022)
+-(Finished Read, Rate,Edit,Add acceptance tests, started working on edge cases and invalid cases for Acceptance tests; 5 hrs, Wednesday, July 27, 2022)
+-(More work on Acceptance states, code review, and small changes to the code, bug fixes; 5 hrs, Thursday, July 28, 2022)
+
+
+
 ---
 ---
 
@@ -250,7 +314,18 @@ In attendance: Brad, Denys, Dylan, Kajal, Wen
 - (Read HSQL documentation guide, got jar file working, designed DB and wrote the sql script for the tables, 3hrs, July 9)
 - (fixed the persistence access files to align with the db, bug fixed DB, 5.5hr, July 10)
 - (fixed more DB bugs, did DB tests 3hr, Jul 11)
-- (Fixing DB's ability to put default recipes on the first startup; 4 hrs, July 12)
+- (fixed more DB bugs, did DB tests 2hr, Jul 9)
+
+>>Iteration 3
+- (activity Name, Amount spent on task, comments)
+- (fixed DB bugs and removed unneeded files, 30min Jul 18)
+- (fixed more DB bugs, and redid update methods, 2hr Jul 21)
+- (tried to get Android Studio working on my laptop, 1hr, Jul 23)
+- (fixed database delete bug, researched how to do update function properly, and started working on update function; 1.5hr)
+- (started integration testing, wrote Mealplan hsql and dataAccess Methods, 3hrs, Jul 24)
+- (added default Recipe ratings, 30min, Jul 26)
+- (finished HSQLDB integration tests, 1.5 hours, Jul 27)
+- (Final fixes for Iteration 3, updated architecture, 3 hr, Jul 28)
 
 ---
 ---
@@ -299,6 +374,25 @@ In attendance: Brad, Denys, Dylan, Kajal, Wen
 - (fixes issue in AllTests; 30m; July 12)
 - (updated the readme; 1h; July 12)
 
+>> Iteration 3
+- (activity Name, Amount spent on task, date finished)
+- (Added all the iteration 3 dev tasks planned so far to the log; 30m; July 14)
+- (Wrote the draft for the retrospective activity; 30m; July 14)
+- (Fixed the github repo package structure; 5m; July 14)
+- (Made a prototype for the Meal Plan feature; 2h; July 14)
+- (Peer coded the capability be able to cancel adding a recipe with Brad; 1h; July 18)
+- (Finished add instructions; 3h; July 22)
+- (Worked on edit instructions; 4h)
+- (Finished edit recipe with Denys; 1h; July 24)
+- (Debugged meal planning logic with Brad; 2h)
+- (Reviewed sample project’s integration tests and started integration tests; 1h)
+- (Created a prototype for suggest a recipe; 1h, July 24)
+- (Wrote Business Persistence Seam Tests; 3h; July 25)
+- (Refactored the filteredRecipe class; 1h; July 25)
+- (Changed all MealPlan references and the icon to suggest recipe; 20m; July 25)
+- (Worked on reviewing all the code, 2h)
+- (Code review, refactored code, 4h, July 28)
+
 
 ---
 ---
@@ -333,7 +427,19 @@ In attendance: Brad, Denys, Dylan, Kajal, Wen
 - (Fix Recipe class, avoid negative number when input time/amount etc. Also add an upper boundary for input number. Rewrite Recipe test file; 12 hours, July 11)
 - (Communicate with Dylan for the Database class, how to rewrite tests; 1 hour, July 11)
 - (Got help from Kajal and Dylan about push/pull conflict problems; 20 mins, July 11)
-- (Fixing DB's ability to put default recipes on the first startup; 4 hrs, July 12)
+
+>> Iteration 3
+- (activity Name, Amount spent on task, date finished)
+- (Meeting recordings; 30m; July 14)
+- (Learn how to use Marvel to design prototype for Edit recipe; 6 hours; July 14)
+- (Design prototypes for Edit recipe; July 15; 12 hours)
+- (Communicate with Kajal about how to change prototype; 2 hours; July 19)
+- (Add more designs for Edit recipe; 8 hours; July 20)
+- (Learn how to write acceptance tests; 3 hours; July 21)
+- (Peer programming; 6 hours; July 24)
+- (Working on acceptance tests with Denys; 6 hours; July 26)
+- (Continue working on acceptance tests; 12 hours; July 27)
+- (Code review and debug; 4 hours; July 28)
 
 
 >>>DESIGN DECISIONS AND RATIONALE
@@ -376,6 +482,10 @@ In attendance: Brad, Denys, Dylan, Kajal, Wen
 
 - Decision: Adding duplicate recipe check with continue or cancel alert
 - Rationale: Before we would not allow duplicates into the recipe list but there might be a time when there could be different recipes for the same thing so we added a dialog box to warn the user there is a duplicate and they can choose whether to continue adding or cancel.
+
+- Decision: Should have a surprise button for suggest a recipe
+- Rationale: Otherwise there might be recipes that never get suggested or cooked and so the user never changes the ratings for those. This means they will never be suggested. Also, this allowed unrated new recipes to be suggested too. 
+
 ---
 ---
 
