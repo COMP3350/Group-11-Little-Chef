@@ -133,7 +133,7 @@ public class ReadRateEditAddRecipeAcceptanceTest
         onView(withText("Kosher salt")).check(doesNotExist()); //check that it is not displayed
 
         //add new ingredient
-        onView(withId(R.id.add_ingredient_button)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.new_ingredient_amount)).check(matches(isDisplayed())).perform(click());
 
 
         onView(withId(R.id.save_dialog_box)).check(matches(isDisplayed())).check(matches(not(isEnabled())));//check that save button is disabled after clearing
@@ -336,7 +336,7 @@ public class ReadRateEditAddRecipeAcceptanceTest
         onView(withText("Mozzarella Cheese")).check(doesNotExist()); //check that it is not displayed
 
         //add new ingredient
-        onView(withId(R.id.add_ingredient_button)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.new_ingredient_amount)).check(matches(isDisplayed())).perform(click());
 
 
         onView(withId(R.id.save_dialog_box)).check(matches(isDisplayed())).check(matches(not(isEnabled())));//check that save button is disabled after clearing
@@ -591,7 +591,7 @@ public class ReadRateEditAddRecipeAcceptanceTest
         onView(withText("Salt")).check(doesNotExist()); //check that it is not displayed
 
         //add new ingredient
-        onView(withId(R.id.add_ingredient_button)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.new_ingredient_amount)).check(matches(isDisplayed())).perform(click());
 
 
         onView(withId(R.id.save_dialog_box)).check(matches(isDisplayed())).check(matches(not(isEnabled())));//check that save button is disabled after clearing
@@ -949,73 +949,73 @@ public class ReadRateEditAddRecipeAcceptanceTest
     {
         //test adding empty string recipe
         onView(withId(R.id.add)).check(matches(isDisplayed())).perform(click());
-        onView(withId(R.id.nameInput)).check(matches(isDisplayed())).perform(typeText("")); //empty
-        onView(withId(R.id.addRecipeButton)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.new_recipe_name_input)).check(matches(isDisplayed())).perform(typeText("")); //empty
+        onView(withId(R.id.add_new_recipe_button)).check(matches(isDisplayed())).perform(click());
 
         onView(withText("Recipe name required")).check(matches(isDisplayed()));
         Espresso.pressBack();
 
-        onView(withId(R.id.nameInput)).check(matches(isDisplayed())).perform(typeText(" "));// single space
-        onView(withId(R.id.addRecipeButton)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.new_recipe_name_input)).check(matches(isDisplayed())).perform(typeText(" "));// single space
+        onView(withId(R.id.add_new_recipe_button)).check(matches(isDisplayed())).perform(click());
         onView(withText("Recipe name required")).check(matches(isDisplayed()));
         Espresso.pressBack();
 
-        onView(withId(R.id.nameInput)).check(matches(isDisplayed())).perform(typeText("                    ")); //many spaces
-        onView(withId(R.id.addRecipeButton)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.new_recipe_name_input)).check(matches(isDisplayed())).perform(typeText("                    ")); //many spaces
+        onView(withId(R.id.add_new_recipe_button)).check(matches(isDisplayed())).perform(click());
         onView(withText("Recipe name required")).check(matches(isDisplayed()));
         Espresso.pressBack();
 
-        onView(withId(R.id.nameInput)).check(matches(isDisplayed())).perform(typeText("1111111"));
-        onView(withId(R.id.addRecipeButton)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.new_recipe_name_input)).check(matches(isDisplayed())).perform(typeText("1111111"));
+        onView(withId(R.id.add_new_recipe_button)).check(matches(isDisplayed())).perform(click());
 
         //add an ingredient
-        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Large eggs"));
-        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("2.0"));
-        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.new_ingredient_name)).check(matches(isDisplayed())).perform(typeText("Large eggs"));
+        onView(withId(R.id.new_ingredient_amount)).check(matches(isDisplayed())).perform(typeText("2.0"));
+        onView(withId(R.id.new_ingredient_amount)).check(matches(isDisplayed())).perform(click());
 
         //try to add the same ingredient
-        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Large eggs"));
-        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("2.0"));
-        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.new_ingredient_name)).check(matches(isDisplayed())).perform(typeText("Large eggs"));
+        onView(withId(R.id.new_ingredient_amount)).check(matches(isDisplayed())).perform(typeText("2.0"));
+        onView(withId(R.id.add_ingredient_button)).check(matches(isDisplayed())).perform(click());
         onView(withText("Ingredient already exists!")).check(matches(isDisplayed()));
         Espresso.pressBack();
 
         //try to add empty ingredient
-        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText(""));//empty
-        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.new_ingredient_name)).check(matches(isDisplayed())).perform(typeText(""));//empty
+        onView(withId(R.id.add_ingredient_button)).check(matches(isDisplayed())).perform(click());
         onView(withText("Ingredient name required")).check(matches(isDisplayed()));
         Espresso.pressBack();
 
-        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText(" "));//one space
-        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.new_ingredient_name)).check(matches(isDisplayed())).perform(typeText(" "));//one space
+        onView(withId(R.id.add_ingredient_button)).check(matches(isDisplayed())).perform(click());
         onView(withText("Ingredient name required")).check(matches(isDisplayed()));
         Espresso.pressBack();
 
-        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("           "));//many spaces
-        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.new_ingredient_name)).check(matches(isDisplayed())).perform(typeText("           "));//many spaces
+        onView(withId(R.id.add_ingredient_button)).check(matches(isDisplayed())).perform(click());
         onView(withText("Ingredient name required")).check(matches(isDisplayed()));
         Espresso.pressBack();
 
-        onView(withId(R.id.save_all_ingredients)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.save_all_ingredients_button)).check(matches(isDisplayed())).perform(click());
 
         //add empty instruction
         onView(withId(R.id.instruction)).check(matches(isDisplayed())).perform(typeText("")); //empty
         Espresso.closeSoftKeyboard();
-        onView(withId(R.id.instructionsSteps)).check(matches(isDisplayed())).perform(typeText("Cook the farro in 3 cups of water or vegetable stock according to these instructions until it is chewy and tender. (Cooking time will vary depending on what type of farro you use.) Drain the farro in a fine-mesh strainer and add it to a large mixing bowl."));
+        onView(withId(R.id.instruction_steps)).check(matches(isDisplayed())).perform(typeText("Cook the farro in 3 cups of water or vegetable stock according to these instructions until it is chewy and tender. (Cooking time will vary depending on what type of farro you use.) Drain the farro in a fine-mesh strainer and add it to a large mixing bowl."));
         Espresso.closeSoftKeyboard();
-        onView(withId(R.id.addInstructionButton)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.add_new_instruction_button)).check(matches(isDisplayed())).perform(click());
         onView(withText("Instructions cannot be empty")).check(matches(isDisplayed()));
         Espresso.pressBack();
 
         onView(withId(R.id.instruction)).check(matches(isDisplayed())).perform(typeText(" ")); //one space
         Espresso.closeSoftKeyboard();
-        onView(withId(R.id.addInstructionButton)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.add_new_instruction_button)).check(matches(isDisplayed())).perform(click());
         onView(withText("Instructions cannot be empty")).check(matches(isDisplayed()));
         Espresso.pressBack();
 
         onView(withId(R.id.instruction)).check(matches(isDisplayed())).perform(typeText("         ")); //many space
         Espresso.closeSoftKeyboard();
-        onView(withId(R.id.addInstructionButton)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.add_new_instruction_button)).check(matches(isDisplayed())).perform(click());
         onView(withText("Instructions cannot be empty")).check(matches(isDisplayed()));
         Espresso.pressBack();
     }
@@ -1025,8 +1025,8 @@ public class ReadRateEditAddRecipeAcceptanceTest
     {
         // test adding same name recipes
         onView(withId(R.id.add)).check(matches(isDisplayed())).perform(click());
-        onView(withId(R.id.nameInput)).check(matches(isDisplayed())).perform(typeText("Pancakes")); //already exists by default
-        onView(withId(R.id.addRecipeButton)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.new_recipe_name_input)).check(matches(isDisplayed())).perform(typeText("Pancakes")); //already exists by default
+        onView(withId(R.id.add_new_recipe_button)).check(matches(isDisplayed())).perform(click());
 
         onView(withText("Duplicate Recipe Name")).check(matches(isDisplayed()));
         onView(withText("CONTINUE")).check(matches(isDisplayed())).perform(click());
