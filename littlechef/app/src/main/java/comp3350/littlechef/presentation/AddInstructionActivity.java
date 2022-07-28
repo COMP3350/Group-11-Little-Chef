@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+// kajalchecked
+
 // CLASS: AddInstructionActivity.java
 // REMARKS: This class adds capability for the user to add instructions
 //          to a newly created recipe.

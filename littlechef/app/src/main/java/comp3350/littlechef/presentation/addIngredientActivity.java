@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+// same ids
+
 // CLASS: addIngredientActivity.java
 // REMARKS: This class is clicked on by addFragment, where you can add ingredients and instructions
 //            to a certain recipe.
