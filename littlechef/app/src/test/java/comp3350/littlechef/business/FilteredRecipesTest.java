@@ -1,6 +1,8 @@
 package comp3350.littlechef.business;
 
 
+import android.widget.ArrayAdapter;
+
 import junit.framework.TestCase;
 import org.junit.Test;
 import java.util.ArrayList;
@@ -13,6 +15,36 @@ public class FilteredRecipesTest extends TestCase
 
     public FilteredRecipesTest(String arg0) {
         super(arg0);
+    }
+
+    @Test
+    public void testNullCases()
+    {
+        ArrayList<Recipe> recipeList= new ArrayList<Recipe>();
+
+        for(int i = 0; i < 50; i++)
+        {
+            recipeList.add(null);
+        }
+
+        ArrayList<Recipe> newList = FilteredRecipes.getListofRecipesByType(null, 5, null);
+        assertEquals("newList size= " ,null, newList);
+
+        ArrayList<Recipe> newListEase = FilteredRecipes.getListofRecipesByType("ease", 5, null);
+        assertEquals("newList size= " ,null, newListEase);
+
+        ArrayList<Recipe> newListChallenge = FilteredRecipes.getListofRecipesByType("challenge", 5, null);
+        assertEquals("newList size= " ,null, newListChallenge);
+
+        ArrayList<Recipe> newListSurprise = FilteredRecipes.getListofRecipesByType("surprise", 5, null);
+        assertEquals("newList size= " ,null, newListSurprise);
+
+        ArrayList<Recipe> newListSavingTime = FilteredRecipes.getListofRecipesByType("savingTime", 5, null);
+        assertEquals("newList size= " ,null, newListSavingTime);
+
+        ArrayList<Recipe> newListTaste = FilteredRecipes.getListofRecipesByType("taste", 5, null);
+        assertEquals("newList size= " ,null, newListTaste);
+
     }
 
     //test typical cases, should not be any duplicates showing
