@@ -46,23 +46,23 @@ public class RecipeTest extends TestCase
     {
         Recipe recipe = new Recipe("Paste");
         assertEquals("Paste", recipe.getName());
-        assertEquals("Paste", recipe.toString());
+        assertEquals("Paste, -/5, Taste: -, Difficulty: -", recipe.toString());
 
         recipe.setName("123");
         assertEquals("123", recipe.getName());
-        assertEquals("123", recipe.toString());
+        assertEquals("123, -/5, Taste: -, Difficulty: -", recipe.toString());
         recipe.setName("%paste1^&");
         assertEquals("%paste1^&", recipe.getName());
-        assertEquals("%paste1^&", recipe.toString());
+        assertEquals("%paste1^&, -/5, Taste: -, Difficulty: -", recipe.toString());
 
         Recipe recipeSetNewName = new Recipe("juice");
         recipeSetNewName.setName("aa");
         assertEquals("aa", recipeSetNewName.getName());
-        assertEquals("aa", recipeSetNewName.toString());
+        assertEquals("aa, -/5, Taste: -, Difficulty: -", recipeSetNewName.toString());
 
         recipeSetNewName.setName("%paste1");
         assertEquals("%paste1", recipeSetNewName.getName());
-        assertEquals("%paste1", recipeSetNewName.toString());
+        assertEquals("%paste1, -/5, Taste: -, Difficulty: -", recipeSetNewName.toString());
     }//end testRecipeName
 
     @Test
