@@ -983,23 +983,23 @@ public class ReadRateEditAddRecipeAcceptanceTest
         //try to add the same ingredient
         onView(withId(R.id.new_ingredient_name)).check(matches(isDisplayed())).perform(typeText("Large eggs"));
         onView(withId(R.id.new_ingredient_amount)).check(matches(isDisplayed())).perform(typeText("2.0"));
-        onView(withId(R.id.add_ingredient_button)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.add_new_ingredient_button)).check(matches(isDisplayed())).perform(click());
         onView(withText("Ingredient already exists!")).check(matches(isDisplayed()));
         Espresso.pressBack();
 
         //try to add empty ingredient
         onView(withId(R.id.new_ingredient_name)).check(matches(isDisplayed())).perform(typeText(""));//empty
-        onView(withId(R.id.add_ingredient_button)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.add_new_ingredient_button)).check(matches(isDisplayed())).perform(click());
         onView(withText("Ingredient name required")).check(matches(isDisplayed()));
         Espresso.pressBack();
 
         onView(withId(R.id.new_ingredient_name)).check(matches(isDisplayed())).perform(typeText(" "));//one space
-        onView(withId(R.id.add_ingredient_button)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.add_new_ingredient_button)).check(matches(isDisplayed())).perform(click());
         onView(withText("Ingredient name required")).check(matches(isDisplayed()));
         Espresso.pressBack();
 
         onView(withId(R.id.new_ingredient_name)).check(matches(isDisplayed())).perform(typeText("           "));//many spaces
-        onView(withId(R.id.add_ingredient_button)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.add_new_ingredient_button)).check(matches(isDisplayed())).perform(click());
         onView(withText("Ingredient name required")).check(matches(isDisplayed()));
         Espresso.pressBack();
 

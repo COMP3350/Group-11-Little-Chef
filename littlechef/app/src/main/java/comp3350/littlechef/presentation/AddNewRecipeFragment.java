@@ -117,7 +117,7 @@ public class AddNewRecipeFragment extends Fragment
 
     private String checkEmpty(EditText editText)
     {
-        if(editText.getText().toString().equals(""))
+        if(editText.getText().toString().trim().equals(""))
         {
             return "Recipe name required";
         }

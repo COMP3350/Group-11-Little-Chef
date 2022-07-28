@@ -282,7 +282,7 @@ public class Recipe implements Serializable
 
         name = name.trim();
 
-        if(name.length() == 0 || (name.length() == 1 && name.charAt(0) == ' '))
+        if(name.length() == 0)
         {
             throw new IllegalArgumentException("Recipe name cannot be an empty String.");
         }
