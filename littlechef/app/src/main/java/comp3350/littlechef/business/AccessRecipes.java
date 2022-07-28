@@ -66,7 +66,8 @@ public class AccessRecipes
 
         if(recipes != null)
         {
-            if (recipes.size() == 1) {
+            if (recipes.size() == 1)
+            {
                 recipe = recipes.get(0);
             }
         }

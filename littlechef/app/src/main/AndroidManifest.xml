@@ -18,7 +18,7 @@
             android:name=".presentation.EditRecipeActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.addIngredientActivity"
+            android:name=".presentation.AddIngredientActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.RateRecipeActivity"

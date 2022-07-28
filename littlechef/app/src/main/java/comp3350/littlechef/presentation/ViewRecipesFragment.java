@@ -5,13 +5,11 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.text.SpannableString;
-import android.text.method.ScrollingMovementMethod;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -22,6 +20,9 @@ import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.objects.Recipe;
 
+// CLASS: SuggestRecipesActivity.java
+// REMARKS: This class will  display all the recipes.
+//-----------------------------------------
 public class ViewRecipesFragment extends Fragment
 {
     private AccessRecipes accessRecipes;
@@ -41,22 +42,21 @@ public class ViewRecipesFragment extends Fragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        // Inflate the layout for this fragment
+        String result;
+
         View view = inflater.inflate(R.layout.fragment_view, container, false);
 
         accessRecipes = new AccessRecipes();
-
         recipeList = new ArrayList<Recipe>();
-        String result = accessRecipes.getRecipes(recipeList);
+
+        result = accessRecipes.getRecipes(recipeList);
 
         if(result != null)
         {
             Messages.fatalError(getActivity(), result);
         }
-
         else
         {
             final ListView listView = (ListView) view.findViewById(R.id.recipe_list_view);
@@ -80,17 +80,12 @@ public class ViewRecipesFragment extends Fragment
 
             listView.setAdapter(recipeArrayAdapter);
 
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-            {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-                {
-                    Recipe selectedRecipe = (Recipe) listView.getItemAtPosition(position);
+            listView.setOnItemClickListener((parent, view1, position, id) -> {
+                Recipe selectedRecipe = (Recipe) listView.getItemAtPosition(position);
 
-                    Intent detailedRecipe = new Intent(getActivity(), DetailedRecipeActivity.class);
-                    detailedRecipe.putExtra("id", selectedRecipe); //pass the object reference to another activity
-                    startActivity(detailedRecipe);
-                }
+                Intent detailedRecipe = new Intent(getActivity(), DetailedRecipeActivity.class);
+                detailedRecipe.putExtra("id", selectedRecipe); //pass the object reference to another activity
+                startActivity(detailedRecipe);
             });
         }
 
@@ -107,7 +102,6 @@ public class ViewRecipesFragment extends Fragment
         {
             Messages.fatalError(getActivity(), result);
         }
-
         else
         {
             //if the data has changed -> update

@@ -11,10 +11,7 @@ import android.widget.Button;
 import comp3350.littlechef.R;
 
 // CLASS: SuggestRecipeFragment.java
-//
-//
 // REMARKS: This class will start an activity based on the type selected
-//
 //-----------------------------------------
 public class SuggestRecipeFragment extends Fragment
 {
@@ -32,56 +29,35 @@ public class SuggestRecipeFragment extends Fragment
         //inflate view
         View view = inflater.inflate(R.layout.fragment_suggest_recipes, container, false);
 
-        Button challengeButton = (Button) view.findViewById(R.id.challengeButton);
-        Button easeButton = (Button) view.findViewById(R.id.easeButton);
-        Button savingTimeButton = (Button) view.findViewById(R.id.savingTimeButton);
-        Button tasteButton = (Button) view.findViewById(R.id.tasteButton);
-        Button surpriseMeButton = (Button) view.findViewById(R.id.supriseMeButton);
+        Button challengeButton = view.findViewById(R.id.challengeButton);
+        Button easeButton = view.findViewById(R.id.easeButton);
+        Button savingTimeButton = view.findViewById(R.id.savingTimeButton);
+        Button tasteButton = view.findViewById(R.id.tasteButton);
+        Button surpriseMeButton = view.findViewById(R.id.supriseMeButton);
 
-        challengeButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                String type = "challenge";
-                startActivity(type);
-            }
+        challengeButton.setOnClickListener(view1 -> {
+            String type = "challenge";
+            startActivity(type);
         });
-        easeButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                String type = "ease";
-                startActivity(type);
-            }
+
+        easeButton.setOnClickListener(view12 -> {
+            String type = "ease";
+            startActivity(type);
         });
-        savingTimeButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                String type = "savingTime";
-                startActivity(type);
-            }
+
+        savingTimeButton.setOnClickListener(view13 -> {
+            String type = "savingTime";
+            startActivity(type);
         });
-        tasteButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                String type = "taste";
-                startActivity(type);
-            }
+
+        tasteButton.setOnClickListener(view14 -> {
+            String type = "taste";
+            startActivity(type);
         });
-        surpriseMeButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                String type = "surprise";
-                startActivity(type);
-            }
+
+        surpriseMeButton.setOnClickListener(view15 -> {
+            String type = "surprise";
+            startActivity(type);
         });
 
         return view;

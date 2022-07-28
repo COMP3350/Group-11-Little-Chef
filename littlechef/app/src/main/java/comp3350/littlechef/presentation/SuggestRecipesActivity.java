@@ -1,6 +1,5 @@
 package comp3350.littlechef.presentation;
 
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,19 +19,14 @@ import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import java.util.ArrayList;
 
 // CLASS: SuggestRecipesActivity.java
-//
-//
 // REMARKS: This class will call and display a list of selected types
-//
 //-----------------------------------------
-
 public class SuggestRecipesActivity extends AppCompatActivity
 {
     private static final int MAX_SHOWING = 3;
@@ -54,6 +48,7 @@ public class SuggestRecipesActivity extends AppCompatActivity
         accessRecipes = new AccessRecipes();
         recipeList = new ArrayList<Recipe>();
         String result = accessRecipes.getRecipes(recipeList);
+
         if(result != null)
         {
             Messages.fatalError(this, result);
@@ -65,6 +60,7 @@ public class SuggestRecipesActivity extends AppCompatActivity
 
         //create arraylist with type
         displayList = FilteredRecipes.getListofRecipesByType(type, MAX_SHOWING, recipeList);
+
         //if the displayList returns empty send warning that nothing to display
         if(displayList.isEmpty())
             emptyList();
@@ -85,18 +81,15 @@ public class SuggestRecipesActivity extends AppCompatActivity
                 return convertView;
             }
         };
+
         listView.setAdapter(recipeArrayAdapter);
+
         //if clicked send to detailed recipe to start cooking
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
-                Recipe selectedRecipe = (Recipe) listView.getItemAtPosition(position);
-                Intent detailedRecipe = new Intent(SuggestRecipesActivity.this, DetailedRecipeActivity.class);
-                detailedRecipe.putExtra("id", selectedRecipe); //pass the object reference to another activity
-                startActivity(detailedRecipe);
-            }
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            Recipe selectedRecipe = (Recipe) listView.getItemAtPosition(position);
+            Intent detailedRecipe = new Intent(SuggestRecipesActivity.this, DetailedRecipeActivity.class);
+            detailedRecipe.putExtra("id", selectedRecipe); //pass the object reference to another activity
+            startActivity(detailedRecipe);
         });
 
     }
@@ -106,11 +99,11 @@ public class SuggestRecipesActivity extends AppCompatActivity
         String difficultyRating = recipe.getDifficultyRating();
         String tasteRating = recipe.getTasteRating();
 
-        TextView name = (TextView) convertView.findViewById(R.id.recipe_name);
-        TextView estimatedTime = (TextView) convertView.findViewById(R.id.estimated_time);
-        TextView difficulty = (TextView) convertView.findViewById(R.id.difficulty);
-        TextView taste = (TextView) convertView.findViewById(R.id.taste);
-        TextView rating = (TextView) convertView.findViewById(R.id.rating);
+        TextView name = convertView.findViewById(R.id.recipe_name);
+        TextView estimatedTime = convertView.findViewById(R.id.estimated_time);
+        TextView difficulty = convertView.findViewById(R.id.difficulty);
+        TextView taste = convertView.findViewById(R.id.taste);
+        TextView rating = convertView.findViewById(R.id.rating);
 
         SpannableString recipeNameFormatted = new SpannableString(recipe.getName());
         recipeNameFormatted.setSpan(new UnderlineSpan(), 0, recipeNameFormatted.length(), 0);
@@ -122,7 +115,8 @@ public class SuggestRecipesActivity extends AppCompatActivity
         taste.setText(tasteRating);
         rating.setText(recipe.getRatingString());
     }
-    public void emptyList()
+
+    private void emptyList()
     {
         AlertDialog.Builder resetAlert = new AlertDialog.Builder(this);
         resetAlert.setTitle("No results.");
