@@ -255,7 +255,7 @@ public class Recipe implements Serializable
     @Override
     public String toString()
     {
-        return name;
+        return name + ", " + getRatingString() + ", " + getTasteRating()  + ", " + getDifficultyRating();
     }
 
     private double calcAverage(ArrayList<Double> ratingVals)
