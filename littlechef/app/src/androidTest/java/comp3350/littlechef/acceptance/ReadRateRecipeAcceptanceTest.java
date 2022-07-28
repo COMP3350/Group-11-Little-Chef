@@ -580,7 +580,7 @@ public class ReadRateRecipeAcceptanceTest
          Thread.sleep(1500);
          } catch (Exception e) {}
          //check that time value changed
-         onView(withId(R.id.estimated_time_rating_activity)).check(matches(withText("Time: 00h 00m 04s")));
+         onView(withId(R.id.estimated_time_rating_activity)).check(matches(withText("Time: 00h 00m 03s")));
          onView(withId(R.id.difficulty_radio_1)).check(matches(isDisplayed())).perform(click());
          onView(withId(R.id.taste_radio_5)).check(matches(isDisplayed())).perform(click());
          onView(withId(R.id.submit_rating)).check(matches(isDisplayed())).perform(click());
