@@ -978,7 +978,7 @@ public class ReadRateEditAddRecipeAcceptanceTest
         //add an ingredient
         onView(withId(R.id.new_ingredient_name)).check(matches(isDisplayed())).perform(typeText("Large eggs"));
         onView(withId(R.id.new_ingredient_amount)).check(matches(isDisplayed())).perform(typeText("2.0"));
-        onView(withId(R.id.add_ingredient_button)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.add_new_ingredient_button)).check(matches(isDisplayed())).perform(click());
 
         //try to add the same ingredient
         onView(withId(R.id.new_ingredient_name)).check(matches(isDisplayed())).perform(typeText("Large eggs"));
