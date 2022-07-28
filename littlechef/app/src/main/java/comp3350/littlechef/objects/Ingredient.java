@@ -1,68 +1,76 @@
 package comp3350.littlechef.objects;
 
 import java.io.Serializable;
+
 // CLASS: Ingredient.java
-//
-//
 // REMARKS: This class is to create an ingredient with specific attributes.
-//
 //-----------------------------------------
 public class Ingredient implements Serializable
 {
     private String name;
-    private double amount; //number of ingredient needed
-    private double max_amount = 10000.00;
+    private double numberOfIngredients;
+    private double max_amount;
 
     private UnitType unitType;
     private Unit unit;
 
-    public Ingredient(String name, Unit measurement, double amount)
+    public Ingredient(String name, Unit measurement, double numberOfIngredients)
     {
         this.name = name;
-        this.amount = amount;
 
-        if(amount > 0)
+        if(numberOfIngredients > 0)
         {
-            this.amount = amount;
+            this.numberOfIngredients = numberOfIngredients;
         }
         else
         {
-            this.amount = 1;
+            this.numberOfIngredients = 1;
         }
-        this.unitType = UnitType.DEFAULT; // will just scale no unit conversion
-        setUnitInformation(measurement);
 
+        this.unitType = UnitType.DEFAULT; // will just scale no unit conversion
+        this.max_amount = 10000.00;
+        setUnitInformation(measurement);
 
     }
 
-    //getters and setters
-    public String getName() { return name; }
+    public String getName()
+    {
+        return name;
+    }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public Unit getMeasurement() {
+    public Unit getMeasurement()
+    {
         return unit;
     }
 
-    public void setMeasurement(Unit unit) {
-        setUnitInformation(unit);
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount)
+    public void setMeasurement(Unit unit)
     {
-        if(amount > 0)
+        if(unit != null)
         {
-            this.amount = amount;
+            setUnitInformation(unit);
         }
     }
 
-    public String getUnitType() {
+    public double getNumberOfIngredients()
+    {
+        return numberOfIngredients;
+    }
+
+    public void setNumberOfIngredients(double numberOfIngredients)
+    {
+        if(numberOfIngredients > 0)
+        {
+            this.numberOfIngredients = numberOfIngredients;
+        }
+    }
+
+    public String getUnitType()
+    {
         return unitType.toString();
     }
 
@@ -78,11 +86,18 @@ public class Ingredient implements Serializable
 
     public String getDisplayMeasurement()
     {
-        if (amount > max_amount)
+        String result;
+
+        if (numberOfIngredients > max_amount)
         {
-            return String.format("%.2f", max_amount) + " " + getMeasurement();
+            result =  String.format("%.2f", max_amount) + " " + getMeasurement();
         }
-        return String.format("%.2f", amount) + " " + getMeasurement();
+        else
+        {
+            result = String.format("%.2f", numberOfIngredients) + " " + getMeasurement();
+        }
+
+        return result;
     }
 
     public String getUnit()
@@ -108,16 +123,17 @@ public class Ingredient implements Serializable
         if (object instanceof Ingredient)
         {
             ingredient = (Ingredient) object;
+
             if (ingredient.getName() == this.getName())
             {
                 result = true;
             }
+
         }
         return result;
+
     }
 
-
-    //this class sets the specific unit metric depending on unit type
     private void setUnitInformation(Unit measurement)
     {
         if(measurement != null)

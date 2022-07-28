@@ -6,31 +6,23 @@ import java.util.Random;
 import comp3350.littlechef.objects.Recipe;
 
 // CLASS: FilteredRecipes.java
-//
-//
 // REMARKS: This class will return an arraylist of recipes corresponding to the type, given a recipe list
-//
 //-----------------------------------------
-
 public class FilteredRecipes
 {
-    //displays how many recipes it will display from main list with required type
-    private static final int TIME_SAVING = 10; //for the time savings show recipes under 10 minutes to make
-    private static final double TASTE_RATING = 4.5; //only recipes with a taste rating higher then this is shown
+    private static final int MAX_COOKING_TIME = 10;
+    private static final double LOWEST_ACCEPTABLE_RATING = 4.5;
 
-    private static Random random = new Random();
     private static int listSize;
     private static int recipeIndex;
     private static Recipe recipe; 
 
-    //creates list based on values
     public static ArrayList<Recipe> getListofRecipesByType(String type, int amountToReturn, ArrayList<Recipe> recipeList)
     {
         ArrayList<Recipe> returnList = null;
 
         if(recipeList != null && type != null && amountToReturn > 0)
         {
-            returnList = new ArrayList<Recipe>();
             switch (type) {
                 case "surprise":
                     returnList = getSurpriseRecipes(recipeList, amountToReturn);
@@ -47,8 +39,6 @@ public class FilteredRecipes
                 case "taste":
                     returnList = getTastiestRecipes(recipeList, amountToReturn);
                     break;
-                default:
-                    returnList = null;
             }
         }
 
@@ -58,11 +48,12 @@ public class FilteredRecipes
     private static ArrayList<Recipe> getSurpriseRecipes(ArrayList<Recipe> recipeList, int amountToReturn)
     {
         ArrayList<Recipe> returnList = new ArrayList<Recipe>();
+        Random randomIndex = new Random();
 
         while(returnList.size() < amountToReturn && recipeList.size() > 0 )
         {
             listSize = recipeList.size(); //set recipe list size
-            recipeIndex = random.nextInt(listSize); //get random index with recipe list size
+            recipeIndex = randomIndex.nextInt(listSize); //get random index with recipe list size
             returnList.add(recipeList.get(recipeIndex));
             recipeList.remove(recipeIndex); //remove from consideration (don't want the same recipe twice)
         }
@@ -74,7 +65,6 @@ public class FilteredRecipes
     {
         ArrayList<Recipe> returnList = new ArrayList<Recipe>();
 
-        //until we get three recipes or until recipe list is empty
         while(returnList.size() < amountToReturn && recipeList.size() > 0 )
         {
             setRandomRecipe(recipeList);
@@ -125,7 +115,7 @@ public class FilteredRecipes
                     String minutes = split[2];
                     minutes = minutes.substring(0, minutes.length() - 1);
                     double minutesDouble = Double.parseDouble(minutes);
-                    if(minutesDouble <= TIME_SAVING)
+                    if(minutesDouble <= MAX_COOKING_TIME)
                         returnList.add(recipe);
                 }
                 catch(Exception e)
@@ -152,13 +142,14 @@ public class FilteredRecipes
                 String[] split = recipe.getTasteRating().split(" ");
                 double tasteRating = Double.parseDouble(split[1]);
 
-                if(tasteRating >= TASTE_RATING)
+                if(tasteRating >= LOWEST_ACCEPTABLE_RATING)
                     returnList.add(recipe);
             }
             catch(Exception e)
             {
                 //do nothing
             }
+
             recipeList.remove(recipeIndex); //remove recipe from further consideration
         }
 
@@ -172,7 +163,6 @@ public class FilteredRecipes
         listSize = recipeList.size(); //set recipe list size
         recipeIndex = random.nextInt(listSize); //get random index with recipe list sizes
         recipe = recipeList.get(recipeIndex);
-        
     }
 
 }

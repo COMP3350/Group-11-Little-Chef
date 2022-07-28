@@ -102,11 +102,11 @@ public class RecipeTest extends TestCase
         ingredient1.setMeasurement(null);
         assertEquals(Unit.MM , ingredient1.getMeasurement());
 
-        ingredient1.setAmount(0.0);
-        assertEquals(0.1 , ingredient1.getAmount());
+        ingredient1.setNumberOfIngredients(0.0);
+        assertEquals(0.1 , ingredient1.getNumberOfIngredients());
 
-        ingredient1.setAmount(-0.1);
-        assertEquals(0.1 , ingredient1.getAmount());
+        ingredient1.setNumberOfIngredients(-0.1);
+        assertEquals(0.1 , ingredient1.getNumberOfIngredients());
     }//testRecipeIngredients
 
     @Test

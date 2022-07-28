@@ -2,7 +2,6 @@ package comp3350.littlechef.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import comp3350.littlechef.R;
-import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
 import comp3350.littlechef.objects.Unit;
@@ -206,7 +205,7 @@ public class EditRecipeActivity extends AppCompatActivity
             {
 
                 ingredient.setName(ingrNameField.getText().toString());
-                ingredient.setAmount(Double.parseDouble(ingrAmountField.getText().toString()));
+                ingredient.setNumberOfIngredients(Double.parseDouble(ingrAmountField.getText().toString()));
                 ingredient.setUnit(unitField.getSelectedItem().toString());
 
                 if(newRecipe)
@@ -249,7 +248,7 @@ public class EditRecipeActivity extends AppCompatActivity
         });
 
         ingrNameField.setText(ingredient.getName());
-        ingrAmountField.setText(Double.toString(ingredient.getAmount()));
+        ingrAmountField.setText(Double.toString(ingredient.getNumberOfIngredients()));
 
         if(newRecipe)
         {

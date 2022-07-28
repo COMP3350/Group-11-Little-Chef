@@ -14,7 +14,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -221,7 +220,7 @@ public class AddRecipeActivity extends AppCompatActivity
                 result = "Ingredient name required";
             }
 
-            if (ingredient.getAmount() <= 0) {
+            if (ingredient.getNumberOfIngredients() <= 0) {
                 result = "Ingredient amount must be greater then 0!";
             }
         }

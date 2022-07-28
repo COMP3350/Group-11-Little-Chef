@@ -1,9 +1,7 @@
 package comp3350.littlechef.objects;
+
 // CLASS: Unit.java
-//
-//
 // REMARKS: This class is to create the different units for each ingredient
-//
 //-----------------------------------------
 public enum Unit
 {

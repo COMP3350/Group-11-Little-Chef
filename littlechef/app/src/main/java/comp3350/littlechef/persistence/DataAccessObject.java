@@ -9,15 +9,17 @@ import comp3350.littlechef.objects.Ingredient;
 import comp3350.littlechef.objects.Recipe;
 import comp3350.littlechef.objects.Unit;
 
+// CLASS: UnitType.java
+// REMARKS: This class implements the data access objects using the real database.
+//-----------------------------------------
 public class DataAccessObject implements DataAccess
 {
-
-    private String cmd, cmd2;
     private int updateCount;
+    private String cmd;
+    private String cmd2;
     private String result;
     private static String EOF = "  ";
 
-    private String databasePath;
     private String dbName;
 
     private Connection connection;
@@ -128,8 +130,8 @@ public class DataAccessObject implements DataAccess
             result = processSQLError(e);
         }
 
-        return result; // why returning name?
-    }//end addRecipe
+        return result;
+    }
 
     private void insertRecipeData(Recipe recipe)
     {
@@ -158,7 +160,7 @@ public class DataAccessObject implements DataAccess
             {
                 values = recipe.getId()
                         + ", '" + ingredients.get(i).getName().replace("'","''")
-                        + "', " + ingredients.get(i).getAmount()
+                        + "', " + ingredients.get(i).getNumberOfIngredients()
                         + ", '" + ingredients.get(i).getUnitType()
                         + "', '" + ingredients.get(i).getMeasurement().toString()
                         + "'";
@@ -198,8 +200,10 @@ public class DataAccessObject implements DataAccess
         }
         return result;
     }
+
     @Override
-    public String updateRecipe(Recipe recipe) {
+    public String updateRecipe(Recipe recipe)
+    {
 
         String table;
         String values;
@@ -231,8 +235,9 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
         return result;
-    }//end updateRecipe
+    }
 
     private void deleteAllRecipeInfo(int RECIPEID)
     {
@@ -256,7 +261,6 @@ public class DataAccessObject implements DataAccess
     @Override
     public String getRecipeSequential(List<Recipe> recipeList)
     {
-
         Recipe recipe;
         String myID, myName;
         myID = EOF;
@@ -290,37 +294,48 @@ public class DataAccessObject implements DataAccess
                 myName = resultSet.getString("NAME");
                 recipe = new Recipe(Integer.parseInt(myID));
                 recipe.setName(myName);
+
                 cmd2 = "SELECT * FROM INGREDIENTS WHERE RECIPEID=" + myID + "\n";
                 resultSet2 = statement.executeQuery(cmd2);
+
                 while(resultSet2.next())
                 {
                     Ingredient ing = new Ingredient(resultSet2.getString("NAME"),Unit.valueOf(resultSet2.getString("UNIT")),resultSet2.getDouble("AMOUNT"));
                     recipe.addIngredient(ing);
                 }
+
                 cmd2 = "SELECT * FROM INSTRUCTIONS WHERE RECIPEID=" + myID + "\n";
                 resultSet2 = statement.executeQuery(cmd2);
+
                 while(resultSet2.next())
                 {
                     recipe.addInstructions(resultSet2.getString("INSTRUCTION"), resultSet2.getString("SUBINSTRUCTION"));
                 }
+
                 cmd2 = "SELECT * FROM DIFFICULTYRATINGS WHERE RECIPEID=" + myID + "\n";
                 resultSet2 = statement.executeQuery(cmd2);
+
                 while(resultSet2.next())
                 {
                     recipe.addDifficultyRating(resultSet2.getDouble("RATING"));
                 }
+
                 cmd2 = "SELECT * FROM TASTERATINGS WHERE RECIPEID=" + myID + "\n";
                 resultSet2 = statement.executeQuery(cmd2);
+
                 while(resultSet2.next())
                 {
                     recipe.addTasteRating(resultSet2.getDouble("RATING"));
                 }
+
                 cmd2 = "SELECT * FROM COOKINGTIMES WHERE RECIPEID=" + myID;
                 resultSet2 = statement.executeQuery(cmd2);
+
                 while(resultSet2.next())
                 {
                     recipe.addCookingTime(resultSet2.getInt("RATING"));
                 }
+
                 recipeList.add(recipe);
             }
         }
@@ -330,7 +345,7 @@ public class DataAccessObject implements DataAccess
         }
 
         return result;
-    }//end getRecipe
+    }
 
     @Override
     public ArrayList<Recipe> getRecipeRandom(Recipe newRecipe)
@@ -349,56 +364,70 @@ public class DataAccessObject implements DataAccess
         }
 
         recipes = null;
+
         try
         {
             cmd = "SELECT * FROM RECIPES WHERE RECIPEID=" + newRecipe.getId() + "\n";
             resultSet = statement.executeQuery(cmd);
-            // ResultSetMetaData md2 = rs3.getMetaData();
             recipes = new ArrayList<Recipe>();
+
             while (resultSet.next())
             {
                 myID = resultSet.getString("RecipeID");
                 recipe = new Recipe(Integer.parseInt(myID));
                 recipe.setName(resultSet.getString("Name"));
+
                 cmd2 = "SELECT * FROM INGREDIENTS WHERE RECIPEID=" + myID + "\n";
                 resultSet2 = statement.executeQuery(cmd2);
+
                 while(resultSet2.next())
                 {
                     Ingredient ing = new Ingredient(resultSet2.getString("NAME"),Unit.valueOf(resultSet2.getString("UNIT")),resultSet2.getDouble("AMOUNT"));
                     recipe.addIngredient(ing);
                 }
+
                 cmd2 = "SELECT * FROM INSTRUCTIONS WHERE RECIPEID=" + myID + "\n";
                 resultSet2 = statement.executeQuery(cmd2);
+
                 while(resultSet2.next())
                 {
                     recipe.addInstructions(resultSet2.getString("INSTRUCTION"), resultSet2.getString("SUBINSTRUCTION"));
                 }
+
                 cmd2 = "SELECT * FROM DIFFICULTYRATINGS WHERE RECIPEID=" + myID + "\n";
                 resultSet2 = statement.executeQuery(cmd2);
+
                 while(resultSet2.next())
                 {
                     recipe.addDifficultyRating(resultSet2.getDouble("RATING"));
                 }
+
                 cmd2 = "SELECT * FROM TASTERATINGS WHERE RECIPEID=" + myID + "\n";
                 resultSet2 = statement.executeQuery(cmd2);
+
                 while(resultSet2.next())
                 {
                     recipe.addTasteRating(resultSet2.getDouble("RATING"));
                 }
+
                 cmd2 = "SELECT * FROM COOKINGTIMES WHERE RECIPEID=" + myID + "\n";
                 resultSet2 = statement.executeQuery(cmd2);
+
                 while(resultSet2.next())
                 {
                     recipe.addCookingTime(resultSet2.getInt("RATING"));
                 }
+
                 recipes.add(recipe);
             }
+
             resultSet.close();
         }
         catch (Exception e)
         {
             processSQLError(e);
         }
+
         return recipes;
     }
 
@@ -430,12 +459,12 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
         return result;
-    }//end delRecipe
+    }
 
     public String resetDatabase()
     {
-
         result = null;
 
         if(connection == null)
@@ -475,6 +504,7 @@ public class DataAccessObject implements DataAccess
         String result;
 
         result = null;
+
         try
         {
             SQLWarning warning = st.getWarnings();
@@ -487,18 +517,18 @@ public class DataAccessObject implements DataAccess
         {
             result = processSQLError(e);
         }
+
         if (updateCount != 1)
         {
             result = "Tuple not inserted correctly.";
         }
+
         return result;
     }
 
     public String processSQLError(Exception e)
     {
         String result = "*** SQL Error: " + e.getMessage();
-
-        // Remember, this will NOT be seen by the user!
         e.printStackTrace();
 
         return result;

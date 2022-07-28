@@ -88,12 +88,12 @@ public class IngredientTest extends TestCase
         recipe.addIngredient(new Ingredient("ingredient4", Unit.ML, 0.987973));
         recipe.addIngredient(new Ingredient("ingredient5", Unit.ML, Double.MAX_VALUE));
 
-        assertEquals(0.1, recipe.getIngredients().get(0).getAmount());
-        assertEquals(1.0, recipe.getIngredients().get(1).getAmount());
-        assertEquals(1.0, recipe.getIngredients().get(2).getAmount());
-        assertEquals(1.0, recipe.getIngredients().get(3).getAmount());
-        assertEquals(0.987973, recipe.getIngredients().get(4).getAmount());
-        assertEquals(Double.MAX_VALUE, recipe.getIngredients().get(5).getAmount());
+        assertEquals(0.1, recipe.getIngredients().get(0).getNumberOfIngredients());
+        assertEquals(1.0, recipe.getIngredients().get(1).getNumberOfIngredients());
+        assertEquals(1.0, recipe.getIngredients().get(2).getNumberOfIngredients());
+        assertEquals(1.0, recipe.getIngredients().get(3).getNumberOfIngredients());
+        assertEquals(0.987973, recipe.getIngredients().get(4).getNumberOfIngredients());
+        assertEquals(Double.MAX_VALUE, recipe.getIngredients().get(5).getNumberOfIngredients());
     }//end testIngredientAmount
 
 

@@ -1,5 +1,8 @@
 package comp3350.littlechef.business;
 
+// CLASS: DecimalFractionConversion.java
+// REMARKS: This class will covert decimals to fraction
+//-----------------------------------------
 public class DecimalFractionConversion
 {
 
@@ -18,6 +21,7 @@ public class DecimalFractionConversion
                 int mid_denominator = 0;
 
                 boolean equivalentFractionFound = false;
+
                 while(!equivalentFractionFound)
                 {
                     mid_numerator = lower_numerator + upper_numerator;

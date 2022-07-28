@@ -65,7 +65,7 @@ public class DataAccessHSQLDBTest extends TestCase
         assertEquals("updatedRecipe",(recipeList).get(0).getName());
         assertEquals("testIngredient",(recipeList).get(0).getIngredients().get(0).getName());
         assertEquals("CUP",(recipeList).get(0).getIngredients().get(0).getUnit());
-        assertEquals(1.0,(recipeList).get(0).getIngredients().get(0).getAmount());
+        assertEquals(1.0,(recipeList).get(0).getIngredients().get(0).getNumberOfIngredients());
         assertEquals("instructions",(recipeList).get(0).getInstructions().get(0)[0]);
         assertEquals("sub-instructions",(recipeList).get(0).getInstructions().get(0)[1]);
 
@@ -75,7 +75,7 @@ public class DataAccessHSQLDBTest extends TestCase
         assertEquals("updatedRecipe",(recipeList).get(0).getName());
         assertEquals("testIngredient",(recipeList).get(0).getIngredients().get(0).getName());
         assertEquals("CUP",(recipeList).get(0).getIngredients().get(0).getUnit());
-        assertEquals(1.0,(recipeList).get(0).getIngredients().get(0).getAmount());
+        assertEquals(1.0,(recipeList).get(0).getIngredients().get(0).getNumberOfIngredients());
         assertEquals("instructions",(recipeList).get(0).getInstructions().get(0)[0]);
         assertEquals("sub-instructions",(recipeList).get(0).getInstructions().get(0)[1]);
 
@@ -154,7 +154,7 @@ public class DataAccessHSQLDBTest extends TestCase
         assertEquals("newRecipeName",(recipeList).get(0).getName());
         assertEquals("firstIngredient",(recipeList).get(0).getIngredients().get(0).getName());
         assertEquals("MM",(recipeList).get(0).getIngredients().get(0).getUnit());
-        assertEquals(55.0,(recipeList).get(0).getIngredients().get(0).getAmount());
+        assertEquals(55.0,(recipeList).get(0).getIngredients().get(0).getNumberOfIngredients());
         assertEquals("instruction1",(recipeList).get(0).getInstructions().get(0)[0]);
         assertEquals("instruction2",(recipeList).get(0).getInstructions().get(0)[1]);
 
@@ -164,7 +164,7 @@ public class DataAccessHSQLDBTest extends TestCase
         assertEquals("newRecipeName",(recipeList).get(0).getName());
         assertEquals("firstIngredient",(recipeList).get(0).getIngredients().get(0).getName());
         assertEquals("MM",(recipeList).get(0).getIngredients().get(0).getUnit());
-        assertEquals(55.0,(recipeList).get(0).getIngredients().get(0).getAmount());
+        assertEquals(55.0,(recipeList).get(0).getIngredients().get(0).getNumberOfIngredients());
         assertEquals("instruction1",(recipeList).get(0).getInstructions().get(0)[0]);
         assertEquals("instruction2",(recipeList).get(0).getInstructions().get(0)[1]);
 
@@ -208,7 +208,7 @@ public class DataAccessHSQLDBTest extends TestCase
         assertEquals("newName",(recipeList).get(0).getName());
         assertEquals("addedIngredient",(recipeList).get(0).getIngredients().get(0).getName());
         assertEquals("QUANTITY",(recipeList).get(0).getIngredients().get(0).getUnit());
-        assertEquals(3.0,(recipeList).get(0).getIngredients().get(0).getAmount());
+        assertEquals(3.0,(recipeList).get(0).getIngredients().get(0).getNumberOfIngredients());
         assertEquals("addedInstructions",(recipeList).get(0).getInstructions().get(0)[0]);
         assertEquals("addedSubInstructions",(recipeList).get(0).getInstructions().get(0)[1]);
 
@@ -218,7 +218,7 @@ public class DataAccessHSQLDBTest extends TestCase
         assertEquals("newName",(recipeList).get(0).getName());
         assertEquals("addedIngredient",(recipeList).get(0).getIngredients().get(0).getName());
         assertEquals("QUANTITY",(recipeList).get(0).getIngredients().get(0).getUnit());
-        assertEquals(3.0,(recipeList).get(0).getIngredients().get(0).getAmount());
+        assertEquals(3.0,(recipeList).get(0).getIngredients().get(0).getNumberOfIngredients());
         assertEquals("addedInstructions",(recipeList).get(0).getInstructions().get(0)[0]);
         assertEquals("addedSubInstructions",(recipeList).get(0).getInstructions().get(0)[1]);
 

@@ -11,10 +11,7 @@ import comp3350.littlechef.objects.Unit;
 import comp3350.littlechef.persistence.DataAccess;
 
 // CLASS: AccessRecipes.java
-//
-//
 // REMARKS: This class will access the database of recipes to be used for processing.
-//
 //-----------------------------------------
 public class AccessRecipes
 {
@@ -23,7 +20,6 @@ public class AccessRecipes
     private Recipe recipe;
     private int currentRecipe;
 
-    //constructor
     public AccessRecipes()
     {
         dataAccess = Services.getDataAccess(Main.dbName);
@@ -40,16 +36,16 @@ public class AccessRecipes
 
     public Recipe getSequential()
     {
-        String result = null;
+        // for the first recipe
         if (recipes == null)
         {
             recipes = new ArrayList<Recipe>();
-            result = dataAccess.getRecipeSequential(recipes);
             currentRecipe = 0;
         }
+
         if (currentRecipe < recipes.size())
         {
-            recipe = (Recipe) recipes.get(currentRecipe);
+            recipe = recipes.get(currentRecipe);
             currentRecipe++;
         }
         else
@@ -65,13 +61,12 @@ public class AccessRecipes
     public Recipe getRandom(int recipeID)
     {
         recipe = null;
-
         recipes = dataAccess.getRecipeRandom(new Recipe(recipeID));
 
         if(recipes != null)
         {
             if (recipes.size() == 1) {
-                recipe = (Recipe) recipes.get(0);
+                recipe = recipes.get(0);
             }
         }
 

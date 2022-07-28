@@ -26,11 +26,11 @@ public class ScaleRecipeTest extends TestCase
         recipe.addIngredient(new Ingredient("ingr4", Unit.CUP, 100));
 
         ArrayList<Ingredient> ingredients = scaleIngredients(recipe, 1);
-        assertEquals(0.25,ingredients.get(0).getAmount());
-        assertEquals(0.5,ingredients.get(1).getAmount());
-        assertEquals(1.0,ingredients.get(2).getAmount());
-        assertEquals(2.0,ingredients.get(3).getAmount());
-        assertEquals(100.0,ingredients.get(4).getAmount());
+        assertEquals(0.25,ingredients.get(0).getNumberOfIngredients());
+        assertEquals(0.5,ingredients.get(1).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(2).getNumberOfIngredients());
+        assertEquals(2.0,ingredients.get(3).getNumberOfIngredients());
+        assertEquals(100.0,ingredients.get(4).getNumberOfIngredients());
         assertEquals(Unit.G,ingredients.get(0).getMeasurement());
         assertEquals(Unit.TSP,ingredients.get(1).getMeasurement());
         assertEquals(Unit.TSP,ingredients.get(2).getMeasurement());
@@ -38,11 +38,11 @@ public class ScaleRecipeTest extends TestCase
         assertEquals(Unit.CUP,ingredients.get(4).getMeasurement());
 
         ArrayList<Ingredient> ingredients2 = scaleIngredients(recipe, 2);
-        assertEquals(0.5,ingredients2.get(0).getAmount());
-        assertEquals(1.0,ingredients2.get(1).getAmount());
-        assertEquals(2.0,ingredients2.get(2).getAmount());
-        assertEquals(4.0,ingredients2.get(3).getAmount());
-        assertEquals(200.0,ingredients2.get(4).getAmount());
+        assertEquals(0.5,ingredients2.get(0).getNumberOfIngredients());
+        assertEquals(1.0,ingredients2.get(1).getNumberOfIngredients());
+        assertEquals(2.0,ingredients2.get(2).getNumberOfIngredients());
+        assertEquals(4.0,ingredients2.get(3).getNumberOfIngredients());
+        assertEquals(200.0,ingredients2.get(4).getNumberOfIngredients());
 
         assertEquals(Unit.G,ingredients.get(0).getMeasurement());
         assertEquals(Unit.TSP,ingredients.get(1).getMeasurement());
@@ -60,8 +60,8 @@ public class ScaleRecipeTest extends TestCase
 
 
         ArrayList<Ingredient> ingredients = scaleIngredients(recipe, 0);
-        assertEquals(2.0,ingredients.get(0).getAmount());
-        assertEquals(0.5,ingredients.get(1).getAmount());
+        assertEquals(2.0,ingredients.get(0).getNumberOfIngredients());
+        assertEquals(0.5,ingredients.get(1).getNumberOfIngredients());
         assertEquals(Unit.PINCH,ingredients.get(0).getMeasurement());
         assertEquals(Unit.CUP,ingredients.get(1).getMeasurement());
 
@@ -76,14 +76,14 @@ public class ScaleRecipeTest extends TestCase
 
 
         ArrayList<Ingredient> ingredients = scaleIngredients(recipe, -1);
-        assertEquals(2.0,ingredients.get(0).getAmount());
-        assertEquals(0.5,ingredients.get(1).getAmount());
+        assertEquals(2.0,ingredients.get(0).getNumberOfIngredients());
+        assertEquals(0.5,ingredients.get(1).getNumberOfIngredients());
         assertEquals(Unit.PINCH,ingredients.get(0).getMeasurement());
         assertEquals(Unit.CUP,ingredients.get(1).getMeasurement());
 
         ArrayList<Ingredient> ingredients2 = scaleIngredients(recipe, -5);
-        assertEquals(2.0,ingredients2.get(0).getAmount());
-        assertEquals(0.5,ingredients2.get(1).getAmount());
+        assertEquals(2.0,ingredients2.get(0).getNumberOfIngredients());
+        assertEquals(0.5,ingredients2.get(1).getNumberOfIngredients());
         assertEquals(Unit.PINCH,ingredients2.get(0).getMeasurement());
         assertEquals(Unit.CUP,ingredients2.get(1).getMeasurement());
 
@@ -99,41 +99,41 @@ public class ScaleRecipeTest extends TestCase
 
 
         ArrayList<Ingredient> ingredients = scaleIngredients(recipe, 1);
-        assertEquals(4.0,ingredients.get(0).getAmount());
-        assertEquals(0.5,ingredients.get(1).getAmount());
-        assertEquals(3.0,ingredients.get(2).getAmount());
+        assertEquals(4.0,ingredients.get(0).getNumberOfIngredients());
+        assertEquals(0.5,ingredients.get(1).getNumberOfIngredients());
+        assertEquals(3.0,ingredients.get(2).getNumberOfIngredients());
         assertEquals(Unit.PINCH,ingredients.get(0).getMeasurement());
         assertEquals(Unit.CUP,ingredients.get(1).getMeasurement());
         assertEquals(Unit.TSP,ingredients.get(2).getMeasurement());
 
         ArrayList<Ingredient> ingredients2 = scaleIngredients(recipe, 2);
-        assertEquals(8.0,ingredients2.get(0).getAmount());
-        assertEquals(1.0,ingredients2.get(1).getAmount());
-        assertEquals(2.0,ingredients2.get(2).getAmount());
+        assertEquals(8.0,ingredients2.get(0).getNumberOfIngredients());
+        assertEquals(1.0,ingredients2.get(1).getNumberOfIngredients());
+        assertEquals(2.0,ingredients2.get(2).getNumberOfIngredients());
         assertEquals(Unit.PINCH,ingredients2.get(0).getMeasurement());
         assertEquals(Unit.CUP,ingredients2.get(1).getMeasurement());
         assertEquals(Unit.TBSP,ingredients2.get(2).getMeasurement());
 
         ArrayList<Ingredient> ingredients3 = scaleIngredients(recipe, 3);
-        assertEquals(12.0,ingredients3.get(0).getAmount());
-        assertEquals(1.5,ingredients3.get(1).getAmount());
-        assertEquals(3.0,ingredients3.get(2).getAmount());
+        assertEquals(12.0,ingredients3.get(0).getNumberOfIngredients());
+        assertEquals(1.5,ingredients3.get(1).getNumberOfIngredients());
+        assertEquals(3.0,ingredients3.get(2).getNumberOfIngredients());
         assertEquals(Unit.PINCH,ingredients3.get(0).getMeasurement());
         assertEquals(Unit.CUP,ingredients3.get(1).getMeasurement());
         assertEquals(Unit.TBSP,ingredients3.get(2).getMeasurement());
 
         ArrayList<Ingredient> ingredients4 = scaleIngredients(recipe, 8);
-        assertEquals(2.0,ingredients4.get(0).getAmount());
-        assertEquals(4.0,ingredients4.get(1).getAmount());
-        assertEquals(0.5,ingredients4.get(2).getAmount());
+        assertEquals(2.0,ingredients4.get(0).getNumberOfIngredients());
+        assertEquals(4.0,ingredients4.get(1).getNumberOfIngredients());
+        assertEquals(0.5,ingredients4.get(2).getNumberOfIngredients());
         assertEquals(Unit.TSP,ingredients4.get(0).getMeasurement());
         assertEquals(Unit.CUP,ingredients4.get(1).getMeasurement());
         assertEquals(Unit.CUP,ingredients4.get(2).getMeasurement());
 
         ArrayList<Ingredient> ingredients5 = scaleIngredients(recipe, 400);
-        assertEquals(2.0,ingredients5.get(0).getAmount());
-        assertEquals(200.0,ingredients5.get(1).getAmount());
-        assertEquals(25.0,ingredients5.get(2).getAmount());
+        assertEquals(2.0,ingredients5.get(0).getNumberOfIngredients());
+        assertEquals(200.0,ingredients5.get(1).getNumberOfIngredients());
+        assertEquals(25.0,ingredients5.get(2).getNumberOfIngredients());
         assertEquals(Unit.CUP,ingredients5.get(0).getMeasurement());
         assertEquals(Unit.CUP,ingredients5.get(1).getMeasurement());
         assertEquals(Unit.CUP,ingredients5.get(2).getMeasurement());
@@ -155,14 +155,14 @@ public class ScaleRecipeTest extends TestCase
 
 
         ArrayList<Ingredient> ingredients = scaleIngredients(recipe, 2);
-        assertEquals(1.0,ingredients.get(0).getAmount());
-        assertEquals(1.0,ingredients.get(1).getAmount());
-        assertEquals(1.0,ingredients.get(2).getAmount());
-        assertEquals(1.0,ingredients.get(3).getAmount());
-        assertEquals(1.0,ingredients.get(4).getAmount());
-        assertEquals(1.0,ingredients.get(5).getAmount());
-        assertEquals(1.0,ingredients.get(6).getAmount());
-        assertEquals(1.0,ingredients.get(7).getAmount());
+        assertEquals(1.0,ingredients.get(0).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(1).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(2).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(3).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(4).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(5).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(6).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(7).getNumberOfIngredients());
 
         assertEquals(Unit.TSP,ingredients.get(0).getMeasurement());
         assertEquals(Unit.TBSP,ingredients.get(1).getMeasurement());
@@ -184,18 +184,18 @@ public class ScaleRecipeTest extends TestCase
 
 
         ArrayList<Ingredient> ingredients = scaleIngredients(recipe, 1);
-        assertEquals(16.0,ingredients.get(0).getAmount());
-        assertEquals(3.0,ingredients.get(1).getAmount());
-        assertEquals(4.5,ingredients.get(2).getAmount());
+        assertEquals(16.0,ingredients.get(0).getNumberOfIngredients());
+        assertEquals(3.0,ingredients.get(1).getNumberOfIngredients());
+        assertEquals(4.5,ingredients.get(2).getNumberOfIngredients());
 
         assertEquals(Unit.PINCH,ingredients.get(0).getMeasurement());
         assertEquals(Unit.TSP,ingredients.get(1).getMeasurement());
         assertEquals(Unit.TSP,ingredients.get(2).getMeasurement());
 
         ArrayList<Ingredient> ingredients2 = scaleIngredients(recipe, 2);
-        assertEquals(2.0,ingredients2.get(0).getAmount());
-        assertEquals(2.0,ingredients2.get(1).getAmount());
-        assertEquals(3.0,ingredients2.get(2).getAmount());
+        assertEquals(2.0,ingredients2.get(0).getNumberOfIngredients());
+        assertEquals(2.0,ingredients2.get(1).getNumberOfIngredients());
+        assertEquals(3.0,ingredients2.get(2).getNumberOfIngredients());
 
         assertEquals(Unit.TSP,ingredients2.get(0).getMeasurement());
         assertEquals(Unit.TBSP,ingredients2.get(1).getMeasurement());
@@ -211,8 +211,8 @@ public class ScaleRecipeTest extends TestCase
 
 
         ArrayList<Ingredient> ingredients = scaleIngredients(recipe, 2);
-        assertEquals(2.0,ingredients.get(0).getAmount());
-        assertEquals(2.0,ingredients.get(1).getAmount());
+        assertEquals(2.0,ingredients.get(0).getNumberOfIngredients());
+        assertEquals(2.0,ingredients.get(1).getNumberOfIngredients());
 
         assertEquals(Unit.CUP,ingredients.get(0).getMeasurement());
         assertEquals(Unit.M,ingredients.get(1).getMeasurement());
@@ -229,9 +229,9 @@ public class ScaleRecipeTest extends TestCase
 
 
         ArrayList<Ingredient> ingredients = scaleIngredients(recipe, 2);
-        assertEquals(1.5,ingredients.get(0).getAmount());
-        assertEquals(1.0,ingredients.get(1).getAmount());
-        assertEquals(2.0,ingredients.get(2).getAmount());
+        assertEquals(1.5,ingredients.get(0).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(1).getNumberOfIngredients());
+        assertEquals(2.0,ingredients.get(2).getNumberOfIngredients());
 
         assertEquals(Unit.TSP,ingredients.get(0).getMeasurement());
         assertEquals(Unit.CM,ingredients.get(1).getMeasurement());
@@ -254,14 +254,14 @@ public class ScaleRecipeTest extends TestCase
 
 
         ArrayList<Ingredient> ingredients = scaleIngredients(recipe, 2);
-        assertEquals(16.0,ingredients.get(0).getAmount());
-        assertEquals(3.0,ingredients.get(1).getAmount());
-        assertEquals(4.0,ingredients.get(2).getAmount());
-        assertEquals(998.0,ingredients.get(3).getAmount());
-        assertEquals(1000.0,ingredients.get(4).getAmount());
-        assertEquals(9.75,ingredients.get(5).getAmount());
-        assertEquals(99.75,ingredients.get(6).getAmount());
-        assertEquals(498.0,ingredients.get(7).getAmount());
+        assertEquals(16.0,ingredients.get(0).getNumberOfIngredients());
+        assertEquals(3.0,ingredients.get(1).getNumberOfIngredients());
+        assertEquals(4.0,ingredients.get(2).getNumberOfIngredients());
+        assertEquals(998.0,ingredients.get(3).getNumberOfIngredients());
+        assertEquals(1000.0,ingredients.get(4).getNumberOfIngredients());
+        assertEquals(9.75,ingredients.get(5).getNumberOfIngredients());
+        assertEquals(99.75,ingredients.get(6).getNumberOfIngredients());
+        assertEquals(498.0,ingredients.get(7).getNumberOfIngredients());
 
         assertEquals(Unit.PINCH,ingredients.get(0).getMeasurement());
         assertEquals(Unit.TSP,ingredients.get(1).getMeasurement());
@@ -289,14 +289,14 @@ public class ScaleRecipeTest extends TestCase
 
 
         ArrayList<Ingredient> ingredients = scaleIngredients(recipe, 2);
-        assertEquals(1.0,ingredients.get(0).getAmount());
-        assertEquals(1.0,ingredients.get(1).getAmount());
-        assertEquals(0.25,ingredients.get(2).getAmount());
-        assertEquals(1.0,ingredients.get(3).getAmount());
-        assertEquals(1.0,ingredients.get(4).getAmount());
-        assertEquals(1.0,ingredients.get(5).getAmount());
-        assertEquals(1.0,ingredients.get(6).getAmount());
-        assertEquals(0.5,ingredients.get(7).getAmount());
+        assertEquals(1.0,ingredients.get(0).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(1).getNumberOfIngredients());
+        assertEquals(0.25,ingredients.get(2).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(3).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(4).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(5).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(6).getNumberOfIngredients());
+        assertEquals(0.5,ingredients.get(7).getNumberOfIngredients());
 
         assertEquals(Unit.TSP,ingredients.get(0).getMeasurement());
         assertEquals(Unit.TBSP,ingredients.get(1).getMeasurement());
@@ -323,25 +323,25 @@ public class ScaleRecipeTest extends TestCase
         recipe.addIngredient(new Ingredient("ingr7", Unit.ML, 0));
 
         ArrayList<Ingredient> ingredients = scaleIngredients(recipe, 1);
-        assertEquals(1.0,ingredients.get(0).getAmount());
-        assertEquals(1.0,ingredients.get(1).getAmount());
-        assertEquals(1.0,ingredients.get(2).getAmount());
-        assertEquals(1.0,ingredients.get(3).getAmount());
-        assertEquals(1.0,ingredients.get(4).getAmount());
-        assertEquals(1.0,ingredients.get(5).getAmount());
-        assertEquals(1.0,ingredients.get(6).getAmount());
-        assertEquals(1.0,ingredients.get(7).getAmount());
+        assertEquals(1.0,ingredients.get(0).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(1).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(2).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(3).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(4).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(5).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(6).getNumberOfIngredients());
+        assertEquals(1.0,ingredients.get(7).getNumberOfIngredients());
 
         ArrayList<Ingredient> ingredients2 = scaleIngredients(recipe, 3);
-        assertEquals(3.0,ingredients2.get(0).getAmount());
-        assertEquals(1.0,ingredients2.get(1).getAmount());
+        assertEquals(3.0,ingredients2.get(0).getNumberOfIngredients());
+        assertEquals(1.0,ingredients2.get(1).getNumberOfIngredients());
         assertEquals(Unit.TBSP,ingredients2.get(1).getMeasurement());
-        assertEquals(3.0,ingredients2.get(2).getAmount());
-        assertEquals(3.0,ingredients2.get(3).getAmount());
-        assertEquals(3.0,ingredients2.get(4).getAmount());
-        assertEquals(3.0,ingredients2.get(5).getAmount());
-        assertEquals(3.0,ingredients2.get(6).getAmount());
-        assertEquals(3.0,ingredients2.get(7).getAmount());
+        assertEquals(3.0,ingredients2.get(2).getNumberOfIngredients());
+        assertEquals(3.0,ingredients2.get(3).getNumberOfIngredients());
+        assertEquals(3.0,ingredients2.get(4).getNumberOfIngredients());
+        assertEquals(3.0,ingredients2.get(5).getNumberOfIngredients());
+        assertEquals(3.0,ingredients2.get(6).getNumberOfIngredients());
+        assertEquals(3.0,ingredients2.get(7).getNumberOfIngredients());
     }
 
     @Test
