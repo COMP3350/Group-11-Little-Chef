@@ -133,7 +133,7 @@ public class ReadRateEditAddRecipeAcceptanceTest
         onView(withText("Kosher salt")).check(doesNotExist()); //check that it is not displayed
 
         //add new ingredient
-        onView(withId(R.id.new_ingredient_amount)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.add_ingredient_button)).check(matches(isDisplayed())).perform(click());
 
 
         onView(withId(R.id.save_dialog_box)).check(matches(isDisplayed())).check(matches(not(isEnabled())));//check that save button is disabled after clearing
@@ -256,15 +256,17 @@ public class ReadRateEditAddRecipeAcceptanceTest
         onView(withId(R.id.taste_radio_4)).check(matches(isDisplayed())).perform(click());
         onView(withId(R.id.submit_rating)).check(matches(isDisplayed())).perform(click());
 
-        //check that difficulty, test and overall rating changed
-        //onView(within)
-        onView(withText("Difficulty: 5.00")).check(matches(isDisplayed()));
-        onView(withText("Taste: 4.00")).check(matches(isDisplayed()));
-        onView(withText("4.50/5")).check(matches(isDisplayed()));
+
 
         //Second time cook with different time and rate value
         onView(withText("Chicken Wrap")).check(matches(isDisplayed())).perform(click());
         onView(withText("Ingredients")).check(matches(isDisplayed()));
+
+        //check that difficulty, test and overall rating changed
+        onView(withText("Difficulty: 5.00")).check(matches(isDisplayed()));
+        onView(withText("Taste: 4.00")).check(matches(isDisplayed()));
+        onView(withText("4.50/5")).check(matches(isDisplayed()));
+
         onView(withText("Instructions")).check(matches(isDisplayed())).perform(click());
 
         onView(withId(R.id.reset_timer)).check(matches(isDisplayed()));
@@ -300,13 +302,15 @@ public class ReadRateEditAddRecipeAcceptanceTest
         onView(withId(R.id.taste_radio_4)).check(matches(isDisplayed())).perform(click());
         onView(withId(R.id.submit_rating)).check(matches(isDisplayed())).perform(click());
 
+
+        //change Chicken Wrap name "A New Chicken Wrap"
+        onView(withText("Chicken Wrap")).check(matches(isDisplayed())).perform(click());
+
         //check that difficulty, test and overall rating changed
         onView(withText("Difficulty: 3.50")).check(matches(isDisplayed()));
         onView(withText("Taste: 4.00")).check(matches(isDisplayed()));
         onView(withText("3.75/5")).check(matches(isDisplayed()));
 
-        //change Chicken Wrap name "A New Chicken Wrap"
-        onView(withText("Chicken Wrap")).check(matches(isDisplayed())).perform(click());
         onView(withId(R.id.edit_recipe)).check(matches(isDisplayed())).perform(click());
         onView(withId(R.id.recipe_name_edit)).perform(clearText(), typeText("A New Chicken Wrap"));
 
@@ -336,7 +340,7 @@ public class ReadRateEditAddRecipeAcceptanceTest
         onView(withText("Mozzarella Cheese")).check(doesNotExist()); //check that it is not displayed
 
         //add new ingredient
-        onView(withId(R.id.new_ingredient_amount)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.add_ingredient_button)).check(matches(isDisplayed())).perform(click());
 
 
         onView(withId(R.id.save_dialog_box)).check(matches(isDisplayed())).check(matches(not(isEnabled())));//check that save button is disabled after clearing
@@ -460,16 +464,16 @@ public class ReadRateEditAddRecipeAcceptanceTest
          onView(withId(R.id.taste_radio_1)).check(matches(isDisplayed())).perform(click());
          onView(withId(R.id.submit_rating)).check(matches(isDisplayed())).perform(click());
 
-         //check that difficulty, test and overall rating changed
-         onView(withText("Difficulty: 2.00")).check(matches(isDisplayed()));
-         onView(withText("Taste: 1.00")).check(matches(isDisplayed()));
-         onView(withText("1.50/5")).check(matches(isDisplayed()));
-
-
 
          //Second time cook and rate with different value
          onView(ViewMatchers.withId(R.id.recipe_list_view)).perform(ViewActions.swipeUp());
          onView(withText("Grilled Halloumi Salad")).check(matches(isDisplayed())).perform(click());
+
+        //check that difficulty, test and overall rating changed
+        onView(withText("Difficulty: 2.00")).check(matches(isDisplayed()));
+        onView(withText("Taste: 1.00")).check(matches(isDisplayed()));
+        onView(withText("1.50/5")).check(matches(isDisplayed()));
+
          onView(withText("Ingredients")).check(matches(isDisplayed()));
          onView(withText("Instructions")).check(matches(isDisplayed())).perform(click());
 
@@ -506,14 +510,17 @@ public class ReadRateEditAddRecipeAcceptanceTest
          onView(withId(R.id.taste_radio_5)).check(matches(isDisplayed())).perform(click());
          onView(withId(R.id.submit_rating)).check(matches(isDisplayed())).perform(click());
 
-         //check that difficulty, test and overall rating changed
-         onView(withText("Difficulty: 1.50")).check(matches(isDisplayed()));
-         onView(withText("Taste: 3.00")).check(matches(isDisplayed()));
-         onView(withText("2.25/5")).check(matches(isDisplayed()));
+
 
          //third  time cook and rate with different value
          onView(ViewMatchers.withId(R.id.recipe_list_view)).perform(ViewActions.swipeUp());
          onView(withText("Grilled Halloumi Salad")).check(matches(isDisplayed())).perform(click());
+
+        //check that difficulty, test and overall rating changed
+        onView(withText("Difficulty: 1.50")).check(matches(isDisplayed()));
+        onView(withText("Taste: 3.00")).check(matches(isDisplayed()));
+        onView(withText("2.25/5")).check(matches(isDisplayed()));
+
          onView(withText("Ingredients")).check(matches(isDisplayed()));
          onView(withText("Instructions")).check(matches(isDisplayed())).perform(click());
 
@@ -591,7 +598,7 @@ public class ReadRateEditAddRecipeAcceptanceTest
         onView(withText("Salt")).check(doesNotExist()); //check that it is not displayed
 
         //add new ingredient
-        onView(withId(R.id.new_ingredient_amount)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.add_ingredient_button)).check(matches(isDisplayed())).perform(click());
 
 
         onView(withId(R.id.save_dialog_box)).check(matches(isDisplayed())).check(matches(not(isEnabled())));//check that save button is disabled after clearing

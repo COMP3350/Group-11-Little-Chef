@@ -206,5 +206,4 @@ public class AddIngredientActivity extends AppCompatActivity
 
         return result;
     }
-
 }
