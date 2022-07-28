@@ -94,7 +94,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/instructionsSteps"
             android:layout_width="match_parent"
-            android:layout_height="600dp"
+            android:layout_height="296dp"
             android:inputType="textMultiLine"
             android:lines="10"
             android:gravity="top" />

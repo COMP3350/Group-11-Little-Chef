@@ -11,14 +11,17 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withSpinnerText;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
+import static org.hamcrest.Matchers.hasToString;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.startsWith;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,7 +78,7 @@ public class ReadRateRecipeAcceptanceTest
     @Test
     public void testTypicalCases()
     {
-        onView(withText("Guacamole")).check(matches(isDisplayed())).perform(click());
+        onData(hasToString(startsWith("Guacamole"))).perform(click());
 
         //check the recipe info
         onView(withId(R.id.recipe_name)).check(matches(withText("Guacamole")));
@@ -116,12 +119,8 @@ public class ReadRateRecipeAcceptanceTest
         onView(withId(R.id.taste_radio_5)).check(matches(isDisplayed())).perform(click());
         onView(withId(R.id.submit_rating)).check(matches(isDisplayed())).perform(click());
 
-        //check that difficulty, test and overall rating changed
-        onView(withText("Difficulty: 3.00")).check(matches(isDisplayed()));
-        onView(withText("Taste: 5.00")).check(matches(isDisplayed()));
-        onView(withText("4.00/5")).check(matches(isDisplayed()));
 
-        onView(withText("Guacamole")).check(matches(isDisplayed())).perform(click());
+        onData(hasToString(startsWith("Guacamole"))).perform(click());
 
         //check updated recipe info
         onView(withId(R.id.estimated_time)).check(matches(withText("Time: 00h 00m 05s")));
@@ -233,7 +232,7 @@ public class ReadRateRecipeAcceptanceTest
         onView(withId(R.id.save_button)).check(matches(isDisplayed())).perform(click());
 
         //Gotta check that edit vere successful
-        onView(withText("Mum's favourite Guacamole")).check(matches(isDisplayed())).perform(click());
+        onData(hasToString(startsWith("Mum's favourite Guacamole"))).perform(click());
         onView(withId(R.id.recipe_name)).check(matches(withText("Mum's favourite Guacamole")));
         onView(withText("Big Sweet Ripe Avocados")).check(matches(isDisplayed())); //check the edit
         onView(withText("Kosher salt")).check(doesNotExist()); //check delete
@@ -252,17 +251,85 @@ public class ReadRateRecipeAcceptanceTest
         //delete the changed recipes
         onView(withText("Mum's favourite Guacamole")).check(matches(isDisplayed())).perform(click());
         onView(withId(R.id.delete_recipe)).check(matches(isDisplayed())).perform(click());
+        onView(withText("YES")).check(matches(isDisplayed())).perform(click());
 
         onView(withText("Mum's favourite Guacamole")).check(doesNotExist()); //check recipes are not there
 
         //add the default recipes
+        onView(withId(R.id.add)).perform(click());
+        onView(withId(R.id.nameInput)).check(matches(isDisplayed())).perform(typeText("Guacamole"));
+        onView(withId(R.id.addRecipeButton)).check(matches(isDisplayed())).perform(click());
 
+        //add ingredients
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Ripe avocados"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("2.0"));
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
 
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Kosher salt"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("0.25"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("TSP"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
 
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Fresh Lime or Lemon Juice"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("1.0"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("TBSP"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
 
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Minced Red Onion"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("4.0"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("TBSP"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
 
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Jalapeno chillis"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("2.0"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("QUANTITY"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
 
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Cilantro"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("2.0"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("TBSP"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
 
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Black Pepper"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("1.0"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("PINCH"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.ingredientName)).check(matches(isDisplayed())).perform(typeText("Ripe Tomato"));
+        onView(withId(R.id.ingredientAmount)).check(matches(isDisplayed())).perform(typeText("0.5"));
+        onView(withId(R.id.spinnerUnit)).check(matches(isDisplayed())).perform(click());
+        onData(allOf(is(instanceOf(String.class)),is("QUANTITY"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.addIngredientButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.save_all_ingredients)).check(matches(isDisplayed())).perform(click());
+
+        //add instructions
+        onView(withId(R.id.instruction)).check(matches(isDisplayed())).perform(typeText("Place eggs in a saucepan or pot and cover with cold water."));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.instructionsSteps)).check(matches(isDisplayed())).perform(typeText("Eggs first, then water. Why? Because if you put the eggs in afterward, they might crack as they fall to the bottom of the pan. It''s no fun to learn this the hard way."));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.addInstructionButton)).check(matches(isDisplayed())).perform(click());
+        
+        onView(withId(R.id.instruction)).check(matches(isDisplayed())).perform(typeText("Put pan over high heat and bring water to a rolling boil. Remove pan from heat and cover."));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.instructionsSteps)).check(matches(isDisplayed())).perform(typeText("How long does it take to boil an egg? Well, actually, you want the water to come just to a boil but not stay there. Eggs exposed to high heat for a long time go through a chemical reaction that turns the yolks green. So the answer to \"How long do you boil hard boiled eggs?\" is: pretty much not at all. Because the eggs cook in water that''s not actually boiling, some people use the term \"hard-cooked\" instead of \"hard-boiled\" eggs."));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.addInstructionButton)).check(matches(isDisplayed())).perform(click());
+
+        onView(withId(R.id.instruction)).check(matches(isDisplayed())).perform(typeText("Drain eggs immediately and put in a bowl filled with water and ice cubes."));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.instructionsSteps)).check(matches(isDisplayed())).perform(typeText("Why ice water? It cools the eggs down and prevents the green yolk problem. (Chilled water isn''t cold enough - you want cold water with lots of ice cubes floating in it.) If you''re planning to peel the eggs, crack them slightly before putting them in the ice water and let them sit for an hour for maximum ease of peeling."));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.addInstructionButton)).check(matches(isDisplayed())).perform(click());
+
+        //save the recipe
+        onView(withId(R.id.finishAdding)).check(matches(isDisplayed())).perform(click());
 
 
 

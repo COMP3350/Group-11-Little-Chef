@@ -267,6 +267,11 @@ public class Recipe implements Serializable
         return result;
     }
 
+    public String toString()
+    {
+        return name;
+    }
+
     private double calcAverage(ArrayList<Double> ratingVals)
     {
         double sum = 0.0;

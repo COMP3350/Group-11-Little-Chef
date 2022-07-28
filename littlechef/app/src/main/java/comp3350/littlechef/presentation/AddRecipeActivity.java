@@ -57,7 +57,7 @@ public class AddRecipeActivity extends AppCompatActivity
        // workingRecipeName.setText("Add Ingredients and steps to "+selectedRecipe.getName());
 
         Button addIngredientButton= (Button) findViewById(R.id.addIngredientButton);
-        Button addInstructionButton= (Button) findViewById(R.id.addInstructionButton);
+        Button saveAllIngredientsButton= (Button) findViewById(R.id.save_all_ingredients);
         Button finishAddingButton= (Button) findViewById(R.id.finishAdding);
         Button cancelButton= (Button) findViewById(R.id.cancelButton);
 
@@ -118,7 +118,7 @@ public class AddRecipeActivity extends AppCompatActivity
         });
 
         //button to start adding instructions to the recipe
-        addInstructionButton.setOnClickListener(new View.OnClickListener()
+        saveAllIngredientsButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)

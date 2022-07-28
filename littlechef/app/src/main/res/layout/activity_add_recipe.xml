@@ -96,7 +96,7 @@
                 />
 
             <Button
-                android:id="@+id/addInstructionButton"
+                android:id="@+id/save_all_ingredients"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
