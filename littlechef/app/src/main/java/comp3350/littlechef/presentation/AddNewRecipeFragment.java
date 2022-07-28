@@ -157,7 +157,7 @@ public class AddNewRecipeFragment extends Fragment
 
     private String checkEmpty(EditText editText)
     {
-        if(editText.getText().toString().equals(""))
+        if(editText.getText().toString().trim().equals(""))
             return "Recipe name required";
 
         return null;
@@ -165,7 +165,7 @@ public class AddNewRecipeFragment extends Fragment
     //Validate the recipe
     private String validateRecipeName(Recipe recipeAdd)
     {
-        //check through all recipes for duplicats
+        //check through all recipes for duplicates
         if (checkDuplicates(recipeAdd))
         {
             return recipeAdd.getName() + " already exists.";

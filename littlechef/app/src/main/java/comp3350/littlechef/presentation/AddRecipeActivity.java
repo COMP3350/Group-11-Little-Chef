@@ -162,7 +162,7 @@ public class AddRecipeActivity extends AppCompatActivity
         nameIngred = ingredientInputName.getText().toString();
         amountIngred = ingredientInputAmount.getText().toString();
         double amount;
-        try
+         try
         {
             amount = Double.parseDouble(amountIngred);
         }
