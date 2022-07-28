@@ -16,6 +16,7 @@
         android:gravity="start"
         android:maxEms="12"
         android:maxLines="1"
+        android:ellipsize="end"
 
         android:text="@string/recipe_card_name_placeholder"
         android:textColor="@color/recipe_name_text"

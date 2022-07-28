@@ -45,11 +45,11 @@ public class ReadRateEditAddRecipeAcceptanceTest
     @Test
     public void testTypicalCases()
     {
-        onData(hasToString(startsWith("Guacamole"))).perform(click());
+        onData(hasToString(startsWith("Hard Cooked Eggs"))).perform(click());
 
 
         //check the recipe info
-        onView(withId(R.id.recipe_name)).check(matches(withText("Guacamole")));
+        onView(withId(R.id.recipe_name)).check(matches(withText("Hard Cooked Eggs")));
         onView(withId(R.id.estimated_time)).check(matches(withText("Time: Not cooked")));
         onView(withId(R.id.difficulty)).check(matches(withText("Difficulty: -")));
         onView(withId(R.id.taste)).check(matches(withText("Taste: -")));
@@ -88,7 +88,7 @@ public class ReadRateEditAddRecipeAcceptanceTest
         onView(withId(R.id.submit_rating)).check(matches(isDisplayed())).perform(click());
 
 
-        onData(hasToString(startsWith("Guacamole"))).perform(click());
+        onData(hasToString(startsWith("Hard Cooked Eggs"))).perform(click());
 
         //check updated recipe info
         onView(withId(R.id.estimated_time)).check(matches(withText("Time: 00h 00m 05s")));
@@ -103,13 +103,13 @@ public class ReadRateEditAddRecipeAcceptanceTest
         onView(withId(R.id.difficulty_edit)).check(matches(withText("Difficulty: 3.00")));
         onView(withId(R.id.taste_edit)).check(matches(withText("Taste: 5.00")));
         onView(withId(R.id.rating_edit)).check(matches(withText("4.00/5")));
-        onView(withId(R.id.recipe_name_edit)).check(matches(withText("Guacamole")));
+        onView(withId(R.id.recipe_name_edit)).check(matches(withText("Hard Cooked Eggs")));
 
-        //Change Guacamole name "Mum's favourite Guacamole"
-        onView(withId(R.id.recipe_name_edit)).perform(clearText(), typeText("Mum's favourite Guacamole"));
+        //Change Hard Cooked Eggs name "Mum's favourite Hard Cooked Eggs"
+        onView(withId(R.id.recipe_name_edit)).perform(clearText(), typeText("Mum's favourite Hard Cooked Eggs"));
 
-        //change the first ingredient which is "Ripe Avocados" to "Big Sweet Ripe Avocados", amount to 300 and Unit to grams
-        onView(withText("Ripe avocados")).check(matches(isDisplayed())).perform(click());
+        //change the first ingredient which is "Large eggs" to "Very small eggs", amount to 300 and Unit to grams
+        onView(withText("Large eggs")).check(matches(isDisplayed())).perform(click());
         onView(withId(R.id.editIngredient)).perform(clearText());
 
         onView(withId(R.id.save_dialog_box)).check(matches(isDisplayed())).check(matches(not(isEnabled())));//check that save button is disabled after clearing
@@ -120,12 +120,12 @@ public class ReadRateEditAddRecipeAcceptanceTest
         onView(withId(R.id.save_dialog_box)).check(matches(isDisplayed())).check(matches(not(isEnabled())));//check that save button is disabled after clearing
 
         onView(withId(R.id.editAmount)).perform(typeText("4"));
-        onView(withId(R.id.editIngredient)).perform(typeText("Big Sweet Ripe Avocados"));
+        onView(withId(R.id.editIngredient)).perform(typeText("Very small eggs"));
         onView(withId(R.id.editIngredientUnit)).check(matches(isDisplayed())).perform(click());
         onData(allOf(is(instanceOf(String.class)),is("G"))).inRoot(RootMatchers.isPlatformPopup()).perform(click());
 
         onView(withId(R.id.save_dialog_box)).check(matches(isDisplayed())).check(matches(isEnabled())).perform(click());
-        onView(withText("Big Sweet Ripe Avocados")).check(matches(isDisplayed())); //check the edit
+        onView(withText("Very small eggs")).check(matches(isDisplayed())); //check the edit
 
         //delete ingredient "Kosher salt"
         onView(withText("Kosher salt")).check(matches(isDisplayed())).perform(click());
@@ -200,8 +200,8 @@ public class ReadRateEditAddRecipeAcceptanceTest
         onView(withId(R.id.save_button)).check(matches(isDisplayed())).perform(click());
 
         //Gotta check that edit vere successful
-        onData(hasToString(startsWith("Mum's favourite Guacamole"))).perform(click());
-        onView(withId(R.id.recipe_name)).check(matches(withText("Mum's favourite Guacamole")));
+        onData(hasToString(startsWith("Mum's favourite Hard Cooked Eggs"))).perform(click());
+        onView(withId(R.id.recipe_name)).check(matches(withText("Mum's favourite Hard Cooked Eggs")));
         onView(withText("Big Sweet Ripe Avocados")).check(matches(isDisplayed())); //check the edit
         onView(withText("Kosher salt")).check(doesNotExist()); //check delete
         onView(withText("Avocado Milk")).check(matches(isDisplayed())); //check the addition
@@ -678,11 +678,11 @@ public class ReadRateEditAddRecipeAcceptanceTest
 
         //delete the changed recipes
         onView(ViewMatchers.withId(R.id.recipe_list_view)).perform(ViewActions.swipeDown());
-        onView(withText("Mum's favourite Guacamole")).check(matches(isDisplayed())).perform(click());
+        onView(withText("Mum's favourite Hard Cooked Eggs")).check(matches(isDisplayed())).perform(click());
         onView(withId(R.id.delete_recipe)).check(matches(isDisplayed())).perform(click());
         onView(withText("YES")).check(matches(isDisplayed())).perform(click());
 
-        onView(withText("Mum's favourite Guacamole")).check(doesNotExist()); //check recipes are not there
+        onView(withText("Mum's favourite Hard Cooked Eggs")).check(doesNotExist()); //check recipes are not there
 
 
         //delete the changed Chicken Wrap
@@ -704,7 +704,7 @@ public class ReadRateEditAddRecipeAcceptanceTest
 
         //add the default recipes
         onView(withId(R.id.add)).perform(click());
-        onView(withId(R.id.nameInput)).check(matches(isDisplayed())).perform(typeText("Guacamole"));
+        onView(withId(R.id.nameInput)).check(matches(isDisplayed())).perform(typeText("Hard Cooked Eggs"));
         onView(withId(R.id.addRecipeButton)).check(matches(isDisplayed())).perform(click());
 
         //add ingredients
