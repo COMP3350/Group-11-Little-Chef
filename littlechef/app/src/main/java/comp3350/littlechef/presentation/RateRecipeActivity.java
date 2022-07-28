@@ -12,6 +12,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+// CLASS: RateRecipeActivity.java
+// REMARKS: This class is for the user to rate the recipe they just cooked.
+//-----------------------------------------
 public class RateRecipeActivity extends AppCompatActivity
 {
     private Recipe selectedRecipe;
@@ -21,7 +24,6 @@ public class RateRecipeActivity extends AppCompatActivity
     private RadioButton radioButtonTaste;
     private AccessRecipes accessRecipes;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -30,8 +32,8 @@ public class RateRecipeActivity extends AppCompatActivity
 
         accessRecipes = new AccessRecipes();
 
-        difficultyRadioGroup = (RadioGroup) findViewById(R.id.difficulty_radio_group);
-        tasteRadioGroup = (RadioGroup) findViewById(R.id.taste_radio_group);
+        difficultyRadioGroup =  findViewById(R.id.difficulty_radio_group);
+        tasteRadioGroup = findViewById(R.id.taste_radio_group);
 
         //get the selected recipe that was clicked from previous activity
         Intent previousIntent = getIntent();
@@ -46,8 +48,8 @@ public class RateRecipeActivity extends AppCompatActivity
         int tasteRatingId = tasteRadioGroup.getCheckedRadioButtonId();
         int difficultyRatingId = difficultyRadioGroup.getCheckedRadioButtonId();
 
-        radioButtonTaste = (RadioButton) findViewById(tasteRatingId);
-        radioButtonDifficulty = (RadioButton) findViewById(difficultyRatingId);
+        radioButtonTaste = findViewById(tasteRatingId);
+        radioButtonDifficulty = findViewById(difficultyRatingId);
 
         double tasteRating = Double.parseDouble(radioButtonTaste.getText().toString());
         double difficultyRating = Double.parseDouble(radioButtonDifficulty.getText().toString());
@@ -61,10 +63,6 @@ public class RateRecipeActivity extends AppCompatActivity
         if (result == null)
         {
             finish();
-            // a way of coming back to the home activity -> recreates the home activity and therefore recipes are default
-//            Intent i=new Intent(this, HomeActivity.class);
-//            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(i);
         }
         else
         {
@@ -78,10 +76,10 @@ public class RateRecipeActivity extends AppCompatActivity
         String tasteRating = selectedRecipe.getTasteRating();
 
         //Fills values for header
-        TextView estimatedTime = (TextView) findViewById(R.id.estimated_time_rating_activity);
-        TextView difficulty = (TextView) findViewById(R.id.difficulty_rating_activity);
-        TextView taste = (TextView) findViewById(R.id.taste_rating_activity);
-        TextView rating = (TextView) findViewById(R.id.rating_value_rating_activity);
+        TextView estimatedTime = findViewById(R.id.estimated_time_rating_activity);
+        TextView difficulty = findViewById(R.id.difficulty_rating_activity);
+        TextView taste = findViewById(R.id.taste_rating_activity);
+        TextView rating = findViewById(R.id.rating_value_rating_activity);
 
 
         estimatedTime.setText(selectedRecipe.getAverageCookingTime());

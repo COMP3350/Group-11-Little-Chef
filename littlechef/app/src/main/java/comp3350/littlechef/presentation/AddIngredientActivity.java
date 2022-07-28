@@ -18,13 +18,11 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-// same ids
-
-// CLASS: addIngredientActivity.java
+// CLASS: AddIngredientActivity.java
 // REMARKS: This class is clicked on by addFragment, where you can add ingredients and instructions
 //            to a certain recipe.
 //-----------------------------------------
-public class addIngredientActivity extends AppCompatActivity
+public class AddIngredientActivity extends AppCompatActivity
 {
     private Recipe selectedRecipe;
 
@@ -45,7 +43,7 @@ public class addIngredientActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_recipe);
+        setContentView(R.layout.activity_add_ingredients);
 
         Intent previousIntent = getIntent();
         selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id");

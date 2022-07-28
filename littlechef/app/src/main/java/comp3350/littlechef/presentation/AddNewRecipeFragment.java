@@ -14,8 +14,6 @@ import comp3350.littlechef.R;
 import comp3350.littlechef.business.AccessRecipes;
 import comp3350.littlechef.objects.Recipe;
 
-// kajal: done
-
 // CLASS: AddNewRecipeFragment.java
 // REMARKS: This class creates the add recipe fragment, where you can add recipes
 //          You can then click on the recipe to add individual ingredients and instructions.
@@ -125,7 +123,7 @@ public class AddNewRecipeFragment extends Fragment
     private void launchAddActivity(Recipe newRecipe)
     {
         recipeInput.getText().clear();
-        Intent addRecipeActivity = new Intent(getActivity(), addIngredientActivity.class);
+        Intent addRecipeActivity = new Intent(getActivity(), AddIngredientActivity.class);
         addRecipeActivity.putExtra("id", newRecipe);
         startActivity(addRecipeActivity);
     }

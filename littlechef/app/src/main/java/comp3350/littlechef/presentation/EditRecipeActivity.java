@@ -19,7 +19,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,35 +28,42 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+// CLASS: EditRecipeActivity.java
+// REMARKS: This class is so the user can edit a recipe.
+//------------------------------------------------------------------------------
 public class EditRecipeActivity extends AppCompatActivity
 {
     private Recipe selectedRecipe;
     private ArrayAdapter<Ingredient> ingredientsArrayAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_recipe);
 
-        final ListView listView = (ListView) findViewById(R.id.ingredients_list_edit);
+        final ListView listView = findViewById(R.id.ingredients_list_edit);
 
         //get the selected recipe that was clicked from previous activity
         Intent previousIntent = getIntent();
         selectedRecipe = (Recipe) previousIntent.getSerializableExtra("id"); // will never return null, since some recipe was clicked in prev activity
 
-        Button nextButton = (Button) findViewById(R.id.next_button);
-        Button addIngredientButton = (Button) findViewById(R.id.add_ingredient_button);
+        Button nextButton = findViewById(R.id.next_button);
+        Button addIngredientButton = findViewById(R.id.add_ingredient_button);
 
         ingredientsArrayAdapter = new ArrayAdapter<Ingredient>(this,android.R.layout.simple_list_item_1, selectedRecipe.getIngredients())
         {
             @Override
             public View getView(int position, View convertView, ViewGroup parent)
             {
+
                 Ingredient ingredient = getItem(position);
+
                 if(convertView == null)
                 {
                     convertView = LayoutInflater.from(getContext()).inflate(R.layout.ingredient_card,parent, false);
                 }
+
                 TextView ingredientName = (TextView) convertView.findViewById(R.id.ingredient);
                 TextView measurement = (TextView) convertView.findViewById(R.id.measurement);
 
@@ -71,37 +77,16 @@ public class EditRecipeActivity extends AppCompatActivity
             }
         };
 
-        // button to save the edits
-        nextButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                nextClicked(view);
-            }
-        });
+        nextButton.setOnClickListener(view -> nextClicked(view));
 
-        // button to save the edits
-        addIngredientButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                addEditClicked(view);
-            }
-        });
+        addIngredientButton.setOnClickListener(view -> addEditClicked(view));
 
         listView.setAdapter(ingredientsArrayAdapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
-                Ingredient selectedIngredient = (Ingredient) listView.getItemAtPosition(position);
-                showEditIngrWindow(selectedIngredient, false);
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            Ingredient selectedIngredient = (Ingredient) listView.getItemAtPosition(position);
+            showEditIngrWindow(selectedIngredient, false);
 
-            }
         });
 
         setValues();
@@ -114,14 +99,13 @@ public class EditRecipeActivity extends AppCompatActivity
         result = validateRecipeData();
         if (result == null)
         {
-            EditText editName = (EditText)findViewById(R.id.recipe_name_edit);
+            EditText editName = findViewById(R.id.recipe_name_edit);
             selectedRecipe.setName(editName.getText().toString());
 
             Intent EditInstructionsActivity = new Intent(this, EditInstructionsActivity.class);
             EditInstructionsActivity.putExtra("id", selectedRecipe); // pass the object reference to another activity
             startActivity(EditInstructionsActivity);
             finish();
-
         }
 
         else
@@ -140,21 +124,16 @@ public class EditRecipeActivity extends AppCompatActivity
     {
         final Dialog editIngredientWindow = new Dialog(EditRecipeActivity.this);
 
-        //no need for title
         editIngredientWindow.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-        //make it disappear if user click outside of the window
         editIngredientWindow.setCancelable(true);
-
-        //set the layout
         editIngredientWindow.setContentView(R.layout.edit_ingredient_window);
 
-        final EditText ingrNameField = (EditText) (editIngredientWindow).findViewById(R.id.editIngredient);
-        final EditText ingrAmountField = (EditText) (editIngredientWindow).findViewById(R.id.editAmount);
-        final Spinner unitField = (Spinner) (editIngredientWindow).findViewById(R.id.editIngredientUnit);
-        final Button saveEdit = (Button) (editIngredientWindow).findViewById(R.id.save_dialog_box);
-        final Button cancelEdit = (Button) (editIngredientWindow).findViewById(R.id.cancel_dialog_box);
-        final Button deleteIngr = (Button) (editIngredientWindow).findViewById(R.id.delete_dialog_box);
+        final EditText ingrNameField = (editIngredientWindow).findViewById(R.id.editIngredient);
+        final EditText ingrAmountField = (editIngredientWindow).findViewById(R.id.editAmount);
+        final Spinner unitField = (editIngredientWindow).findViewById(R.id.editIngredientUnit);
+        final Button saveEdit = (editIngredientWindow).findViewById(R.id.save_dialog_box);
+        final Button cancelEdit = (editIngredientWindow).findViewById(R.id.cancel_dialog_box);
+        final Button deleteIngr = (editIngredientWindow).findViewById(R.id.delete_dialog_box);
 
 
         //set the spinner with units
@@ -169,53 +148,38 @@ public class EditRecipeActivity extends AppCompatActivity
 
 
         //set up the buttons
-        cancelEdit.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
+        cancelEdit.setOnClickListener(v -> {
+            if(editIngredientWindow.isShowing())
             {
-                if(editIngredientWindow.isShowing())
-                {
-                    editIngredientWindow.dismiss();
-                }
-            }
-        });
-
-        deleteIngr.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                ArrayList<Ingredient> recipeIngredients = selectedRecipe.getIngredients();
-                int ingrIndex = recipeIngredients.indexOf(ingredient);
-                if(ingrIndex > -1)
-                {
-                    recipeIngredients.remove(ingrIndex);
-                    ingredientsArrayAdapter.notifyDataSetChanged();
-                    editIngredientWindow.dismiss();
-
-                }
-            }
-        });
-
-        saveEdit.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-
-                ingredient.setName(ingrNameField.getText().toString());
-                ingredient.setNumberOfIngredients(Double.parseDouble(ingrAmountField.getText().toString()));
-                ingredient.setUnit(unitField.getSelectedItem().toString());
-
-                if(newRecipe)
-                {
-                    selectedRecipe.getIngredients().add(0,ingredient);
-                }
-
-                ingredientsArrayAdapter.notifyDataSetChanged();
                 editIngredientWindow.dismiss();
             }
+        });
+
+        deleteIngr.setOnClickListener(v -> {
+            ArrayList<Ingredient> recipeIngredients = selectedRecipe.getIngredients();
+            int ingrIndex = recipeIngredients.indexOf(ingredient);
+            if(ingrIndex > -1)
+            {
+                recipeIngredients.remove(ingrIndex);
+                ingredientsArrayAdapter.notifyDataSetChanged();
+                editIngredientWindow.dismiss();
+
+            }
+        });
+
+        saveEdit.setOnClickListener(v -> {
+
+            ingredient.setName(ingrNameField.getText().toString());
+            ingredient.setNumberOfIngredients(Double.parseDouble(ingrAmountField.getText().toString()));
+            ingredient.setUnit(unitField.getSelectedItem().toString());
+
+            if(newRecipe)
+            {
+                selectedRecipe.getIngredients().add(0,ingredient);
+            }
+
+            ingredientsArrayAdapter.notifyDataSetChanged();
+            editIngredientWindow.dismiss();
         });
 
         //set up the editText listeners
@@ -266,11 +230,11 @@ public class EditRecipeActivity extends AppCompatActivity
         String tasteRating = selectedRecipe.getTasteRating();
 
         //Fills values for header
-        TextView recipeName = (TextView) findViewById(R.id.recipe_name_edit);
-        TextView estimatedTime = (TextView) findViewById(R.id.estimated_time_edit);
-        TextView difficulty = (TextView) findViewById(R.id.difficulty_edit);
-        TextView taste = (TextView) findViewById(R.id.taste_edit);
-        TextView rating = (TextView) findViewById(R.id.rating_edit);
+        TextView recipeName = findViewById(R.id.recipe_name_edit);
+        TextView estimatedTime = findViewById(R.id.estimated_time_edit);
+        TextView difficulty = findViewById(R.id.difficulty_edit);
+        TextView taste = findViewById(R.id.taste_edit);
+        TextView rating = findViewById(R.id.rating_edit);
 
         //make recipe name bold
         SpannableString recipeNameFormatted = new SpannableString(selectedRecipe.getName());
@@ -287,7 +251,7 @@ public class EditRecipeActivity extends AppCompatActivity
 
     private String validateRecipeData()
     {
-        EditText editName = (EditText)findViewById(R.id.recipe_name_edit);
+        EditText editName = findViewById(R.id.recipe_name_edit);
         if(editName.getText().toString().trim().length() == 0)
         {
             return "Recipe name required";
