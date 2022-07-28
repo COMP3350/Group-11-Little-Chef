@@ -93,21 +93,6 @@ public class Recipe implements Serializable
         }
     }
 
-    public void setInstructionAtIndex(int index, String newInstruction, String newSubInstruction)
-    {
-        String[] instruction;
-
-        if(newInstruction != null && newSubInstruction != null && index >= 0)
-        {
-            if(!newInstruction.equals(newSubInstruction))
-            {
-                instruction = instructions.get(index);
-                instruction[0] = newInstruction;
-                instruction[1] = newSubInstruction;
-            }
-        }
-    }
-
     public ArrayList<Integer> getCookingTimes()
     {
         return cookingTimes;
@@ -267,6 +252,7 @@ public class Recipe implements Serializable
         return result;
     }
 
+    @Override
     public String toString()
     {
         return name;

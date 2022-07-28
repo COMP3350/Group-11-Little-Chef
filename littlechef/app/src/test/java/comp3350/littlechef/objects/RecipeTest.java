@@ -12,7 +12,7 @@ public class RecipeTest extends TestCase
     }//end RecipeTest
 
     @Test
-    public void testRecipeSimple()
+    public void testTypicalCases()
     {
         //add recipe ID number
         Recipe recipeID1 = new Recipe(0);
@@ -30,25 +30,39 @@ public class RecipeTest extends TestCase
         inList.add(recipeName1);
         inList.add(recipeName2);
         assertEquals(4, inList.size());
-    }//end testRecipeCreation
+
+        Recipe recipe = new Recipe("recipe");
+        assertEquals(0.0, recipe.getRating());
+        assertEquals("-/5", recipe.getRatingString());
+        recipe.addDifficultyRating(5);
+        recipe.addTasteRating(5);
+        assertEquals(5.0, recipe.getRating());
+        assertEquals("5.00/5", recipe.getRatingString());
+
+    }
 
     @Test
     public void testRecipeName()
     {
         Recipe recipe = new Recipe("Paste");
         assertEquals("Paste", recipe.getName());
+        assertEquals("Paste", recipe.toString());
 
         recipe.setName("123");
         assertEquals("123", recipe.getName());
+        assertEquals("123", recipe.toString());
         recipe.setName("%paste1^&");
         assertEquals("%paste1^&", recipe.getName());
+        assertEquals("%paste1^&", recipe.toString());
 
         Recipe recipeSetNewName = new Recipe("juice");
         recipeSetNewName.setName("aa");
         assertEquals("aa", recipeSetNewName.getName());
+        assertEquals("aa", recipeSetNewName.toString());
 
         recipeSetNewName.setName("%paste1");
         assertEquals("%paste1", recipeSetNewName.getName());
+        assertEquals("%paste1", recipeSetNewName.toString());
     }//end testRecipeName
 
     @Test
