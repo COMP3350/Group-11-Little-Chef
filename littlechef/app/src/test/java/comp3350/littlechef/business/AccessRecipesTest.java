@@ -19,7 +19,8 @@ public class AccessRecipesTest extends TestCase
     private static String DB_NAME = Main.dbName;
     private AccessRecipes accessRecipes;
 
-    public AccessRecipesTest(String arg0) {
+    public AccessRecipesTest(String arg0)
+    {
         super(arg0);
     }
 
