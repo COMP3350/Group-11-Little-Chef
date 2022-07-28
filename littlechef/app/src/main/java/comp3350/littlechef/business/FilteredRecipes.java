@@ -10,7 +10,7 @@ import comp3350.littlechef.objects.Recipe;
 //-----------------------------------------
 public class FilteredRecipes
 {
-    private static final int MAX_COOKING_TIME = 15;
+    private static final int MAX_COOKING_TIME = 45;
     private static final double LOWEST_ACCEPTABLE_RATING = 4.5;
 
     private static int listSize;
