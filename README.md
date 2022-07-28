@@ -56,7 +56,7 @@ An invite link has been sent to username: Braico
 - Design Decisions and Rationale
 
 ### Retrospective Activity 
-**Filename**: Retrospective Activity  
+**Filename**: Retrospective Activity.txt  
 **Location**: saved in the private repository along with the project.
 
 ### Big Picture Overview
