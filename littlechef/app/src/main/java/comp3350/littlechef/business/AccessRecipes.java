@@ -115,6 +115,9 @@ public class AccessRecipes
         recipe.addIngredient(new Ingredient("Cilantro", Unit.TBSP , 2));
         recipe.addIngredient(new Ingredient("Black Pepper", Unit.PINCH , 1));
         recipe.addIngredient(new Ingredient("Ripe Tomato", Unit.QUANTITY, 0.5));
+        recipe.addDifficultyRating(5);
+        recipe.addTasteRating(2);
+        recipe.addCookingTime(2151);
 
         //adding instructions
         instruction = "Place eggs in a saucepan or pot and cover with cold water.";
@@ -143,6 +146,9 @@ public class AccessRecipes
         recipe.addIngredient(new Ingredient("Milk", Unit.CUP, 1.25));
         recipe.addIngredient(new Ingredient("Egg", Unit.QUANTITY, 1));
         recipe.addIngredient(new Ingredient("Melted Butter", Unit.TBSP, 2));
+        recipe.addDifficultyRating(1);
+        recipe.addTasteRating(3);
+        recipe.addCookingTime(668);
         //adding instructions
         instruction = "Whisk banana, eggs, almond flour, almond butter, vanilla extract, cinnamon, baking soda, and baking powder together in a bowl until batter is smooth.";
         subInstruction = "";
@@ -170,6 +176,9 @@ public class AccessRecipes
         recipe.addIngredient(new Ingredient("Can of Diced Tomatoes", Unit.QUANTITY, 1));
         recipe.addIngredient(new Ingredient("Can Red Kidney, drained and rinsed", Unit.QUANTITY, 1));
         recipe.addIngredient(new Ingredient("Can of Tomato Sauce", Unit.QUANTITY, 1));
+        recipe.addDifficultyRating(3);
+        recipe.addTasteRating(4);
+        recipe.addCookingTime(1868);
 
         //adding instructions
         instruction = "Place the ground beef in a large pot and throw in the garlic. ";
@@ -193,7 +202,9 @@ public class AccessRecipes
         recipe.addIngredient(new Ingredient("Mozzarella Cheese", Unit.CUP, 0.5));
         recipe.addIngredient(new Ingredient("Cilantro", Unit.CUP, 0.25));
         recipe.addIngredient(new Ingredient("8 inch tortillas", Unit.ML, 4));
-
+        recipe.addDifficultyRating(2);
+        recipe.addTasteRating(2);
+        recipe.addCookingTime(1469);
         //adding instructions
         instruction = "Lay tortillas on a clean flat surface. Place about 1/2 cup chicken, 1 tablespoon ranch, 2 tablespoons of cheese, and 1 tablespoon of minced cilantro on each tortilla. Fold tightly to form a burrito shape. ";
         subInstruction = "";
@@ -218,6 +229,9 @@ public class AccessRecipes
         recipe.addIngredient(new Ingredient("Dried Basil", Unit.TSP, 1));
         recipe.addIngredient(new Ingredient("Medium Green Pepper", Unit.QUANTITY, 1));
         recipe.addIngredient(new Ingredient("Shredded Part-skim Mozzarella Cheese", Unit.CUP, 2));
+        recipe.addDifficultyRating(5);
+        recipe.addTasteRating(5);
+        recipe.addCookingTime(3772);
 
         //adding instructions
         instruction = "Proof the yeast";
@@ -332,6 +346,9 @@ public class AccessRecipes
         recipe.addIngredient(new Ingredient("All-Purpose Flour", Unit.CUP, 3));
         recipe.addIngredient(new Ingredient("Semisweet Chocolate Chips", Unit.CUP, 2));
         recipe.addIngredient(new Ingredient("Chopped Walnuts", Unit.CUP, 1));
+        recipe.addDifficultyRating(2);
+        recipe.addTasteRating(5);
+        recipe.addCookingTime(2180);
 
         //adding instructions
         instruction = "Mix the dry ingredients";
@@ -399,7 +416,9 @@ public class AccessRecipes
         recipe.addIngredient(new Ingredient("Pepper", Unit.PINCH, 1));
         recipe.addIngredient(new Ingredient("Jar Sauerkraut - drained, rinsed and minced", Unit.CUP, 4));
         recipe.addIngredient(new Ingredient("Sour Cream", Unit.TBSP, 3));
-
+        recipe.addDifficultyRating(3);
+        recipe.addTasteRating(3);
+        recipe.addCookingTime(2589);
         instruction = "To make the dough.";
         subInstruction = "Mix together the flour and salt. Add the egg to the flour and combine. The dough will be quite clumpy at this stage.";
         recipe.addInstructions(instruction, subInstruction);
