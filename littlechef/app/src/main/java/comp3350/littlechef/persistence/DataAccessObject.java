@@ -101,6 +101,11 @@ public class DataAccessObject implements DataAccess
             return "connection is not open.";
         }
 
+        if(recipe == null)
+        {
+            throw new NullPointerException("Recipe cannot be null.");
+        }
+
         try
         {
             values = "'" + recipe.getName().replace("'","''")
@@ -257,6 +262,11 @@ public class DataAccessObject implements DataAccess
             return "connection is not open.";
         }
 
+        if(recipeList == null)
+        {
+            throw new NullPointerException("Recipe list cannot be null.");
+        }
+
         try
         {
             cmd = "SELECT * FROM RECIPES" + "\n";
@@ -322,6 +332,11 @@ public class DataAccessObject implements DataAccess
         Recipe recipe;
         String myID;
 
+        if(newRecipe == null)
+        {
+            throw new NullPointerException("Recipe cannot be null.");
+        }
+
         recipes = null;
         try
         {
@@ -385,6 +400,11 @@ public class DataAccessObject implements DataAccess
         if(connection == null)
         {
             return "connection is not open.";
+        }
+
+        if(recipe == null)
+        {
+            throw new NullPointerException("Recipe cannot be null.");
         }
 
         try
