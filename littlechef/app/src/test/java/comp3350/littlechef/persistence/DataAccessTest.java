@@ -51,12 +51,6 @@ public class DataAccessTest extends TestCase
         dataAccess.close();
     }
 
-    public static void dataAccessTest(DataAccess dataAccess) {
-        DataAccessTest dataAccessTest = new DataAccessTest("");
-        dataAccessTest.dataAccess = dataAccess;
-        //dataAccessTest.test1(); just do the tests here?
-    }
-
     @Test
     public void testTypicalCases()
     {

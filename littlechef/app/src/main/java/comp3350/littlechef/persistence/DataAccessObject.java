@@ -77,6 +77,7 @@ public class DataAccessObject implements DataAccess
             cmd = "shutdown compact";
             resultSet = statement.executeQuery(cmd);
             connection.close();
+            connection = null;
             success = true;
         }
         catch (Exception e)
@@ -210,6 +211,11 @@ public class DataAccessObject implements DataAccess
             return "connection is not open.";
         }
 
+        if(recipe == null)
+        {
+            throw new NullPointerException("Recipe cannot be null.");
+        }
+
         try
         {
             table = "RECIPES";
@@ -264,7 +270,7 @@ public class DataAccessObject implements DataAccess
 
         if(recipeList == null)
         {
-            throw new NullPointerException("Recipe list cannot be null.");
+            throw new NullPointerException("RecipeList cannot be null.");
         }
 
         try
@@ -332,9 +338,14 @@ public class DataAccessObject implements DataAccess
         Recipe recipe;
         String myID;
 
+        if(connection == null)
+        {
+            return null;
+        }
+
         if(newRecipe == null)
         {
-            throw new NullPointerException("Recipe cannot be null.");
+            throw new NullPointerException("NewRecipe cannot be null.");
         }
 
         recipes = null;
