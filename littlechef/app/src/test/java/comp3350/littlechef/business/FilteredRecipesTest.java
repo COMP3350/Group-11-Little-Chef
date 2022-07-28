@@ -1,8 +1,5 @@
 package comp3350.littlechef.business;
 
-
-import android.widget.ArrayAdapter;
-
 import junit.framework.TestCase;
 import org.junit.Test;
 import java.util.ArrayList;
@@ -15,6 +12,15 @@ public class FilteredRecipesTest extends TestCase
 
     public FilteredRecipesTest(String arg0) {
         super(arg0);
+    }
+
+    @Test
+    public void testNegativeCases()
+    {
+        ArrayList<Recipe> recipeList = makeRecipeListThree();
+        ArrayList<Recipe> newList = FilteredRecipes.getListofRecipesByType(null, -1, recipeList);
+
+        assertEquals(null, newList);
     }
 
     @Test

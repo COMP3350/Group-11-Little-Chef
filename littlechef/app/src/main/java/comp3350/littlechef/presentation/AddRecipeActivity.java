@@ -17,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 // CLASS: AddRecipeActivity.java
 //
@@ -209,6 +211,10 @@ public class AddRecipeActivity extends AppCompatActivity
         {
             result = "Ingredient cannot be null";
         }
+        else if(checkDuplicateIngredient(ingredient))
+        {
+            result = "Ingredient already exists!";
+        }
         else
         {
             if (ingredient.getName().trim().length() == 0) {
@@ -218,6 +224,22 @@ public class AddRecipeActivity extends AppCompatActivity
             if (ingredient.getAmount() <= 0) {
                 result = "Ingredient amount must be greater then 0!";
             }
+        }
+
+        return result;
+    }
+
+    //checks if duplicate ingredient, is this logic
+    private boolean checkDuplicateIngredient(Ingredient ingredient)
+    {
+        boolean result = false;
+        ArrayList<Ingredient> recipeIngredients = selectedRecipe.getIngredients();
+
+        for(int i = 0; i < recipeIngredients.size(); i++)
+        {
+            Ingredient check = recipeIngredients.get(0);
+            if(ingredient.getName().equals(check.getName()))
+                result = true;
         }
 
         return result;
