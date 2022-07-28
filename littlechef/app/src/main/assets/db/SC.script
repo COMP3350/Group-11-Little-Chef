@@ -16,11 +16,8 @@ INSERT INTO INSTRUCTIONS VALUES(2, 'Drain eggs immediately and put in a bowl fil
 INSERT INTO INGREDIENTS VALUES (0, 0, 'Large eggs', 2.0, 'DEFAULT', 'QUANTITY')
 INSERT INTO INGREDIENTS VALUES (1, 0, 'Kosher salt', 0.25, 'VOLUME', 'TSP')
 INSERT INTO INGREDIENTS VALUES (2, 0, 'Ice Cubes', 5.0, 'DEFAULT', 'QUANTITY')
-INSERT INTO DIFFICULTYRATINGS VALUES(0, 5, 0)
-INSERT INTO TASTERATINGS VALUES(0, 2, 0)
-INSERT INTO COOKINGTIMES VALUES(0, 2151, 0)
-INSERT INTO RECIPES VALUES (1, 'Pancakes')
 
+INSERT INTO RECIPES VALUES (1, 'Pancakes')
 INSERT INTO INSTRUCTIONS VALUES(3, 'Whisk banana, eggs, almond flour, almond butter, vanilla extract, cinnamon, baking soda, and baking powder together in a bowl until batter is smooth.', '', 1)
 INSERT INTO INSTRUCTIONS VALUES(4, 'Heat olive oil on a griddle or skillet over medium-high heat. Drop batter by large spoonfuls onto the griddle and cook until bubbles form and the edges are dry, 3 to 4 minutes. Flip and cook until browned on the other side, 2 to 3 minutes. Repeat with remaining batter.', '', 1)
 INSERT INTO INGREDIENTS VALUES (8, 1, 'All-purpose Flour', 1.5, 'VOLUME', 'CUP')
