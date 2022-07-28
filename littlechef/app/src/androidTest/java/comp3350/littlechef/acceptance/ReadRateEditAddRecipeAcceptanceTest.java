@@ -35,7 +35,7 @@ import comp3350.littlechef.presentation.HomeActivity;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class ReadRateAddRecipeAcceptanceTest
+public class ReadRateEditAddRecipeAcceptanceTest
 {
 
     @Rule

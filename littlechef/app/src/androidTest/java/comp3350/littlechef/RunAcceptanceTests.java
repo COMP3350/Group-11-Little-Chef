@@ -4,10 +4,10 @@ import org.junit.runners.Suite;
 import org.junit.runner.RunWith;
 
 import comp3350.littlechef.acceptance.HomeScreenAcceptanceTests;
-import comp3350.littlechef.acceptance.ReadRateAddRecipeAcceptanceTest;
+import comp3350.littlechef.acceptance.ReadRateEditAddRecipeAcceptanceTest;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({HomeScreenAcceptanceTests.class, ReadRateAddRecipeAcceptanceTest.class})
+@Suite.SuiteClasses({HomeScreenAcceptanceTests.class, ReadRateEditAddRecipeAcceptanceTest.class})
 public class RunAcceptanceTests
 {
     public RunAcceptanceTests()
